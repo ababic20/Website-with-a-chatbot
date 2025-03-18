@@ -26,8 +26,9 @@
 .home .slide .content span{
     display: block;
     font-size: 2.2rem;
-    color: var(--light-white);
+    color: var(--red);
     padding-bottom: 1rem;
+    font-weight: bold;
     animation:fadeIn .4s linear backwards .2s;
 }
 

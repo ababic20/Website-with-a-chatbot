@@ -23,10 +23,23 @@
 
 .heading-title{
     text-align: center;
-    margin-top: 3rem;
+    /*margin-top: 3rem;*/
     /*margin-bottom: 3rem;*/
     font-size: 6rem;
     text-transform: uppercase;
     color: var(--black);
 }
 
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    background: var(--black);
+    color: var(--white);
+    font-size: 1.7rem;
+    padding: 1rem 3rem;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background: var(--main-color) ;
+}

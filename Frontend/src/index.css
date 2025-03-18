@@ -11,6 +11,7 @@
     --border:.1rem solid var(--black);
     --box-shadow:0 .5rem 1rem rgba(0,0,0,.1); 
     --text-shadow:0 1.5rem 3rem rgba(0,0,0,.3);
+    --red:#ff0000;
 
 }
 
