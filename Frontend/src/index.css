@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --main-color:#8e55ad;
+    --black:#222;
+    --white:#fff;
+    --light-black:#777;
+    --light-white: #fff9;
+    --dark-bg:rgba(0,0,0,.7);
+    --light-bg: #eee;
+    --border:.1rem solid var(--black);
+    --box-shadow:0 .5rem 1rem rgba(0,0,0,.1); 
+    --text-shadow:0 1.5rem 3rem rgba(0,0,0,.3);
+
+}
+
+*{
+    font-family: 'Montserrat';
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    outline: none; border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+
+html{
+    font-size: 60%;
+    overflow-x: hidden;
+}
+
+html::webkit-scroolbar{
+    width:1rem;
+    
+}
+html::webkit-scrollbar-track{
+    background-color: var(--white);
+}
+
+html::webkit-scrollbar-thumb{
+    background-color: var(--main-color);
+}
+
+section{
+    padding: 5rem 10% ;
+}
+
+
+
+
+@media (max-width:1200px){
+    section{
+        padding:3rem 5%;
+
+    }
+}
+
+
+@media (max-width:991px){
+    html{
+        font-size: 55%;
+    }
+
+    section{
+        padding:3rem 2rem;
+        
+    }
+    .home .slide .content h3{
+        font-size: 10vw;
+    }
+}
+
+@media (max-width:768px){
+    .header .navbar{
+        position:absolute;
+        top: 99%;
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        border-top: var(--border);
+        padding: 2rem;
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: .2s linear;
+    }
+
+    .header .navbar.active{
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    .header .navbar a{
+        display: block;
+        margin:2rem;
+        text-align: center;
+    }
+    #menu-btn{
+        display:inline-block;
+        transition: .2s linear
+    }
+
+    #menu-btn.fa-times{
+        transform: rotate(180deg)
+    }
+}
+
+@media (max-width:450px){
+    html{
+        font-size: 55%;
+    }
+
+    .heading-title{
+        font-size: 3.5rem;
+    }
+}
+
+

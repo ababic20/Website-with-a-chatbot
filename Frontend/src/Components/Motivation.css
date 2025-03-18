@@ -1,0 +1,32 @@
+.motivation .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.5rem
+}
+
+.motivation .box-container h3{
+    color: white;
+    font-size: 1.7rem;
+    padding-top: 2rem;
+}
+
+.motivation .box-container .box{
+    padding: 3rem 2rem;
+    text-align: center;
+    background-color: var(--main-color);
+    cursor: pointer;
+}
+
+.motivation .box-container .box:hover{
+    background: var(--black);
+}
+
+.heading-title{
+    text-align: center;
+    margin-top: 3rem;
+    /*margin-bottom: 3rem;*/
+    font-size: 6rem;
+    text-transform: uppercase;
+    color: var(--black);
+}
+
