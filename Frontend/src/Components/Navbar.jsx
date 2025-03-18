@@ -14,7 +14,7 @@ const Navbar = () => {
 
       <nav className={`navbar ${menuOpen ? 'active' : ''}`}>
         <a href="/home">Home</a>
-        <a href="/about">About me</a>
+        <a href="/about">About Łódź</a>
         <a href="/cities">Other cities</a>
         <a href="/question">Questions</a>
       </nav>
