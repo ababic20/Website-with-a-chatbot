@@ -4,6 +4,7 @@ import Footer from '../Components/Footer'
 import Motivation from '../Components/Motivation'
 import Slider from '../Components/Slider'
 import AboutLodz from '../Components/AboutLodz'
+import Cities from '../Components/Cities'
 
 export default function(){
   return(
@@ -12,6 +13,7 @@ export default function(){
         <Slider/>
         <Motivation/>
         <AboutLodz/>
+        <Cities/>
         <Footer/>
     </>
   )
