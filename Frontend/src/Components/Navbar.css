@@ -1,6 +1,6 @@
-.header{
-    position:sticky;
-    top: 0; 
+.header {
+    position: sticky;
+    top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
@@ -12,44 +12,40 @@
     align-items: center;
     justify-content: space-between;
 }
-.header .logo{
+
+.header .logo {
     font-size: 2.5rem;
-    color:var(--black);
+    color: var(--black);
 }
 
-.header .navbar a{
+.header .navbar a {
     font-size: 2rem;
-    margin-left:2rem;
-    color:var(--black);
+    margin-left: 2rem;
+    color: var(--black);
 }
 
-.header .navbar a:hover{
-    color:var(--main-color)
-}
-
-#menu-btn{
+#menu-btn {
     font-size: 2.5rem;
     cursor: pointer;
-    color:var(--black);
-    display: none;
+    color: var(--black);
+    display: none; 
 }
 
+#menu-btn.open {
+    transform: rotate(180deg); 
+}
 
+.header .navbar a:hover {
+    color: var(--main-color);
+}
 
-
-
-
-
-
-@media (max-width:768px){
-
-    #menu-btn{
-        display:inline-block;
-        transition: .2s linear
+@media (max-width: 768px) {
+    #menu-btn {
+        display: inline-block;
+        transition: 0.2s linear;
     }
-    
-    .header .navbar{
-        position:absolute;
+    .header .navbar {
+        position: absolute;
         top: 99%;
         left: 0;
         right: 0;
@@ -57,29 +53,20 @@
         border-top: var(--border);
         padding: 2rem;
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        transition: .2s linear;
+        transition: 0.2s linear;
     }
 
-    .header .navbar.active{
+    .header .navbar.active {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
 
-    .header .navbar a{
+    .header .navbar a {
         display: block;
-        margin:2rem;
+        margin: 2rem;
         text-align: center;
     }
 
-    #menu-btn.fa-times{
-        transform: rotate(180deg)
+    #menu-btn.fa-times {
+        transform: rotate(180deg);
     }
 }
-
-
-
-
-
-
-
-
-
