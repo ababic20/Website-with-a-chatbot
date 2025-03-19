@@ -71,41 +71,11 @@ section{
     }
 }
 
-@media (max-width:768px){
-    .header .navbar{
-        position:absolute;
-        top: 99%;
-        left: 0;
-        right: 0;
-        background-color: var(--white);
-        border-top: var(--border);
-        padding: 2rem;
-        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-        transition: .2s linear;
-    }
 
-    .header .navbar.active{
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    }
-
-    .header .navbar a{
-        display: block;
-        margin:2rem;
-        text-align: center;
-    }
-    #menu-btn{
-        display:inline-block;
-        transition: .2s linear
-    }
-
-    #menu-btn.fa-times{
-        transform: rotate(180deg)
-    }
-}
 
 @media (max-width:450px){
     html{
-        font-size: 55%;
+        font-size: 50%;
     }
 
     .heading-title{
