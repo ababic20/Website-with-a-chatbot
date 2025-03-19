@@ -15,7 +15,7 @@ const Footer = () => {
 
         <div className="box">
           <h3>Extra links</h3>
-          <a href="#"> <i className="fas fa-angle-right"></i>Frequently Asked questions</a>
+          <a href="#"> <i className="fas fa-angle-right"></i>Frequently asked questions</a>
           <a href="#"> <i className="fas fa-angle-right"></i>Something</a>
           <a href="#"> <i className="fas fa-angle-right"></i>Privacy & policy</a>
           <a href="#"> <i className="fas fa-angle-right"></i>Terms of use</a>

@@ -1,12 +1,13 @@
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
+import Question from '../Components/Question'
 
 
 export default function(){
   return(
     <>
         <Navbar/>
-        <h2>Ovo je Question</h2>
+        <Question/>
         <Footer/>
     </>
   )
