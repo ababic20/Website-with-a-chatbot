@@ -24,23 +24,23 @@ const Home = () => {
         <div className="swiper-wrapper">
           <div className="swiper-slide slide" style={{ backgroundImage: `url(${aImage})`, backgroundRepeat: 'no-repeat'}}>
             <div className="content">
-              <span>explore, discover, travel</span>
+              <span>Explore & discover & travel</span>
               <h3>Travel around Poland</h3>
-              <a href="#" className="btn">discover more</a>
+              <a href="#" className="btn">Discover more</a>
             </div>
           </div>
           <div className="swiper-slide slide" style={{ backgroundImage: `url(${bImage})`, backgroundRepeat: 'no-repeat'}}>
             <div className="content">
-              <span>explore, discover, travel</span>
+              <span>Explore & discover & travel</span>
               <h3>Discover the new places</h3>
-              <a href="#" className="btn">discover more</a>
+              <a href="#" className="btn">Discover more</a>
             </div>
           </div>
           <div className="swiper-slide slide" style={{ backgroundImage: `url(${cImage})`, backgroundRepeat: 'no-repeat'}}>
             <div className="content">
-              <span>explore, discover, travel</span>
+              <span>Explore & discover & travel</span>
               <h3>make your tour</h3>
-              <a href="#" className="btn">discover more</a>
+              <a href="#" className="btn">Discover more</a>
             </div>
           </div>
         </div>

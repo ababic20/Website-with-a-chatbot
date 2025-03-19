@@ -17,15 +17,15 @@ const destinations = [
     id: 2,
     image: dImage2,
     title: "Krakow",
-    description: "Kraków, the former capital of Poland, is famous for its rich history, well-preserved medieval architecture, and the impressive Wawel Castle.",
-    link: "/cities/lodz",
+    description: "Kraków is the former capital of Poland, known for its rich history, well-preserved and beautiful medieval architecture, and the impressive Wawel Castle.",
+    link: "/cities",
   },
   {
     id: 3,
     image: dImage3,
     title: "Wroclaw",
     description: "Wrocław is known for its colorful architecture, beautiful bridges, and riverfront promenades, making it one of the most charming cities in Poland.",
-    link: "/cities/krakow",
+    link: "/cities",
   },
 ];
 
@@ -49,7 +49,7 @@ const TopDestinations = () => {
         ))}
       </div>
       
-      <div className="load-more"><a href="/cities" className="btn">load more</a></div>
+      <div className="load-more"><a href="/cities" className="btn">Load more</a></div>
     </section>
   );
 };

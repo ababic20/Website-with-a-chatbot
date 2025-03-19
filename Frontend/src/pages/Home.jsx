@@ -5,6 +5,7 @@ import Motivation from '../Components/Motivation'
 import Slider from '../Components/Slider'
 import AboutLodz from '../Components/AboutLodz'
 import Cities from '../Components/Cities'
+import Help from '../Components/Help'
 
 export default function(){
   return(
@@ -14,6 +15,7 @@ export default function(){
         <Motivation/>
         <AboutLodz/>
         <Cities/>
+        <Help/>
         <Footer/>
     </>
   )
