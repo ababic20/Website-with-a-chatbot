@@ -15,12 +15,6 @@ function ChatPopup({ togglePopup }) {
     return (
         <>
             <div className="assistant-icon" onClick={togglePopup}>
-                <div className="dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <div className="tooltip">Do you need help?</div>
             </div>
             <div className="chat-popup">
                 <button className="close-button" onClick={togglePopup}>X</button>
