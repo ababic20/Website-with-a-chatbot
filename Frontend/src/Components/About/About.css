@@ -1,0 +1,64 @@
+.about{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;   
+    gap: 2rem;
+}
+
+.about .image{
+    flex: 1 1 41rem;
+}
+
+.about .image img{
+    width:100%;
+}
+
+.about .content{
+    flex: 1 1 41rem;
+    text-align: center;
+}
+
+.about .content h3{
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+.about .content p{
+    font-size: 1.5rem;
+    color: var(--light-black);
+    line-height: 2;
+    padding: 1rem 0;
+}
+
+.about .content .icons-container{
+    display: flex;
+    gap: 2rem;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.about .content .icons-container .icons{
+    background: var(--main-color);
+    padding: 2rem;
+    flex: 1 1 16rem;
+}
+
+.about .content .icons-container .icons:hover{
+    background: black;
+}
+
+
+.about .content .icons-container .icons i{
+    font-size: 4rem;
+    color: var(--white);
+    margin-bottom: 1rem;
+}
+
+
+.about .content .icons-container .icons span{
+    font-size: 1.5rem;
+    color: var(--white);
+    display: block;
+}
+

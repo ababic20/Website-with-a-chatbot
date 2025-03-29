@@ -1,14 +1,17 @@
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Icon from '../Components/AIAssistant/icon'
+import About from '../Components/About/About'
+import Reviews from '../Components/Reviews/reviews'
 
 
 export default function(){
   return(
     <>
         <Navbar/>
-        <h2>Ovo je About</h2>
         <Icon />
+        <About/>
+        <Reviews/>  
         <Footer/>
     </>
   )
