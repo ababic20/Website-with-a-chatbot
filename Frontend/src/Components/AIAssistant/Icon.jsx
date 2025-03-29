@@ -15,6 +15,11 @@ function Icon() {
     }, []);
 
     const togglePopup = () => {
+        if (isOpen) {
+            setIsVisible(true); 
+        } else {
+            setIsVisible(false); 
+        }
         setIsOpen(!isOpen);
     };
 
