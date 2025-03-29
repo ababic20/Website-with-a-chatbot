@@ -35,6 +35,15 @@ function ChatPopup({ togglePopup }) {
                                 <div className={`message ${msg.sender}`}>
                                     {msg.text}
                                 </div>
+                                {msg.sender === "User" && (
+                                    <div className="user-icon-message">
+                                        <img
+                                            src="\src\assets\user_icon.png" 
+                                            alt="User"
+                                            style={{ width: "35px", height: "35px", borderRadius: "50%" }}
+                                        />
+                                    </div>
+                                )}
                             </div>
                         ))}
                     </div>

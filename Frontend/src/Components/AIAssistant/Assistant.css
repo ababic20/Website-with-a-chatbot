@@ -133,6 +133,7 @@
 .message.User {
     background-color: #d1c4e9;
     align-self: flex-end;
+    margin-left: auto;
 }
 
 .message-row {
