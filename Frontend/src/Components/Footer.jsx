@@ -37,7 +37,7 @@ const Footer = () => {
           <a href="#"><i className="fab fa-twitter"></i>Twitter</a>
         </div>
       </div>
-      <div className="credit"> Created by <span>Aleksandar Babić</span>; Erasmus student</div>
+      <div className="credit"> Created by <span>Aleksandar Babić</span>; Ex Erasmus student</div>
     </section>
   );
 };
