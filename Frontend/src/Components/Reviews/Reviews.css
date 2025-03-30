@@ -1,0 +1,58 @@
+.reviews {
+    background: var(--light-bg);
+}
+
+.reviews .slide {
+    padding: 2rem;
+    border: var(--border);
+    background: var(--white);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+}
+
+.reviews .slide .stars i {
+    font-size: 1.5rem;
+    color: var(--main-color);
+}
+
+.reviews .slide p {
+    font-size: 1.5rem;
+    color: var(--light-black);
+    line-height: 2;
+    padding: 1rem 0;
+}
+
+.reviews .slide span {
+    font-size: 1.5rem;
+    color: var(--main-color);
+    display: block;
+}
+
+.reviews h3 {
+    font-size: 2.5rem;
+    color: var(--black);
+}
+
+.reviews .slide img {
+    height: 7rem;
+    width: 7rem;
+    border-radius: 50%;
+    margin-top: 1rem;
+}
+
+.reviews .slide .stars{
+    padding-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .reviews .swiper-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reviews .slide {
+        width: 90%; 
+        margin-bottom: 2rem; 
+    }
+}
