@@ -39,6 +39,33 @@
     color: var(--main-color);
 }
 
+.language-switch {
+    display: flex;
+    gap: 1rem;
+    margin-left: 2rem;
+}
+
+.language-switch button {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.5rem;
+    border: 2px solid var(--main-color);
+    background-color: transparent;
+    color: var(--main-color);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.language-switch button:hover {
+    background-color: var(--main-color);
+    color: var(--white);
+}
+.nav-and-lang {
+    display: flex;
+    align-items: center;
+}
+
+
 @media (max-width: 768px) {
     #menu-btn {
         display: inline-block;

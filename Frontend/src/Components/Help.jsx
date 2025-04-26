@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom"; 
+import { LanguageContext } from "../contexts/LanguageContext"; 
 import "./Help.css";
 
 const HomeOffer = () => {
+  const { translations } = useContext(LanguageContext);
+
   return (
     <section className="home-help">
       <div className="content">
-        <h3>The chatbot didn't answer your question?</h3>
-        <p>
-        If there is a specific question that the chatbot has not answered or 
-        you do not want to ask it but rather the owner of this page, please ask a question. 
-        We will try to respond quickly.
-        </p>
-        <a href="/question" className="btn">Ask the question!</a>
+        <h3>{translations.homeOffer.title}</h3>
+        <p>{translations.homeOffer.description}</p>
+        <Link to="/question" className="btn">{translations.homeOffer.button}</Link>
       </div>
     </section>
   );

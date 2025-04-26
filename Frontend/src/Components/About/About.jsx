@@ -1,38 +1,45 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { LanguageContext } from '../../contexts/LanguageContext'; 
 import './About.css';
 
 const About = () => {
+  const { translations } = useContext(LanguageContext); 
+
   return (
     <>
-    <div className="heading">
-    <h1>Explore the Cities of Poland</h1>
-    </div>
-    <section className='about'>
-      <div className='image'>
-        <img src="\src\assets\cities\Lodz2.jpg" alt=""/>
+      <div className="heading">
+        <h1>{translations.aboutPage.mainTitle}</h1>
       </div>
-      <div className='content'>
-        <h3>Why choose Lodz?</h3>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.</p>
-        <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna.</p>
-        <div className="icons-container">
-          <div className='icons'>
-            <i className='fas fa-shield-alt'></i>
-            <span>Safe</span>
-          </div>
-          <div className='icons'>
-            <i className='fas fa-leaf'></i>
-            <span>Clean</span>
-          </div>
-          <div className='icons'>
-            <i className='fas fa-building'></i>
-            <span>Modern</span>
+
+      <section className='about'>
+        <div className='image'>
+          <img src="/src/assets/cities/Lodz2.jpg" alt="Lodz" />
+        </div>
+
+        <div className='content'>
+          <h3>{translations.aboutPage.subTitle}</h3>
+
+          <p>{translations.aboutPage.paragraph1}</p>
+          <p>{translations.aboutPage.paragraph2}</p>
+
+          <div className="icons-container">
+            <div className='icons'>
+              <i className='fas fa-shield-alt'></i>
+              <span>{translations.aboutPage.safe}</span>
+            </div>
+            <div className='icons'>
+              <i className='fas fa-leaf'></i>
+              <span>{translations.aboutPage.clean}</span>
+            </div>
+            <div className='icons'>
+              <i className='fas fa-building'></i>
+              <span>{translations.aboutPage.modern}</span>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
     </>
   )
 }
 
-export default About
+export default About;

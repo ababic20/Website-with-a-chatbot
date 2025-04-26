@@ -1,35 +1,48 @@
+.cities {
+    background: var(--light-bg);
+    padding: 5rem 2rem;
+}
+
 .cities .box-container {
     display: grid;
-    gap: 20px; 
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    justify-content: center; 
-    grid-template-rows: masonry; 
+    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
     align-items: start;
-}
-
-.cities .box-container .image {
-    height: 25rem;
-    overflow: hidden;
-}
-
-.cities .box-container .image img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    transition: 2s linear;
 }
 
 .cities .box-container .box {
     background: #fff;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cities .box-container .box:hover {
-    transform: translateY(-5px); 
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.cities .box-container .image {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cities .box-container .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.cities .box-container .box:hover .image img {
+    transform: scale(1.05);
 }
 
 .cities .box-container .box .content {
@@ -38,41 +51,110 @@
 }
 
 .cities .box-container .box .content h3 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: var(--black);
+    margin-bottom: 1rem;
 }
 
 .cities .box-container .box .content p {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: grey;
-    line-height: 2;
-    padding: 1rem 0;
-}
-
-.cities {
-    background: var(--light-bg);
+    line-height: 1.6;
 }
 
 .cities .load-more {
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 3rem;
+}
+
+.cities .load-more .btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.6rem;
+    border-radius: 5px;
+    background: var(--main-color);
+    color: #fff;
+    transition: background 0.3s ease;
+    cursor: pointer;
+}
+
+.cities .load-more .btn:hover {
+    background: var(--black);
 }
 
 .heading {
-    background-image: url("../../assets/cities/warsaw.jpg"); 
+    background-image: url("../../assets/hero.jpeg");
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 10rem;
-    padding-bottom: 15rem;
+    padding: 10rem 2rem 15rem;
     text-align: center;
 }
 
 .heading h1 {
-    font-size: 10rem;
+    font-size: 8rem;
     text-transform: uppercase;
     color: #fff;
     text-shadow: var(--text-shadow);
+}
+
+.loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--main-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+.load-more .loader {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--main-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: auto;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+
+@media (max-width: 1200px) {
+    .cities .box-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .heading h1 {
+        font-size: 6rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .cities {
+        padding: 3rem 1.5rem;
+    }
+
+    .cities .box-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .heading {
+        padding-top: 8rem;
+        padding-bottom: 10rem;
+    }
+
+    .heading h1 {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .heading h1 {
+        font-size: 3rem;
+    }
 }

@@ -1,23 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import { LanguageContext } from "../contexts/LanguageContext";
 import './Navbar.css'; 
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { toggleLanguage, translations } = useContext(LanguageContext);
 
   const handleMenuToggle = () => {
-    setMenuOpen(!menuOpen);  
+    setMenuOpen(!menuOpen);
   };
 
   return (
     <section className="header">
-      <a href="./home" className="logo">Erasmus+ student exchange Łódź</a>
+      <Link to="/home" className="logo">{translations.navbar.logo}</Link>
 
-      <nav className={`navbar ${menuOpen ? 'active' : ''}`}>
-        <a href="/home">Home</a>
-        <a href="/about">About Łódź</a>
-        <a href="/cities">Other cities</a>
-        <a href="/question">Questions</a>
-      </nav>
+      <div className="nav-and-lang"> 
+        <nav className={`navbar ${menuOpen ? 'active' : ''}`}>
+          <Link to="/home">{translations.navbar.home}</Link>
+          <Link to="/about">{translations.navbar.about}</Link>
+          <Link to="/cities">{translations.navbar.cities}</Link>
+          <Link to="/question">{translations.navbar.question}</Link>
+        </nav>
+
+        <div className="language-switch">
+          <button onClick={() => toggleLanguage('hr')}>HR</button>
+          <button onClick={() => toggleLanguage('en')}>EN</button>
+        </div>
+      </div>
 
       <div 
         id="menu-btn" 

@@ -1,0 +1,173 @@
+{
+    "navbar": {
+      "home": "Početna",
+      "about": "O Łódźu",
+      "cities": "Ostali gradovi",
+      "question": "Pitanja",
+      "logo": "Erasmus+ studentska razmjena Łódź"
+    },
+  
+    "pages": {
+      "homePageTitle": "Dobrodošli u Poljsku!",
+      "aboutPageTitle": "Otkrijte Łódź",
+      "citiesPageTitle": "Istražite Gradove Poljske",
+      "questionsPageTitle": "Postavite Nam Pitanje"
+    },
+  
+    "home": {
+      "explore": "Istražuj & otkrivaj & putuj",
+      "travelAround": "Putuj širom Poljske",
+      "discoverPlaces": "Otkrij nova mjesta",
+      "makeYourTour": "Kreiraj svoje putovanje",
+      "discoverMore": "Saznaj više"
+    },
+  
+    "contactForm": {
+      "summaryTitle": "Sažetak poslanih informacija:",
+      "fullNameLabel": "Ime i prezime:",
+      "phoneLabel": "Telefon:",
+      "emailLabel": "Email:",
+      "addressLabel": "Adresa:",
+      "descriptionLabel": "Opis:",
+      "formHeader": "Imate li bilo kakvih pitanja ili nejasnoća, slobodno se obratite – ovdje sam da vam pomognem.",
+      "fullNamePlaceholder": "Ivan Horvat",
+      "phonePlaceholder": "(091) 123-4567",
+      "emailPlaceholder": "ivan.horvat@example.com",
+      "addressPlaceholder": "Glavna 123, Zagreb",
+      "descriptionPlaceholder": "Ukratko opišite svoje pitanje ili problem",
+      "submitButton": "Pošalji",
+      "successMessage": "Vaša poruka je uspješno poslana! 🙂"
+    },
+  
+    "motivation": {
+      "title": "Zašto se prijaviti na Erasmus?",
+      "career": "Karijera",
+      "education": "Obrazovanje",
+      "culture": "Kultura",
+      "networking": "Umrežavanje",
+      "adventure": "Avantura"
+    },
+  
+    "homeOffer": {
+      "title": "Chatbot nije odgovorio na tvoje pitanje?",
+      "description": "Ako postoji određeno pitanje na koje chatbot nije odgovorio ili ga ne želite pitati, već želite pitati vlasnika stranice, slobodno postavite pitanje. Pokušat ćemo brzo odgovoriti.",
+      "button": "Postavi pitanje!"
+    },
+  
+    "footer": {
+      "quickLinks": "Brzi linkovi",
+      "extraLinks": "Dodatni linkovi",
+      "contactInfo": "Kontakt informacije",
+      "followMe": "Pratite me",
+      "faq": "Često postavljana pitanja",
+      "something": "Nešto",
+      "privacyPolicy": "Privatnost i pravila",
+      "termsOfUse": "Uvjeti korištenja",
+      "phone": "+xxx",
+      "email": "test@gmail.com",
+      "website": "www.example.com",
+      "address": "Hrvatska",
+      "credit": "Kreirao",
+      "allRightsReserved": "Sva prava pridržana! © 2023",
+      "imagesFrom": "Fotografije korištene na ovoj stranici dolaze s "
+    },
+  
+    "topDestinations": {
+      "title": "Ostali gradovi",
+      "readMore": "Pročitaj više",
+      "loadMore": "Učitaj više",
+      "destinations": [
+        {
+          "id": 1,
+          "imageKey": "warsaw",
+          "title": "Varšava",
+          "description": "Varšava je glavni i najveći grad Poljske, koji kombinira modernu dinamiku s povijesnim znamenitostima poput Starog grada i legendarne Kraljevske palače.",
+          "link": "/cities"
+        },
+        {
+          "id": 2,
+          "imageKey": "krakow",
+          "title": "Krakov",
+          "description": "Krakov je bivši glavni grad Poljske, poznat po svojoj bogatoj povijesti, očuvanoj srednjovjekovnoj arhitekturi i impresivnoj Wawel palači.",
+          "link": "/cities"
+        },
+        {
+          "id": 3,
+          "imageKey": "wroclaw",
+          "title": "Vroclav",
+          "description": "Vroclav je poznat po svojoj šarenoj arhitekturi, prekrasnim mostovima i šetalištima uz rijeku, što ga čini jednim od najšarmantnijih gradova u Poljskoj.",
+          "link": "/cities"
+        }
+      ]
+    },
+  
+    "aboutUs": {
+      "title": "O Łódźu",
+      "description": "Łódź je fascinantan grad pun kreativnosti i povijesti. Ulična umjetnost i murali daju mu poseban karakter, dok mjesta poput Piotrkowska kompleksa nude živahnu atmosferu s modernim kafićima, restoranima i umjetničkim prostorima. Industrijska prošlost grada savršeno se stapa s njegovim modernim i umjetničkim duhom.",
+      "readMore": "Pročitaj više"
+    },
+  
+    "reviews": {
+    "reviewList": [
+      {
+        "text": "Sviđa mi se što svi poštuju pravila i što postoji puno poštovanja na cestama. Grad pruža osjećaj mira, a šetnje su bile pravo uživanje. Sve je bilo mirno, bez žurbe, a tramvaji, autobusi i vlakovi uvijek su dolazili na vrijeme, što mi je puno značilo tijekom boravka.",
+        "name": "Stavroula Papoutsi ",
+        "role": "Student",
+        "image": "/src/assets/friends/stav.jfif"
+      },
+      {
+        "text": "Erasmus iskustvo u Łódźu bilo je vrhunac mog studentskog života i jedno od najboljih iskustava u životu. Poljska je predivna zemlja, a Łódź je velik i živahan grad, savršen za one koji žele osjetiti pravi gradski život. Toplo preporučujem prijavu na Erasmus program!",
+        "name": "David Slavik",
+        "role": "Student",
+        "image": "/src/assets/friends/David.jfif"
+      },
+      {
+        "text": "Dolazak u jedan od manje poznatih gradova u Poljskoj pretvorio se u predivno iskustvo. Łódź nudi mješavinu istočnoeuropskog duha, multikulturalizma i industrijske duše. Cijelo iskustvo ostavilo je na mene poseban dojam i stvorilo nezaboravne uspomene.",
+        "name": "Natalia Pilch",
+        "role": "Student",
+        "image": "/src/assets/friends/Natalia.jpg"
+      }
+    ]
+},
+
+    "citiesTexts": {
+      "mainTitle": "Istražite Gradove Poljske",
+      "populationTitle": "Stanovništvo",
+      "readMore": "Pročitaj više",
+      "loadMore": "Učitaj više"
+    },
+  
+    "citiesList": [
+      { "id": 1, "name": "Warsawa", "description": "1.793.579 stanovnika", "imageKey": "warsaw" },
+      { "id": 2, "name": "Krakow", "description": "780.981 stanovnika", "imageKey": "krakow" },
+      { "id": 3, "name": "Łódź", "description": "677.286 stanovnika", "imageKey": "lodz" },
+      { "id": 4, "name": "Wroclaw", "description": "643.782 stanovnika", "imageKey": "wroclaw" },
+      { "id": 5, "name": "Poznań", "description": "533.830 stanovnika", "imageKey": "poznan" },
+      { "id": 6, "name": "Gdańsk", "description": "471.525 stanovnika", "imageKey": "gdansk" },
+      { "id": 7, "name": "Szczecin", "description": "400.990 stanovnika", "imageKey": "szczecin" },
+      { "id": 8, "name": "Bydgoszcz", "description": "346.739 stanovnika", "imageKey": "bydgoszcz" },
+      { "id": 9, "name": "Lublin", "description": "339.547 stanovnika", "imageKey": "lublin" },
+      { "id": 10, "name": "Białystok", "description": "297.585 stanovnika", "imageKey": "bialystok" },
+      { "id": 11, "name": "Katowice", "description": "317.220 stanovnika", "imageKey": "katowice" },
+      { "id": 12, "name": "Gdynia", "description": "250.242 stanovnika", "imageKey": "gdynia" }
+    ],
+  
+    "aboutPage": {
+      "mainTitle": "Pročitajte nešto o Łódź-u",
+      "subTitle": "Zašto odabrati Łódź?",
+      "paragraph1": "Łódź je grad koji spaja bogatu industrijsku prošlost s modernim duhom i kreativnom energijom. Smješten u srcu Poljske, idealno je polazište za istraživanje cijele zemlje. Łódź nudi jedinstvenu kombinaciju kulturne raznolikosti, umjetničke scene i inovativnih projekata, stvarajući inspirativno okruženje za studente, mlade profesionalce i putnike.",
+      "paragraph2": "Grad je poznat po svojim muralima, povijesnim tvornicama pretvorenim u moderne prostore, kao i po izvrsnoj prometnoj povezanosti. Uz pristupačne troškove života i prijateljsku atmosferu, Łódź je savršen izbor za sve koji traže dinamično, ali ugodno iskustvo.",
+      "safe": "Sigurno",
+      "clean": "Čisto",
+      "modern": "Moderno"
+    },
+    
+    "assistant": {
+        "title": "AI Asistent",
+        "startMessage": "Pozdrav! Kako vam mogu pomoći danas? 😊",
+        "inputPlaceholder": "Napišite poruku...",
+        "sendButton": "Pošalji",
+        "iconMessage": "Bok! Trebaš pomoć? Ako trebaš, klikni ovdje i pričaj sa mnom."
+    }
+
+}

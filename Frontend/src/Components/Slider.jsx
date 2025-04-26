@@ -1,52 +1,51 @@
-import React from 'react';
-//import Swiper from 'swiper';
-//import 'swiper/swiper-bundle.min.css'; 
-import './Slider.css'
+import React, { useContext } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import './Slider.css';
+
+import { LanguageContext } from '../contexts/LanguageContext'; 
+
 import aImage from '../assets/slider/a.jpg';
 import bImage from '../assets/slider/b.jpg';
 import cImage from '../assets/slider/c.jpg';
 
-
 const Home = () => {
-  React.useEffect(() => {
-    new Swiper('.home-slider', {
-      loop: true,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-    });
-  }, []);
+  const { translations } = useContext(LanguageContext);
 
   return (
     <section className="home">
-      <div className="swiper home-slider">
-        <div className="swiper-wrapper">
-          <div className="swiper-slide slide" style={{ backgroundImage: `url(${aImage})`, backgroundRepeat: 'no-repeat'}}>
-            <div className="content">
-              <span>Explore & discover & travel</span>
-              <h3>Travel around Poland</h3>
-              <a href="#" className="btn">Discover more</a>
-            </div>
+      <Swiper
+        loop={true}
+        navigation={true}
+        modules={[Navigation]}
+        className="home-slider"
+      >
+        <SwiperSlide className="slide" style={{ backgroundImage: `url(${aImage})`, backgroundRepeat: 'no-repeat' }}>
+          <div className="content">
+            <span>{translations.home.explore}</span>
+            <h3>{translations.home.travelAround}</h3>
+            <a href="#" className="btn">{translations.home.discoverMore}</a>
           </div>
-          <div className="swiper-slide slide" style={{ backgroundImage: `url(${bImage})`, backgroundRepeat: 'no-repeat'}}>
-            <div className="content">
-              <span>Explore & discover & travel</span>
-              <h3>Discover the new places</h3>
-              <a href="#" className="btn">Discover more</a>
-            </div>
+        </SwiperSlide>
+
+        <SwiperSlide className="slide" style={{ backgroundImage: `url(${bImage})`, backgroundRepeat: 'no-repeat' }}>
+          <div className="content">
+            <span>{translations.home.explore}</span>
+            <h3>{translations.home.discoverPlaces}</h3>
+            <a href="#" className="btn">{translations.home.discoverMore}</a>
           </div>
-          <div className="swiper-slide slide" style={{ backgroundImage: `url(${cImage})`, backgroundRepeat: 'no-repeat'}}>
-            <div className="content">
-              <span>Explore & discover & travel</span>
-              <h3>make your tour</h3>
-              <a href="#" className="btn">Discover more</a>
-            </div>
+        </SwiperSlide>
+
+        <SwiperSlide className="slide" style={{ backgroundImage: `url(${cImage})`, backgroundRepeat: 'no-repeat' }}>
+          <div className="content">
+            <span>{translations.home.explore}</span>
+            <h3>{translations.home.makeYourTour}</h3>
+            <a href="#" className="btn">{translations.home.discoverMore}</a>
           </div>
-        </div>
-        <div className="swiper-button-next"></div>
-        <div className="swiper-button-prev"></div>
-      </div>
+        </SwiperSlide>
+      </Swiper>
     </section>
   );
 };

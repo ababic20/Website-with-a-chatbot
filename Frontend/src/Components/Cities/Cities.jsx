@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { LanguageContext } from "../../contexts/LanguageContext";
+import "./Cities.css";
+
 import city from "../../assets/cities/Warsaw.jpg";
 import city2 from "../../assets/cities/Krakow.jpg";
 import city3 from "../../assets/cities/Lodz.jpg";
@@ -12,57 +15,97 @@ import city10 from "../../assets/cities/Bialystok.jpg";
 import city11 from "../../assets/cities/Katowice.jpg";
 import city12 from "../../assets/cities/Gdynia.jpg";
 
-import "./Cities.css";
+const imageMap = {
+  "warsaw": city,
+  "krakow": city2,
+  "lodz": city3,
+  "wroclaw": city4,
+  "poznan": city5,
+  "gdansk": city6,
+  "szczecin": city7,
+  "bydgoszcz": city8,
+  "lublin": city9,
+  "bialystok": city10,
+  "katowice": city11,
+  "gdynia": city12
+};
 
 const Cities = () => {
-  const [visibleRows, setVisibleRows] = useState(1); 
+  const { translations } = useContext(LanguageContext);
+  const [visibleRows, setVisibleRows] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [loadedImages, setLoadedImages] = useState({});
 
-  const cities = [
-    { id: 1, name: "Warsaw", image: city, description: "1,793,579 inhabitants" },
-    { id: 2, name: "Krakow", image: city2, description: "780,981 inhabitans" },
-    { id: 3, name: "Łódź", image: city3, description: "677,286 inhabitans" },
-    { id: 4, name: "Wroclaw", image: city4, description: "643,782 inhabitans" },
-    { id: 5, name: "Poznań", image: city5, description: "533,830 inhabitans" },
-    { id: 6, name: "Gdańsk", image: city6, description: "471,525 inhabitans" },
-    { id: 7, name: "Szczecin", image: city7, description: "400,990 inhabitans" },
-    { id: 8, name: "Bydgoszcz", image: city8, description: "346,739 inhabitans" },
-    { id: 9, name: "Lublin", image: city9, description: "339,547 inhabitans" },
-    { id: 10, name: "Białystok", image: city10, description: "297,585 inhabitans" },
-    { id: 11, name: "Katowice", image: city11, description: "317,220 inhabitans" },
-    { id: 12, name: "Gdynia", image: city12, description: "250,242 inhabitans" },
-  ];
-
-  const rowsToShow = 4; 
+  const cities = translations.citiesList;
+  const rowsToShow = 4;
   const visibleCities = cities.slice(0, visibleRows * rowsToShow);
 
-  const handleLoadMore = () => {
-    setVisibleRows((prev) => prev + 1); 
+  const preloadImages = (newCities) => {
+    return Promise.all(newCities.map(city => {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.src = imageMap[city.imageKey];
+        img.onload = resolve;
+        img.onerror = resolve; 
+      });
+    }));
   };
+
+  const handleLoadMore = async () => {
+    setLoading(true);
+    const nextCities = cities.slice(visibleRows * rowsToShow, (visibleRows + 1) * rowsToShow);
+
+    await preloadImages(nextCities);
+
+    setVisibleRows(prev => prev + 1);
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    const preloadAll = async () => {
+      const initialCities = cities.slice(0, rowsToShow);
+      await preloadImages(initialCities);
+    };
+    preloadAll();
+  }, []);
 
   return (
     <>
       <div className="heading">
-        <h1>Explore the Cities of Poland</h1>
+        <h1>{translations.citiesTexts.mainTitle}</h1>
       </div>
+
       <section className='cities'>
-        <h1 className='heading-title'>Population</h1>
+        <h1 className='heading-title'>{translations.citiesTexts.populationTitle}</h1>
+
         <div className='box-container'>
           {visibleCities.map((city) => (
             <div className='box' key={city.id}>
               <div className='image'>
-                <img src={city.image} alt={city.name} />
+                <img
+                  src={imageMap[city.imageKey]}
+                  alt={city.name}
+                  loading="lazy"
+                />
               </div>
               <div className='content'>
                 <h3>{city.name}</h3>
                 <p>{city.description}</p>
-                <a href="" className='btn'>Read more</a>
+                <span className='btn'>{translations.citiesTexts.readMore}</span>
               </div>
             </div>
           ))}
         </div>
+
         {visibleRows * rowsToShow < cities.length && (
           <div className='load-more'>
-            <span className='btn' onClick={handleLoadMore}>Load more</span>
+            {loading ? (
+              <div className="loader"></div>
+            ) : (
+              <span className='btn' onClick={handleLoadMore}>
+                {translations.citiesTexts.loadMore}
+              </span>
+            )}
           </div>
         )}
       </section>
@@ -71,4 +114,3 @@ const Cities = () => {
 };
 
 export default Cities;
-

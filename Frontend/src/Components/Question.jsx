@@ -1,7 +1,10 @@
-import React, { useState } from "react"; 
+import React, { useState, useContext } from "react"; 
 import './Question.css';
+import { LanguageContext } from "../contexts/LanguageContext"; 
 
 const ContactForm = () => {
+  const { translations } = useContext(LanguageContext);
+
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -9,8 +12,8 @@ const ContactForm = () => {
     address: "",
     description: "",
   });
-  const [successMessage, setSuccessMessage] = useState(false); // Novo stanje za obavijest
-  const [summary, setSummary] = useState(null); // Novo stanje za summary
+  const [successMessage, setSuccessMessage] = useState(false);
+  const [summary, setSummary] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,8 +26,8 @@ const ContactForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submitted Data:", formData);
-    setSummary(formData); // Postavimo summary sa poslanim podacima
-    setSuccessMessage(true); // Pokreni obavijest nakon slanja forme
+    setSummary(formData);
+    setSuccessMessage(true);
 
     setFormData({
       fullName: "",
@@ -32,87 +35,87 @@ const ContactForm = () => {
       email: "",
       address: "",
       description: "",
-    }); // Resetiranje vrijednosti u poljima
+    });
 
     setTimeout(() => {
-      setSuccessMessage(false); // Sakrij obavijest nakon 3 sekunde
+      setSuccessMessage(false);
     }, 3000);
   };
+
   return (
     <div className="main-container">
       <div className="summary-container">
         {summary && (
           <div className="summary-box">
-            <h3>Summary of Submitted Information:</h3>
-            <p><strong>Full Name:</strong> {summary.fullName}</p>
-            <p><strong>Phone:</strong> {summary.phone}</p>
-            <p><strong>Email:</strong> {summary.email}</p>
-            <p><strong>Address:</strong> {summary.address}</p>
-            <p><strong>Description:</strong> {summary.description}</p>
+            <h3>{translations.contactForm.summaryTitle}</h3>
+            <p><strong>{translations.contactForm.fullNameLabel}</strong> {summary.fullName}</p>
+            <p><strong>{translations.contactForm.phoneLabel}</strong> {summary.phone}</p>
+            <p><strong>{translations.contactForm.emailLabel}</strong> {summary.email}</p>
+            <p><strong>{translations.contactForm.addressLabel}</strong> {summary.address}</p>
+            <p><strong>{translations.contactForm.descriptionLabel}</strong> {summary.description}</p>
           </div>
         )}
       </div>
-  
+
       <div className="form-container">
-        <h2 className="form-header">If you're unsure about anything, feel free to ask, I'm here 🙂</h2>
-  
+        <h2 className="form-header">{translations.contactForm.formHeader}</h2>
+
         <form className="contact-form" onSubmit={handleSubmit}>
-          <label>Full name</label>
+          <label>{translations.contactForm.fullNameLabel}</label>
           <input
             type="text"
             name="fullName"
             value={formData.fullName}
             onChange={handleChange}
             required
-            placeholder="John Doe"
+            placeholder={translations.contactForm.fullNamePlaceholder}
           />
-          <label>Phone</label>
+          <label>{translations.contactForm.phoneLabel}</label>
           <input
             type="tel"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
             required
-            placeholder="(123) 456-7890"
+            placeholder={translations.contactForm.phonePlaceholder}
           />
-          <label>Email</label>
+          <label>{translations.contactForm.emailLabel}</label>
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
             required
-            placeholder="john.doe@example.com"
+            placeholder={translations.contactForm.emailPlaceholder}
           />
-          <label>Address</label>
+          <label>{translations.contactForm.addressLabel}</label>
           <input
             type="text"
             name="address"
             value={formData.address}
             onChange={handleChange}
             required
-            placeholder="123 Main St, Cityville"
+            placeholder={translations.contactForm.addressPlaceholder}
           />
-          <label>Description</label>
+          <label>{translations.contactForm.descriptionLabel}</label>
           <textarea
             name="description"
             value={formData.description}
             onChange={handleChange}
             required
-            placeholder="Briefly describe your inquiry or issue"
+            placeholder={translations.contactForm.descriptionPlaceholder}
           />
-          <button type="submit">Submit</button>
+          <button type="submit">{translations.contactForm.submitButton}</button>
         </form>
-  
+
         {successMessage && (
           <div className="success-popup">
-            <p>Your message has been successfully sent! 🙂</p>
+            <p>{translations.contactForm.successMessage}</p>
           </div>
         )}
       </div>
     </div>
   );
-  
 };
 
 export default ContactForm;

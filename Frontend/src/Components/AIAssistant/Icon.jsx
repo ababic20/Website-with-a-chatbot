@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { LanguageContext } from "../../contexts/LanguageContext";
 import ChatPopup from './Chat';
 import './Assistant.css';
 
 function Icon() {
     const [isOpen, setIsOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
+    const { translations } = useContext(LanguageContext);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -41,7 +43,7 @@ function Icon() {
                                 <span className="dot"></span>
                             </div>
                             <div className="speech-bubble">
-                            Hey! Need help? If you do, click here and talk to me.
+                                {translations.assistant.iconMessage} 
                             </div>
                         </>
                     )}

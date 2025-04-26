@@ -1,0 +1,174 @@
+{
+    "navbar": {
+      "home": "Home",
+      "about": "About Łódź",
+      "cities": "Other cities",
+      "question": "Questions",
+      "logo": "Erasmus+ student exchange Łódź"
+    },
+  
+    "pages": {
+      "homePageTitle": "Welcome to Poland!",
+      "aboutPageTitle": "Discover Łódź",
+      "citiesPageTitle": "Explore the Cities of Poland",
+      "questionsPageTitle": "Ask Us Anything"
+    },
+  
+    "home": {
+      "explore": "Explore & discover & travel",
+      "travelAround": "Travel around Poland",
+      "discoverPlaces": "Discover the new places",
+      "makeYourTour": "Make your tour",
+      "discoverMore": "Discover more"
+    },
+  
+    "contactForm": {
+      "summaryTitle": "Summary of Submitted Information:",
+      "fullNameLabel": "Full Name:",
+      "phoneLabel": "Phone:",
+      "emailLabel": "Email:",
+      "addressLabel": "Address:",
+      "descriptionLabel": "Description:",
+      "formHeader": "If you have any questions or need assistance, feel free to reach out – I'm here to help.",
+      "fullNamePlaceholder": "John Doe",
+      "phonePlaceholder": "(123) 456-7890",
+      "emailPlaceholder": "john.doe@example.com",
+      "addressPlaceholder": "123 Main St, Cityville",
+      "descriptionPlaceholder": "Briefly describe your inquiry or issue",
+      "submitButton": "Submit",
+      "successMessage": "Your message has been successfully sent! 🙂"
+    },
+  
+    "motivation": {
+      "title": "Why apply for Erasmus?",
+      "career": "Career",
+      "education": "Education",
+      "culture": "Culture",
+      "networking": "Networking",
+      "adventure": "Adventure"
+    },
+  
+    "homeOffer": {
+      "title": "The chatbot didn't answer your question?",
+      "description": "If there is a specific question that the chatbot has not answered or you do not want to ask it but rather the owner of this page, please ask a question. We will try to respond quickly.",
+      "button": "Ask the question!"
+    },
+  
+    "footer": {
+      "quickLinks": "Quick links",
+      "extraLinks": "Extra links",
+      "contactInfo": "Contact info",
+      "followMe": "Follow me",
+      "faq": "Frequently asked questions",
+      "something": "Something",
+      "privacyPolicy": "Privacy & policy",
+      "termsOfUse": "Terms of use",
+      "phone": "+xxx",
+      "email": "test@gmail.com",
+      "website": "www.example.com",
+      "address": "xxx, Croatia",
+      "credit": "Created by",
+      "allRightsReserved": "All rights reserved! © 2023",
+      "imagesFrom": "Photos used on this site are sourced from "
+    },
+  
+    "topDestinations": {
+      "title": "Other Cities",
+      "readMore": "Read more",
+      "loadMore": "Load more",
+      "destinations": [
+        {
+          "id": 1,
+          "imageKey": "warsaw",
+          "title": "Warsaw",
+          "description": "Warsaw is the capital and largest city of Poland, combining modern dynamism with historical landmarks such as the Old Town and the legendary Royal Castle.",
+          "link": "/cities"
+        },
+        {
+          "id": 2,
+          "imageKey": "krakow",
+          "title": "Krakow",
+          "description": "Kraków is the former capital of Poland, known for its rich history, well-preserved and beautiful medieval architecture, and the impressive Wawel Castle.",
+          "link": "/cities"
+        },
+        {
+          "id": 3,
+          "imageKey": "wroclaw",
+          "title": "Wroclaw",
+          "description": "Wrocław is known for its colorful architecture, beautiful bridges, and riverfront promenades, making it one of the most charming cities in Poland.",
+          "link": "/cities"
+        }
+      ]
+    },
+  
+    "aboutUs": {
+      "title": "About Łódź",
+      "description": "Łódź is a fascinating city full of creativity and history. The street art and murals give it a unique character, while places like the OFF Piotrkowska complex offer a vibrant atmosphere with trendy cafes, restaurants, and art spaces. The city's industrial past blends perfectly with its modern, artistic vibe.",
+      "readMore": "Read More"
+    },
+  
+    "reviews": {
+      "reviewList": [
+        {
+          "text": "I like that everyone follows the rules and shows great respect on the roads. The city offers a true sense of peace, and I enjoyed every moment while walking without worrying about anything. Everything felt calm, with no rush, and trams, buses, and trains were always punctual, which made daily life much easier.",
+          "name": "Stavroula Papoutsi",
+          "role": "Student",
+          "image": "/src/assets/friends/stav.jfif"
+        },
+        {
+          "text": "The Erasmus experience in Łódź was the highlight of my student years and one of the best experiences of my life. Poland is a beautiful country, and Łódź is a large and lively city, perfect for those looking to experience big-city life. I encourage everyone to apply for Erasmus — you won't regret it.",
+          "name": "David Slavik",
+          "role": "Student",
+          "image": "/src/assets/friends/David.jfif"
+        },
+        {
+          "text": "Arriving in one of the less favored cities in Poland turned into a wonderful journey. Łódź offers a unique atmosphere with its blend of Eastern European spirit, multicultural diversity, and industrial soul, creating a truly special vibe that stays with you.",
+          "name": "Natalia Pilch",
+          "role": "Student",
+          "image": "/src/assets/friends/Natalia.jpg"
+        }
+      ]
+    },
+
+    "citiesTexts": {
+      "mainTitle": "Explore the Cities of Poland",
+      "populationTitle": "Population",
+      "readMore": "Read more",
+      "loadMore": "Load more"
+    },
+  
+    "citiesList": [
+      { "id": 1, "name": "Warsaw", "description": "1,793,579 inhabitants", "imageKey": "warsaw" },
+      { "id": 2, "name": "Krakow", "description": "780,981 inhabitants", "imageKey": "krakow" },
+      { "id": 3, "name": "Łódź", "description": "677,286 inhabitants", "imageKey": "lodz" },
+      { "id": 4, "name": "Wroclaw", "description": "643,782 inhabitants", "imageKey": "wroclaw" },
+      { "id": 5, "name": "Poznań", "description": "533,830 inhabitants", "imageKey": "poznan" },
+      { "id": 6, "name": "Gdańsk", "description": "471,525 inhabitants", "imageKey": "gdansk" },
+      { "id": 7, "name": "Szczecin", "description": "400,990 inhabitants", "imageKey": "szczecin" },
+      { "id": 8, "name": "Bydgoszcz", "description": "346,739 inhabitants", "imageKey": "bydgoszcz" },
+      { "id": 9, "name": "Lublin", "description": "339,547 inhabitants", "imageKey": "lublin" },
+      { "id": 10, "name": "Białystok", "description": "297,585 inhabitants", "imageKey": "bialystok" },
+      { "id": 11, "name": "Katowice", "description": "317,220 inhabitants", "imageKey": "katowice" },
+      { "id": 12, "name": "Gdynia", "description": "250,242 inhabitants", "imageKey": "gdynia" }
+    ],
+  
+    "aboutPage": {
+      "mainTitle": "Read something about Łódź",
+      "subTitle": "Why choose Łódź?",
+      "paragraph1": "Łódź is a city that perfectly blends a rich industrial heritage with a modern spirit and creative energy. Located in the heart of Poland, it is an ideal base for exploring the entire country. Łódź offers a unique mix of cultural diversity, vibrant arts, and innovative projects, creating an inspiring environment for students, young professionals, and travelers alike.",
+      "paragraph2": "The city is renowned for its murals, historic factories transformed into modern spaces, and excellent transport connections. With affordable living costs and a welcoming atmosphere, Łódź is a perfect choice for those seeking a dynamic yet comfortable experience.",
+      "safe": "Safe",
+      "clean": "Clean",
+      "modern": "Modern"
+    },
+  
+    "assistant": {
+        "title": "AI Assistant",
+        "startMessage": "Hello! How can I help you today? 😊",
+        "inputPlaceholder": "Write a message...",
+        "sendButton": "Send",
+        "iconMessage": "Hey! Need help? If you do, click here and talk to me."
+    }
+
+  }
+  
