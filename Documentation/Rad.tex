@@ -4,6 +4,13 @@
 \usepackage{lipsum}
 \usepackage{fvextra}
 \usepackage{csquotes}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{float} 
+\usepackage{makecell}
+\usepackage{graphicx}
+
 
 
 \vrstaRada{\diplomski}
@@ -55,31 +62,113 @@ uvod
 
 
 
-\chapter{Metode i tehnike rada}
+\chapter{Studiranje kao dio života pojedinca}
 
-metode
-
-
-
-\chapter{Razrada teme}
-
-
+\section{Odluka i benefiti}
+\section{Erasmus+ studenska razmjena}
+\subsection{Izazovi}
+\subsection{Kako se izboriti?}
+\subsection{Kultura kao faktor u akademskom uspjehu}
 
 
 
-\section{Poglavlje druge razine }
+\chapter{Aktualne tehnologije i alati za uspješno snalaženje i informiranje}
+\section{Važnost inteligentnih asistenata}
+
+Davne 1961. godine IBM je predstavio prvi sustav koji je mogao prepoznati govor (izgovorene znamenke). Do 1990-ih kreirani su prvi komercijalni 
+osobni asistentni koji su se aktivirali na postojanje glasa. Godine 2010. svijet je prvi put čuo za Sirija, Appleovog osobnog asistenta koji je 
+pokrenutna temelju umjetne inteligencije. U to vrijeme Siri je predstavljao revolucionarno rješenje. Petnaest godina kasnije, korisnici su 
+zatrpani s ogromnom količinom inteligentnih asistenata. Korisničko iskustvo (eng. UX) je sada više nego ikad važno. Održavanje zadovoljstva 
+korisnika/kupca i upravljanje njihovim očekivanjima zahtijeva stalne inovacije i poboljšanja. Korisnici žele da stranice budu intuitivne i učinkovite
+te da na neki način zadovolje njihove potrebe. AI asistentni i chatbotovi su postali popularni alati koji pomažu u poboljšanju korisničkog iskustva.
+Točnije rečeno dodaju novi način interakcije između korisnika i pružatelja usluge i samim time povećavaju angažman, zadovoljstvo ili profit.
+Prednosti inteligentnih asistenata uključuju \cite{buchan2024ai}:
+\begin{itemize}
+    \item \textbf{Brzina i jednostavnost} - AI asistentni omogućuju korisnicima da brzo i jednostavno dobiju ono što im je potrebno, smanjujući
+    gubitak vremena. Tik Tok je dobar primjer kako usluga može neindirektno zadržati korisnika na njihovoj platformi jer su razvili mehanizam koji
+    je naučio pretpostavljati što korisnik želi gledati.
+    \item \textbf{Pružanje podrške 24/7} - Ai asistentni su dostupni stalno, čime je omogućena podrška korisnicima kad god je to potrebno. 
+    \item \textbf{Prihvaćanje od strane ljudi} - razgovor s AI asistentima se odvija kroz razne dizajnove korisničkih sučelja, gdje korisnici mogu
+    komunicirati na ljudski razumljiv način s asistentima. 
+\end{itemize}
+
+U sljedećem poglavlju je prikazano kako se mogu kreirati inteligentni asistentni temeljeni na RAG (eng. Retrieval-Augmented generation) tehnologiji.
+\newpage
+\section{RAG tehnologija}
+
+RAG je proces optimizacije izlaza velikog jezičnog modela pri čemu se referencira na autorativnu bazu znanja izvan izvora podataka za obuku 
+prije generiranje odgovora. Veliki jezični modeli (eng. LLM) obučavaju se na ogromnim količinama podataka i koriste milijarde parametara za 
+generiranje izlaza za zadatke poput odgovaranja pitanja, prevođenja jezika i dovršavanja rečenica. Ideja RAG-a je da proširi već močne mogućnosti 
+LLM-ova na određene specifične domene, a sve to bez potrebe za ponovnom obukom modela. Takav pristup poboljšava LLM-ove u smislu točnosti, 
+korisnosti i relevantnosti \cite{awsRAG2025}.
+
+LLM-ovi su ključna tehnologija umjetne inteligencije (AI) koja pokreće chatbotove. Priroda LLM-ova je takva da ponekad uvode dozu nepredvidljivosti u
+u generiranje odgovora. Osim toga, podaci o LLM obuci su statični i imaju kranji rok za znanje koje posjeduju. Negativne strane LLM-ova uključuju \cite{awsRAG2025}:
+
+\begin{itemize}
+    \item {Iznošenje lažnih informacija kada na njih nema odgovora,} 
+    \item {Prikazivanje zastarjelih informacija kada korisnik očekuje aktualan odgovor,} 
+    \item {Izrada odgovora iz neautoriziranih izvora,} 
+    \item {Stvaranje netočnih odgovora zbog terminološke zbrke, različiti izvori obuke koriste istu terminologiju za opisivanje različite stvari}
+\end{itemize}
+
+Model velikog jezika može se zamisliti kao enuzijastičnog zaposlenika koji odbija biti informiran o aktualnim događajima, ali uvijek odgovara
+na pitanja s visokim samopouzdanjem. Nažalost, takav stav može negativno utjecati na povjerenje korisnika i nije nešto što bi trebalo postojati
+kod chatbotova. Iz takvih razloga RAG tehnologija preusmjerava LLM kako bi dohvatio relevantne informacije iz unaprijed definiranih izvora znanja \cite{awsRAG2025}.
+\newpage
+
+Bez RAG-a, LLM uzima korisnički unos i stvara odgovor na temelju informacija na kojima je obučen. S RAG-om se uvodi komponenta za pronalaženje 
+infromacija koja koristi korisnički unos kako bi prvo iuvikla informacije iz novog izvora podataka. Nakon toga LLM kombinira novo znanje i svoje 
+podatke za stvaranje boljih odgovora \cite{awsRAG2025}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./assets/Konceptualni tok korištenja RAG-a s LLM-ovima.jpg} 
+    \caption{Konceptualni tok korištenja RAG-a s LLM-ovima}
+    \label{fig:slika1}
+\end{figure}
+
+U nekoliko koraka pojašnjeno je kako funkcioniraju stvari na prikazanoj slici \ref{fig:slika1}\cite{awsRAG2025}:
+
+\begin{enumerate}
+    \item \textbf{Stvaranje vanjskih podataka} - novi podaci izvan orginalnog skupa podataka koji su se koristili za treniranje LLM-a se zovu 
+    vanjski podaci (eng. external data). Oni dolaze iz više izvora podataka kao što su: API-ji ili baze podataka. Podaci mogu postojati u različitim formatima.
+    Jedna od tehnika (eng. embeeding language models) pretvara podatke u numerički oblik i sprema ih u vektorsku bazu podataka 
+    (kako bi generativni modeli umjetne inteligencije to mogli razumjeti).
+    \item \textbf{Preuzimanje relehantnih informacija} - Korisnički upit pretvara se u vektorski prikaz i usporešuje se s vektoriskim bazama podataka.
+    Npr. ako korisnik postavi pitanje chatbotu "Koliko dana godišnjeg odmora imam?", chatbot ce morati preuzeti dokumente o politici godišnjeg 
+    odmora uz evidenciju prošlih odmora za pojedinog zaposlenika. Takvi dokumenti će biti vraćeni korisniku jer su relevatni za njegov upit.
+    \item \textbf{Proširivanje LLM upita} - Zatim, RAG model proširuje korisnički upit dodavanjem relevatnih dohvaćenih podataka u konteksu. 
+    Prošireni upit omogućuje modelima velikih jezika generiranje točnih odgovora na korisničke upite.
+    \item \textbf{Ažuriranje vanjskih podataka} - Vrlo je bitno održati ažurne informacije i to se može ostvariti automatiziranjem procesa u stvarnom vremenu ili periodičnoj obradi. 
+\end{enumerate}
+
+\newpage
 
 
 
 
 
-\subsection{Poglavlje treće razine}
+\begin{table}[h!]
+    \centering
+    \caption{Prednosti RAG-a}
+    \begin{tabular}{|>{\centering\arraybackslash}m{5cm}|p{10cm}|}
+      \hline
+      \textbf{Prednost} & \textbf{Opis} \\
+      \hline
+      Isplativa implementacija & Razvoj chatbota započinje korištenjem temeljnog modela (eng. Foundation models). Temeljni modeli su obično dostupni putem API ključeva i obučeni su na širokom spektru generaliziranih i neoznačenih podataka. Računalni i financijski troškovi za treniranje takvih modela su jako visoki. \\
+      \hline
+      Trenutne informacije & Iako su izvorni podaci LLM-a relevantni za specifične potrebe, teško je održati relevantnost. RAG se može koristiti za izravno povezivanje LLM-a s feedovima društvenih medija, web stranicama s vijestima i samim time pružiti korisnicima najnovije informacije. \\
+      \hline
+      Povećano povjerenje korisnika & RAG omogućuje prikazivanje točnih informacija s navođenjem izvora ili citata. Korisnici također mogu pretraživati izvorne dokumente ako im je potrebno dodatno pojašnjenje. \\
+      \hline
+      Više kontrole za razvojne programere & Učinkovitije testiranje i poboljšavanje aplikacija. Kontroliranje i mijenjanje izvora informacija. Rješavanje i ispravljanje problema. \\
+      \hline
+    \end{tabular}
+\end{table}
 
 
-
-
-\subsection{Poglavlje četvrte razine}
-
+\section{Integriranje inteligentnih asistenata u aplikacije i akademske sustave}
 
 
 
@@ -88,10 +177,10 @@ metode
 
 
 
+\section{Izrada web stranice}
 
-\section{Upute za oblikovanje izgleda rada}
+\section{Izrada inteligentnog asistenta}
 
-\subsection{Oblikovanje stranice}
 
 
 
