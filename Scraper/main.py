@@ -5,6 +5,7 @@ from urllib.parse import urlparse, urljoin
 import os
 import requests
 from bs4 import BeautifulSoup
+from datetime import datetime
 
 def scrape():
     url = url_entry.get()
@@ -44,6 +45,8 @@ def scrape():
         progress_bar["maximum"] = total
         count = 0
 
+        combined_data = {}
+
         for u in urls_to_scrape:
             if u in visited:
                 continue
@@ -53,15 +56,25 @@ def scrape():
             if data is None:
                 continue
 
-            filename = clean_filename(u) + f".{export_format}"
-            full_path = os.path.join(export_folder, filename)
-            save_data(full_path, data, export_format)
+            combined_data[u] = {
+                "meta": {
+                    "scraped_at": datetime.utcnow().isoformat() + "Z",
+                    "status": "success",
+                    "url": u
+                },
+                **data
+            }
 
             count += 1
             progress_bar["value"] = count
             root.update_idletasks()
 
-        messagebox.showinfo("Success", "Scraping completed and data saved successfully.")
+        # Spremi sve u jedan fajl
+        final_filename = clean_filename(url) + "_combined." + export_format
+        final_path = os.path.join(export_folder, final_filename)
+        save_data(final_path, combined_data, export_format)
+
+        messagebox.showinfo("Success", f"Scraping completed.\nSaved to: {final_path}")
 
     except Exception as e:
         messagebox.showerror("Error", f"An error occurred:\n{e}")

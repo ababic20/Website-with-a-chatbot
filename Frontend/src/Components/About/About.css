@@ -62,3 +62,16 @@
     display: block;
 }
 
+.video {
+  max-width: 400px; 
+  margin: 0 auto 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.video video {
+  width: 80%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
