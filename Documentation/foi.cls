@@ -359,12 +359,28 @@ unicode
     \newpage
     \thispagestyle{plain}
     
+    {\begin{center}\bfseries{\prijevod{Zahvala}{Acknowledgements}}\end{center}}
+
+    \prijevod{
+        \noindent Na samom početku želim izraziti iskrenu zahvalnost svom mentoru, doc. dr. sc. xxx yyy, na izdvojenom vremenu, nesebičnoj podršci i strpljenju koje mi je pružio tijekom izrade ovog diplomskog rada.
+
+        \medskip
+
+        Posebnu zahvalnost dugujem svojoj obitelji – ocu, majci i sestri – za njihovu podršku i ohrabrenje tijekom cijelog mog studija. Njihova prisutnost i vjera u mene davali su mi snagu u trenucima kada je to bilo najpotrebnije.
+
+        \medskip
+
+        Na kraju, veliko hvala svim prijateljima koje sam upoznao tijekom studiranja. Zajedno smo prošli kroz brojne izazove, ali i podijelili mnogo smijeha i lijepih trenutaka koje ću zauvijek nositi sa sobom.
+    }
+
+    \newpage
+    \thispagestyle{plain}
+
     \begin{flushleft}
     \textit{\@author}
     \end{flushleft}
-    
+
     {\begin{center}\bfseries{\prijevod{Izjava o izvornosti}{Statement of Authenticity}}\end{center}}
-    
     \prijevod{
     
         \noindent Izjavljujem da je ovaj \@vrstaRada\ izvorni rezultat mojeg rada te da se u izradi istoga nisam koristio drugim izvorima osim onima koji su u njemu navedeni. Za izradu rada su korištene etički prikladne i prihvatljive metode i tehnike rada.
