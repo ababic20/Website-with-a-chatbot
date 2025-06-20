@@ -1,0 +1,653 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{digital3602025studies}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=70e096c5652e730e403059514398c4be}{%
+           family={{Digital 360}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{70e096c5652e730e403059514398c4be}
+      \strng{fullhash}{70e096c5652e730e403059514398c4be}
+      \strng{fullhashraw}{70e096c5652e730e403059514398c4be}
+      \strng{bibnamehash}{70e096c5652e730e403059514398c4be}
+      \strng{authorbibnamehash}{70e096c5652e730e403059514398c4be}
+      \strng{authornamehash}{70e096c5652e730e403059514398c4be}
+      \strng{authorfullhash}{70e096c5652e730e403059514398c4be}
+      \strng{authorfullhashraw}{70e096c5652e730e403059514398c4be}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{5}
+      \field{note}{Pristupljeno: 10. svibanj 2025}
+      \field{title}{Are studies important in life? If yes, then why?}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://digital360india.medium.com/are-studies-important-in-life-if-yes-then-why-4583029b95e3
+      \endverb
+      \verb{url}
+      \verb https://digital360india.medium.com/are-studies-important-in-life-if-yes-then-why-4583029b95e3
+      \endverb
+    \endentry
+    \entry{bisio2025college}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=2689a0a03a6f7068a3e53d32070671bb}{%
+           family={Bisio},
+           familyi={B\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{2689a0a03a6f7068a3e53d32070671bb}
+      \strng{fullhash}{2689a0a03a6f7068a3e53d32070671bb}
+      \strng{fullhashraw}{2689a0a03a6f7068a3e53d32070671bb}
+      \strng{bibnamehash}{2689a0a03a6f7068a3e53d32070671bb}
+      \strng{authorbibnamehash}{2689a0a03a6f7068a3e53d32070671bb}
+      \strng{authornamehash}{2689a0a03a6f7068a3e53d32070671bb}
+      \strng{authorfullhash}{2689a0a03a6f7068a3e53d32070671bb}
+      \strng{authorfullhashraw}{2689a0a03a6f7068a3e53d32070671bb}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Pristupljeno: 11. svibanj 2025}
+      \field{title}{15 Reasons Why College is Important for Your Career}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.msudenver.edu/15-reasons-why-college-is-important-for-your-career/
+      \endverb
+      \verb{url}
+      \verb https://www.msudenver.edu/15-reasons-why-college-is-important-for-your-career/
+      \endverb
+    \endentry
+    \entry{erasmus2025}{online}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{note}{Pristupljeno: 27. svibanj 2025.}
+      \field{title}{What is Erasmus+? - Erasmus+}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://erasmus-plus.ec.europa.eu/about-erasmus/what-is-erasmus
+      \endverb
+      \verb{url}
+      \verb https://erasmus-plus.ec.europa.eu/about-erasmus/what-is-erasmus
+      \endverb
+    \endentry
+    \entry{erasmus2023croatia}{online}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{note}{Pristupljeno: 10. svibanj 2025}
+      \field{title}{Data on Erasmus+ in Croatia in 2023 - Erasmus+}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://erasmus-plus.ec.europa.eu/factsheets/2023/croatia
+      \endverb
+      \verb{url}
+      \verb https://erasmus-plus.ec.europa.eu/factsheets/2023/croatia
+      \endverb
+    \endentry
+    \entry{erasmus2025abroad}{online}{}{}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labeltitlesource}{title}
+      \field{note}{Pristupljeno: 10. svibanj 2025}
+      \field{title}{Studying abroad - Erasmus+}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/studying-abroad
+      \endverb
+      \verb{url}
+      \verb https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/studying-abroad
+      \endverb
+    \endentry
+    \entry{erasmus_fears_2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=bfa3f17f340adca24a6f757b023d8718}{%
+           family={{Erasmus Generation Blog}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{bfa3f17f340adca24a6f757b023d8718}
+      \strng{fullhash}{bfa3f17f340adca24a6f757b023d8718}
+      \strng{fullhashraw}{bfa3f17f340adca24a6f757b023d8718}
+      \strng{bibnamehash}{bfa3f17f340adca24a6f757b023d8718}
+      \strng{authorbibnamehash}{bfa3f17f340adca24a6f757b023d8718}
+      \strng{authornamehash}{bfa3f17f340adca24a6f757b023d8718}
+      \strng{authorfullhash}{bfa3f17f340adca24a6f757b023d8718}
+      \strng{authorfullhashraw}{bfa3f17f340adca24a6f757b023d8718}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Pristupljeno: 22. svibanj 2025.}
+      \field{title}{Six common Erasmus fears and how to deal with them}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://blog.erasmusgeneration.org/six-common-erasmus-fears-and-how-deal-them
+      \endverb
+      \verb{url}
+      \verb https://blog.erasmusgeneration.org/six-common-erasmus-fears-and-how-deal-them
+      \endverb
+    \endentry
+    \entry{erasmus_homesick_video_2024}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=7b767042f4c5b0ef2d9077365fc8a7de}{%
+           family={{Erasmus Student Network AISBL}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{7b767042f4c5b0ef2d9077365fc8a7de}
+      \strng{fullhash}{7b767042f4c5b0ef2d9077365fc8a7de}
+      \strng{fullhashraw}{7b767042f4c5b0ef2d9077365fc8a7de}
+      \strng{bibnamehash}{7b767042f4c5b0ef2d9077365fc8a7de}
+      \strng{authorbibnamehash}{7b767042f4c5b0ef2d9077365fc8a7de}
+      \strng{authornamehash}{7b767042f4c5b0ef2d9077365fc8a7de}
+      \strng{authorfullhash}{7b767042f4c5b0ef2d9077365fc8a7de}
+      \strng{authorfullhashraw}{7b767042f4c5b0ef2d9077365fc8a7de}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Video. Objavljeno: 15. listopad 2024. Pristupljeno: 22. svibanj 2025.}
+      \field{title}{Erasmus Careers - Feeling homesick}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.youtube.com/watch?v=TT__3yOkAdk
+      \endverb
+      \verb{url}
+      \verb https://www.youtube.com/watch?v=TT__3yOkAdk
+      \endverb
+    \endentry
+    \entry{buchan2024ai}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=5817a81e90cc696977422b136d2f8b7d}{%
+           family={Buchan},
+           familyi={B\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Zudu}%
+      }
+      \strng{namehash}{5817a81e90cc696977422b136d2f8b7d}
+      \strng{fullhash}{5817a81e90cc696977422b136d2f8b7d}
+      \strng{fullhashraw}{5817a81e90cc696977422b136d2f8b7d}
+      \strng{bibnamehash}{5817a81e90cc696977422b136d2f8b7d}
+      \strng{authorbibnamehash}{5817a81e90cc696977422b136d2f8b7d}
+      \strng{authornamehash}{5817a81e90cc696977422b136d2f8b7d}
+      \strng{authorfullhash}{5817a81e90cc696977422b136d2f8b7d}
+      \strng{authorfullhashraw}{5817a81e90cc696977422b136d2f8b7d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Pristupljeno: 06. svibanj 2025.}
+      \field{title}{Why you should add an AI assistant to your app or website}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://zudu.co.uk/blog/why-you-should-add-an-ai-assistant-to-your-app-or-website/
+      \endverb
+      \verb{url}
+      \verb https://zudu.co.uk/blog/why-you-should-add-an-ai-assistant-to-your-app-or-website/
+      \endverb
+    \endentry
+    \entry{exomindset2025difference}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=e3a44fd61f0c68fa34853c57515dc5d3}{%
+           family={{c2061348}},
+           familyi={c\bibinitperiod}}}%
+      }
+      \strng{namehash}{e3a44fd61f0c68fa34853c57515dc5d3}
+      \strng{fullhash}{e3a44fd61f0c68fa34853c57515dc5d3}
+      \strng{fullhashraw}{e3a44fd61f0c68fa34853c57515dc5d3}
+      \strng{bibnamehash}{e3a44fd61f0c68fa34853c57515dc5d3}
+      \strng{authorbibnamehash}{e3a44fd61f0c68fa34853c57515dc5d3}
+      \strng{authornamehash}{e3a44fd61f0c68fa34853c57515dc5d3}
+      \strng{authorfullhash}{e3a44fd61f0c68fa34853c57515dc5d3}
+      \strng{authorfullhashraw}{e3a44fd61f0c68fa34853c57515dc5d3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Pristupljeno: 10. svibanj 2025}
+      \field{title}{The difference between ChatBot, AI Assistant, Copilot, and AI Agent}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://exomindset.co/the-difference-between-chatbot-ai-assistant-copilot-and-ai-agent/
+      \endverb
+      \verb{url}
+      \verb https://exomindset.co/the-difference-between-chatbot-ai-assistant-copilot-and-ai-agent/
+      \endverb
+    \endentry
+    \entry{copilot2025}{online}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{note}{Pristupljeno: 27. svibanj 2025.}
+      \field{title}{Create Virtual Agents with Copilot | Microsoft Copilot Studio}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.microsoft.com/en-us/copilot/microsoft-copilot-studio
+      \endverb
+      \verb{url}
+      \verb https://www.microsoft.com/en-us/copilot/microsoft-copilot-studio
+      \endverb
+    \endentry
+    \entry{quotas2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=42192fe26e7f6ee462d65b157127d12d}{%
+           family={iaanw},
+           familyi={i\bibinitperiod}}}%
+      }
+      \strng{namehash}{42192fe26e7f6ee462d65b157127d12d}
+      \strng{fullhash}{42192fe26e7f6ee462d65b157127d12d}
+      \strng{fullhashraw}{42192fe26e7f6ee462d65b157127d12d}
+      \strng{bibnamehash}{42192fe26e7f6ee462d65b157127d12d}
+      \strng{authorbibnamehash}{42192fe26e7f6ee462d65b157127d12d}
+      \strng{authornamehash}{42192fe26e7f6ee462d65b157127d12d}
+      \strng{authorfullhash}{42192fe26e7f6ee462d65b157127d12d}
+      \strng{authorfullhashraw}{42192fe26e7f6ee462d65b157127d12d}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Pristupljeno: 27. svibanj 2025.}
+      \field{title}{Quotas and limits - Microsoft Copilot Studio}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://learn.microsoft.com/en-us/microsoft-copilot-studio/requirements-quotas
+      \endverb
+      \verb{url}
+      \verb https://learn.microsoft.com/en-us/microsoft-copilot-studio/requirements-quotas
+      \endverb
+    \endentry
+    \entry{openai2024operator}{online}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{note}{Pristupljeno: 10. svibanj 2025}
+      \field{title}{Introducing Operator}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://openai.com/index/introducing-operator/
+      \endverb
+      \verb{url}
+      \verb https://openai.com/index/introducing-operator/
+      \endverb
+    \endentry
+    \entry{manus}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=125082ea55f72f3c8b2e09023628a169}{%
+           family={{Yichao Peak Ji}},
+           familyi={Y\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {Manus AI}%
+      }
+      \strng{namehash}{125082ea55f72f3c8b2e09023628a169}
+      \strng{fullhash}{125082ea55f72f3c8b2e09023628a169}
+      \strng{fullhashraw}{125082ea55f72f3c8b2e09023628a169}
+      \strng{bibnamehash}{125082ea55f72f3c8b2e09023628a169}
+      \strng{authorbibnamehash}{125082ea55f72f3c8b2e09023628a169}
+      \strng{authornamehash}{125082ea55f72f3c8b2e09023628a169}
+      \strng{authorfullhash}{125082ea55f72f3c8b2e09023628a169}
+      \strng{authorfullhashraw}{125082ea55f72f3c8b2e09023628a169}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{[Online video]. Pristupljeno: 10. svibanj 2025.}
+      \field{title}{Introducing Manus: The General AI Agent}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.youtube.com/watch?v=K27diMbCsuw
+      \endverb
+      \verb{url}
+      \verb https://www.youtube.com/watch?v=K27diMbCsuw
+      \endverb
+    \endentry
+    \entry{gradescope2025}{online}{}{}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labeltitlesource}{title}
+      \field{note}{Pristupljeno: 26. svibanj 2025.}
+      \field{title}{Gradescope | Save time grading}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.gradescope.com/
+      \endverb
+      \verb{url}
+      \verb https://www.gradescope.com/
+      \endverb
+    \endentry
+    \entry{weber2025smythos}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=d313cd010837d4a21555fc5a83cda978}{%
+           family={Weber},
+           familyi={W\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{d313cd010837d4a21555fc5a83cda978}
+      \strng{fullhash}{d313cd010837d4a21555fc5a83cda978}
+      \strng{fullhashraw}{d313cd010837d4a21555fc5a83cda978}
+      \strng{bibnamehash}{d313cd010837d4a21555fc5a83cda978}
+      \strng{authorbibnamehash}{d313cd010837d4a21555fc5a83cda978}
+      \strng{authornamehash}{d313cd010837d4a21555fc5a83cda978}
+      \strng{authorfullhash}{d313cd010837d4a21555fc5a83cda978}
+      \strng{authorfullhashraw}{d313cd010837d4a21555fc5a83cda978}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Pristupljeno: 26. svibanj 2025.}
+      \field{title}{SmythOS - Intelligent Agents in Education}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://smythos.com/ai-industry-solutions/education/intelligent-agents-in-education/
+      \endverb
+      \verb{url}
+      \verb https://smythos.com/ai-industry-solutions/education/intelligent-agents-in-education/
+      \endverb
+    \endentry
+    \entry{awsRAG2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=9145c8d27e8df3d15e63d3e2d5c53088}{%
+           family={{Amazon Web Services, Inc.}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{9145c8d27e8df3d15e63d3e2d5c53088}
+      \strng{fullhash}{9145c8d27e8df3d15e63d3e2d5c53088}
+      \strng{fullhashraw}{9145c8d27e8df3d15e63d3e2d5c53088}
+      \strng{bibnamehash}{9145c8d27e8df3d15e63d3e2d5c53088}
+      \strng{authorbibnamehash}{9145c8d27e8df3d15e63d3e2d5c53088}
+      \strng{authornamehash}{9145c8d27e8df3d15e63d3e2d5c53088}
+      \strng{authorfullhash}{9145c8d27e8df3d15e63d3e2d5c53088}
+      \strng{authorfullhashraw}{9145c8d27e8df3d15e63d3e2d5c53088}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Pristupljeno: 06. svibanj 2025.}
+      \field{title}{What is RAG? - Retrieval-Augmented Generation AI Explained - AWS}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://aws.amazon.com/what-is/retrieval-augmented-generation/
+      \endverb
+      \verb{url}
+      \verb https://aws.amazon.com/what-is/retrieval-augmented-generation/
+      \endverb
+    \endentry
+    \entry{ibm2023rag}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=6b855095474f0eef8c458c7e14ddf8b5}{%
+           family={{Marina Danilevsky}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \list{organization}{1}{%
+        {IBM Technology}%
+      }
+      \strng{namehash}{6b855095474f0eef8c458c7e14ddf8b5}
+      \strng{fullhash}{6b855095474f0eef8c458c7e14ddf8b5}
+      \strng{fullhashraw}{6b855095474f0eef8c458c7e14ddf8b5}
+      \strng{bibnamehash}{6b855095474f0eef8c458c7e14ddf8b5}
+      \strng{authorbibnamehash}{6b855095474f0eef8c458c7e14ddf8b5}
+      \strng{authornamehash}{6b855095474f0eef8c458c7e14ddf8b5}
+      \strng{authorfullhash}{6b855095474f0eef8c458c7e14ddf8b5}
+      \strng{authorfullhashraw}{6b855095474f0eef8c458c7e14ddf8b5}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{8}
+      \field{note}{[Online video]. Pristupljeno: 6. svibanj 2025.}
+      \field{title}{What is Retrieval-Augmented Generation (RAG)?}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.youtube.com/watch?v=T-D1OfcDW1M
+      \endverb
+      \verb{url}
+      \verb https://www.youtube.com/watch?v=T-D1OfcDW1M
+      \endverb
+    \endentry
+    \entry{ibmRAG}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=59ceab62ce925644ab183eeed5eafbb5}{%
+           family={{IBM Research}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{59ceab62ce925644ab183eeed5eafbb5}
+      \strng{fullhash}{59ceab62ce925644ab183eeed5eafbb5}
+      \strng{fullhashraw}{59ceab62ce925644ab183eeed5eafbb5}
+      \strng{bibnamehash}{59ceab62ce925644ab183eeed5eafbb5}
+      \strng{authorbibnamehash}{59ceab62ce925644ab183eeed5eafbb5}
+      \strng{authornamehash}{59ceab62ce925644ab183eeed5eafbb5}
+      \strng{authorfullhash}{59ceab62ce925644ab183eeed5eafbb5}
+      \strng{authorfullhashraw}{59ceab62ce925644ab183eeed5eafbb5}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Pristupljeno: 06. svibanj 2025.}
+      \field{title}{What is retrieval-augmented generation (RAG)?}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://research.ibm.com/blog/retrieval-augmented-generation-RAG
+      \endverb
+      \verb{url}
+      \verb https://research.ibm.com/blog/retrieval-augmented-generation-RAG
+      \endverb
+    \endentry
+    \entry{custom_ai_studio2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=d0d6bd546a60d07802a0ccfef2c67f21}{%
+           family={{R. W. G. Studio) MD (Custom AI}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{d0d6bd546a60d07802a0ccfef2c67f21}
+      \strng{fullhash}{d0d6bd546a60d07802a0ccfef2c67f21}
+      \strng{fullhashraw}{d0d6bd546a60d07802a0ccfef2c67f21}
+      \strng{bibnamehash}{d0d6bd546a60d07802a0ccfef2c67f21}
+      \strng{authorbibnamehash}{d0d6bd546a60d07802a0ccfef2c67f21}
+      \strng{authornamehash}{d0d6bd546a60d07802a0ccfef2c67f21}
+      \strng{authorfullhash}{d0d6bd546a60d07802a0ccfef2c67f21}
+      \strng{authorfullhashraw}{d0d6bd546a60d07802a0ccfef2c67f21}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Medium}
+      \field{title}{This history of Retrieval-Augmented Generation in 3 minutes…!}
+      \field{urlday}{29}
+      \field{urlmonth}{5}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://medium.com/@custom_aistudio/this-history-of-retrieval-augmented-generation-in-3-minutes-f7f07073599a
+      \endverb
+      \verb{url}
+      \verb https://medium.com/@custom_aistudio/this-history-of-retrieval-augmented-generation-in-3-minutes-f7f07073599a
+      \endverb
+    \endentry
+    \entry{redis2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=e111446745a1825b862f8727ae63bce4}{%
+           family={{Redis}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{e111446745a1825b862f8727ae63bce4}
+      \strng{fullhash}{e111446745a1825b862f8727ae63bce4}
+      \strng{fullhashraw}{e111446745a1825b862f8727ae63bce4}
+      \strng{bibnamehash}{e111446745a1825b862f8727ae63bce4}
+      \strng{authorbibnamehash}{e111446745a1825b862f8727ae63bce4}
+      \strng{authornamehash}{e111446745a1825b862f8727ae63bce4}
+      \strng{authorfullhash}{e111446745a1825b862f8727ae63bce4}
+      \strng{authorfullhashraw}{e111446745a1825b862f8727ae63bce4}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Redis}
+      \field{title}{Introduction to Retrieval Augmented Generation (RAG)}
+      \field{urlday}{29}
+      \field{urlmonth}{5}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://redis.io/glossary/retrieval-augmented-generation/
+      \endverb
+      \verb{url}
+      \verb https://redis.io/glossary/retrieval-augmented-generation/
+      \endverb
+    \endentry
+    \entry{shaheryar2025}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=f4686fa827eea1e16321bf4dbd913426}{%
+           family={Shaheryar},
+           familyi={S\bibinitperiod}}}%
+      }
+      \strng{namehash}{f4686fa827eea1e16321bf4dbd913426}
+      \strng{fullhash}{f4686fa827eea1e16321bf4dbd913426}
+      \strng{fullhashraw}{f4686fa827eea1e16321bf4dbd913426}
+      \strng{bibnamehash}{f4686fa827eea1e16321bf4dbd913426}
+      \strng{authorbibnamehash}{f4686fa827eea1e16321bf4dbd913426}
+      \strng{authornamehash}{f4686fa827eea1e16321bf4dbd913426}
+      \strng{authorfullhash}{f4686fa827eea1e16321bf4dbd913426}
+      \strng{authorfullhashraw}{f4686fa827eea1e16321bf4dbd913426}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{DEV Community}
+      \field{note}{Pristupljeno: 29. svibanj 2025}
+      \field{title}{Understanding the Key Components of RAG: Retriever and Generator}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://dev.to/shaheryaryousaf/understanding-the-key-components-of-rag-retriever-and-generator-1a1j
+      \endverb
+      \verb{url}
+      \verb https://dev.to/shaheryaryousaf/understanding-the-key-components-of-rag-retriever-and-generator-1a1j
+      \endverb
+    \endentry
+    \entry{aimlabs2025rag}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=646b2c5efe7c2c7e54b1ab2a01343536}{%
+           family={{Aim. Labs}},
+           familyi={A\bibinitperiod}}}%
+        {{hash=62b786f8e998392cb78290befdf96272}{%
+           family={Anand},
+           familyi={A\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{2a57a49e41848b394def9f478c050183}
+      \strng{fullhash}{2a57a49e41848b394def9f478c050183}
+      \strng{fullhashraw}{2a57a49e41848b394def9f478c050183}
+      \strng{bibnamehash}{2a57a49e41848b394def9f478c050183}
+      \strng{authorbibnamehash}{2a57a49e41848b394def9f478c050183}
+      \strng{authornamehash}{2a57a49e41848b394def9f478c050183}
+      \strng{authorfullhash}{2a57a49e41848b394def9f478c050183}
+      \strng{authorfullhashraw}{2a57a49e41848b394def9f478c050183}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.aimon.ai/Top%20Problems%20with%20RAG%20systems%20and%20ways%20to%20mitigate%20them}}
+      \field{note}{Pristupljeno : 2025-06-04}
+      \field{title}{Top Problems with RAG systems and ways to mitigate them - AIMon Labs}
+      \field{year}{2025}
+    \endentry
+    \entry{rag_hallucination2025}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=70f2155bacddad4c9c8902e48ec32ca3}{%
+           family={{K2View}},
+           familyi={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{70f2155bacddad4c9c8902e48ec32ca3}
+      \strng{fullhash}{70f2155bacddad4c9c8902e48ec32ca3}
+      \strng{fullhashraw}{70f2155bacddad4c9c8902e48ec32ca3}
+      \strng{bibnamehash}{70f2155bacddad4c9c8902e48ec32ca3}
+      \strng{authorbibnamehash}{70f2155bacddad4c9c8902e48ec32ca3}
+      \strng{authornamehash}{70f2155bacddad4c9c8902e48ec32ca3}
+      \strng{authorfullhash}{70f2155bacddad4c9c8902e48ec32ca3}
+      \strng{authorfullhashraw}{70f2155bacddad4c9c8902e48ec32ca3}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{RAG Hallucination: What is It and How to Avoid It}
+      \field{urlday}{29}
+      \field{urlmonth}{5}
+      \field{urlyear}{2025}
+      \field{year}{2025}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://www.k2view.com/blog/rag-hallucination/
+      \endverb
+      \verb{url}
+      \verb https://www.k2view.com/blog/rag-hallucination/
+      \endverb
+    \endentry
+    \entry{novogroder2025ragtools}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=b55c58abfd0141cdfc5e1719b560fdd1}{%
+           family={Novogroder},
+           familyi={N\bibinitperiod},
+           given={I.},
+           giveni={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{b55c58abfd0141cdfc5e1719b560fdd1}
+      \strng{fullhash}{b55c58abfd0141cdfc5e1719b560fdd1}
+      \strng{fullhashraw}{b55c58abfd0141cdfc5e1719b560fdd1}
+      \strng{bibnamehash}{b55c58abfd0141cdfc5e1719b560fdd1}
+      \strng{authorbibnamehash}{b55c58abfd0141cdfc5e1719b560fdd1}
+      \strng{authornamehash}{b55c58abfd0141cdfc5e1719b560fdd1}
+      \strng{authorfullhash}{b55c58abfd0141cdfc5e1719b560fdd1}
+      \strng{authorfullhashraw}{b55c58abfd0141cdfc5e1719b560fdd1}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://lakefs.io/blog/rag-tools/}}
+      \field{note}{Pristupljeno: 2025-06-02}
+      \field{title}{Top 9 RAG Tools to Boost Your LLM Workflows}
+      \field{year}{2025}
+    \endentry
+    \entry{simplilearn2025react}{online}{}{}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labeltitlesource}{title}
+      \field{note}{Pristupljeno: 11. svibanj 2025}
+      \field{title}{What Is React? [Easily Explained]}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.simplilearn.com/tutorials/reactjs-tutorial/what-is-reactjs
+      \endverb
+      \verb{url}
+      \verb https://www.simplilearn.com/tutorials/reactjs-tutorial/what-is-reactjs
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

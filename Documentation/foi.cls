@@ -362,7 +362,7 @@ unicode
     {\begin{center}\bfseries{\prijevod{Zahvala}{Acknowledgements}}\end{center}}
 
     \prijevod{
-        \noindent Na samom početku želim izraziti iskrenu zahvalnost svom mentoru, doc. dr. sc. xxx yyy, na izdvojenom vremenu, nesebičnoj podršci i strpljenju koje mi je pružio tijekom izrade ovog diplomskog rada.
+        \noindent Na samom početku želim izraziti iskrenu zahvalnost svom mentoru, doc. dr. sc. Bogdanu Okreši Đuriću, na izdvojenom vremenu, nesebičnoj podršci i strpljenju koje mi je pružio tijekom izrade ovog diplomskog rada.
 
         \medskip
 
