@@ -53,3 +53,14 @@ package-lock.json
 *.snm
 *.vrb
 
+#Backend
+
+__pycache__/
+*.pyc
+
+.env
+
+vectorstore/
+
+.DS_Store
+Thumbs.db

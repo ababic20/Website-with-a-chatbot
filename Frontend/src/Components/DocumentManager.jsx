@@ -57,7 +57,7 @@ function DocumentManager() {
             });
 
             const data = await res.json();
-            alert(" " + translations.documentManager.uploadSuccess);
+            alert(data.message || + translations.documentManager.uploadSuccess);
             setUploadFiles([]);
             fetchDocuments();
         } catch (err) {
