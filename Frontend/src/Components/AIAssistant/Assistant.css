@@ -174,3 +174,43 @@
     background-color: #000000;
     color: white;
 }
+
+.popup-title {
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+    background-color: #8e55ad;
+    color: white;
+    font-size: 18px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.upload-section {
+    padding: 10px 15px;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ccc;
+    font-size: 13px;
+}
+
+.upload-section input[type="file"] {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.upload-section.uploaded-ok {
+    border: 1px solid #2ecc71;
+    background-color: #eafaf1;
+    border-radius: 5px;
+    padding: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.uploaded-list {
+    padding-left: 15px;
+    margin-top: 5px;
+    font-size: 13px;
+    color: #2ecc71;
+}
+
+

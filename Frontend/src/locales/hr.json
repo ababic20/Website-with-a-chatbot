@@ -4,9 +4,25 @@
       "about": "O Łódźu",
       "cities": "Ostali gradovi",
       "question": "Pitanja",
-      "logo": "Erasmus+ studentska razmjena Łódź"
+      "logo": "Erasmus+ studentska razmjena Łódź",
+      "documents": "Dokumenti"
     },
   
+    "documentManager": {
+      "title": "📄 Upravljanje Dokumentima",
+      "loading": "Učitavanje...",
+      "noDocuments": "Nema dokumenata u bazi.",
+      "delete": "🗑️ Obriši",
+      "addTitle": "📄 Dodaj PDF dokumente",
+      "uploading": "⏳ Učitavanje...",
+      "upload": "📎 Dodaj u bazu",
+      "statistics": "📊 Statistika",
+      "total": "Broj dokumenata",
+      "lastAdded": "Zadnji dodan",
+      "info": "ℹ️ Info",
+      "infoText": "Ovdje možeš dodavati, pregledavati i brisati PDF dokumente koji su spremljeni u vektorsku bazu podataka."
+    },
+
     "pages": {
       "homePageTitle": "Dobrodošli u Poljsku!",
       "aboutPageTitle": "Otkrijte Łódź",

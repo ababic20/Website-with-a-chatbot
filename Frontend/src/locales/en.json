@@ -4,8 +4,23 @@
       "about": "About Łódź",
       "cities": "Other cities",
       "question": "Questions",
-      "logo": "Erasmus+ student exchange Łódź"
+      "logo": "Erasmus+ student exchange Łódź",
+      "documents": "Documents"
     },
+    "documentManager": {
+    "title": "📄 Document Management",
+    "loading": "Loading...",
+    "noDocuments": "No documents in the database.",
+    "delete": "🗑️ Delete",
+    "addTitle": "📄 Add PDF Documents",
+    "uploading": "⏳ Uploading...",
+    "upload": "📎 Add to database",
+    "statistics": "📊 Statistics",
+    "total": "Total documents",
+    "lastAdded": "Last added",
+    "info": "ℹ️ Info",
+    "infoText": "Here you can add, view, and delete PDF documents stored in the vector database."
+  },
   
     "pages": {
       "homePageTitle": "Welcome to Poland!",

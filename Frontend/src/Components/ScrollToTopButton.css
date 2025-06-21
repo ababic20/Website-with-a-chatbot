@@ -1,0 +1,33 @@
+.scroll-to-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 8px;
+    background-color: #9054ac;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    z-index: 1000;
+}
+
+.scroll-to-top-btn.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.scroll-to-top-btn {
+    transition: all 0.3s ease;
+}
+
+.scroll-to-top-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}

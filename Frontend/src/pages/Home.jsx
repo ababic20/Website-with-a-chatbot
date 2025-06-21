@@ -7,6 +7,7 @@ import AboutLodz from '../Components/AboutLodz'
 import Cities from '../Components/Cities'
 import Help from '../Components/Help'
 import Icon from '../Components/AIAssistant/icon'
+import ScrollToTopButton from '../Components/ScrollToTopButton'
 
 export default function(){
   return(
@@ -18,6 +19,7 @@ export default function(){
         <Cities/>
         <Icon/>
         <Help/>
+        <ScrollToTopButton/>
         <Footer/>
     </>
   )

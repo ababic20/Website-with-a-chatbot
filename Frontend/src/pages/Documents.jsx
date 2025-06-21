@@ -1,18 +1,15 @@
+import Documents from '../Components/DocumentManager'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import Icon from '../Components/AIAssistant/icon'
-import About from '../Components/About/About'
-import Reviews from '../Components/Reviews/Reviews'
 import ScrollToTopButton from '../Components/ScrollToTopButton'
-
 
 export default function(){
   return(
     <>
         <Navbar/>
-        <Icon />
-        <About/>
-        <Reviews/>  
+        <Documents/>
+        <Icon/>
         <ScrollToTopButton/>
         <Footer/>
     </>

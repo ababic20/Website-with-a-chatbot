@@ -1,0 +1,132 @@
+.document-manager-wrapper {
+    display: flex;
+    gap: 20px;
+    padding: 25px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f7f7;
+    min-height: 70vh;
+}
+
+.sidebar-left,
+.sidebar-right {
+    width: 220px;
+    padding: 15px 18px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    font-size: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-left h4,
+.sidebar-right h4 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.sidebar-left ul {
+    padding-left: 18px;
+}
+
+.sidebar-left .last-document {
+    word-break: break-all;
+    font-size: 13px;
+    color: #333;
+    margin-top: 4px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.document-manager {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.document-manager h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: 20px;
+}
+
+.document-list {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 16px;
+}
+
+.document-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    transition: background-color 0.2s ease;
+    font-size: 14px;
+    word-break: break-word;
+}
+
+.document-item:hover {
+    background-color: #f0f0f0;
+}
+
+.delete-button {
+    background-color: #e53935;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.2s ease;
+}
+
+.delete-button:hover {
+    background-color: #c62828;
+}
+
+.upload-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.uploaded-list {
+    margin-top: 10px;
+    font-size: 13px;
+    padding-left: 18px;
+    color: #2e7d32;
+}
+
+input[type="file"] {
+    font-size: 13px;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.document-name {
+    flex: 1;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    margin-right: 10px;
+}
+
+.sidebar-left .last-document {
+    display: block;
+    word-break: break-word;
+    font-size: 13px;
+    color: #333;
+    margin-top: 4px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+

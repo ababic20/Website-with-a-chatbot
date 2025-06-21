@@ -1,28 +1,37 @@
-import React, { useState, useContext } from 'react';
-import { LanguageContext } from "../../contexts/LanguageContext"; 
+import React, { useState, useContext, useEffect } from 'react';
+import { LanguageContext } from "../../contexts/LanguageContext";
+import { askAssistant } from "../../api/Chat";
 import './Assistant.css';
 
 function ChatPopup({ togglePopup }) {
-    const { translations } = useContext(LanguageContext); 
+    const { translations } = useContext(LanguageContext);
     const [messages, setMessages] = useState([{ sender: "Assistant", text: "" }]);
     const [inputValue, setInputValue] = useState("");
 
-    
-    React.useEffect(() => {
+    useEffect(() => {
         setMessages([{ sender: "Assistant", text: translations.assistant.startMessage }]);
     }, [translations.assistant.startMessage]);
 
     const sendMessage = () => {
-        if (inputValue.trim()) {
-            setMessages(prevMessages => [...prevMessages, { sender: "User", text: inputValue }]);
-            setInputValue("");
-        }
+        if (!inputValue.trim()) return;
+
+        setMessages(prev => [...prev, { sender: "User", text: inputValue }]);
+
+        askAssistant(inputValue)
+            .then(data => {
+                setMessages(prev => [...prev, { sender: "Assistant", text: data.answer }]);
+            })
+            .catch(() => {
+                setMessages(prev => [...prev, { sender: "Assistant", text: "Error processing request." }]);
+            });
+
+        setInputValue("");
     };
 
     return (
         <div className="chat-popup">
             <button className="close-button" onClick={togglePopup}>X</button>
-            <h2 style={{ textAlign: "center" }}>{translations.assistant.title}</h2>
+            <h2 className="popup-title">{translations.assistant.title}</h2>
 
             <div className="chat-content">
                 <div className="messages">
@@ -31,7 +40,7 @@ function ChatPopup({ togglePopup }) {
                             {msg.sender === "Assistant" && (
                                 <div className="assistant-icon-message">
                                     <img
-                                        src="/src/assets/ai-assistant.png" 
+                                        src="/src/assets/ai-assistant.png"
                                         alt="Assistant"
                                         style={{ width: "25px", height: "25px", borderRadius: "50%" }}
                                     />
@@ -43,7 +52,7 @@ function ChatPopup({ togglePopup }) {
                             {msg.sender === "User" && (
                                 <div className="user-icon-message">
                                     <img
-                                        src="/src/assets/user_icon.png" 
+                                        src="/src/assets/user_icon.png"
                                         alt="User"
                                         style={{ width: "35px", height: "35px", borderRadius: "50%" }}
                                     />

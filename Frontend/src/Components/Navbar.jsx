@@ -21,6 +21,7 @@ const Navbar = () => {
           <Link to="/about">{translations.navbar.about}</Link>
           <Link to="/cities">{translations.navbar.cities}</Link>
           <Link to="/question">{translations.navbar.question}</Link>
+          <Link to="/documents">{translations.navbar.documents}</Link>
         </nav>
 
         <div className="language-switch">

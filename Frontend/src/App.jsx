@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Cities from './pages/Cities'
 import Question from './pages/Question'
+import Documents from './pages/Documents';
 
 
 
@@ -18,6 +19,7 @@ const App = () => {
           <Route path='/about' element={<About />} />
           <Route path='/cities' element={<Cities />} />
           <Route path='/question' element={<Question />} />
+          <Route path='/documents' element={<Documents />} />
         </Routes>
       </BrowserRouter>
     </LanguageProvider>
