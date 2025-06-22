@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { LanguageContext } from "../contexts/LanguageContext";
 import './Navbar.css'; 
+import logoImage from '../assets/boat.png';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,7 +14,10 @@ const Navbar = () => {
 
   return (
     <section className="header">
-      <Link to="/home" className="logo">{translations.navbar.logo}</Link>
+      <Link to="/home" className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+        <img src={logoImage} alt="Logo" className="logo-img" />
+        <span className="logo-text">{translations.navbar.logo}</span>
+      </Link>
 
       <div className="nav-and-lang"> 
         <nav className={`navbar ${menuOpen ? 'active' : ''}`}>
