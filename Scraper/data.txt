@@ -1,0 +1,4 @@
+web source, size of the record, name of the file, used for making
+https://lodz.pl/, 1000 records(articles), lodz_articles_en.json, used scraper2.py and translator.py
+https://lodz.travel/turystyka/co-zobaczyc/, 185 records(articles), lodz_destinations_en.json, used scraper.py and translator.py
+https://polskapogodzinach.pl/lodz-atrakcje/, 52 pages, Łódź attractions.pdf, manually converted to pdf
