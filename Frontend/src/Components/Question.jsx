@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react"; 
 import './Question.css';
 import { LanguageContext } from "../contexts/LanguageContext"; 
+import { sendContactForm } from "../api/Contact";
 
 const ContactForm = () => {
   const { translations } = useContext(LanguageContext);
@@ -12,7 +13,9 @@ const ContactForm = () => {
     address: "",
     description: "",
   });
+
   const [successMessage, setSuccessMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [summary, setSummary] = useState(null);
 
   const handleChange = (e) => {
@@ -23,23 +26,27 @@ const ContactForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitted Data:", formData);
-    setSummary(formData);
-    setSuccessMessage(true);
 
-    setFormData({
-      fullName: "",
-      phone: "",
-      email: "",
-      address: "",
-      description: "",
-    });
+    try {
+      await sendContactForm(formData);
+      setSummary(formData);
+      setSuccessMessage(true);
+      setErrorMessage(null);
+      setFormData({
+        fullName: "",
+        phone: "",
+        email: "",
+        address: "",
+        description: "",
+      });
 
-    setTimeout(() => {
-      setSuccessMessage(false);
-    }, 3000);
+      setTimeout(() => setSuccessMessage(false), 3000);
+    } catch (error) {
+      console.error("Error:", error.message);
+      setErrorMessage(translations.contactForm.errorMessage || "Došlo je do pogreške.");
+    }
   };
 
   return (
@@ -70,6 +77,7 @@ const ContactForm = () => {
             required
             placeholder={translations.contactForm.fullNamePlaceholder}
           />
+
           <label>{translations.contactForm.phoneLabel}</label>
           <input
             type="tel"
@@ -79,6 +87,7 @@ const ContactForm = () => {
             required
             placeholder={translations.contactForm.phonePlaceholder}
           />
+
           <label>{translations.contactForm.emailLabel}</label>
           <input
             type="email"
@@ -88,6 +97,7 @@ const ContactForm = () => {
             required
             placeholder={translations.contactForm.emailPlaceholder}
           />
+
           <label>{translations.contactForm.addressLabel}</label>
           <input
             type="text"
@@ -97,6 +107,7 @@ const ContactForm = () => {
             required
             placeholder={translations.contactForm.addressPlaceholder}
           />
+
           <label>{translations.contactForm.descriptionLabel}</label>
           <textarea
             name="description"
@@ -105,12 +116,19 @@ const ContactForm = () => {
             required
             placeholder={translations.contactForm.descriptionPlaceholder}
           />
+
           <button type="submit">{translations.contactForm.submitButton}</button>
         </form>
 
         {successMessage && (
           <div className="success-popup">
             <p>{translations.contactForm.successMessage}</p>
+          </div>
+        )}
+
+        {errorMessage && (
+          <div className="error-popup">
+            <p>{errorMessage}</p>
           </div>
         )}
       </div>

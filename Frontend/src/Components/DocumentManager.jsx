@@ -1,10 +1,16 @@
 import React, { useEffect, useState, useContext } from "react";
-import { LanguageContext } from "../contexts/LanguageContext"; 
+import { LanguageContext } from "../contexts/LanguageContext";
 import './DocumentManager.css';
 
 function DocumentManager() {
     const { translations } = useContext(LanguageContext);
+
     const [documents, setDocuments] = useState([]);
+    const [stats, setStats] = useState({
+        total_documents: 0,
+        total_chunks: 0,
+        last_added: "—"
+    });
     const [loading, setLoading] = useState(true);
     const [uploadFiles, setUploadFiles] = useState([]);
     const [uploading, setUploading] = useState(false);
@@ -21,8 +27,19 @@ function DocumentManager() {
         }
     };
 
+    const fetchStats = async () => {
+        try {
+            const res = await fetch("http://localhost:8000/stats");
+            const data = await res.json();
+            setStats(data);
+        } catch (error) {
+            console.error("Error fetching stats:", error);
+        }
+    };
+
     useEffect(() => {
         fetchDocuments();
+        fetchStats();
     }, []);
 
     const deleteDocument = async (filename) => {
@@ -36,6 +53,7 @@ function DocumentManager() {
             const data = await res.json();
             alert(data.message || "Document deleted.");
             fetchDocuments();
+            fetchStats();
         } catch (err) {
             console.error("Error deleting document:", err);
             alert("Error while deleting.");
@@ -57,9 +75,10 @@ function DocumentManager() {
             });
 
             const data = await res.json();
-            alert(data.message || + translations.documentManager.uploadSuccess);
+            alert(data.message || translations.documentManager.uploadSuccess);
             setUploadFiles([]);
             fetchDocuments();
+            fetchStats();
         } catch (err) {
             console.error("Error uploading:", err);
             alert("Error while uploading.");
@@ -73,10 +92,11 @@ function DocumentManager() {
             <aside className="sidebar-left">
                 <h4>{translations.documentManager.statistics}</h4>
                 <ul>
-                    <li>{translations.documentManager.total}: {documents.length}</li>
+                    <li>{translations.documentManager.total}: {stats.total_documents}</li>
+                    <li>{translations.documentManager.chunks}: {stats.total_chunks}</li>
                     <li>
                         {translations.documentManager.lastAdded}:
-                        <span className="last-document">{documents.slice(-1)[0] || "—"}</span>
+                        <span className="last-document">{stats.last_added || "—"}</span>
                     </li>
                 </ul>
             </aside>
