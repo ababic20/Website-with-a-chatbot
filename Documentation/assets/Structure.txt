@@ -1,0 +1,44 @@
+Frontend/
+├── node_modules/ – paketi i biblioteke potrebne za rad projekta
+├── src/ – izvorni kod aplikacije
+│   ├── api/ – komunikacija s backendom (npr. slanje korisnikovog pitanja)
+│   ├── assets/ – slike, video materijali i druge statičke datoteke
+│   ├── components/ – višekratne komponente koje se koriste unutar stranica (npr. navigacija)
+│   ├── contexts/ – globalna stanja dostupna kroz cijelu aplikaciju, npr. promjena jezika
+│   ├── locales/ – JSON datoteke s prijevodima ako aplikacija podržava više jezika
+│   ├── pages/ – glavne stranice aplikacije (npr. Početna)
+│   ├── App.jsx – definira rute pomoću BrowserRouter i omotava aplikaciju LanguageProviderom radi podrške za više jezika
+│   └── main.jsx – ulazna točka aplikacije, ovdje se React aplikacija renderira unutar HTML-a
+
+
+Backend/
+├── routes/              - API rute koje frontend koristi za komunikaciju s backendom
+│   ├── ask.py           - postavljanje pitanja na temelju PDF dokumenata 
+│   ├── documents.py     - dohvaćanje i brisanje dokumenata iz baze (GET, DELETE)
+│   ├── email.py         - slanje poruke s kontakt forme putem e-maila
+│   └── stats.py         - vraćanje statistike o pohranjenim dokumentima i ulomcima
+├── services/            - pomoćne funkcije koje podržavaju rute (logika)
+│   ├── pdf_handler.py   - obrada PDF-ova: čitanje, chunkanje i dodavanje metapodataka
+│   ├── qa.py            - QA lanac koji koristi OpenAI LLM i FAISS za odgovaranje na upite
+│   └── vectorstore.py   - upravljanje vektorskom bazom (učitavanje, spremanje, brisanje dokumenata)
+│
+├── vectorstore/         - direktorij u kojem se lokalno pohranjuje FAISS vektorska baza dokumenata
+│
+├── main.py              - glavni ulaz u aplikaciju – pokretanje FastAPI servera i uključivanje svih ruta
+│
+└── requirements.txt     - popis svih potrebnih Python paketa za pokretanje aplikacije
+
+Scraper/
+│
+├── data/                - Mapa u kojoj se nalaze svi izlazni podaci
+│   ├── *.pdf               
+│   └── *.json              
+├── data.txt             - Popis scrap-anih stranica, format podataka (PDF/JSON), i broj zapisa
+│
+├── scraper.py           - Scraper za web stranicu https://lodz.travel
+│
+├── scraper2.py          - Scraper za web stranicu https://lodz.pl
+│
+└── translator.py        - Alat za prijevod sadržaja iz PL u EN unutar JSON datoteka
+
+

@@ -1,12 +1,13 @@
-\documentclass[]{foi} 
+\documentclass[]{foi}
+
+\usepackage[utf8]{inputenc}
 
 \usepackage{graphicx}
 \usepackage{array}
 \usepackage{makecell}
 \usepackage{booktabs}
 \usepackage{caption}
-\usepackage{float} 
-\usepackage[utf8]{inputenc}
+\usepackage{float}
 \usepackage{lipsum}
 \usepackage{fvextra}
 \usepackage{lineno}
@@ -15,7 +16,49 @@
 \usepackage{enumitem}
 \usepackage[table]{xcolor}
 \usepackage{tabularx}
+\usepackage{tcolorbox}
+\usepackage{listings}
+\usepackage{minted}
+\newcolumntype{R}[1]{>{\raggedright\arraybackslash}p{#1}}
 
+
+
+% Definicija boja
+\definecolor{lightgray}{gray}{0.97}
+\definecolor{darkblue}{rgb}{0.1,0.1,0.6}
+\definecolor{darkgreen}{rgb}{0.0,0.5,0.0}
+\definecolor{orange}{rgb}{1.0,0.5,0.0}
+\definecolor{purple}{rgb}{0.6,0.0,0.6}
+\definecolor{keywordpurple}{rgb}{0.5,0.0,0.5}
+\definecolor{codebg}{rgb}{0.95,0.95,0.95}
+
+
+\lstset{
+  backgroundcolor=\color{lightgray},
+  basicstyle=\ttfamily\footnotesize,
+  frame=single,
+  breaklines=true,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  showstringspaces=false,
+  escapeinside={(*@}{@*)}, 
+  keywordstyle=\color{keywordpurple}\bfseries,
+  commentstyle=\color{darkgreen}\itshape,
+  stringstyle=\color{orange},
+  morekeywords={
+    const, let, var, function, return, import, from, export, default,
+    useState, useEffect, className, if, else, map, render, async, await,
+    props, setState, onClick, true, false
+  },
+  captionpos=b
+}
+
+
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{8pt}  
+
+
+\geometry{margin=2.5cm}
 \vrstaRada{\diplomski}
 
 \title{Informativna platforma s inteligentnim asistentom o Erasmus+ iskustvu u \L\'{o}d\'{z}u}
@@ -308,7 +351,7 @@ reviziju Sirija gdje je predstavljen Apple Intelligence koji predstavlja novi os
 je bio da sve dok joj nije prijateljica javila, Bennet nije bila svjesna da je postala Sirin glas. Iako Apple nikada nije priznao da je Bennet orginalni Siirin glas, audio stručnjaci na CNN-U
 su to potvrdili. Karen Jacobsen je žena koja je posudila svoj orginalni ženski glas za GPS sustave, dok je Jon Biggs, posudio svoj glas za mušku verziju Sirija. U međuvremenu Apple je razvio novi ženski glas za IOS11
 pomoću tehnologije dubokog učenja snimanjem i kombiniranjem govora stotine kandidatkinja. Siri može obavljati razne zadatke kao što su: navigacija uputama (npr. Kakav je promet na putu do posla?),
-zakazivanje događaja i podsjetnika (npr. Slanje poruke za rođendan), pretraživanje weba (npr. Pronađi sliku psa) ili mjenjanje postavki (npr. Povećanje svjetline zaslona).
+zakazivanje događaja i podsjetnika (npr. Slanje poruke za rođendan), pretraživanje weba (npr. Pronađi sliku psa) ili mjenjanje postavki (npr. Povećanje svjetline zaslona) \cite{mixon_siri_2025}.
 
 \subsection{Copilot}
 
@@ -391,7 +434,7 @@ svog programiranja što ih čini neprikladnim za složenije zadatke \cite{exomin
 \subsubsection{Zendesk}
 
 Zendesk je sustav koji je namijenjen za slanje zahtjeva putem e-pošte i pomaže tvrtka u praćenju, određivanju prioriteta i riješavanju zahtjeva za korisničku podršku.
-Može pomoći u prikupljanju zahtjeva korisnika koji su poslani putem više kanala, uključujući e-poštu, chat ili društvene mreže i kroz nadzornu ploču pratiti status takvih zahtjeva.
+Može pomoći u prikupljanju zahtjeva korisnika koji su poslani putem više kanala, uključujući e-poštu, chat ili društvene mreže i kroz nadzornu ploču pratiti status takvih zahtjeva \cite{zendesk_ai_2025}.
 
 \newpage
 \section{Inteligentni asistenti u obrazovnom sustavu}
@@ -453,7 +496,7 @@ Kroz sljedeće poglavlje je prikazano kako funkcioniraju inteligentni asistenti 
 U ovom poglavlju obrađena je RAG (eng. Retrieval Augmented Generation) metoda, koja predstavlja suvremeni pristup u području obrade prirodnog jezika i kombinira sposobnosti generativnih modela
 s mehanizmima za dohvaćanje informacija iz vanjskih izvora. Poglavlje započinje pregledom povijesti i ključnih prednosti RAG pristupa, zatim slijedi teorijska osnova modela i njegova arhitektura
 kroz faze dohvaćanja i generiranja. Nadalje, razrađeni su tehnički aspekti implementacije, uključujući vrste retrievera, generativne modele i metode rangiranja rezultata, kao i integraciju s 
-vektorskim bazama podataka. Poseban naglasak stavljen je na primjenu RAG sustava, postupke treniranje i fino podešavanje modela, kao i izazove poput halucinacije i ažurnosti podataka.
+vektorskim bazama podataka. Poseban naglasak stavljen je na primjenu RAG sustava, postupke treniranja i fino podešavanje modela, kao i izazove poput halucinacije i ažurnosti podataka.
 Na kraju predstavljene su dostupne biblioteke i alati koji olakšavaju razvoj RAG rješenja u praksi. 
 
 \section{Uvod u RAG}
@@ -472,8 +515,8 @@ Bez RAG-a, LLM uzima korisnički unos i stvara odgovor na temelju informacija na
 informacija koja koristi korisnički unos kako bi prvo privukla informacije iz novog izvora podataka. Nakon toga LLM kombinira novo znanje i svoje 
 podatke za stvaranje boljih odgovora \cite{awsRAG2025}.
 
-Primjerice, ako se postavi pitanje: "Koji planet u Sunčevom sustavu ima najviše mjeseca?", osoba može odgovoriti: "Odlično pitanje! Kao dijete sam volio astronomiju i pročitao sam članak o tome
-- mislim da je to Jupiter s 88 mjeseca." Međutim, takav odgovor ima nekoliko problema: osoba ne navodi konkretan izvor, iako nastupa s visokim samopouzdanjem ("ja to znam, pročitao sam")
+Primjerice, ako se postavi pitanje: "Koji planet u Sunčevom sustavu ima najviše satelita?", osoba može odgovoriti: "Odlično pitanje! Kao dijete sam volio astronomiju i pročitao sam članak o tome
+- mislim da je to Jupiter s 88 satelita." Međutim, takav odgovor ima nekoliko problema: osoba ne navodi konkretan izvor, iako nastupa s visokim samopouzdanjem ("ja to znam, pročitao sam")
 te informacija može bit zastarjela jer se temelji na sjećanju iz prošlosti \cite{ibm2023rag}.
 
 Kada bi osoba rekla: "Idem prvo na NASA-inu stranicu i tamo ću potražit tu informaciju", tada bi traženje odgovora bilo temeljeno na provjerenom i ažurnom izvoru.
@@ -527,25 +570,14 @@ Važnost RAG-a povećala se posljednjih godina zbog pojave velikog broja aplikac
 
 
 \section{Arhitektura RAG modela}
-\subsection{Jezični modeli - Language models}
+RAG se sastoji od faze pronalaženja i faze generiranja sadržaja. U fazi pronalaženja algoritmi traže relevantne informacije za korisnikov upit dok se u fazi generiranja generira tekst 
+kako bi se odgovorilo na korisnički upit. U okruženju otvorene domene te činjenice uglavnom dolaze iz indeksiranih dokumenata na internetu. U okruženju zatvorene domene obično se koristi 
+uži skup izvora radi dodatne sigurnosti i pouzdanosti. Prije LLM-a, agenti su kroz razgovor pratili ručni tijek dijaloga. Pretpostavljali su namjeru klijenta, dohvaćali tražene informacije 
+i dostavljali odgovor za određeni scenarij. Za jednostavne upite, ova ručna metoda stabla odlučivanja funkcionirala je sasvim dobro. Problem takvog pristupa je da se je gubilo vrijeme na 
+pisanje i predviđanje svakog pitanja koje bi korisnik mogao postaviti. U takvim slučajevima, ako tražena informacija nije definirana u dostupnim podacima, chatbot neće bit u mogućnosti 
+pružiti relevantan odgovor\cite{ibmRAG}. 
 
-Jezični model je raspodjela vjerojatnosti preko riječi ili nizova riječi. U praksi daje vjerojatnost da je određeni niz riječi valjan. Valjanost se mjeri na način da se ispitiva koliko
-ima smisla generirani niz i koliko nalikuje načinu na koji ljudi pišu.
-
-\url{https://builtin.com/data-science/beginners-guide-language-models}
-
-\url{https://www.ibm.com/think/topics/large-language-models}
-
-
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=0.8\textwidth]{./assets/arhitektura.png} 
-    \caption{Konceptualni tok korištenja RAG-a s LLM-ovima \cite{awsRAG2025}}
-    \label{fig:slika1}
-\end{figure}
-
-Funkcioniranje prikazanog sustava na slici \ref{fig:slika1}. opisano je kroz nekoliko  koraka \cite{awsRAG2025}:
-
+Generalno RAG arhitektura se može objasniti kroz sljedeće karakteristike \cite{awsRAG2025}:
 
 \begin{enumerate}
     \item \textbf{Stvaranje vanjskih podataka} - novi podaci izvan orginalnog skupa podataka koji su se koristili za treniranje LLM-a se zovu 
@@ -560,27 +592,27 @@ Funkcioniranje prikazanog sustava na slici \ref{fig:slika1}. opisano je kroz nek
     \item \textbf{Ažuriranje vanjskih podataka} - Vrlo je bitno održati ažurne informacije i to se može ostvariti automatiziranjem procesa u stvarnom vremenu ili periodičnoj obradi. 
 \end{enumerate}
 
-
-Temelj svih temeljnih modela je arhitektura umjetne inteligencije poznata kao transformator. Pretvaraju se hrpe sirovih podataka u komprimirani prikaz njihove osnovne strukture. 
-Fino-podešavanje (eng. Fine-tuning) – daje modelu punu širinu znanja koja mu je potrebna za odgovaranje na vrlo specifična pitanja u kontekstu koji se stalno mijenja. Tijekom 2020. godine, 
-Meta (tadašnji Facebook) je osmislila okvir pod imenom ”retrieval-augmented generation” kako bi se omogućio pristup informacijama koje nisu ”samo one nad kojima su trenirani modeli” \cite{ibmRAG}.
-
-RAG se sastoji od dvije faze: pronalaženje i generiranje sadržaja. U fazi pronalaženja algoritmi traže relevantne informacije za korisnikov upit dok se u fazi generiranja generira tekst 
-kako bi se odgovorilo na korisnički upit. U okruženju otvorene domene te činjenice uglavnom dolaze iz indeksiranih dokumenata na internetu. U okruženju zatvorene domene obično se koristi 
-uži skup izvora radi dodatne sigurnosti i pouzdanosti. Prije LLM-a, agenti su kroz razgovor pratili ručni tijek dijaloga. Pretpostavljali su namjeru klijenta, dohvaćali tražene informacije 
-i dostavljali odgovor za određeni scenarij. Za jednostavne upite, ova ručna metoda stabla odlučivanja funkcionirala je sasvim dobro. Problem takvog pristupa je da se je gubilo vrijeme na 
-pisanje i predviđanje svakog pitanja koje bi korisnik mogao postaviti. U takvim slučajevima, ako tražena informacija nije definirana u dostupnim podacima, chatbot neće bit u mogućnosti 
-pružiti relevantan odgovor\cite{ibmRAG}. 
-
-Danas chatbotovi bazirani na LLM-ovima mogu dati korisnicima odgovore bez da ljudi pišu definirane skripte. Samim nadovezivanjem RAG-a na LLM-ove smanjuje se potreba za ponovnim obučavanjem 
+Današni AI sustavi bazirani na LLM-ovima mogu dati korisnicima odgovore bez da ljudi pišu definirane skripte. Samim nadovezivanjem RAG-a na LLM-ove smanjuje se potreba za ponovnim obučavanjem 
 modela na novim primjerima \cite{ibmRAG}. Upiti korisnika nisu uvijek jednostavni, mogu biti dvosmisleno formulirani, složeni ili mogu zahtijevati znanje koje model nema. U takvim uvjetima 
 LLM-ovi su skloni izmišljanju stvari. Rod Lastra opisuje velike jezične model kao “Zamislite model kao pretjerano nestrpljivog mlađeg zaposlenika koji izbrblja odgovor prije nego što provjeri činjenice”
 Lastra dodatno ističe važnost svjesnog upravljanja neizvjesnošću u odgovaranjum, navodeći: “Iskustvo nas uči da zastanemo i kažemo kada nešto ne znamo. LLM-ovi moraju biti eksplicitno obučeni da prepoznaju pitanja na koja ne mogu odgovoriti” \cite{ibmRAG}. 
 
-Kod finog podešavanja može se namjestiti da LLM zastane i kaže da ne zna ali za to je potrebno tisuće primjera pitanja na koja se ne može odgovoriti. Vektorske baze podataka 
-se mogu učinkovito indeksirati, pretraživati te je u njih jednostavno pohraniti veliku količinu informacija. RAG je još uvijek relativno nova tehnologija, a brojni izazovi vezani uz njezinu
-pouzadnost i implementaciju još uvijek nisu u potpunosti riješeni \cite{ibmRAG}.
+Sljedeća slika objašnjava kako RAG funkcionira na konkretnom primjeru. Ulaz u RAG sustav mogu biti različite vrste dokumenta, poput PDF-ova ili CSV datoteka. Nakon toga čita se 
+sadržaj dokumenta i dijeli se u manje dijelove (eng. chunks) koji se mogu lakše obraditi. Svaki od tih dijelova pretvara se u vektor koristeći model ugrađivanja (eng. embedding model)
+koji pretvara tekstualne podatke u numerički oblik. Ti vektori se zatim pohranjuju u vektorsku bazu podataka koja omoguće brzi pretraživanje informacija. Nakon toga dolazi do korisničkog
+upita koji se također pretvara u vektor. Taj vektor se uspoređuje s vektorima u bazi podataka kako bi se pronašle relevantne informacije. Nadalje se rangiraju rezultati i odabiru oni
+najrelevantniji. Na kraju, LLM koristi te informacije za generiranje odgovora na korisnički upit.
 
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./assets/rag_diagram.png} 
+    \caption{Konceptualni tok korištenja RAG-a s LLM-ovima \cite{awsRAG2025}}
+    \label{fig:slika1}
+\end{figure}
+
+ Jedna od zanimljivih stvari ovdje su vektorske baze podataka koje se mogu učinkovito indeksirati, pretraživati te je u njih jednostavno pohraniti veliku količinu informacija o čemu
+ će se reći nešto detaljnije u jednom od sljedećih poglavlja.
+ 
 
 \subsection{Faza dohvaćanja (Retriever)}
 
@@ -594,8 +626,29 @@ sveobuhvatnog pregleda ili navođenju konkretnih detalja \cite{redis2025}.
 
 Korisnik postavlja pitanje ili šalje upit nakon čega retriver traži relevantne dokumente u unaprijed definiranom izvoru znanja (npr. Wikipedia, interni podaci tvrtke ili online članci).
 Nakon toga se rangiraju dokumenti na temelju njihove relevantnosti za upit i za kraj se odabrani dokumenti prosljeđuju sljedećoj komponenti - generatoru - kako bi se pomoglo mu u generiranju odgovora.
-Retriver je važan jer za razliku od tradicionalnih AI modela, koji se oslanjaju samo na unaprijed obučene podatke, retriver može dohvatiti informacije u stvarnom vremenu. Također korištenjem
-Također korištenjem vanjskih izvora pomaže u smanjenju AI halucinacija i omogućuje modelu da se referira na pozadinsko znanje, što dovodi do smislenijih odgovora \cite{shaheryar2025}.
+Retriver je važan jer za razliku od tradicionalnih AI modela, koji se oslanjaju samo na unaprijed obučene podatke, može dohvatiti informacije u stvarnom vremenu. Također korištenje 
+vanjskih izvora pomaže u smanjenju AI halucinacija i omogućuje modelu da se referira na pozadinsko znanje, što dovodi do smislenijih odgovora \cite{shaheryar2025}.
+
+\subsubsection{BM25}
+BM25 (eng. Best Matching 25) je popularni algoritam koji koristi pojam frenkvencijsko inverzne dokumentne frekvencije (eng. term frequency-inverse document frequency - TF-IDF) za rangiranje dokumenata na temelju relevantnosti.
+BM25 izračunava ocjenu relevantnosti dokumenta na temelju učestalosti pojavljivanja upita u dokumentu. Iako je učinkovit za podudaranja
+između ključnih riječi, BM25 može imati ograničenja u razumijevanju semantičkih odnosa. Unatoč tome BM25 se široko koristi zbog svoje jednostavnosti
+i učinkovitosti. Često se koristi za jednostavnije upite temeljene na ključnim riječima, gdje je važno brzo dohvaćanje relevantnih informacija \cite{gupta2024rag}.
+
+\subsubsection{Dense Passage Retrieval}
+DPR (eng. Dense Passage Retrieval) je predstavljen 2020.godine i predstavlja moderniji pristup pretraživanja informacija. Koristi gustih
+vektorski prostor u kojem su upit i dokumenti kodirani u višedimenzionalne vektore. DPR koristi arhitekturu bi-enkodera, gdje su upit 
+i dokument kodirani odvojeno, što omogućuje učinkovito pretraživanje najbližeg susjeda. Za razliku od BM25, DPR se ističe u pretraživanju
+semantičkih odnosa između upita i dokumenta, što ga čini pogodnim za složenije upite koji zahtijevaju dublje razumijevanje konteksta. DPR može
+pronaći dokumente koji su kontekstualno povezani s upitom, čak i ako ne sadrže točne ključne riječi \cite{gupta2024rag}.
+
+\subsubsection{REALM}
+REALM (eng. Retrieval-Augmented Language Model) je model koji integira pronalaženje informacija i generiranje teksta u jednom sustavu.
+Ključna inovacija REALM-a je da uči pronalaziti dokumente koji poboljšavaju performanse modela na određenim zadacima kao što je npr.
+sažimanje teksta. Tijekom treninga REALM ažurira retriever i generativni model zajedno, osiguravajući da je proces pronalaženja optimizirana
+za zadatak generiranja. REALM je treniran kako bi prepoznao dokumente koji nisu relevatni za upit, ali su korisni za generiranje odgovora.
+U literaturi se često spominje da REALM nadmašuje BM25 i DPR u zadacima koji zahtijevaju kombinaciju pronalaženja i generiranja informacija \cite{gupta2024rag}.
+
 
 %\url{https://redis.io/glossary/retrieval-augmented-generation/}
 
@@ -609,41 +662,20 @@ Generator je komponenta koja koristi dohvaćene dokumente i izvorni upit kako bi
 Dohvaćeni dokumenti i ulazni upit ulančavaju se i unose u generator, koji zatim koristi kombinirani ulaz za generiranje odgovora pri čemu dohvaćeni dokumenti pružaju dodatni kontekst i informacije 
 koje pomažu generatoru da bude informiraniji i precizniji u svojim odgovorima \cite{redis2025}. 
 
-Generator je važan je pretvara neobrađene podatke u konherentan i strukturiran tekst i osigurava da odgovori zvuče prirodno i privlačno. Također, spaja unaprijed obučeno znanje o umjetnoj inteligenciji
+Generator je važan jer pretvara neobrađene podatke u konherentan i strukturiran tekst i osigurava da odgovori zvuče prirodno i privlačno. Također, spaja unaprijed obučeno znanje o umjetnoj inteligenciji
 s dohvaćenim informacijama u stvarnom vremenu za najbolji mogući odgovor \cite{shaheryar2025}. 
 
-\section{Tehnički aspekti implementacije}
-\subsection{Tipovi retrievera}
+\subsubsection{T5}
+T5 (eng. Text-to-Text Transfer Transformer) je jedan od najčešće korištenih modela za zadatke generiranja u RAG sustavima. T5 je svestran model koji pretvara sve zadatke u tekstualni format, što ga čini pogodnim za širok spektar aplikacija.
+Može se koristiti za odgovaranje na pitanja, sažimanje ili generiranje dijaloga. Kroz praksu se pokazalo da RAG modeli temeljeni na T5 nadmašuju
+tradicionalne generativne model poput GPT-3 i BART-a u raznim zadacima kaš što su odgovaranje na pitanja ili sažimanje teksta \cite{gupta2024rag}.
 
-\url{https://medium.com/@vinayak.sengupta/exploring-the-core-of-augmented-intelligence-advancing-the-power-of-retrievers-in-rag-frameworks-3ef9fe273764}
+\subsubsection{BART}
+BART (eng. Bidirectional and Auto-Regressive Transformers) je model koji je prikladan za zadatke koji uključuju generiranje teksta 
+iz nečistih ili neuređenih podataka. Za enkoder BART koristi dvosmjerni pristup, što znači da može razumijeti kontekst cijelog ulaza,
+dok dekoder generira tekst an temelju tog konteksta. BART može rekonstruirati oštećene tekstove, što ga čini korisnim za zadatke poput
+izvlačenja informacija iz nepotpunih uli neurednih podataka \cite{gupta2024rag}. 
 
-\subsubsection{Dense retrieveri (DPR)}
-\url{https://cohere.com/llmu/dense-retrieval}
-
-\subsubsection{Sparse retrieveri (BM25, TF-IDF)}
-
-\url{https://qdrant.tech/articles/sparse-vectors/}
-
-\url{https://qdrant.tech/articles/modern-sparse-neural-retrieval/}
-
-\url{https://medium.com/@emitchellh/extending-bm25-with-subwords-30b334728ebd}
-
-\url{https://docs.llamaindex.ai/en/stable/examples/retrievers/bm25_retriever/}
-
-\url{https://medium.com/@infiniflowai/sparse-embedding-or-bm25-84c942b3eda7}
-
-
-\subsection{Generator modeli}
-\subsubsection{Pretrained language models (PLM)}
-\url{https://medium.com/@bijit211987/the-evolution-of-language-models-pre-training-fine-tuning-and-in-context-learning-b63d4c161e49}
-
-\subsubsection{Fine-tuning za specifične domene}
-\subsection{Tehnike rangiranja rezultata}
-\subsection{Integracija s vektorskim bazama podataka (FAISS, Pinecone, Weaviate)}
-
-\url{https://developers.cloudflare.com/vectorize/reference/what-is-a-vector-database/}
-
-\url{https://www.digitalocean.com/community/conceptual-articles/how-to-choose-the-right-vector-database}
 
 \section{Primjena RAG modela}
 
@@ -704,8 +736,6 @@ posebno dolaze do izražaja u izradi inteligentnih asistentata koji trebaju pru�
 
 %\url{https://www.projectpro.io/article/rag-use-cases-and-applications/1059}
 
-
-
 \section{Izazovi RAG pristupa}
 
 LLM-ovi su ključna tehnologija umjetne inteligencije koja pokreće chatbotove. Priroda LLM-ova je takva da ponekad unose dozu nepredvidljivosti
@@ -721,7 +751,7 @@ u generiranje odgovora. Osim toga, podaci o LLM obuci su statični i imaju krajn
 Veliki jezični modeli mogu biti nekonzistentni što bi značilo da ponekad točno odgovore na pitanja, a drugi put nasumično pogađaju. Ako povremeno zvuče kao da nemaju pojma što govore, 
 to je zato što ustvari nemaju pojma. LLM-ovi znaju kako se riječi statistički povezivaju, ali ne znaju značenje riječi kao ni cjelinu njih, poznatu kao rečenica. RAG također smanjuje potrebu 
 korisnika da kontinuirano treniraju model na novim podacima i ažuriraju njegove parametre. Na taj način, RAG može smanjiti računalne i financijske troškove pokretanja chatbotova \cite{ibmRAG}.
-\newpage
+
 
 Sljedeći izvor navodi sljedeće izazove kod RAG pristupa \cite{aimlabs2025rag}:
 \begin{itemize}
@@ -868,12 +898,12 @@ Vektorske baze podataka ključne su kako bi omogućile LLM-ovima da daju točnij
 Osim toga, vektorske baze podataka omogućuju rad s bilo kojim drugim tipovima podataka, uključujući slike, videozapise i zvuk, čime se proširuju mogućnost RAG sustava.
 Većina podataka koja se generira svakodnevno su nestrukturirani podaci, bilo to tekst, slike, videozapisi ili slično. 
 Nestrukturiranim podacima nedostaje strogi format, što otežava upravljanje konvencionalnim bazama podataka i iako se ponekad čine beznačajnim,
-oni sadrže vrijedne informacije koje imaju ogroman potencijal za umjetnu inteligenciju.
+oni sadrže vrijedne informacije koje imaju ogroman potencijal za umjetnu inteligenciju \cite{aquino2025vector}.
 
 Tradicionalne baze podataka poput OLTP i OLAP odlično upravljaju s strukturiranim podacima, međutim kada se pojave podaci koji se ne mogu lako kategorizirati
 poput sadržaja unutar PDF datoteka stvari počinju biti komplicirane. Takva baza ne može razumijeti što se nalazi u dokumentu, ne može ga kategorizirati ili pretraživati.
 Vektorske baze podataka dobile su na značaju u posljednjih nekoliko godina zbog porasta strojnog učenja i dubokog učenja. Vektorska ugrađivanja
-pretvaraju složene podatke (npr. slike ili tekst) u visokodimenzionalne vektore tako da su slične stavke bliže jedna drugoj u vektorskom prostoru.
+pretvaraju složene podatke (npr. slike ili tekst) u visokodimenzionalne vektore tako da su slične stavke bliže jedna drugoj u vektorskom prostoru \cite{aquino2025vector}.
 
 Tradicionalne baze podataka su neučinkovite pri pretraživanju sličnosti u visokodimenzionalnim prostorima. Takav problem vrlo dobro rješavaju
 vektorske baze podataka koje vrlo dobro indeksiraju i pretraživaju opsežne skupove podataka. Kako bi se proveo rad s vektorskim bazama podataka,
@@ -881,7 +911,7 @@ potrebno je koristiti vektor upita koji obuhvaća kriterije pretraživanja. Slje
 između vektora upita i vektora u bazi podataka. To može uključivati metriku kao što su kosinusna sličnost, euklidska udaljenost ili Jaccardov indeks.
 U prošlosti su samo velike tehnološke tvrtke koje su imale resurse za njihovo stvaranje i održavanje koristile vektorske baze podataka. S obzirom
 na napredak tehnologije, pojavile su se mnoge vektorske baze podataka otvorenog koda koje su dostupne za korištenje i implementaciju u RAG sustavima.
-Sljedeći grafikon prikazuje kada se koriste vektorske baze podataka u odnosu na tradicionalne baze podataka.
+Sljedeći grafikon prikazuje kada se koriste vektorske baze podataka u odnosu na tradicionalne baze podataka \cite{aquino2025vector}.
 
 %\url{https://qdrant.tech/articles/what-is-a-vector-database/?q=what+is+wector+data}
 %\url{https://research.aimultiple.com/retrieval-augmented-generation/}
@@ -909,7 +939,7 @@ Fokus & Optimizirano za ažuriranje & Optimizirano za čitanje & Kontekst i sema
 Slučajevi upotrebe & CRM, obrada narudžbi & Poslovna inteligencija, skladišta & RAG, otkrivanje anomalija \\
 \hline
 \end{tabular}
-\caption{Usporedba OLTP, OLAP i vektorskih baza podataka}
+\caption{Usporedba OLTP, OLAP i vektorskih baza podataka \cite{aquino2025vector}}
 \label{tab:usporedba_baza}
 \end{table}
 
@@ -976,12 +1006,17 @@ Anthropic je tvrtka koja se fokusira na razvoj sigurnosnih i etičkih AI modela 
   \label{fig:slika11}
 \end{figure}
 
-Zaključak je da su svi navedeni alati i biblioteke korisni za implemetaciju RAG sustava, ali za potrebe ovog rada korištena je  kombinacija
-Langchaina, ChatGPT (OpenAI) modela i FAISS/Qdrant vektorske baze podataka. 
+Zaključak je da su svi navedeni alati i biblioteke korisni za implemetaciju RAG sustava, ali za potrebe ovog rada korištena je kombinacija
+Langchaina, ChatGPT (OpenAI) modela i FAISS vektorske baze podataka. 
 
 
 
-\chapter{React}
+\chapter{Korištene tehnologije i alati}
+Za realizaciju praktičnog dijela korišteno je nekoliko tehnologija koje su omogućile razvoj web stranice i inteligentnog asistenta. 
+Odabir tehnologija temelji se na njihovoj popularnosti, pouzdanosti i sposobnosti da zadovolje zahtjeve ovog rada. U nastavku su detaljnije
+opisani korišteni alati i tehnologije.
+
+\section{React}
 
 Svijet danas ne funkcionira bez mobilnih i web aplikacija. Sve se orijentira prema digitalizaciji, od rezerviranja hrane do naručivanja vožnje u taksiju. Vrlo je bitno napraviti vizualno
 primamljivu aplikaciju a React je upravo jedna od popularnijih frontend biblioteka koja to omogućava. React je temeljen na JavaScriptu i široko se koristi u web razvoju. U usporedbi s drugim tehnologijama
@@ -1010,62 +1045,833 @@ To jasno odražava razliku u životnom standardu i ekonomskim potrebama pojedini
     \item Prosječna plaća za početnog React developera u Indiji iznosi oko 8000 USD godišnje.
 \end{itemize}
 
+\section{FastAPI}
+FastAPI je moderan, brz, visokoučinkovit web framework za izgradnju API-ja s Pythonom. Vrlo je brz (u rangu s NodeJS-om i Go-om) i
+omogućuje brzo kodiranje i pojavljivanje manjeg broja grešaka. Dosta je intuitivan i jednostavan za korištenje i učenje. FastAPI podržava CRUD
+(eng. Create, Read, Update, Delete) operacije koje je moguće koristiti kroz ključne riječi HTTP metoda (GET, POST, PUT, DELETE). Za pokretanje
+FastAPI koristi port 8000 i može se testirati putem preglednika ili alata poput Postmana. 8000/docs putanja omogućuje pristup
+Swagger UI sučelju koje omogućuje pregled i testiranje API-ja \cite{obafemi2025fastapi}. 
 
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{./assets/FastAPI.png} 
+    \caption{FastAPI - ikona; \href{https://www.simplilearn.com/ice9/free_resources_article_thumb/FastAPI_b.jpg}{Izvor}}
+    \label{fig:slika17}
+\end{figure}
+
+\section{SMTP}
 
 \chapter{Praktični dio rada}
-Praktični dio rada se sastoji od izrade web stranice i izrade inteligentnog asistenta temeljenog na RAG tehnologiji. Za izradu frontenda korišten je
-JavaScript u Reactu. React predstavlja jedno od najpopularnijih frameworka za izradu web aplikacija. Posebno se ističe zbog toga što omogućava
+Praktični dio rada se sastoji od izrade web stranice i izrade inteligentnog asistenta temeljenog na RAG tehnologiji. Frontend aplikacije
+je izrađen pomoću biblioteke React, pri čemu je korisničko sučelje strukturirano korištenjem JSX sintakse. React predstavlja jedno od najpopularnijih frameworka za izradu web aplikacija. Posebno se ističe zbog toga što omogućava
 razvoj aplikacija koje su brze, jednostavne i lako održive. Osim toga, najbitnija stvar je što React gradi aplikaciju po komponentama, što omogućava
-jasnije razumijevanje koda kao i njegovo olakšano preuređivanje. Za izradu inteligentnog asistenta prvotno je napravljen scraper podataka s kojim je
+jasnije razumijevanje koda kao i njegovo olakšano preuređivanje.
+
+Backend aplikacije razvijen je korištenjem Python web frameworka FastAPI, koji je poznat po svojoj jednostavnosti korištenja.
+
+
+Za izradu inteligentnog asistenta prvotno je napravljen scraper podataka s kojim je
 izrađen skup podataka koji je poslužio za treniranje inteligentnog asistenta.
 
-Backend je ...
 
-Popis funkcionalnosti - napraviti tablicu možda.
 
-\section{Izrada web stranice}
-
+\section{Struktura web stranice}
+Sljedeća tablica prikazuje pregled stranica web aplikacije te pripadajuće komponente koje su na njima implementirane. Svaka stranica ima svoju
+svrhu čime se osigurava intuitivna navigacija. Svaka stranica sadrži obavezne elemente kao što su podnožje (eng. footer) i zaglavlje (eng. header).
 \begin{table}[h!]
-    \centering
-    \begin{tabular}{|l|p{7cm}|p{7cm}|}
-    \hline
-    \textbf{Stranica} & \textbf{Komponente} & \textbf{Opis} \\
-    \hline
-    Sve stranice & Header, Footer & Zajednički elementi svih stranica. \\
-    \hline
-    Početna & Slider, Motivacija, Kratko o Łódźu, Drugi gradovi & Linkovi prema drugim stranicama. \\
-    \hline
-    About \mbox{Łódź} & Dodatno o gradu, Review EX studenata & Informacije i iskustva studenata Erasmus+. \\
-    \hline
-    Other Cities &  & Pregled ostalih gradova Poljske. \\
-    \hline
-    Questions & Forma za pitanja & Ako asistent ne zna odgovor. \\
-    \hline
-    AI asistent & Sučelje za razgovor s korisnikom &  \\
-    \hline
-    \end{tabular}
-    \caption{Struktura stranica i njihovih komponenti}
+\centering
+\caption{Struktura stranica i njihovih komponenti}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|p{3.5cm}|p{5cm}|p{6.2cm}|}
+\hline
+\textbf{Stranica / Element} & \textbf{Komponente} & \textbf{Opis} \\
+\hline
+Početna & Slider, Motivacija, Kratko o Łódźu, Drugi gradovi & Uvodna stranica s informacijama i poveznicama prema ostalim dijelovima stranice. \\
+\hline
+O Łódźu & Dodatno o gradu, Iskustva bivših studenata & Informacije o gradu i iskustvima Erasmus+ studenata. \\
+\hline
+Drugi gradovi & Pregled gradova & Pregled ostalih gradova Poljske koje je moguće posjetit. \\
+\hline
+Pitanja & Forma za postavljanje pitanja & Korisnik postavlja pitanje ako AI asistent ne ponudi tražene informacije. \\
+\hline
+Dokumenti & Pregled, dodavanje i brisanje dokumenata za RAG & Sekcija za prikaz i pregled dokumenata koji služe kako bi se odgovorilo na pitanja korisnika. \\
+\hline
+AI asistent (pop-up) & Sučelje za razgovor & Interaktivni chat s korisnikom; otvara se klikom na ikonu asistenta. \\
+\hline
+\end{tabular}
 \end{table}
 
-\section{Izrada inteligentnog asistenta}
+\textbf{[Napomena]} - Svaka stranica sadrži obavezne elemente kao što su podnožje (eng. footer) i zaglavlje (eng. header).
 
-\subsection{Prikupljanje podataka}
-\subsubsection{Web scraping}
-\subsubsection{Čišćenje i obrada podataka}
-\subsection{Izrada modela}
-\subsubsection{Evaluacija modela}
+\section{Korisničko sučelje (Frontend)}
+Na sljedećoj slici može se vidjeti struktura frontend dijela. Prikazane su samo određeni dijelovi koji predstavljaju najvažnije
+stvari u frontend dijelu.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=1\textwidth]{./assets/frontendstructure.png} 
+    \caption{Struktura frontend dijela}
+    \label{fig:slika18}
+\end{figure}
+
+Funkcija askAssistant šalje pitanje i opcionalno PDF datoteke backendu putem HTTP POST zahtjeva. Koristi se za komunikaciju s FastAPI-jem
+(ruta /ask) koji obrađuje pitanje uz kontekst PDF-ova.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{JavaScript}
+export async function askAssistant(question, files = []) {
+    const formData = new FormData();
+    formData.append("question", question);
+
+    if (files && files.length > 0) {
+        files.forEach(file => formData.append("pdfs", file));
+    }
+
+    const response = await fetch("http://localhost:8000/ask", {
+        method: "POST",
+        body: formData,
+    });
+
+    if (!response.ok) {
+        throw new Error(`Request failed: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data;
+}
+\end{minted}
+\caption{Chat.jsx}
+\label{lst:chat}
+\end{longlisting}
+
+Funkcija sendContactForm šalje podatke iz kontakt forme na backend rutu /send email koristeći POST zahtjev s JSON tijelom.
+Koristi se za slanje emailova s korisničkim podacima (ime, email, poruka itd.) na server putem FastAPI endpointa.
+
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{JavaScript}
+export async function sendContactForm(formData) {
+  const response = await fetch("http://localhost:8000/send-email", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
+
+  if (!response.ok) {
+    const data = await response.json();
+    throw new Error(data.error || "Greška prilikom slanja e-maila.");
+  }
+
+  return response.json();
+}
+\end{minted}
+\caption{Contact.jsx}
+\label{lst:contact}
+\end{longlisting}
+
+
+\section{Poslužiteljski dio (Backend)}
+Na sljedećoj slici može se vidjeti struktura backend dijela. Prikazane su sve stvari koje su od značaja za backend dio aplikacije.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=1\textwidth]{./assets/backendstructure.png}
+    \caption{Struktura backend dijela}
+    \label{fig:slika111}
+\end{figure}
+
+Env datoteka sadrži konfiguracijske varijable koje se koriste u aplikaciji. OpenAI API ključ se koristi za pristup OpenAI modelima,
+Gmail user je adresa s koje se šalju poruke s kontakt forme, Gmail password je aplikacijska lozinka za autentifikaciju Gmail računa i Gmail receiver
+je adresa primatelja poruka koja može biti kao Gmail user.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{./assets/env file.png}
+  \caption{Sadržaj env datoteke}
+  \label{fig:slika121}
+\end{figure}
+
+
 \subsection{Server}
+Main predstavlja glavnu datoteku koja pokreće FastAPI aplikaciju. Učitava se konfiguracija iz .env datoteke, omogućuje se CORS pristup
+kako bi frontend i backend mogli komunicirati bez ograničenja, te se u aplikaciju uključuju sve definirane rute za pitanja, dokumente, statistiku
+i email. 
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+
+from routes import ask, documents, stats, email
+
+load_dotenv()
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(ask.router)
+app.include_router(documents.router)
+app.include_router(stats.router)
+app.include_router(email.router)
+
+\end{minted}
+\caption{Main.py}
+\label{lst:main}
+\end{longlisting}
+
+
+\subsection{Servisi}
+
+Sljedeći dio koda upravlja vektorskom bazom podataka koristeći FAISS i OpenAIEmbeddings. Omogućuje učitavanje vektorske baze podataka, dodavanje
+novih dokumenata te brisanje dokumenata na temelju imena datoteke. Vektorska baza podataka se lokalno pohranjuje u direktorij vectorstore.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+import os
+from langchain_community.embeddings import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
+
+VECTORSTORE_DIR = "vectorstore"
+
+def load_vectorstore():
+    embeddings = OpenAIEmbeddings()
+    if not os.path.exists(VECTORSTORE_DIR):
+        raise FileNotFoundError("Vectorstore not found.")
+    return FAISS.load_local(VECTORSTORE_DIR, embeddings, allow_dangerous_deserialization=True)
+
+def get_or_create_vectorstore(all_docs):
+    embeddings = OpenAIEmbeddings()
+
+    if os.path.exists(VECTORSTORE_DIR):
+        db = FAISS.load_local(VECTORSTORE_DIR, embeddings, allow_dangerous_deserialization=True)
+        if all_docs:
+            db.add_documents(all_docs)
+            db.save_local(VECTORSTORE_DIR)
+    elif all_docs:
+        db = FAISS.from_documents(all_docs, embeddings)
+        db.save_local(VECTORSTORE_DIR)
+    else:
+        raise ValueError("No documents provided and vectorstore doesn't exist.")
+
+    return db
+
+def delete_file_from_vectorstore(filename):
+    try:
+        db = load_vectorstore()
+    except FileNotFoundError:
+        return False
+
+    remaining_docs = [
+        doc for doc in db.docstore._dict.values()
+        if doc.metadata.get("source") != filename
+    ]
+
+    if len(remaining_docs) == len(db.docstore._dict):
+        return False
+
+    embeddings = OpenAIEmbeddings()
+    new_db = FAISS.from_documents(remaining_docs, embeddings)
+    new_db.save_local(VECTORSTORE_DIR)
+    return True
+\end{minted}
+\caption{Vectorstore.py}
+\label{lst:vectorstore}
+\end{longlisting}
+
+Nadalje se definira mehanizam za dohvaćanje odgovora na pitanja pomoću modela gpt-3.5-turbo-16k i prethodno izgrađene vektorske baze.
+Koristi se RetrievalQA lanac koji kombinira jezični model s retriverom za dohvat relevantnih dokumenata. Može se podesiti broj dokumenata
+koji se koriste za generiranje odgovora.
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+from langchain_openai import ChatOpenAI
+from langchain.chains import RetrievalQA
+
+def get_qa_chain(db):
+    retriever = db.as_retriever(search_kwargs={"k": 2}) 
+    llm = ChatOpenAI(model="gpt-3.5-turbo-16k")
+    return RetrievalQA.from_chain_type(llm=llm, retriever=retriever)
+\end{minted}
+\caption{qa.py}
+\label{lst:qa}
+\end{longlisting}
+
+\subsection{Rute}
+Ova API ruta omogućuje korisniku da pošalje jedan ili više PDF dokumenata i postavit pitanje vezano uz njihov sadržaj. PDF dokumenti
+se obrađuju i dijele na manje dijelove, a zatim se kreira ili nadopunjuje vektorska baza podataka. Jezični model koristi najrelevantnije dijelove
+za generiranje odgovora. Ruta vraća generirani odgovor zajedno s porukom o uspješnoj obradi i indeksiranju PDF dokumenata.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+from fastapi import APIRouter, UploadFile, File, Form
+from services.pdf_handler import process_pdfs
+from services.vectorstore import get_or_create_vectorstore
+from services.qa import get_qa_chain
+
+router = APIRouter()
+
+@router.post("/ask")
+async def ask_pdf(
+    question: str = Form(...),
+    pdfs: list[UploadFile] = File(None)
+):
+    all_docs = await process_pdfs(pdfs)
+    db = get_or_create_vectorstore(all_docs)
+    qa_chain = get_qa_chain(db)
+    response = qa_chain.run(question)
+
+    return {"answer": response, "message": "PDF document successfully added and indexed."}
+\end{minted}
+\caption{ask.py}
+\label{lst:ask}
+\end{longlisting}
+
+Nadalje su definirane dvije rute: jedna za dohvat popisa svih PDF dokumenata koji su trenutno indeksirani u vektorskoj bazi podataka, a drugačije
+za brisanje dokumenata po nazivu dokumenta. Ruta za brisanje vraća grešku ako dokument s tim imenom ne postoji u vektorskoj bazi podataka.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+from fastapi import APIRouter, HTTPException
+from services.vectorstore import load_vectorstore, delete_file_from_vectorstore
+
+router = APIRouter()
+
+@router.get("/documents")
+def list_documents():
+    db = load_vectorstore()
+    sources = set()
+    for doc in db.docstore._dict.values():
+        if "source" in doc.metadata:
+            sources.add(doc.metadata["source"])
+    return {"documents": list(sources)}
+
+@router.delete("/delete-document")
+def delete_document(filename: str):
+    success = delete_file_from_vectorstore(filename)
+    if not success:
+        raise HTTPException(status_code=404, detail=f"No document found with source: {filename}")
+    return {"status": "success", "message": f"Deleted document: {filename}"}
+\end{minted}
+\caption{documents.py}
+\label{lst:documents}
+\end{longlisting}
+
+Sljedeća API ruta omogućuje slanje e-mail poruke s kontakt forme. Korisnik ispunjava ime, email, broj telefona, adresu i poruku, a backend
+zatim šalje e-mail na zadanu adresu koristeći Gmail SMTP. Podaci se šalju putem SSL-a, a konfiguracija dolazi iz .env datoteke.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+from fastapi import APIRouter
+from pydantic import BaseModel, EmailStr
+import smtplib
+from email.mime.text import MIMEText
+from email.utils import formataddr
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+router = APIRouter()
+
+class ContactForm(BaseModel):
+    fullName: str
+    phone: str
+    email: EmailStr
+    address: str
+    description: str
+
+@router.post("/send-email")
+def send_email(data: ContactForm):
+    sender_email = os.getenv("GMAIL_USER")
+    sender_password = os.getenv("GMAIL_PASSWORD")
+    receiver_email = os.getenv("GMAIL_RECEIVER") or sender_email
+
+    msg_content = f"""
+    Nova poruka s kontakt forme:
+
+    Ime i prezime: {data.fullName}
+    Telefon: {data.phone}
+    E-mail: {data.email}
+    Adresa: {data.address}
+    Poruka:
+    {data.description}
+    """
+
+    msg = MIMEText(msg_content, "plain", "utf-8")
+    msg["Subject"] = "Nova poruka s web stranice"
+    msg["From"] = formataddr(("Web kontakt forma", sender_email))
+    msg["To"] = receiver_email
+    msg["Reply-To"] = data.email  
+
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+            server.login(sender_email, sender_password)
+            server.sendmail(sender_email, receiver_email, msg.as_string())
+        return {"message": "Email je uspješno poslan."}
+    except Exception as e:
+        print("Greška prilikom slanja emaila:", e)
+        return {"error": "Neuspješno slanje emaila. Provjerite postavke."}
+\end{minted}
+\caption{email.py}
+\label{lst:email}
+\end{longlisting}
+
+
+\subsection{Inteligentni asistent}
+test
+\subsubsection{Prikupljanje podataka}
+
+Prikupljanje podataka započelo je kroz razgovor s profesoricom umjetne inteligencije koju sam upoznao tijekom Erasmus+ razmjene. 
+Profesorica je bila izuzetno korisna osoba za ovaj rad jer je rođena i živi u gradu Łódź. Ukratko sam joj predstavio temu rada, 
+a ona mi je preporučila nekoliko relevantnih internetskih izvora.
+
+Sljedeća tablica prikazuje pregled korištenih izvora, broj zapisa, naziv rezultirajuće datoteke i alate korištene za obradu podataka:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|p{4cm}|p{3.5cm}|p{5cm}|p{3.5cm}|}
+\hline
+\textbf{Web izvor} & \textbf{Veličina skupa podataka} & \textbf{Naziv datoteke} & \textbf{Korišteni alati} \\
+\hline
+\url{https://lodz.pl/} & 1000 zapisa & \raggedright\texttt{lodz\_articles} & \texttt{scraper2.py}, \texttt{translator.py} \\
+\hline
+\url{https://lodz.travel/turystyka/co-zobaczyc/} & 185 zapisa & \raggedright\texttt{lodz\_destinations} & \texttt{scraper.py}, \texttt{translator.py} \\
+\hline
+\url{https://polskapogodzinach.pl/lodz-atrakcje/} & 52 stranice & \raggedright\texttt{lodz\_attractions} & ručno konvertirano u PDF \\
+\hline
+\end{tabular}
+\caption{Korišteni izvori podataka i alati za obradu}
+\label{tab:izvori}
+\end{table}
+
+
+
+\subsubsection{Web scraping}
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=1\textwidth]{./assets/structure-scraper.png}
+    \caption{Struktura scraper foldera}
+    \label{fig:slika1111}
+\end{figure}
+
+Sljedeća metoda dohvaća HTML sadržaj stranice. Prima URL i vraća BeautifulSoup objekt za lakšu obradu HTML-a. Postavlja User-Agent 
+kako bi se izbjeglo blokiranje od strane servera. U slučaju do pogreške (npr. timeout) ispisuje poruku i vraća None. 
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{python}
+import requests
+from bs4 import BeautifulSoup
+from urllib.parse import urljoin
+import json
+import time
+
+BASE_URL = "https://lodz.travel"
+visited_urls = set()
+
+def get_soup(url):
+    print(f"Fetching: {url}")
+    try:
+        res = requests.get(url, headers={
+            "User-Agent": "Mozilla/5.0"
+        })
+        res.encoding = 'utf-8'
+        return BeautifulSoup(res.text, 'html.parser')
+    except Exception as e:
+        print(f"Error fetching page: {e}")
+        return None
+\end{minted}
+\caption{Scraper 1/6}
+\label{lst:scraper1}
+\end{longlisting}
+
+Ova metoda rekurzivno prolazi kroz listu i sve li stavke u njoj. Za svaku pronađenu stranicu iz izbornika izdvaja se title i href te se stvara
+struktura koja sadrži title, url, content i subcategories.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{python}
+def parse_menu(ul_tag, level=1):
+    data = []
+    for li in ul_tag.find_all("li", recursive=False):
+        a_tag = li.find("a", recursive=False)
+        if not a_tag:
+            continue
+        title = a_tag.text.strip()
+        href = urljoin(BASE_URL, a_tag["href"])
+        print(f"{'  ' * (level-1)}({level}) {title} -> {href}")
+        node = {
+            "title": title,
+            "url": href,
+            "content": "",
+        }
+        sub_ul = li.find("ul")
+        if sub_ul:
+            node["subcategories"] = parse_menu(sub_ul, level + 1)
+        data.append(node)
+    return data
+\end{minted}
+\caption{Scraper 2/6}
+\label{lst:scraper2}
+\end{longlisting}
+
+Sljedeća metoda dohvaća sadržaj za svaku stranicu. Ulazi u svaku stranicu u hijerarhiji i izdvaja tekst iz diva s klasom ce-bodytext.
+Sprema pročišćeni tekst u item["content"] te traži dodatne poveznice unutar sadržaja i dodaje ih kao subcategories i rekurzivno ih obađuje.
+
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{python}
+def fill_content_recursively(data):
+    for item in data:
+        if item["url"] in visited_urls:
+            continue
+        visited_urls.add(item["url"])
+
+        print(f"\nRetrieving content for: {item['title']}")
+        soup = get_soup(item["url"])
+        if not soup:
+            continue
+
+        content_div = soup.select_one("div.ce-bodytext")
+        if content_div:
+            item["content"] = content_div.get_text(separator="\n", strip=True)
+            print(f"Content retrieved successfully ({len(item['content'])} characters)")
+
+            sub_links = []
+            for a in content_div.find_all("a", href=True):
+                href = urljoin(BASE_URL, a["href"])
+                if BASE_URL in href and href not in visited_urls:
+                    title = a.get_text(strip=True)
+                    if title:
+                        sub_links.append({
+                            "title": title,
+                            "url": href,
+                            "content": ""
+                        })
+
+            if sub_links:
+                print(f"Found {len(sub_links)} internal subpages inside: {item['title']}")
+                item["subcategories"] = sub_links
+                fill_content_recursively(sub_links)
+
+        if "subcategories" in item:
+            fill_content_recursively(item["subcategories"])
+\end{minted}
+\caption{Scraper 3/6}
+\label{lst:scraper3}
+\end{longlisting}
+
+Ova metoda broji sve stavke (stranice i podstranice) u hijerarhiji podataka. Koristi se za statistiku na kraju izvršavanja.  
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{python}
+def count_total_items(data):
+    count = 0
+    for item in data:
+        count += 1
+        if "subcategories" in item:
+            count += count_total_items(item["subcategories"])
+    return count
+\end{minted}
+\caption{Scraper 4/6}
+\label{lst:scraper4}
+\end{longlisting}
+
+Ova metoda pokreće cijeli proces. Kreće od glavne stranice navigacije gdje se dohvaća struktura linkova pomoću parse menu funkcije.
+Zatim se rekurzivno dohvaća sadržaj sa svih stranica pomoću fill content recursively funkcije. Na kraju svi podaci se spremaju u JSON datoteku 
+i ispisuje se kolko je ukupno stranica pronađeno i spremljeno.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{python}
+def main():
+    start_url = "https://lodz.travel/turystyka/"
+    soup = get_soup(start_url)
+    aside_nav = soup.select_one("ul.aside-nav")
+    if not aside_nav:
+        print("Navigation not found! Check the URL or HTML structure.")
+        return
+
+    print("Parsing main navigation...")
+    structured_data = parse_menu(aside_nav)
+
+    print("\nFetching content from all pages...")
+    fill_content_recursively(structured_data)
+
+    with open("lodz_content.json", "w", encoding="utf-8") as f:
+        json.dump(structured_data, f, indent=2, ensure_ascii=False)
+
+    total = count_total_items(structured_data)
+    print(f"\nTotal records extracted: {total}")
+    print("Done! Data saved to: lodz_content.json")
+
+if __name__ == "__main__":
+    main()
+\end{minted}
+\caption{Scraper 5/6}
+\label{lst:scraper5}
+\end{longlisting}
+
+
+Ova python skripta učitava JSON s člancima na poljskom jeziku i prevodi ih na engleski koristeći biblioteku deep-translator. Funkcija rekurzivno pronalazi
+kroz sve stavke i podkategorije u JSON strukturi. Napredak prevođenja ispisuje se u konzoli, a prevedeni podaci spremaju se u novu .json
+datoteku.
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+import json
+from deep_translator import GoogleTranslator
+
+INPUT_FILE = "lodz_articles_pl.json"
+OUTPUT_FILE = "lodz_articles_en.json"
+
+def translate_text(text, src="pl", target="en"):
+    try:
+        return GoogleTranslator(source=src, target=target).translate(text)
+    except Exception as e:
+        return f"[Translation Error] {text}"
+
+def translate_node(node, counter, total):
+    if "title" in node:
+        node["title"] = translate_text(node["title"])
+    if "content" in node and node["content"]:
+        node["content"] = translate_text(node["content"])
+
+    counter[0] += 1
+    print(f"[{counter[0]}/{total}] translated")
+
+    if "subcategories" in node:
+        for sub in node["subcategories"]:
+            translate_node(sub, counter, total)
+
+def count_nodes(data):
+    count = 0
+    for item in data:
+        count += 1
+        if "subcategories" in item:
+            count += count_nodes(item["subcategories"])
+    return count
+
+def main():
+    print("Loading JSON...")
+    with open(INPUT_FILE, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    total = count_nodes(data)
+    print(f"Translating {total} entries...")
+
+    counter = [0] 
+    for entry in data:
+        translate_node(entry, counter, total)
+
+    print("Saving translated JSON...")
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+    print(f"Done! Translated file saved as: {OUTPUT_FILE}")
+
+if __name__ == "__main__":
+    main()
+
+\end{minted}
+\caption{Scraper 6/6}
+\label{lst:scraper6}
+\end{longlisting}
+
+
+\subsubsection{Čišćenje i obrada podataka}
+test
+
+
+
+
+
 \section{Prikaz rada aplikacije}
 
+Što se tiče frontenda, projekt je razvijan korištenjem Vite okoline, a pokretanje aplikacije omogućeno je korištenjem naredbe \texttt{npm run dev}.
 
+Backend se pokreće lokalno pomoću Uvicorn ASGI servera, korištenjem naredve \texttt{uvicorn main:app --reload} koja omogućuje automatsko
+ponovno učitavanje prilikom promjena u kodu.
 
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{./assets/pokretanje.png}
+  \caption{test}
+  \label{fig:slika93}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{./assets/Home.png}
+  \caption{test}
+  \label{fig:slika94}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{./assets/about.png}
+  \caption{test}
+  \label{fig:slika95}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{./assets/other.png}
+  \caption{test}
+  \label{fig:slika96}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{./assets/question.png}
+  \caption{test}
+  \label{fig:slika97}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{./assets/documents.png}
+  \caption{test}
+  \label{fig:slika98}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{./assets/asistent1.png}
+  \caption{test}
+  \label{fig:slika99}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{./assets/asistent2.png}
+  \caption{test}
+  \label{fig:slika100}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1\textwidth]{./assets/statzs.png}
+  \caption{test}
+  \label{fig:slika101}
+\end{figure}
 
 \chapter{Zaključak}
 
 
 
+
+
+
+
+
+
+
+
 Za kraj, Erasmusa se ne treba bojati jer je to prekasno iskustvo koje se pamti do kraja života. Svaki problem s kojim se suoči osoba, čini osobu jačom i neovisnijom. 
 Boravak na jednom mjestu dulje vrijeme postat će čudan način života. Jednom Erasmus+, uvijek Erasmus+!
+
 Poveznica na Github: \href{https://github.com/ababic20/Website-with-a-chatbot.git}{\textbf{Poveznica}} 
 
 \makebackmatter

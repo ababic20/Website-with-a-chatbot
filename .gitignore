@@ -52,6 +52,7 @@ package-lock.json
 *.pdfsync
 *.snm
 *.vrb
+.lol
 
 #Backend
 
@@ -64,3 +65,4 @@ vectorstore/
 
 .DS_Store
 Thumbs.db
+_minted
