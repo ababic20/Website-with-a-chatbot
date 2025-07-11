@@ -107,7 +107,7 @@ To podrazumijeva treniranje i prilagođavanje specifičnom skupu podataka, kako 
 \chapter{Uvod}
 
 Na početku rada obrađuje se pojam studiranja kao i svi aspekti koji se usko vežu uz njega. Poseban naglasak je stavljen na važnost studiranja u kontekstu osobnog razvoja, izgradnje karaktera
-te stjecanja različitih znanja. U nastavku se detaljnije razmatra program Erasmus+, s ciljem približavanja njegovih mogućnosti i koristi. Glavni cilj je ukazati na izazove poput nedostatka interesa
+te stjecanja različitih znanja. U nastavku se detaljnije razmatra Erasmus+ program, s ciljem približavanja njegovih mogućnosti i koristi. Glavni cilj je ukazati na izazove poput nedostatka interesa
 za prijavu na Erasmus+ studijski boravak, prisutnog straha, nesigurnosti te neinformiranosti među studentima. 
 
 Kao rješenje na navedene izazove izrađena je web stranica s inteligentnim asistentom koji je namijenjen da odgovori na specifične upite korisnika. Web stranica predstavlja sredstvo informiranja 
@@ -115,14 +115,13 @@ prvotno za sve studente koji dolaze u Łódź iz svojih država. Osim toga web s
 početne stranice, stranice koja opisuje kratko Łódź, stranice koja prikazuje 15 najvećih grada Poljske i stranice na kojoj se nalazi forma. Forma je namijenjena za pitanja na koja nije mogao 
 AI (eng. Artificial Inteligence) asistent odgovoriti. 
 
-Za izradu AI modela odabrano je korištenje RAG (eng. Retrieval Augmenting Generation) gdje se uzima postojeći AI model i on se dotrenirava na specifičnom skupu podataka. 
-Za takve potrebe pronađeno je nekoliko lokalnih web stranica koje opisuju život u Łódźu. Za potrebe treniranja razvijen je scraper koji dohvaća primarno tekstualni sadržaj s istih tih stranica
-i sprema ih u JSON obliku. Naknadno su te JSON datoteke pročišćene i iskorištene za daljnje treniranje. Tijekom svoje Erasmus+ studentske mobilnosti imao sam prilike razgovarati s profesoricom na 
+Za izradu AI modela odabrano je korištenje RAG metode (eng. Retrieval Augmenting Generation) gdje se uzima postojeći AI model i on se bazira na specifičnom skupu podataka. 
+Za takve potrebe pronađeno je nekoliko lokalnih web stranica koje opisuju život u Łódźu. Za potrebe rada razvijen je scraper koji dohvaća primarno tekstualni sadržaj s istih tih stranica
+i sprema ih u JSON obliku. Naknadno su te JSON datoteke pročišćene i iskorištene za daljnje korištenje. Tijekom svoje Erasmus+ studentske mobilnosti imao sam prilike razgovarati s profesoricom na 
 kolegiju Umjetna inteligencija, kojoj sam ukratko predstavio ideju svog diplomskog rada. Naknadno sam je zamolio da mi preporuči nekoliko korisnih stranica koje su vezane za Łódź. Budući da se profesorica rodila u Łódźu i tamo živi te radi cijeli život, smatrao sam da je upravo ona prava osoba kojoj se mogu obratiti
 s pitanjem o korisnim izvorima informacija vezanima za život u Łódźu. 
 
-Za tehnologije su odabrani: React (Java Script) za frontend, Python (za razvoj scrapera), NodeJS (Za razvoj servera na backendu), 
-Python (za razvoj modela unutar Google Colab platforme). 
+Za tehnologije su odabrani: React (Java Script) za frontend, Python (za razvoj scrapera), Python (Za razvoj servera i modela na backendu). 
 
 Prethodno ulomci uvode nas u temu s kojom se bavi ovaj rad, a to je „Informativna platforma s inteligentnim asistentom o Erasmus+ 
 iskustvu u Łódźu“. Prvotna motivacija za proučavanje ove teme proizišla je iz Erasmus+ studijskog boravka u Łódźu (Poljska) u trajanju jednog semestra.
@@ -133,7 +132,7 @@ iskustvu u Łódźu“. Prvotna motivacija za proučavanje ove teme proizišla j
 
 Važnost učenja se proteže kroz sve uzraste i faze života. Već od malih nogu školska djeca se potiču da marljivo uče jer to na neki način može odrediti njihov put u budućnosti.
 Unutar ovog poglavlja više je vremena posvećeno studiranju kao važnom segmentu u životnom razdoblju pojedinca. U tom kontekstu visoko obrazovanje može napraviti razliku između uspješne osobe
-i neuspjeha. Ulaganje u znanje je beskrajno i nikada ne prestaje i može se sagledati kao investicija u budućnost. Život bez obrazovanja je kao tijelo bez duše, jer obrazovanje pojedincu donosi smisao, 
+i neuspjeha. Ulaganje u znanje je beskrajno i nikada ne prestaje i može se razmotriti kao investicija u budućnost. Život bez obrazovanja je kao tijelo bez duše, jer obrazovanje pojedincu donosi smisao, 
 znanje i prilike koje oblikuju njegov osobni i profesionalni razvoj. Pomaže u razvoju kritičkog mišljenja, ima plemenit karakter i razvija vještine koje su potrebne za suočavanje sa svim životnim izazovima. 
 Prema riječima stručnjaka iz škola u Bengaluru (Indija), studij je važan jer se koristi za ublažavanje kompleksnosti većine izazova s kojim se susretne pojedinac \cite{digital3602025studies}. 
 
@@ -300,7 +299,7 @@ pokrenut na temelju umjetne inteligencije. U to vrijeme Siri je predstavljao rev
 zatrpani s ogromnom količinom inteligentnih asistenta. Korisničko iskustvo (eng. User experience) je sada više nego ikada važno. Održavanje zadovoljstva 
 korisnika/kupca i upravljanje njihovim očekivanjima zahtijeva stalne inovacije i poboljšanja. Korisnici žele da stranice budu intuitivne i učinkovite
 te da na neki način zadovolje njihove potrebe. AI asistenti su postali popularni alati koji pomažu u poboljšanju korisničkog iskustva.
-Točnije rečeno dodaju novi način interakcije između korisnika i pružatelja usluge i samim time povećavaju angažman, zadovoljstvo ili profit.
+Točnije rečeno dodaju novi način interakcije između korisnika i pružatelja usluge i samim time povećavaju angažman, zadovoljstvo ili profit \cite{buchan2024ai}.
 
 U svijetu umjetne inteligencije često se pojavljuju pojmovi poput bota, asistenta, copilota i agenta. Iako na prvi pogled djeluju kao sinonimi, svaki od njih ima svoju specifičnu svrhu, primjenu i skup prednosti.
 
@@ -327,7 +326,7 @@ Chatbot         & Jednostavni ponavljajući zadaci   & Osnovna korisnička podr�
 \subsection{Asistent}
 
 AI asistenti donose inteligenciju automatizaciji razumijevanjem konteksta i time se personalizira interakcija kako bi se mogao obaviti niz zadataka. Ovi sustavi nadilaze skriptirane odgovore
-koristeći tehnologije poput obrade prirodnog jezika (eng. Natural processing language) ili strojnog učenja (eng. Machine leaning). Kontekstualno su svjesni i razumiju korisnički unos što omogućava
+koristeći tehnologije poput obrade prirodnog jezika (eng. Natural processing language) ili strojnog učenja (eng. Machine learning). Kontekstualno su svjesni i razumiju korisnički unos što omogućava
 vođenje višestrukih razgovora. Integriraju se s alatima poput kalendara, aplikacijama za razmjenu poruku i poslovnim sustavima. Prilagođava se ponašanju korisniku kako bi se s vremenom poboljšao.
 Npr. mogu se koristiti za zakazivanje sastanaka, upravljanje e-poštom ili prilagođavanje rasvjete i temperature u pametnim domovima \cite{exomindset2025difference}.
 
@@ -335,8 +334,8 @@ U nastavku su navedene prednosti inteligentnih asistenata \cite{buchan2024ai}:
 \begin{itemize}
     \item \textbf{Brzina i jednostavnost} - AI asistenti omogućuju korisnicima da brzo i jednostavno dobiju ono što im je potrebno, smanjujući
     gubitak vremena. TikTok je dobar primjer kako usluga može neindirektno zadržati korisnika na njihovoj platformi jer su razvili mehanizam koji
-    je naučio pretpostavljati što korisnik želi gledati.
-    \item \textbf{Pružanje podrške 24/7} - Ai asistenti su dostupni stalno, čime je omogućena podrška korisnicima kad god je to potrebno. 
+    je naučio pretpostavljati što korisnik želi gledati,
+    \item \textbf{Pružanje podrške 24/7} - AI asistenti su dostupni stalno, čime je omogućena podrška korisnicima kad god je to potrebno, 
     \item \textbf{Prihvaćanje od strane ljudi} - razgovor s AI asistentima se odvija kroz korisnička sučelja, gdje korisnici mogu
     komunicirati na ljudski razumljiv način s asistentima. 
 \end{itemize}
@@ -348,7 +347,7 @@ tako što im odgovara putem zvučnika uređaja i prikazuje paralelno relevantne 
 u neprofitnom istraživačkom institutu sa sjedištem u Kaliforniji nakon čega su pojedini članovi odlučili osnovati startup tvrtku pod nazivom Siri. Godine 2010. Apple je preuzeo Siri što
 je dovelo do brze integracije u IOS uređaje. Tijekom 2011. i 2012. godine Siri je bio na Iphone 4S i na iPAD-ovima treće generacije. U lipnju 2024. Apple je na konferenciji WWDC 2024 najavio značajnu
 reviziju Sirija gdje je predstavljen Apple Intelligence koji predstavlja novi osobni AI sustav koji poboljšava Sirijeve mogućnosti. U početku glas Sirija je bio od umjetnice Susan Bennet. Zanimljiv slučaja
-je bio da sve dok joj nije prijateljica javila, Bennet nije bila svjesna da je postala Sirin glas. Iako Apple nikada nije priznao da je Bennet orginalni Siirin glas, audio stručnjaci na CNN-U
+je bio da sve dok joj nije prijateljica javila, Bennet nije bila svjesna da je postala Sirin glas. Iako Apple nikada nije priznao da je Bennet orginalni Sirin glas, audio stručnjaci na CNN-u
 su to potvrdili. Karen Jacobsen je žena koja je posudila svoj orginalni ženski glas za GPS sustave, dok je Jon Biggs, posudio svoj glas za mušku verziju Sirija. U međuvremenu Apple je razvio novi ženski glas za IOS11
 pomoću tehnologije dubokog učenja snimanjem i kombiniranjem govora stotine kandidatkinja. Siri može obavljati razne zadatke kao što su: navigacija uputama (npr. Kakav je promet na putu do posla?),
 zakazivanje događaja i podsjetnika (npr. Slanje poruke za rođendan), pretraživanje weba (npr. Pronađi sliku psa) ili mjenjanje postavki (npr. Povećanje svjetline zaslona) \cite{mixon_siri_2025}.
@@ -370,7 +369,7 @@ ugraditi u Microsoft Teams ili u web stranicu. Microsoft Copilot studio se bazir
 inspiraciju za odgovore. Postoje prilagođene (eng. Custom) i sistemske (eng. System). Prilagođene teme se koriste za komuniciranje s korisnikom (Dobar dan, doviđenja) dok se sistemske koriste
 za pozadinske operacije (inicijalna poruka pri početku konverzacije ili završetak razgovora). Kada kopilot nema definiranu temu za odgovor na neko pitanje onda odlazi u sistemske teme i tamo 
 otvara conversational boosting temu gdje je to zapravo tijek rada koji traži informacije iz baze znanja \cite{copilot2025}. Kao i svaki sustav, Copilot Studio ima svoje limitacije 
-a to su: max 8000 zahtjeva po minuti u Dataverse okruženju, max datoteka veličine 512 MB, max 500 datoteka, max 200 fraza po temi i max 50 agenata po timu \cite{quotas2025}.
+a to su: max 8000 zahtjeva po minuti u Dataverse okruženju, max datoteka veličine 512 MB, max 500 datoteka, max 200 fraza po temi i max 50 copilota po timu \cite{quotas2025}.
 
 \begin{figure}[ht!]
     \centering
@@ -383,7 +382,7 @@ Osim toga isproban je i Bing Custom Search koji je vanjski servis koji se može 
 internet nego da se koristi taj skup podataka koji je naveden. Putem "custom configuration ID-a" može se povezati Custom Bing Search i Copilot Studio.
 Naknadno isprobana je funkcionalnost Adaptive Cards Designer koji omogućava kreiranje vlastitih UI (eng. User Interface) elemenata koji se mogu koristiti unutar razgovora s korisnikom. 
 Na sljedećoj slici može se vidjeti da je to JSON koji je potrebno importati u Copilot Studio. Na stranici \underline{https://adaptivecards.io/designer/} postoji veliki broj 
-primjera koji su već kreirani i besplatni su za korištenje.
+primjera koji su već kreirani i besplatni su za korištenje \cite{copilot2025}.
 
 \begin{figure}[ht!]
     \centering
@@ -494,10 +493,8 @@ Kroz sljedeće poglavlje je prikazano kako funkcioniraju inteligentni asistenti 
 \chapter{Retrieval Augmented Generation metoda}
 
 U ovom poglavlju obrađena je RAG (eng. Retrieval Augmented Generation) metoda, koja predstavlja suvremeni pristup u području obrade prirodnog jezika i kombinira sposobnosti generativnih modela
-s mehanizmima za dohvaćanje informacija iz vanjskih izvora. Poglavlje započinje pregledom povijesti i ključnih prednosti RAG pristupa, zatim slijedi teorijska osnova modela i njegova arhitektura
-kroz faze dohvaćanja i generiranja. Nadalje, razrađeni su tehnički aspekti implementacije, uključujući vrste retrievera, generativne modele i metode rangiranja rezultata, kao i integraciju s 
-vektorskim bazama podataka. Poseban naglasak stavljen je na primjenu RAG sustava, postupke treniranja i fino podešavanje modela, kao i izazove poput halucinacije i ažurnosti podataka.
-Na kraju predstavljene su dostupne biblioteke i alati koji olakšavaju razvoj RAG rješenja u praksi. 
+s mehanizmima za dohvaćanje informacija iz vanjskih izvora. Poglavlje započinje pregledom povijesti a zatim slijedi teorijska osnova modela i njegova arhitektura
+kroz faze dohvaćanja i generiranja. Nadalje je opisana primjena RAG-a, prednosti i izazovi te je zaključeno s pregledom dostupnih alata i biblioteka za implementaciju RAG sustava.
 
 \section{Uvod u RAG}
 
@@ -535,7 +532,7 @@ Politike o porodiljnom dopustu su složene i razlikuju se ovisno o državi u koj
 
 Korijeni RAG-a mogu se pratiti od 1950-ih i 1960-ih kada su se koristili sustavi za pronalaženje informacija. Istraživači Hans Peter Luhn i Gerald Salton postavili su temelje za modele
 vektorskog prostora omogućujući računalima da pronađu dokumente koji su relevantni za korisničke upite. Obrada prirodnog jezika značajnije je napredovala u 1980-ima i 1990-ima putem
-statistićkih jezičnih modela, poput n-gram modela \cite{custom_ai_studio2025}. 
+statističkih jezičnih modela, poput n-gram modela \cite{custom_ai_studio2025}. 
 
 Integracija pretraživanja i generiranja pojavila se u 2000-ima s razvojem sustava poput IBM Watsona, koji je koristio metodu pretraživanja za prikupljanje informacija i statističke modele 
 za generiranje odgovora. Razvoj neuronskih mreža u 2010-ima dodatno je ubrzao ovu integraciju. Transformatori omogućuju značajan napredak u modeliranju jezika, dok tehnike gustog pretraživanja,
@@ -574,7 +571,7 @@ RAG se sastoji od faze pronalaženja i faze generiranja sadržaja. U fazi pronal
 kako bi se odgovorilo na korisnički upit. U okruženju otvorene domene te činjenice uglavnom dolaze iz indeksiranih dokumenata na internetu. U okruženju zatvorene domene obično se koristi 
 uži skup izvora radi dodatne sigurnosti i pouzdanosti. Prije LLM-a, agenti su kroz razgovor pratili ručni tijek dijaloga. Pretpostavljali su namjeru klijenta, dohvaćali tražene informacije 
 i dostavljali odgovor za određeni scenarij. Za jednostavne upite, ova ručna metoda stabla odlučivanja funkcionirala je sasvim dobro. Problem takvog pristupa je da se je gubilo vrijeme na 
-pisanje i predviđanje svakog pitanja koje bi korisnik mogao postaviti. U takvim slučajevima, ako tražena informacija nije definirana u dostupnim podacima, chatbot neće bit u mogućnosti 
+pisanje i predviđanje svakog pitanja koje bi korisnik mogao postaviti. U takvim slučajevima, ako tražena informacija nije definirana u dostupnim podacima, AI sustav neće bit u mogućnosti 
 pružiti relevantan odgovor\cite{ibmRAG}. 
 
 Generalno RAG arhitektura se može objasniti kroz sljedeće karakteristike \cite{awsRAG2025}:
@@ -585,14 +582,14 @@ Generalno RAG arhitektura se može objasniti kroz sljedeće karakteristike \cite
     Jedna od tehnika (eng. embeeding language models) pretvara podatke u numerički oblik i sprema ih u vektorsku bazu podataka 
     (kako bi generativni modeli umjetne inteligencije to mogli razumjeti).
     \item \textbf{Preuzimanje relevantnih informacija} - Korisnički upit pretvara se u vektorski prikaz i uspoređuje se s vektorskim bazama podataka.
-    Na primjer, ako korisnik postavi pitanje chatbotu "Koliko dana godišnjeg odmora imam?", chatbot će morati preuzeti dokumente o politici godišnjeg 
+    Na primjer, ako korisnik postavi pitanje chatbotu "Koliko dana godišnjeg odmora imam?", AI sustav će morati preuzeti dokumente o politici godišnjeg 
     odmora uz evidenciju prošlih odmora za pojedinog zaposlenika. Takvi dokumenti će biti vraćeni korisniku jer su relevantni za njegov upit.
     \item \textbf{Proširivanje LLM upita} - Zatim, RAG model proširuje korisnički upit dodavanjem relevantnih dohvaćenih podataka u kontekstu. 
     Prošireni upit omogućuje modelima velikih jezika generiranje točnih odgovora na korisničke upite.
     \item \textbf{Ažuriranje vanjskih podataka} - Vrlo je bitno održati ažurne informacije i to se može ostvariti automatiziranjem procesa u stvarnom vremenu ili periodičnoj obradi. 
 \end{enumerate}
 
-Današni AI sustavi bazirani na LLM-ovima mogu dati korisnicima odgovore bez da ljudi pišu definirane skripte. Samim nadovezivanjem RAG-a na LLM-ove smanjuje se potreba za ponovnim obučavanjem 
+Današnji AI sustavi bazirani na LLM-ovima mogu dati korisnicima odgovore bez da ljudi pišu definirane skripte. Samim nadovezivanjem RAG-a na LLM-ove smanjuje se potreba za ponovnim obučavanjem 
 modela na novim primjerima \cite{ibmRAG}. Upiti korisnika nisu uvijek jednostavni, mogu biti dvosmisleno formulirani, složeni ili mogu zahtijevati znanje koje model nema. U takvim uvjetima 
 LLM-ovi su skloni izmišljanju stvari. Rod Lastra opisuje velike jezične model kao “Zamislite model kao pretjerano nestrpljivog mlađeg zaposlenika koji izbrblja odgovor prije nego što provjeri činjenice”
 Lastra dodatno ističe važnost svjesnog upravljanja neizvjesnošću u odgovaranjum, navodeći: “Iskustvo nas uči da zastanemo i kažemo kada nešto ne znamo. LLM-ovi moraju biti eksplicitno obučeni da prepoznaju pitanja na koja ne mogu odgovoriti” \cite{ibmRAG}. 
@@ -621,7 +618,7 @@ rezultata dohvaćanja. Retriver može ugraditi dokumente i upite u visokodimenzi
 Dokumenti koji imaju veću "udaljenost" su manje relevantni za ulazni upit i time se mogu protumačiti kao nebitni. Retriver uzima ulazni upit, pretvara ga u vektor pomoću koder upita, a zatim
 pronalazi najsličnije vektore dokumenta. Dokumenti povezani s tim vektorima se naknadno prosljeđuju generatoru. Broj dokumenta dohvaćenih u bilo kojem trenutku može se prilagoditi na temelju
 specifičnih zahtjeva zadatka i obično za zadatke koji su kompleksniji može se pozvati opsežniji skup dokumenata.  Bitan aspekt kod retrivera je da se obrati pažnja na točnost dohvaćenih dokumenta
-tijekom pronalaženja. Postavljanje praga za udaljenost nije isključivo tehnička odluka, već i poslovna odluka. Prag bi trebao biti uskllađen s općim ciljevima, bilo da se radi o pružanju
+tijekom pronalaženja. Postavljanje praga za udaljenost nije isključivo tehnička odluka, već i poslovna odluka. Prag bi trebao biti usklađen s općim ciljevima, bilo da se radi o pružanju
 sveobuhvatnog pregleda ili navođenju konkretnih detalja \cite{redis2025}. 
 
 Korisnik postavlja pitanje ili šalje upit nakon čega retriver traži relevantne dokumente u unaprijed definiranom izvoru znanja (npr. Wikipedia, interni podaci tvrtke ili online članci).
@@ -636,8 +633,8 @@ između ključnih riječi, BM25 može imati ograničenja u razumijevanju semanti
 i učinkovitosti. Često se koristi za jednostavnije upite temeljene na ključnim riječima, gdje je važno brzo dohvaćanje relevantnih informacija \cite{gupta2024rag}.
 
 \subsubsection{Dense Passage Retrieval}
-DPR (eng. Dense Passage Retrieval) je predstavljen 2020.godine i predstavlja moderniji pristup pretraživanja informacija. Koristi gustih
-vektorski prostor u kojem su upit i dokumenti kodirani u višedimenzionalne vektore. DPR koristi arhitekturu bi-enkodera, gdje su upit 
+DPR (eng. Dense Passage Retrieval) je predstavljen 2020.godine i predstavlja moderniji pristup pretraživanja informacija. Koristi gusti
+vektorski prostor u kojem su upiti i dokumenti kodirani u višedimenzionalne vektore. DPR koristi arhitekturu bi-enkodera, gdje su upit 
 i dokument kodirani odvojeno, što omogućuje učinkovito pretraživanje najbližeg susjeda. Za razliku od BM25, DPR se ističe u pretraživanju
 semantičkih odnosa između upita i dokumenta, što ga čini pogodnim za složenije upite koji zahtijevaju dublje razumijevanje konteksta. DPR može
 pronaći dokumente koji su kontekstualno povezani s upitom, čak i ako ne sadrže točne ključne riječi \cite{gupta2024rag}.
@@ -645,7 +642,7 @@ pronaći dokumente koji su kontekstualno povezani s upitom, čak i ako ne sadrž
 \subsubsection{REALM}
 REALM (eng. Retrieval-Augmented Language Model) je model koji integira pronalaženje informacija i generiranje teksta u jednom sustavu.
 Ključna inovacija REALM-a je da uči pronalaziti dokumente koji poboljšavaju performanse modela na određenim zadacima kao što je npr.
-sažimanje teksta. Tijekom treninga REALM ažurira retriever i generativni model zajedno, osiguravajući da je proces pronalaženja optimizirana
+sažimanje teksta. Tijekom treninga REALM ažurira retriever i generativni model zajedno, osiguravajući da je proces pronalaženja optimiziran
 za zadatak generiranja. REALM je treniran kako bi prepoznao dokumente koji nisu relevatni za upit, ali su korisni za generiranje odgovora.
 U literaturi se često spominje da REALM nadmašuje BM25 i DPR u zadacima koji zahtijevaju kombinaciju pronalaženja i generiranja informacija \cite{gupta2024rag}.
 
@@ -673,8 +670,8 @@ tradicionalne generativne model poput GPT-3 i BART-a u raznim zadacima kaš što
 \subsubsection{BART}
 BART (eng. Bidirectional and Auto-Regressive Transformers) je model koji je prikladan za zadatke koji uključuju generiranje teksta 
 iz nečistih ili neuređenih podataka. Za enkoder BART koristi dvosmjerni pristup, što znači da može razumijeti kontekst cijelog ulaza,
-dok dekoder generira tekst an temelju tog konteksta. BART može rekonstruirati oštećene tekstove, što ga čini korisnim za zadatke poput
-izvlačenja informacija iz nepotpunih uli neurednih podataka \cite{gupta2024rag}. 
+dok dekoder generira tekst na temelju tog konteksta. BART može rekonstruirati oštećene tekstove, što ga čini korisnim za zadatke poput
+izvlačenja informacija iz nepotpunih ili neurednih podataka \cite{gupta2024rag}. 
 
 
 \section{Primjena RAG modela}
@@ -688,7 +685,7 @@ Sustav se povezao s elektroničkim zdravstvenim kartonima i višestrukim medicin
     \item Povećanje ranog otkrivanja rijetkih bolesti za 40 posto.
 \end{itemize}
 
-U nastavku je navedno nekoliko domena u kojoj se RAG može primjenjivati cite{nishtha2025rag}:
+U nastavku je navedno nekoliko domena u kojoj se RAG može primjenjivati \cite{nishtha2025rag}:
 
 \begin{itemize}
     \item \textbf{Sustavi za korisničku podršku} - kupac postavlja pitanje, chatbot dohvaća relevantne informacije iz izvora kao što su baze znanja,
@@ -809,7 +806,7 @@ razmišljanjem (zdravi razum) i kreativnošću modela.
 \section{Dostupni alati i biblioteke}
 
 U ovoj sekciji su navedeni neki od najpopularnijih alata i biblioteka koje se koriste za implementaciju RAG sustava. 
-Izvršen je pregled i analiza svakog alata nakon čega je donesen zaključak koji od njih je korišten u praktičnom dijelu rada.
+Izvršen je pregled i analiza svakog alata nakon čega je donesen zaključak koji od njih su korišteni u praktičnom dijelu rada.
 Na sljedećoj slici može se vidjeti kratki sažetak alata i biblioteka koje se mogu koristiti za implementaciju RAG sustava.
 
 \begin{figure}[h]
@@ -831,6 +828,8 @@ Na sljedećoj slici može se vidjeti kratki sažetak alata i biblioteka koje se 
 %\subsection{Hugging Face Transformers + Datasets}
 
 \subsection{Okviri (frameworkovi) za upravljanje RAG-om}
+U nastavku su navedeni neki od najpopularnijih okvira koji se koriste za jednostavniju izgradnju, testiranje i održavanje sustava temeljenih
+na RAG pristupu. Pružaju funkcionalnosti za povezivanje velikih jezičnih modela s vanjskim izvorima podataka kao što su baze podataka.
 \subsubsection{Haystack}
 Haystack je platforma za obradu prirodnog jezika otvorenog koda koja je specijalizirana za stvaranje RAG cjevovoda za sustave pretraživanja 
 i odgovaranja na pitanja. Framework pruža komponente za dohvaćanje dokumenta, odgovaranje na pitanja i generiranje teksta, omogućujući korisnicima
@@ -945,10 +944,17 @@ Slučajevi upotrebe & CRM, obrada narudžbi & Poslovna inteligencija, skladišta
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.7\textwidth]{./assets/payload.png}
+  \includegraphics[width=0.6\textwidth]{./assets/payload.png}
   \caption{Vektorska baza - primjer; \href{https://tinyurl.com/469fzf35}{Izvor}}
   \label{fig:slika10}
 \end{figure}
+
+Prethodna slika prikazuje strukturu vektorske baze podataka. ID (zelena polja) predstavlja jedinstveni identifikator svakog vektora, 
+primjerice doc01. Svaki redak u crvenoj matrici odgovara jednom vektoru, odnosno nizu brojeva koji predstavlja semantičko značenje 
+određenog teksta. Plava polja označena kao payload sadrže dodatne informacije povezane s vektorom, poput originalnog teksta, metapodataka 
+kao što su jezik i izvor, te putanje do dokumenta. Dimenzije vektora, prikazane u gornjem dijelu slike, određuju širinu svakog vektora, 
+odnosno broj numeričkih vrijednosti koje ga čine.
+\newpage
 
 \subsubsection{FAISS}
 FAISS (eng. Facebook AI Similarity Search) je robusna vektorska baza podataka koju je razvio Facevook-ov istraživačkim tim za umjetnu inteligenciju. Vrlo je učinkovita i brza, što je čini 
@@ -967,8 +973,28 @@ Neki od klijenta Pinecone su: Microsoft, Notion, Hubspot i Shopify.
 Pinecone je vektorska baza podataka u oblaku koja je potpuno upravljana i ne zahtijeva nikako odražavanje infrastrukture \cite{baghel2025vectors}. 
 
 \subsection{Veliki jezični modeli}
-Pružatelji LLM modela su organizacije koje razvijaju i nude pristup velikim jezičnim modelima bez potrebe da ih sami izgrađujemo ili obučavamo. 
-Obično nude API-jeve koji omogućuju korisnicima da integriraju LLM-ove u svoje aplikacije.
+Veliki jezični model je napredni AI model koji može razumijeti i generirati ljudski jezik. U srži LLM-ova je strojno učenje, koje je podskup umjetne inteligencije i omogućuje 
+sustavima učenje iz podataka i poboljšanje tijekom vremena bez eksplicitnog programiranja. Također koristi se duboko učenje kako bi se analizirala ogromna količina podataka. 
+Neuronske mreže su jedna od opcija kod kojih se obučava model na velikim skupovima podataka kako bi se prepoznali odnosi između riječi i fraza.
+LLM-ovi se mogu kategorizirati na mnogo načina no najčešći način kategorizacije je prema njihovoj arhitekturi i funkcionalnosti \cite{vermeir2025llm}:
+\begin{itemize}
+    \item Generativni modeli - osmišljeni za stvaranje visokokvalitetnog teksta nalik ljudskom u raznim formatima (GPT-4),
+    \item Modeli enkodera-dekodera - specijalizirani za zadatke poput strojnog prevođenja i sažimanje teksta (primjer T5),
+    \item Modeli samo s enkoderom - fokusirani na razumijevanje značenja teksta (primjer BERT),
+    \item Multimodalni LLM-ovi - obrađivanje i generiranje više vrsta podataka, uključujući tekst, slike i zvuk. Koriste se zadatke poput 
+    opisivanja slika, analize videa i multimodalnog pretraživanja kako bi se stvorila bogatija interakcija između različitih oblika
+    podataka.
+\end{itemize}
+
+Na sljedećoj slici se može vidjeti kako je model OpenAI o1 predstavnik u riješavanju matematičkih modela za 2024. godinu.
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{./assets/Statista.png}
+  \caption{Popularnost LLM-ova u rješavanju matematičkih problema za 2024 godinu; \href{https://www.statista.com/statistics/1458141/leading-math-llm-tools/}{Izvor}}
+  \label{fig:slika310}
+\end{figure}
+
+
 %\url{https://mehmetozkaya.medium.com/llm-providers-openai-meta-ai-anthropic-hugging-face-microsoft-google-and-mistral-ai-46ad8c027f6b}
 
 \subsubsection{OpenAI}
@@ -976,39 +1002,15 @@ OpenAI je jedan od začetnika i najpoznatijih pružatelja usluga u području umj
 Od dodatnih mogućnosti generira tekst, razumije jezik, pomaže pri kodiranju i može se koristiti za razvoj AI sustava i drugih aplikacija. Dostupan je putem OpenAI API-ja i putem Microsoftove usluge
 Azure OpenAI \cite{ozkaya2025llm}.
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.5\textwidth]{./assets/OpenAI_Logo.png}
-  \caption{OpenAI - ikona; \href{https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/OpenAI_Logo.svg/1280px-OpenAI_Logo.svg.png}{Izvor}}
-  \label{fig:slika13}
-\end{figure}
-\newpage
-
 \subsubsection{Hugging Face}
 Hugging Face je platforma koja nudi širok spektar modela otvorenog koda a poznat je po svojoj biblioteci Transformers i Model Hub-u. Hugging Face nudi različite modela poput BERT-a, GPT-2 i T5-a koji se mogu koristiti za različite zadatke.
 Transformers biblioteka koja omogućuje jednostavno korištenje i integraciju najsuvremenijih modela dubokog učenja. ModelHub je platforma na kojoj programeri i istraživači mogu prenositi, dijeliti i surađivati na modelima. Također Hugging 
 Face potiče okruženje u kojem se dijeli znanje i resursi čime se ubrzava razvoj i potiče se na inovacije u području umjetne inteligencije \cite{ozkaya2025llm}.
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.5\textwidth]{./assets/hugging_face_icon.png}
-  \caption{Hugging Face - ikona; \href{https://miro.medium.com/v2/resize:fit:463/1*y_0d92c-kSZGrSErMeYWbQ.png}{Izvor}}
-  \label{fig:slika12}
-\end{figure}
-
-\subsubsection{Anthropic}
-Anthropic je tvrtka koja se fokusira na razvoj sigurnosnih i etičkih AI modela koji se ponašaju u skladu s ljudskim vrijednostima. Poznata je po seriji Claude modela \cite{ozkaya2025llm}. 
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.5\textwidth]{./assets/anthropic.png}
-  \caption{Anthropic - ikona; \href{https://miro.medium.com/v2/resize:fit:1024/0*bg0UgmZY3YP0p0FB.png}{Izvor}}
-  \label{fig:slika11}
-\end{figure}
-
+%\subsubsection{Anthropic}
+%Anthropic je tvrtka koja se fokusira na razvoj sigurnosnih i etičkih AI modela koji se ponašaju u skladu s ljudskim vrijednostima. Poznata je po seriji Claude modela \cite{ozkaya2025llm}. 
 Zaključak je da su svi navedeni alati i biblioteke korisni za implemetaciju RAG sustava, ali za potrebe ovog rada korištena je kombinacija
 Langchaina, ChatGPT (OpenAI) modela i FAISS vektorske baze podataka. 
-
 
 
 \chapter{Korištene tehnologije i alati}
@@ -1020,7 +1022,7 @@ opisani korišteni alati i tehnologije.
 
 Svijet danas ne funkcionira bez mobilnih i web aplikacija. Sve se orijentira prema digitalizaciji, od rezerviranja hrane do naručivanja vožnje u taksiju. Vrlo je bitno napraviti vizualno
 primamljivu aplikaciju a React je upravo jedna od popularnijih frontend biblioteka koja to omogućava. React je temeljen na JavaScriptu i široko se koristi u web razvoju. U usporedbi s drugim tehnologijama
-, React je nova tehnologija, a osnovan je od strane Jordan Walkea 2011. godine (softverski inženjer u Facebooku). Reactova popularnost dolazi radi nekoliko razlog \cite{simplilearn2025react}:
+, React je nova tehnologija, a osnovan je od strane Jordan Walkea 2011. godine (softverski inženjer u Facebooku). Reactova popularnost dolazi radi nekoliko razloga \cite{simplilearn2025react}:
 \begin{itemize}
     \item jednostavno stvaranje dinamičkih aplikacija,
     \item korištenje Virtual DOM čime se aplikacije brže izrađuju (ažurira komponente samo koje su promijenjene),
@@ -1045,6 +1047,28 @@ To jasno odražava razliku u životnom standardu i ekonomskim potrebama pojedini
     \item Prosječna plaća za početnog React developera u Indiji iznosi oko 8000 USD godišnje.
 \end{itemize}
 
+\section{SMTP}
+SMTP (eng. Simple Mail Transfer Protocol) je TCP/IP protokol koji se koristi za slanje i primanje epošte preko mreže kao što je internet.
+Neki od primjera klijenata koji koriste SMTP su Gmail, Microsoft Outlook, Yahoo Mail i Apple Mail \cite{gillisSMTP}. 
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./assets/Proces dostavljanja emaila.png} 
+    \caption{Proces dostavljanja emaila; \href{https://www.techtarget.com/rms/onlineimages/email_delivery_process-f.png}{Izvor}}
+    \label{fig:slika17}
+\end{figure}
+
+Prethodna slika prikazuje proces slanje epošte kroz SMTP protokol. Proces se odvija prema sljedećim koracima \cite{gillisSMTP}:
+\begin{enumerate}
+    \item Korisnik piše i šalje email npr. putem web aplikacije,
+    \item Email odlazi na SMTP poslužitelj koji je konfiguriran za primanje poruka i njihovo prosljeđivanje,
+    \item Nakon toga SMTP server kontaktira DNS server kako bi pronašao IP adresu poslužitelja primatelja. DNS prevodi adresu e-mail domene u IP adresu,
+    \item Kada se sazna gdje poruka ide, ona putuje kroz internet prema odredišnom serveru,
+    \item Email stiže na domenu primatelja i njen MTA (eng. Mail Transfer Agent) poslužitelj, koji prima poruku i pohranjuje u korisnikov sandučić,
+    \item Email je pohranjen na serveru primatelja i čeka da ga korisnik preuzme,
+    \item Primatelj može dohvatiti poruku putem IMAP (ostaje na serveru, pristup s više uređaja) ili POP (skida se lokalno, briše se sa servera) načina.
+\end{enumerate}
+\newpage
 \section{FastAPI}
 FastAPI je moderan, brz, visokoučinkovit web framework za izgradnju API-ja s Pythonom. Vrlo je brz (u rangu s NodeJS-om i Go-om) i
 omogućuje brzo kodiranje i pojavljivanje manjeg broja grešaka. Dosta je intuitivan i jednostavan za korištenje i učenje. FastAPI podržava CRUD
@@ -1052,33 +1076,31 @@ omogućuje brzo kodiranje i pojavljivanje manjeg broja grešaka. Dosta je intuit
 FastAPI koristi port 8000 i može se testirati putem preglednika ili alata poput Postmana. 8000/docs putanja omogućuje pristup
 Swagger UI sučelju koje omogućuje pregled i testiranje API-ja \cite{obafemi2025fastapi}. 
 
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=0.6\textwidth]{./assets/FastAPI.png} 
-    \caption{FastAPI - ikona; \href{https://www.simplilearn.com/ice9/free_resources_article_thumb/FastAPI_b.jpg}{Izvor}}
-    \label{fig:slika17}
-\end{figure}
-
-\section{SMTP}
 
 \chapter{Praktični dio rada}
 Praktični dio rada se sastoji od izrade web stranice i izrade inteligentnog asistenta temeljenog na RAG tehnologiji. Frontend aplikacije
-je izrađen pomoću biblioteke React, pri čemu je korisničko sučelje strukturirano korištenjem JSX sintakse. React predstavlja jedno od najpopularnijih frameworka za izradu web aplikacija. Posebno se ističe zbog toga što omogućava
+je izrađen pomoću biblioteke React, pri čemu je korisničko sučelje strukturirano korištenjem JSX sintakse. React predstavlja jedan od najpopularnijih frameworka za izradu web aplikacija. Posebno se ističe zbog toga što omogućava
 razvoj aplikacija koje su brze, jednostavne i lako održive. Osim toga, najbitnija stvar je što React gradi aplikaciju po komponentama, što omogućava
 jasnije razumijevanje koda kao i njegovo olakšano preuređivanje.
 
 Backend aplikacije razvijen je korištenjem Python web frameworka FastAPI, koji je poznat po svojoj jednostavnosti korištenja.
 
+Za izradu inteligentnog asistenta napravljen je scraper podataka s kojim je izrađen skup podataka koji je poslužio za rad inteligentnog asistenta.
 
-Za izradu inteligentnog asistenta prvotno je napravljen scraper podataka s kojim je
-izrađen skup podataka koji je poslužio za treniranje inteligentnog asistenta.
-
+Struktura praktičnog dijela organizirana je na način da postoje 4 glavna dijela: backend, frontend, scraper i dokumentacija. Ideja ovakvog
+pristupa je da sve što je vezano za ovaj rad bude dostupno na jednom mjestu, čime se olakšava razumijevanje ovog rada.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.35\textwidth]{./assets/Structure-main.png} 
+    \caption{Struktura praktičnog dijela rada}
+    \label{fig:slika180}
+\end{figure}
 
 
 \section{Struktura web stranice}
 Sljedeća tablica prikazuje pregled stranica web aplikacije te pripadajuće komponente koje su na njima implementirane. Svaka stranica ima svoju
-svrhu čime se osigurava intuitivna navigacija. Svaka stranica sadrži obavezne elemente kao što su podnožje (eng. footer) i zaglavlje (eng. header).
-\begin{table}[h!]
+svrhu čime se osigurava intuitivna navigacija. 
+\begin{table}[ht!]
 \centering
 \caption{Struktura stranica i njihovih komponenti}
 \renewcommand{\arraystretch}{1.4}
@@ -1375,7 +1397,7 @@ async def ask_pdf(
 \label{lst:ask}
 \end{longlisting}
 
-Nadalje su definirane dvije rute: jedna za dohvat popisa svih PDF dokumenata koji su trenutno indeksirani u vektorskoj bazi podataka, a drugačije
+Nadalje su definirane dvije rute: jedna za dohvat popisa svih PDF dokumenata koji su trenutno indeksirani u vektorskoj bazi podataka, a druga
 za brisanje dokumenata po nazivu dokumenta. Ruta za brisanje vraća grešku ako dokument s tim imenom ne postoji u vektorskoj bazi podataka.
 
 \begin{longlisting}
@@ -1786,7 +1808,7 @@ test
 
 
 
-
+\newpage
 \section{Prikaz rada aplikacije}
 
 Što se tiče frontenda, projekt je razvijan korištenjem Vite okoline, a pokretanje aplikacije omogućeno je korištenjem naredbe \texttt{npm run dev}.
@@ -1797,63 +1819,92 @@ ponovno učitavanje prilikom promjena u kodu.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=1\textwidth]{./assets/pokretanje.png}
-  \caption{test}
+  \caption{Pokretanje aplikacije kroz terminal}
   \label{fig:slika93}
 \end{figure}
+
+Sljedeća slika prikazuje početnu stranicu aplikacije na koju se dolazi nakon pokretanja aplikacije. Na početnoj stranici nalazi se nekoliko
+komponenta kao što su slider, motivacija, kratko o Łódźu i drugi gradovi. Ideja početne stranice je da korisniku pruži osnovne informacije i odvede
+korisnika na ostale stranice aplikacije.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=1\textwidth]{./assets/Home.png}
-  \caption{test}
+  \caption{Početna stranica aplikacije}
   \label{fig:slika94}
 \end{figure}
+
+\newpage
+
+Sljedeća slika prikazuje stranicu O Łódźu koja sadrži dodatne informacije o gradu, uključujući iskustva bivših studenata koji su proveli
+Erasmus+ razmjenu u tom gradu.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=1\textwidth]{./assets/about.png}
-  \caption{test}
+  \caption{O Łódźu stranica}
   \label{fig:slika95}
 \end{figure}
+
+Stranica drugi gradovi sadrži pregled drugih gradova u Poljskoj koje je moguće posjetiti. Ova stranica pruža korisnicima
+informacije u obliku slika i podataka kao što je broj stanovnika.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=1\textwidth]{./assets/other.png}
-  \caption{test}
+  \caption{Drugi gradovi stranica}
   \label{fig:slika96}
 \end{figure}
+
+\newpage
+Sljedeća stranica namijenjena je za postavljanje pitanja od strane korisnika u slučaju da AI asistent ne pruži odgovor koji korisnik traži.
+Nakon slanja odgovora, vlasnik stranice dobiva email s informacijama prema definiranoj formi.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=1\textwidth]{./assets/question.png}
-  \caption{test}
+  \caption{Forma za postavljanje pitanja stranica}
   \label{fig:slika97}
 \end{figure}
 
+Stranica za dokumente omogućuje pregled i upravljanje dokumentima koji se koriste za rad s asistentom. Prvotno ova stranica nije bila U
+početnoj ideji rada ali nakon što je započet rad s AI dijelom rada, pojavila se potreba za dodavanjem ove stranice kako bi se bolje 
+vizualiziralo što se događa u pozadini rada asistenta.
+
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=1\textwidth]{./assets/documents.png}
-  \caption{test}
+  \includegraphics[width=0.9\textwidth]{./assets/documents.png}
+  \caption{Stranica za pregled i upravljanje dokumentima}
   \label{fig:slika98}
 \end{figure}
+\newpage
+
+Na sljedećoj slici može se vidjeti kako funkcionira AI asistent kada je dokument u bazi podataka. Asistent u tom slučaju može odgovoriti na
+pitanje korisnika koristeći informacije iz dokumenta.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=1\textwidth]{./assets/asistent1.png}
-  \caption{test}
+  \caption{Testiranje asistenta kada je dokument u bazi}
   \label{fig:slika99}
 \end{figure}
+
+Na sljedećoj slici može se vidjeti kako AI asistent reagira kada dokument nije pronađen u bazi podataka.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=1\textwidth]{./assets/asistent2.png}
-  \caption{test}
+  \caption{Testiranje asistenta kad dokument nije u bazi}
   \label{fig:slika100}
 \end{figure}
+\newpage
+
+Kroz terminal može se vidjeti kako sustav radi u pozadini. Može se vidjeti koji je zahtjev poslan i kakav je status takvog zahtjeva.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=1\textwidth]{./assets/statzs.png}
-  \caption{test}
+  \caption{Povratne informacije o radu aplikacije}
   \label{fig:slika101}
 \end{figure}
 
