@@ -80,11 +80,11 @@
       "privacyPolicy": "Privatnost i pravila",
       "termsOfUse": "Uvjeti korištenja",
       "phone": "+xxx",
-      "email": "test@gmail.com",
+      "email": "aleksandar.babic62@gmail.com",
       "website": "www.example.com",
       "address": "Hrvatska",
       "credit": "Kreirao",
-      "allRightsReserved": "Sva prava pridržana! © 2023",
+      "allRightsReserved": "Sva prava pridržana! © 2025",
       "imagesFrom": "Fotografije korištene na ovoj stranici dolaze s "
     },
   
@@ -184,6 +184,16 @@
         "inputPlaceholder": "Napišite poruku...",
         "sendButton": "Pošalji",
         "iconMessage": "Bok! Trebaš pomoć? Ako trebaš, klikni ovdje i pričaj sa mnom."
-    }
+    },
+     "heroLodz": {
+    "title": "Upoznaj Łódź",
+    "description": "Grad kreativnosti i studentskog duha.",
+    "cta": "Saznaj više"
+  },
+  "heroCities": {
+  "title": "Otkrij gradove Poljske",
+  "description": "Svaki grad donosi drugačije iskustvo i priliku za tvoj Erasmus+ put.",
+  "cta": "Pogledaj gradove"
+}
 
 }

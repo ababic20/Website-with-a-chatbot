@@ -37,8 +37,8 @@ const Cities = () => {
   const [loadedImages, setLoadedImages] = useState({});
 
   const cities = translations.citiesList;
-  const rowsToShow = 4;
-  const visibleCities = cities.slice(0, visibleRows * rowsToShow);
+  const rowsToShow = 1; 
+  const visibleCities = cities.slice(0, visibleRows * 4);
 
   const preloadImages = (newCities) => {
     return Promise.all(newCities.map(city => {
@@ -46,15 +46,16 @@ const Cities = () => {
         const img = new Image();
         img.src = imageMap[city.imageKey];
         img.onload = resolve;
-        img.onerror = resolve; 
+        img.onerror = resolve;
       });
     }));
   };
 
   const handleLoadMore = async () => {
+    if (loading) return;
     setLoading(true);
-    const nextCities = cities.slice(visibleRows * rowsToShow, (visibleRows + 1) * rowsToShow);
 
+    const nextCities = cities.slice(visibleRows * 4, (visibleRows + 1) * 4);
     await preloadImages(nextCities);
 
     setVisibleRows(prev => prev + 1);
@@ -62,54 +63,66 @@ const Cities = () => {
   };
 
   useEffect(() => {
-    const preloadAll = async () => {
-      const initialCities = cities.slice(0, rowsToShow);
-      await preloadImages(initialCities);
+    const preloadInitial = async () => {
+      const firstBatch = cities.slice(0, 4);
+      await preloadImages(firstBatch);
+
+      const loaded = {};
+      firstBatch.forEach(city => {
+        loaded[city.imageKey] = true;
+      });
+      setLoadedImages(loaded);
     };
-    preloadAll();
+    preloadInitial();
   }, []);
 
+  const handleImageLoad = (key) => {
+    setLoadedImages((prev) => ({
+      ...prev,
+      [key]: true
+    }));
+  };
+
   return (
-    <>
-      <div className="heading">
-        <h1>{translations.citiesTexts.mainTitle}</h1>
+    <section className='cities'>
+      <h1 id="lista-gradova" className='heading-title'>
+        {translations.citiesTexts.populationTitle}
+      </h1>
+
+      <div className='box-container'>
+        {visibleCities.map((city) => (
+          <div className='box fade-in' key={city.id}>
+            <div className='image'>
+              <img
+                src={imageMap[city.imageKey]}
+                alt={city.name}
+                loading="lazy"
+                onLoad={() => handleImageLoad(city.imageKey)}
+                style={{ display: loadedImages[city.imageKey] ? "block" : "none" }}
+              />
+              {!loadedImages[city.imageKey] && <div className="skeleton" />}
+            </div>
+            <div className='content'>
+              <h3>{city.name}</h3>
+              <p>{city.description}</p>
+              <span className='btn'>{translations.citiesTexts.readMore}</span>
+            </div>
+          </div>
+        ))}
       </div>
 
-      <section className='cities'>
-        <h1 className='heading-title'>{translations.citiesTexts.populationTitle}</h1>
-
-        <div className='box-container'>
-          {visibleCities.map((city) => (
-            <div className='box' key={city.id}>
-              <div className='image'>
-                <img
-                  src={imageMap[city.imageKey]}
-                  alt={city.name}
-                  loading="lazy"
-                />
-              </div>
-              <div className='content'>
-                <h3>{city.name}</h3>
-                <p>{city.description}</p>
-                <span className='btn'>{translations.citiesTexts.readMore}</span>
-              </div>
-            </div>
-          ))}
+      {visibleRows * 4 < cities.length && (
+        <div className='load-more'>
+          {loading ? (
+            <div className="loader"></div>
+          ) : (
+            <span className='btn' onClick={handleLoadMore}>
+              {translations.citiesTexts.loadMore}
+            </span>
+          )}
         </div>
-
-        {visibleRows * rowsToShow < cities.length && (
-          <div className='load-more'>
-            {loading ? (
-              <div className="loader"></div>
-            ) : (
-              <span className='btn' onClick={handleLoadMore}>
-                {translations.citiesTexts.loadMore}
-              </span>
-            )}
-          </div>
-        )}
-      </section>
-    </>
+      )}
+    </section>
   );
 };
 

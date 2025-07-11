@@ -3,28 +3,21 @@ import { LanguageContext } from '../../contexts/LanguageContext';
 import './About.css';
 import videoFile from '../../assets/video.mp4';
 
-
 const About = () => {
   const { translations } = useContext(LanguageContext); 
 
   return (
     <>
-      <div className="heading">
-        <h1>{translations.aboutPage.mainTitle}</h1>
-      </div>
-
-          <section className='about'>
-          <div className='video'>
-            <video controls autoPlay muted>
-              <source src={videoFile} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-
-
+      <section className='about'>
+        <div className='video'>
+          <video controls autoPlay muted>
+            <source src={videoFile} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
 
         <div className='content'>
-          <h3>{translations.aboutPage.subTitle}</h3>
+          <h3 id='vise-o-lodzu' >{translations.aboutPage.subTitle}</h3>
 
           <p>{translations.aboutPage.paragraph1}</p>
           <p>{translations.aboutPage.paragraph2}</p>

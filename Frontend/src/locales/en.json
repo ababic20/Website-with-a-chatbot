@@ -79,11 +79,11 @@
       "privacyPolicy": "Privacy & policy",
       "termsOfUse": "Terms of use",
       "phone": "+xxx",
-      "email": "test@gmail.com",
+      "email": "aleksandar.babic62@gmail.com",
       "website": "www.example.com",
-      "address": "xxx, Croatia",
+      "address": "Bjelovar, Croatia",
       "credit": "Created by",
-      "allRightsReserved": "All rights reserved! © 2023",
+      "allRightsReserved": "All rights reserved! © 2025",
       "imagesFrom": "Photos used on this site are sourced from "
     },
   
@@ -183,7 +183,18 @@
         "inputPlaceholder": "Write a message...",
         "sendButton": "Send",
         "iconMessage": "Hey! Need help? If you do, click here and talk to me."
-    }
+    },
+
+    "heroLodz": {
+    "title": "Discover Łódź",
+    "description": "A city full of creativity and student spirit.",
+    "cta": "Learn more"
+  },
+   "heroCities": {
+    "title": "Discover Cities of Poland",
+    "description": "Each city offers a unique experience and a chance for your Erasmus+ journey.",
+    "cta": "Explore Cities"
+  }
 
   }
   
