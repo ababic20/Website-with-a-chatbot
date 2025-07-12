@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { LanguageContext } from '../../contexts/LanguageContext'; 
 import './About.css';
-import videoFile from '../../assets/video.mp4';
 
 const About = () => {
   const { translations } = useContext(LanguageContext); 
@@ -10,14 +9,19 @@ const About = () => {
     <>
       <section className='about'>
         <div className='video'>
-          <video controls autoPlay muted>
-            <source src={videoFile} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <iframe
+            src="https://drive.google.com/file/d/18k77Ntbqf1-yN5F-VsQ9CnGWgznZe6gm/preview"
+            width="100%"
+            height="400"
+            allow="autoplay"
+            allowFullScreen
+            title="About Łódź Video"
+            style={{ border: "none", borderRadius: "12px" }}
+          ></iframe>
         </div>
 
         <div className='content'>
-          <h3 id='vise-o-lodzu' >{translations.aboutPage.subTitle}</h3>
+          <h3 id='vise-o-lodzu'>{translations.aboutPage.subTitle}</h3>
 
           <p>{translations.aboutPage.paragraph1}</p>
           <p>{translations.aboutPage.paragraph2}</p>
