@@ -315,7 +315,7 @@ Copilot         & Specijalizirana podrška           & Razvoj, IT               
 \hline
 Agent           & Autonomija i proaktivnost         & Upravljanje prijevarama, korisničko iskustvo   & OpenAI Codex                  \\
 \hline
-Chatbot         & Jednostavni ponavljajući zadaci   & Osnovna korisnička podrška                     & Zendesk                       \\
+Chatbot         & Jednostavni ponavljajući zadaci   & Osnovna korisnička podrška                     & Intercom                       \\
 \hline
 \end{tabularx}
 \caption{Razlika između pojmova \cite{exomindset2025difference}}
@@ -430,10 +430,28 @@ i brzo snalaze u dosljednom rješavanju jednostavnih repetativnih zadataka. Djel
 postavljene scenarije. Koriste se za automatizaciju zadataka gdje se obrađuje veliki broj ponavljajućih upita poput rezervacija ili narudžbi. Njihova mana je da se ne mogu prilagoditi izvan
 svog programiranja što ih čini neprikladnim za složenije zadatke \cite{exomindset2025difference}.
 
-\subsubsection{Zendesk}
+\subsubsection{Intercom}
+Interkom je platforma za korisničku podršku koja olakšava komunikaciju između kupaca i tvrtki. Poboljšava interakciju s kupcima putem brojnih komunikacijskih kanala koji uključuju
+chat uživo i automatizirano slanje poruka. Intercom je moguće integrirati s drugim alatima i platformama kao što su SalesForce, HubSpot, Zendesk i Slack.
 
-Zendesk je sustav koji je namijenjen za slanje zahtjeva putem e-pošte i pomaže tvrtka u praćenju, određivanju prioriteta i riješavanju zahtjeva za korisničku podršku.
-Može pomoći u prikupljanju zahtjeva korisnika koji su poslani putem više kanala, uključujući e-poštu, chat ili društvene mreže i kroz nadzornu ploču pratiti status takvih zahtjeva \cite{zendesk_ai_2025}.
+Chatbotovi su posebno zanimljivi jer su to inteligentni sustavi koji možda najviše rade s kupcima i samim time mogu dosta utjecati na profit i vrijednost tvrtke. Na sljedećoj slici može
+se vidjeti kako se pretpostavlja da će globalno tržište chatbotova do kraja 2027. godine vrijediti 455 milijuna dolara. Ova procijenjena brojka za 2027. godinu (455 milijuna USD) izračunata
+je na temelju tržišne vrijednosti u 2018. godini \cite{connell2025chatbot}. 
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.65\textwidth]{./assets/chatbots.png} 
+    \caption{Globalno tržište chatbotova; \href{https://adamconnell.me/wp-content/uploads/01-Chatbot-market-revenue.png}{Izvor}}
+    \label{fig:slika3011}
+\end{figure}
+
+Također u sljedećem članku su doneseni sljedeći zaključci \cite{connell2025chatbot}:
+\begin{itemize}
+    \item Tvrtke mogu smanjiti troškove korisničke podrške za 30\,\% korištenjem chatbotova,
+    \item Trećinu korisnika chatbotova čine tzv. „napredni korisnici”,
+    \item Najveći uočeni nedostatak chatbotova jest njihova nemogućnost odgovaranja na složena i personalizirana pitanja,
+    \item Čak 55\,\% ljudi radije bi koristilo chatbota nego čekalo dostupnost agenta uživo.
+\end{itemize}
 
 \newpage
 \section{Inteligentni asistenti u obrazovnom sustavu}
@@ -475,8 +493,8 @@ posvetiti svakom učeniku/studentu.
 \subsection{Izazovi inteligentnih asistenata u obrazovanju}
 
 Jedan od najvećih izazova je pitanje privatnosti podataka. Obično sustavi zahtijevaju ogromne količine podataka o studentima da bi učinkovito funkcionirali, što ukazuje na opasnost od 
-potencijalne zlouporabe tih podataka. Na primjer, studija Svučilišta u Michiganu iz 2020. godine otkrila je da 86 posto obrazovnih aplikacija umjetne inteligencije prikuplja osobne podatke od studenta,
-a samo 42 posto ima jasne politike privatnosti \cite{weber2025smythos}.
+potencijalne zlouporabe tih podataka. Na primjer, studija Svučilišta u Michiganu iz 2020. godine otkrila je da 86 \,\% obrazovnih aplikacija umjetne inteligencije prikuplja osobne podatke od studenta,
+a samo 42 \,\% ima jasne politike privatnosti \cite{weber2025smythos}.
 
 Asistenti su dobri onoliko koliko su dobri podaci na kojima su obučeni. U obrazovnom sustavu, osiguranje kvalitete i relevantnosti tih podataka je od najveće važnosti.
 Kako bi rješenje bilo zadovoljavajuće škole i programeri moraju surađivati kako bi stvorili sustave koji su ne samo učinkoviti, već i etični i sigurni \cite{weber2025smythos}.
@@ -680,9 +698,9 @@ Kroz ovo poglavlje istražena je primjena RAG-a. Na početku istaknut je jedan p
 članaka na Linkedlnu. U članku se govori o tome kako je velika bolnička mreža integrirala RAG u svoj sustav podrške kako bi donijela bolje odluke.
 Sustav se povezao s elektroničkim zdravstvenim kartonima i višestrukim medicinskim bazama podataka, što je dovelo do \cite{siddharth2025rag}:
 \begin{itemize}
-    \item Smanjenja pogrešnih dijagnoza za složene slučajeve za 30 posto,
-    \item Smanjenje vremena koje su liječnici proveli pregledavajući literaturu za 25 posto,
-    \item Povećanje ranog otkrivanja rijetkih bolesti za 40 posto.
+    \item Smanjenja pogrešnih dijagnoza za složene slučajeve za 30 \,\%,
+    \item Smanjenje vremena koje su liječnici proveli pregledavajući literaturu za 25 \,\%,
+    \item Povećanje ranog otkrivanja rijetkih bolesti za 40 \,\%.
 \end{itemize}
 
 U nastavku je navedno nekoliko domena u kojoj se RAG može primjenjivati \cite{nishtha2025rag}:
@@ -1079,22 +1097,56 @@ Swagger UI sučelju koje omogućuje pregled i testiranje API-ja \cite{obafemi202
 
 \chapter{Praktični dio rada}
 Praktični dio rada se sastoji od izrade web stranice i izrade inteligentnog asistenta temeljenog na RAG tehnologiji. Frontend aplikacije
-je izrađen pomoću biblioteke React, pri čemu je korisničko sučelje strukturirano korištenjem JSX sintakse. React predstavlja jedan od najpopularnijih frameworka za izradu web aplikacija. Posebno se ističe zbog toga što omogućava
-razvoj aplikacija koje su brze, jednostavne i lako održive. Osim toga, najbitnija stvar je što React gradi aplikaciju po komponentama, što omogućava
-jasnije razumijevanje koda kao i njegovo olakšano preuređivanje.
+je izrađen pomoću biblioteke React, pri čemu je korisničko sučelje strukturirano korištenjem JSX sintakse. Backend aplikacije razvijen je korištenjem Python web frameworka FastAPI, 
+koji je poznat po svojoj jednostavnosti korištenja. Za izradu inteligentnog asistenta napravljen je scraper podataka s kojim je izrađen skup podataka koji je poslužio za rad inteligentnog
+asistenta.
 
-Backend aplikacije razvijen je korištenjem Python web frameworka FastAPI, koji je poznat po svojoj jednostavnosti korištenja.
-
-Za izradu inteligentnog asistenta napravljen je scraper podataka s kojim je izrađen skup podataka koji je poslužio za rad inteligentnog asistenta.
-
-Struktura praktičnog dijela organizirana je na način da postoje 4 glavna dijela: backend, frontend, scraper i dokumentacija. Ideja ovakvog
-pristupa je da sve što je vezano za ovaj rad bude dostupno na jednom mjestu, čime se olakšava razumijevanje ovog rada.
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.35\textwidth]{./assets/Structure-main.png} 
+    \includegraphics[width=0.25\textwidth]{./assets/Structure-main.png} 
     \caption{Struktura praktičnog dijela rada}
     \label{fig:slika180}
 \end{figure}
+
+Struktura praktičnog dijela organizirana je na način da postoje 4 glavna dijela: backend, frontend, scraper i dokumentacija. Ideja ovakvog
+pristupa je da sve što je vezano za ovaj rad bude dostupno na jednom mjestu, čime se olakšava razumijevanje ovog rada. Prije početka rada potrebno je instalirati Python, NodeJS + npm, beautifulsoup4, fastapi, uvicorn, langchain, openai i requests.
+
+Za instalaciju i konfiguraciju LaTeX-a u lokalnom okruženju unutar VS Code-a koristan je bio sljedeći video \url{https://www.youtube.com/watch?v=4lyHIQl4VM8}. Za prikaz koda u dokumentu
+korištena je biblioteka minted, koja omogućuje sintaksno obojeni ispis izvornog koda. Budući da minted koristi vanjski program pygmentize, potrebno je omogućiti --shell-escape prilikom 
+kompilacije. To se postiže izmjenom postavki u datoteci settings.json, gdje se dodaje odgovarajuća konfiguracija. CTRL + Shift + P (za otvaranje prozora).
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{JSON}
+{
+  "explorer.confirmDelete": false,
+  "php.validate.executablePath": "",
+  "latex-workshop.latex.tools": [{
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "--shell-escape",
+        "-interaction=nonstopmode",
+        "-synctex=1",
+        "%DOC%"
+      ]}],
+  "latex-workshop.latex.recipes": [{
+      "name": "pdflatex",
+      "tools": ["pdflatex"]
+    }]
+}
+\end{minted}
+\caption{settings.json}
+\label{lst:settings}
+\end{longlisting}
+
+\newpage
 
 
 \section{Struktura web stranice}
@@ -1130,10 +1182,13 @@ Na sljedećoj slici može se vidjeti struktura frontend dijela. Prikazane su sam
 stvari u frontend dijelu.
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=1\textwidth]{./assets/frontendstructure.png} 
+    \includegraphics[width=0.9\textwidth]{./assets/frontendstructure.png} 
     \caption{Struktura frontend dijela}
     \label{fig:slika18}
 \end{figure}
+
+U okviru frontend dijela prikazani su samo odabrani dijelovi koda i komponente zbog njihove opsežnosti. U slučaju interesa za konkretnim dijelom, izvorni kod je dostupan na Github 
+repozitoriju koji je naveden u zaključku rada.
 
 Funkcija askAssistant šalje pitanje i opcionalno PDF datoteke backendu putem HTTP POST zahtjeva. Koristi se za komunikaciju s FastAPI-jem
 (ruta /ask) koji obrađuje pitanje uz kontekst PDF-ova.
