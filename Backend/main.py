@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
-from routes import ask, documents, stats, email
+from routes import ask, documents, stats, email, preview
 
 load_dotenv()
 
@@ -20,3 +20,4 @@ app.include_router(ask.router)
 app.include_router(documents.router)
 app.include_router(stats.router)
 app.include_router(email.router)
+app.include_router(preview.router)

@@ -101,8 +101,8 @@ def main():
         json.dump(structured_data, f, indent=2, ensure_ascii=False)
 
     total = count_total_items(structured_data)
-    print(f"\n📦 Total records extracted: {total}")
-    print("✅ Done! Data saved to: lodz_content.json")
+    print(f"\nTotal records extracted: {total}")
+    print("Done! Data saved to: lodz_content.json")
 
 if __name__ == "__main__":
     main()

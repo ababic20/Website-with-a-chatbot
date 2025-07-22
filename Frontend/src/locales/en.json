@@ -19,7 +19,7 @@
     "total": "Total documents",
     "lastAdded": "Last added",
     "info": "ℹ️ Info",
-    "infoText": "Here you can add, view, and delete PDF documents stored in the vector database."
+    "infoText": "Here you can add, view, and delete documents stored in the vector database."
   },
   
     "pages": {

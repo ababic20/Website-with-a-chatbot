@@ -46,5 +46,5 @@ def send_email(data: ContactForm):
             server.sendmail(sender_email, receiver_email, msg.as_string())
         return {"message": "Email je uspješno poslan."}
     except Exception as e:
-        print("❌ Greška prilikom slanja emaila:", e)
+        print("Greška prilikom slanja emaila:", e)
         return {"error": "Neuspješno slanje emaila. Provjerite postavke."}

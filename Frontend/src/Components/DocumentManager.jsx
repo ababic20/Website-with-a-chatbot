@@ -14,6 +14,7 @@ function DocumentManager() {
     const [loading, setLoading] = useState(true);
     const [uploadFiles, setUploadFiles] = useState([]);
     const [uploading, setUploading] = useState(false);
+    const [selectedPreview, setSelectedPreview] = useState(null);
 
     const fetchDocuments = async () => {
         try {
@@ -54,6 +55,7 @@ function DocumentManager() {
             alert(data.message || "Document deleted.");
             fetchDocuments();
             fetchStats();
+            setSelectedPreview(null);
         } catch (err) {
             console.error("Error deleting document:", err);
             alert("Error while deleting.");
@@ -87,6 +89,23 @@ function DocumentManager() {
         }
     };
 
+    const handlePreview = async (filename) => {
+        if (!filename.endsWith(".json")) return;
+
+        try {
+            const res = await fetch(`http://localhost:8000/preview-document?filename=${encodeURIComponent(filename)}`);
+            const data = await res.json();
+            if (res.ok) {
+                setSelectedPreview({ filename, content: data.preview });
+            } else {
+                alert(data.error || "Error loading preview.");
+            }
+        } catch (error) {
+            console.error("Error fetching preview:", error);
+            alert("Error loading preview.");
+        }
+    };
+
     return (
         <div className="document-manager-wrapper">
             <aside className="sidebar-left">
@@ -112,7 +131,12 @@ function DocumentManager() {
                     <ul className="document-list">
                         {documents.map((doc, index) => (
                             <li key={index} className="document-item">
-                                <span className="document-name">{doc}</span>
+                                <span
+                                    className="document-name clickable"
+                                    onClick={() => handlePreview(doc)}
+                                >
+                                    {doc}
+                                </span>
                                 <button onClick={() => deleteDocument(doc)} className="delete-button">
                                     {translations.documentManager.delete}
                                 </button>
@@ -127,7 +151,7 @@ function DocumentManager() {
                 <div className="upload-form">
                     <input
                         type="file"
-                        accept="application/pdf"
+                        accept=".pdf,.json"
                         multiple
                         onChange={(e) => setUploadFiles(Array.from(e.target.files))}
                     />
@@ -151,6 +175,13 @@ function DocumentManager() {
             <aside className="sidebar-right">
                 <h4>{translations.documentManager.info}</h4>
                 <p>{translations.documentManager.infoText}</p>
+
+                {selectedPreview && (
+                    <div className="preview-box">
+                        <h5>Preview: {selectedPreview.filename}</h5>
+                        <pre>{JSON.stringify(selectedPreview.content, null, 2)}</pre>
+                    </div>
+                )}
             </aside>
         </div>
     );

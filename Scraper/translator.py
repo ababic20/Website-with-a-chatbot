@@ -39,7 +39,7 @@ def main():
     total = count_nodes(data)
     print(f"Translating {total} entries...")
 
-    counter = [0]  # mutable counter
+    counter = [0] 
     for entry in data:
         translate_node(entry, counter, total)
 
@@ -47,7 +47,7 @@ def main():
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print(f"✅ Done! Translated file saved as: {OUTPUT_FILE}")
+    print(f"Done! Translated file saved as: {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     main()
