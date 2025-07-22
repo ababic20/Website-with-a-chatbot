@@ -10,7 +10,7 @@ def load_vectorstore():
         raise FileNotFoundError("Vectorstore not found.")
 
     db = FAISS.load_local(VECTORSTORE_DIR, embeddings, allow_dangerous_deserialization=True)
-    print(f"Vectorstore loaded. Number of docs: {len(db.docstore._dict)}")
+    #print(f"Vectorstore loaded. Number of docs: {len(db.docstore._dict)}")
     return db
 
 def get_or_create_vectorstore(all_docs):
@@ -18,7 +18,7 @@ def get_or_create_vectorstore(all_docs):
 
     if os.path.exists(VECTORSTORE_DIR):
         db = FAISS.load_local(VECTORSTORE_DIR, embeddings, allow_dangerous_deserialization=True)
-        print(f"Existing vectorstore loaded. Current docs: {len(db.docstore._dict)}")
+       # print(f"Existing vectorstore loaded. Current docs: {len(db.docstore._dict)}")
 
         if all_docs:
             print(f"Adding {len(all_docs)} new documents to vectorstore...")
@@ -53,5 +53,5 @@ def delete_file_from_vectorstore(filename):
     embeddings = OpenAIEmbeddings()
     new_db = FAISS.from_documents(remaining_docs, embeddings)
     new_db.save_local(VECTORSTORE_DIR)
-    print(f"Deleted '{filename}'. Remaining docs: {len(remaining_docs)}")
+    #print(f"Deleted '{filename}'. Remaining docs: {len(remaining_docs)}")
     return True

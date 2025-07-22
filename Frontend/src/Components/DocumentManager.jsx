@@ -74,13 +74,11 @@ function DocumentManager() {
         setUploading(true);
 
         const formData = new FormData();
-        formData.append("question", "dummy"); 
         formData.append("session_id", sessionId); 
-
         uploadFiles.forEach(file => formData.append("pdfs", file));
 
         try {
-            const res = await fetch("http://localhost:8000/ask", {
+            const res = await fetch("http://localhost:8000/upload-documents", {
                 method: "POST",
                 body: formData,
             });
