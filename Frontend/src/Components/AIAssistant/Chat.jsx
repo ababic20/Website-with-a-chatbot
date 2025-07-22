@@ -8,19 +8,29 @@ function ChatPopup({ togglePopup }) {
     const [messages, setMessages] = useState([{ sender: "Assistant", text: "" }]);
     const [inputValue, setInputValue] = useState("");
     const textareaRef = useRef(null);
+    const messagesEndRef = useRef(null);
 
     useEffect(() => {
         setMessages([{ sender: "Assistant", text: translations.assistant.startMessage }]);
     }, [translations.assistant.startMessage]);
 
+    useEffect(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, [messages]);
+
     const sendMessage = () => {
         if (!inputValue.trim()) return;
 
-        setMessages(prev => [...prev, { sender: "User", text: inputValue }]);
+        const userMessage = { sender: "User", text: inputValue };
+        setMessages(prev => [...prev, userMessage]);
 
         askAssistant(inputValue)
             .then(data => {
-                setMessages(prev => [...prev, { sender: "Assistant", text: data.answer }]);
+                const assistantReply = typeof data.answer === "string"
+                    ? data.answer
+                    : JSON.stringify(data.answer);
+
+                setMessages(prev => [...prev, { sender: "Assistant", text: assistantReply }]);
             })
             .catch(() => {
                 setMessages(prev => [...prev, { sender: "Assistant", text: "Error processing request." }]);
@@ -28,7 +38,7 @@ function ChatPopup({ togglePopup }) {
 
         setInputValue("");
         if (textareaRef.current) {
-            textareaRef.current.style.height = "auto"; 
+            textareaRef.current.style.height = "auto";
         }
     };
 
@@ -72,6 +82,7 @@ function ChatPopup({ togglePopup }) {
                             )}
                         </div>
                     ))}
+                    <div ref={messagesEndRef} />
                 </div>
 
                 <div className="input-area">

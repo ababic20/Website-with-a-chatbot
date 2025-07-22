@@ -1,6 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
 import { LanguageContext } from "../contexts/LanguageContext";
 import './DocumentManager.css';
+import { v4 as uuidv4 } from "uuid";
+
+let sessionId = localStorage.getItem("chat_session_id");
+if (!sessionId) {
+    sessionId = uuidv4();
+    localStorage.setItem("chat_session_id", sessionId);
+}
 
 function DocumentManager() {
     const { translations } = useContext(LanguageContext);
@@ -67,7 +74,9 @@ function DocumentManager() {
         setUploading(true);
 
         const formData = new FormData();
-        formData.append("question", "dummy");
+        formData.append("question", "dummy"); 
+        formData.append("session_id", sessionId); 
+
         uploadFiles.forEach(file => formData.append("pdfs", file));
 
         try {
