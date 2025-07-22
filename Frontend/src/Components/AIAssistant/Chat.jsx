@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import { LanguageContext } from "../../contexts/LanguageContext";
 import { askAssistant } from "../../api/Chat";
 import './Assistant.css';
@@ -7,6 +7,7 @@ function ChatPopup({ togglePopup }) {
     const { translations } = useContext(LanguageContext);
     const [messages, setMessages] = useState([{ sender: "Assistant", text: "" }]);
     const [inputValue, setInputValue] = useState("");
+    const textareaRef = useRef(null);
 
     useEffect(() => {
         setMessages([{ sender: "Assistant", text: translations.assistant.startMessage }]);
@@ -26,6 +27,17 @@ function ChatPopup({ togglePopup }) {
             });
 
         setInputValue("");
+        if (textareaRef.current) {
+            textareaRef.current.style.height = "auto"; 
+        }
+    };
+
+    const handleInput = (e) => {
+        setInputValue(e.target.value);
+        if (textareaRef.current) {
+            textareaRef.current.style.height = "auto";
+            textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+        }
     };
 
     return (
@@ -63,13 +75,17 @@ function ChatPopup({ togglePopup }) {
                 </div>
 
                 <div className="input-area">
-                    <input
-                        type="text"
+                    <textarea
+                        ref={textareaRef}
+                        className="chat-textarea"
                         value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
+                        onChange={handleInput}
                         placeholder={translations.assistant.inputPlaceholder}
+                        rows={1}
                     />
-                    <button onClick={sendMessage}>{translations.assistant.sendButton}</button>
+                    <button onClick={sendMessage}>
+                        {translations.assistant.sendButton}
+                    </button>
                 </div>
             </div>
         </div>
