@@ -303,7 +303,7 @@ Točnije rečeno dodaju novi način interakcije između korisnika i pružatelja 
 
 U svijetu umjetne inteligencije često se pojavljuju pojmovi poput bota, asistenta, copilota i agenta. Iako na prvi pogled djeluju kao sinonimi, svaki od njih ima svoju specifičnu svrhu, primjenu i skup prednosti.
 
-\begin{table}[h!]
+\begin{table}[ht!]
 \centering
 \begin{tabularx}{\textwidth}{|l|X|X|X|}
 \hline
@@ -620,7 +620,7 @@ najrelevantniji. Na kraju, LLM koristi te informacije za generiranje odgovora na
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.8\textwidth]{./assets/rag_diagram.png} 
+    \includegraphics[width=0.8\textwidth]{./assets/rag_diagramm.png} 
     \caption{Konceptualni tok korištenja RAG-a s LLM-ovima \cite{awsRAG2025}}
     \label{fig:slika1}
 \end{figure}
@@ -1028,7 +1028,7 @@ Face potiče okruženje u kojem se dijeli znanje i resursi čime se ubrzava razv
 %\subsubsection{Anthropic}
 %Anthropic je tvrtka koja se fokusira na razvoj sigurnosnih i etičkih AI modela koji se ponašaju u skladu s ljudskim vrijednostima. Poznata je po seriji Claude modela \cite{ozkaya2025llm}. 
 Zaključak je da su svi navedeni alati i biblioteke korisni za implemetaciju RAG sustava, ali za potrebe ovog rada korištena je kombinacija
-Langchaina, ChatGPT (OpenAI) modela i FAISS vektorske baze podataka. 
+Langchaina, llama modela s Groq platforme i FAISS vektorske baze podataka. 
 
 
 \chapter{Korištene tehnologije i alati}
@@ -1177,399 +1177,32 @@ AI asistent (pop-up) & Sučelje za razgovor & Interaktivni chat s korisnikom; ot
 
 \textbf{[Napomena]} - Svaka stranica sadrži obavezne elemente kao što su podnožje (eng. footer) i zaglavlje (eng. header).
 
-\section{Korisničko sučelje (Frontend)}
-Na sljedećoj slici može se vidjeti struktura frontend dijela. Prikazane su samo određeni dijelovi koji predstavljaju najvažnije
-stvari u frontend dijelu.
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=0.9\textwidth]{./assets/frontendstructure.png} 
-    \caption{Struktura frontend dijela}
-    \label{fig:slika18}
-\end{figure}
-
-U okviru frontend dijela prikazani su samo odabrani dijelovi koda i komponente zbog njihove opsežnosti. U slučaju interesa za konkretnim dijelom, izvorni kod je dostupan na Github 
-repozitoriju koji je naveden u zaključku rada.
-
-Funkcija askAssistant šalje pitanje i opcionalno PDF datoteke backendu putem HTTP POST zahtjeva. Koristi se za komunikaciju s FastAPI-jem
-(ruta /ask) koji obrađuje pitanje uz kontekst PDF-ova.
-
-\begin{longlisting}
-\begin{minted}[
-    bgcolor=codebg,
-    linenos,
-    fontsize=\footnotesize,
-    breaklines,
-    breakanywhere,
-    baselinestretch=1.0
-]{JavaScript}
-export async function askAssistant(question, files = []) {
-    const formData = new FormData();
-    formData.append("question", question);
-
-    if (files && files.length > 0) {
-        files.forEach(file => formData.append("pdfs", file));
-    }
-
-    const response = await fetch("http://localhost:8000/ask", {
-        method: "POST",
-        body: formData,
-    });
-
-    if (!response.ok) {
-        throw new Error(`Request failed: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-    return data;
-}
-\end{minted}
-\caption{Chat.jsx}
-\label{lst:chat}
-\end{longlisting}
-
-Funkcija sendContactForm šalje podatke iz kontakt forme na backend rutu /send email koristeći POST zahtjev s JSON tijelom.
-Koristi se za slanje emailova s korisničkim podacima (ime, email, poruka itd.) na server putem FastAPI endpointa.
-
-
-\begin{longlisting}
-\begin{minted}[
-    bgcolor=codebg,
-    linenos,
-    fontsize=\footnotesize,
-    breaklines,
-    breakanywhere,
-    baselinestretch=1.0
-]{JavaScript}
-export async function sendContactForm(formData) {
-  const response = await fetch("http://localhost:8000/send-email", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(formData),
-  });
-
-  if (!response.ok) {
-    const data = await response.json();
-    throw new Error(data.error || "Greška prilikom slanja e-maila.");
-  }
-
-  return response.json();
-}
-\end{minted}
-\caption{Contact.jsx}
-\label{lst:contact}
-\end{longlisting}
-
-
-\section{Poslužiteljski dio (Backend)}
-Na sljedećoj slici može se vidjeti struktura backend dijela. Prikazane su sve stvari koje su od značaja za backend dio aplikacije.
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=1\textwidth]{./assets/backendstructure.png}
-    \caption{Struktura backend dijela}
-    \label{fig:slika111}
-\end{figure}
-
-Env datoteka sadrži konfiguracijske varijable koje se koriste u aplikaciji. OpenAI API ključ se koristi za pristup OpenAI modelima,
-Gmail user je adresa s koje se šalju poruke s kontakt forme, Gmail password je aplikacijska lozinka za autentifikaciju Gmail računa i Gmail receiver
-je adresa primatelja poruka koja može biti kao Gmail user.
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.5\textwidth]{./assets/env file.png}
-  \caption{Sadržaj env datoteke}
-  \label{fig:slika121}
-\end{figure}
-
-
-\subsection{Server}
-Main predstavlja glavnu datoteku koja pokreće FastAPI aplikaciju. Učitava se konfiguracija iz .env datoteke, omogućuje se CORS pristup
-kako bi frontend i backend mogli komunicirati bez ograničenja, te se u aplikaciju uključuju sve definirane rute za pitanja, dokumente, statistiku
-i email. 
-
-\begin{longlisting}
-\begin{minted}[
-    bgcolor=codebg,
-    linenos,
-    fontsize=\footnotesize,
-    breaklines,
-    breakanywhere,
-    baselinestretch=1.0
-]{Python}
-from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
-from dotenv import load_dotenv
-
-from routes import ask, documents, stats, email
-
-load_dotenv()
-
-app = FastAPI()
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-app.include_router(ask.router)
-app.include_router(documents.router)
-app.include_router(stats.router)
-app.include_router(email.router)
-
-\end{minted}
-\caption{Main.py}
-\label{lst:main}
-\end{longlisting}
-
-
-\subsection{Servisi}
-
-Sljedeći dio koda upravlja vektorskom bazom podataka koristeći FAISS i OpenAIEmbeddings. Omogućuje učitavanje vektorske baze podataka, dodavanje
-novih dokumenata te brisanje dokumenata na temelju imena datoteke. Vektorska baza podataka se lokalno pohranjuje u direktorij vectorstore.
-
-\begin{longlisting}
-\begin{minted}[
-    bgcolor=codebg,
-    linenos,
-    fontsize=\footnotesize,
-    breaklines,
-    breakanywhere,
-    baselinestretch=1.0
-]{Python}
-import os
-from langchain_community.embeddings import OpenAIEmbeddings
-from langchain_community.vectorstores import FAISS
-
-VECTORSTORE_DIR = "vectorstore"
-
-def load_vectorstore():
-    embeddings = OpenAIEmbeddings()
-    if not os.path.exists(VECTORSTORE_DIR):
-        raise FileNotFoundError("Vectorstore not found.")
-    return FAISS.load_local(VECTORSTORE_DIR, embeddings, allow_dangerous_deserialization=True)
-
-def get_or_create_vectorstore(all_docs):
-    embeddings = OpenAIEmbeddings()
-
-    if os.path.exists(VECTORSTORE_DIR):
-        db = FAISS.load_local(VECTORSTORE_DIR, embeddings, allow_dangerous_deserialization=True)
-        if all_docs:
-            db.add_documents(all_docs)
-            db.save_local(VECTORSTORE_DIR)
-    elif all_docs:
-        db = FAISS.from_documents(all_docs, embeddings)
-        db.save_local(VECTORSTORE_DIR)
-    else:
-        raise ValueError("No documents provided and vectorstore doesn't exist.")
-
-    return db
-
-def delete_file_from_vectorstore(filename):
-    try:
-        db = load_vectorstore()
-    except FileNotFoundError:
-        return False
-
-    remaining_docs = [
-        doc for doc in db.docstore._dict.values()
-        if doc.metadata.get("source") != filename
-    ]
-
-    if len(remaining_docs) == len(db.docstore._dict):
-        return False
-
-    embeddings = OpenAIEmbeddings()
-    new_db = FAISS.from_documents(remaining_docs, embeddings)
-    new_db.save_local(VECTORSTORE_DIR)
-    return True
-\end{minted}
-\caption{Vectorstore.py}
-\label{lst:vectorstore}
-\end{longlisting}
-
-Nadalje se definira mehanizam za dohvaćanje odgovora na pitanja pomoću modela gpt-3.5-turbo-16k i prethodno izgrađene vektorske baze.
-Koristi se RetrievalQA lanac koji kombinira jezični model s retriverom za dohvat relevantnih dokumenata. Može se podesiti broj dokumenata
-koji se koriste za generiranje odgovora.
-\begin{longlisting}
-\begin{minted}[
-    bgcolor=codebg,
-    linenos,
-    fontsize=\footnotesize,
-    breaklines,
-    breakanywhere,
-    baselinestretch=1.0
-]{Python}
-from langchain_openai import ChatOpenAI
-from langchain.chains import RetrievalQA
-
-def get_qa_chain(db):
-    retriever = db.as_retriever(search_kwargs={"k": 2}) 
-    llm = ChatOpenAI(model="gpt-3.5-turbo-16k")
-    return RetrievalQA.from_chain_type(llm=llm, retriever=retriever)
-\end{minted}
-\caption{qa.py}
-\label{lst:qa}
-\end{longlisting}
-
-\subsection{Rute}
-Ova API ruta omogućuje korisniku da pošalje jedan ili više PDF dokumenata i postavit pitanje vezano uz njihov sadržaj. PDF dokumenti
-se obrađuju i dijele na manje dijelove, a zatim se kreira ili nadopunjuje vektorska baza podataka. Jezični model koristi najrelevantnije dijelove
-za generiranje odgovora. Ruta vraća generirani odgovor zajedno s porukom o uspješnoj obradi i indeksiranju PDF dokumenata.
-
-\begin{longlisting}
-\begin{minted}[
-    bgcolor=codebg,
-    linenos,
-    fontsize=\footnotesize,
-    breaklines,
-    breakanywhere,
-    baselinestretch=1.0
-]{Python}
-from fastapi import APIRouter, UploadFile, File, Form
-from services.pdf_handler import process_pdfs
-from services.vectorstore import get_or_create_vectorstore
-from services.qa import get_qa_chain
-
-router = APIRouter()
-
-@router.post("/ask")
-async def ask_pdf(
-    question: str = Form(...),
-    pdfs: list[UploadFile] = File(None)
-):
-    all_docs = await process_pdfs(pdfs)
-    db = get_or_create_vectorstore(all_docs)
-    qa_chain = get_qa_chain(db)
-    response = qa_chain.run(question)
-
-    return {"answer": response, "message": "PDF document successfully added and indexed."}
-\end{minted}
-\caption{ask.py}
-\label{lst:ask}
-\end{longlisting}
-
-Nadalje su definirane dvije rute: jedna za dohvat popisa svih PDF dokumenata koji su trenutno indeksirani u vektorskoj bazi podataka, a druga
-za brisanje dokumenata po nazivu dokumenta. Ruta za brisanje vraća grešku ako dokument s tim imenom ne postoji u vektorskoj bazi podataka.
-
-\begin{longlisting}
-\begin{minted}[
-    bgcolor=codebg,
-    linenos,
-    fontsize=\footnotesize,
-    breaklines,
-    breakanywhere,
-    baselinestretch=1.0
-]{Python}
-from fastapi import APIRouter, HTTPException
-from services.vectorstore import load_vectorstore, delete_file_from_vectorstore
-
-router = APIRouter()
-
-@router.get("/documents")
-def list_documents():
-    db = load_vectorstore()
-    sources = set()
-    for doc in db.docstore._dict.values():
-        if "source" in doc.metadata:
-            sources.add(doc.metadata["source"])
-    return {"documents": list(sources)}
-
-@router.delete("/delete-document")
-def delete_document(filename: str):
-    success = delete_file_from_vectorstore(filename)
-    if not success:
-        raise HTTPException(status_code=404, detail=f"No document found with source: {filename}")
-    return {"status": "success", "message": f"Deleted document: {filename}"}
-\end{minted}
-\caption{documents.py}
-\label{lst:documents}
-\end{longlisting}
-
-Sljedeća API ruta omogućuje slanje e-mail poruke s kontakt forme. Korisnik ispunjava ime, email, broj telefona, adresu i poruku, a backend
-zatim šalje e-mail na zadanu adresu koristeći Gmail SMTP. Podaci se šalju putem SSL-a, a konfiguracija dolazi iz .env datoteke.
-
-\begin{longlisting}
-\begin{minted}[
-    bgcolor=codebg,
-    linenos,
-    fontsize=\footnotesize,
-    breaklines,
-    breakanywhere,
-    baselinestretch=1.0
-]{Python}
-from fastapi import APIRouter
-from pydantic import BaseModel, EmailStr
-import smtplib
-from email.mime.text import MIMEText
-from email.utils import formataddr
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
-
-router = APIRouter()
-
-class ContactForm(BaseModel):
-    fullName: str
-    phone: str
-    email: EmailStr
-    address: str
-    description: str
-
-@router.post("/send-email")
-def send_email(data: ContactForm):
-    sender_email = os.getenv("GMAIL_USER")
-    sender_password = os.getenv("GMAIL_PASSWORD")
-    receiver_email = os.getenv("GMAIL_RECEIVER") or sender_email
-
-    msg_content = f"""
-    Nova poruka s kontakt forme:
-
-    Ime i prezime: {data.fullName}
-    Telefon: {data.phone}
-    E-mail: {data.email}
-    Adresa: {data.address}
-    Poruka:
-    {data.description}
-    """
-
-    msg = MIMEText(msg_content, "plain", "utf-8")
-    msg["Subject"] = "Nova poruka s web stranice"
-    msg["From"] = formataddr(("Web kontakt forma", sender_email))
-    msg["To"] = receiver_email
-    msg["Reply-To"] = data.email  
-
-    try:
-        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
-            server.login(sender_email, sender_password)
-            server.sendmail(sender_email, receiver_email, msg.as_string())
-        return {"message": "Email je uspješno poslan."}
-    except Exception as e:
-        print("Greška prilikom slanja emaila:", e)
-        return {"error": "Neuspješno slanje emaila. Provjerite postavke."}
-\end{minted}
-\caption{email.py}
-\label{lst:email}
-\end{longlisting}
-
-
-\subsection{Inteligentni asistent}
-test
-\subsubsection{Prikupljanje podataka}
+\section{Prikupljanje podataka}
 
 Prikupljanje podataka započelo je kroz razgovor s profesoricom umjetne inteligencije koju sam upoznao tijekom Erasmus+ razmjene. 
 Profesorica je bila izuzetno korisna osoba za ovaj rad jer je rođena i živi u gradu Łódź. Ukratko sam joj predstavio temu rada, 
 a ona mi je preporučila nekoliko relevantnih internetskih izvora.
 
+Za kreiranje skupa podataka korišten je Python zajedno s bibliotekom BeautifulSoup. Scraper folder je potpuno samostalna cijelina i neovisna
+je o backend i frontend dijelu. Unutar scraper foldera postoji data folder u kojemu su spremljeni izlazni podaci koji su u dva oblika (JSON i pdf).
+Data.txt predstavlja kratki sažetak koji opisuje o kakvim se podacima radi, kolko ih ima i odakle su preuzeti. Pošto su korištene dvije stranice
+kao izvori podataka, potrebno je bilo napraviti dva scrapera od kojih je samo za jedan u nastavku detaljnije opisana implementacija. Osim toga
+pošto su stranice izvorno na poljskom jeziku bilo je potrebno napraviti skriptu koja prevodi JSONE na engleski jezik radi lakšeg razumijevanja
+JSON-a kako ljudima pa tako i AI modelu.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=1\textwidth]{./assets/structure-scraper.png}
+    \caption{Struktura scraper foldera}
+    \label{fig:slika1111}
+\end{figure}
+
+
 Sljedeća tablica prikazuje pregled korištenih izvora, broj zapisa, naziv rezultirajuće datoteke i alate korištene za obradu podataka:
 
-\begin{table}[H]
+\begin{table}[ht!]
 \centering
-\begin{tabular}{|p{4cm}|p{3.5cm}|p{5cm}|p{3.5cm}|}
+\begin{tabular}{|p{3.7cm}|p{3.2cm}|p{3.7cm}|p{3.5cm}|}
 \hline
 \textbf{Web izvor} & \textbf{Veličina skupa podataka} & \textbf{Naziv datoteke} & \textbf{Korišteni alati} \\
 \hline
@@ -1584,15 +1217,6 @@ Sljedeća tablica prikazuje pregled korištenih izvora, broj zapisa, naziv rezul
 \label{tab:izvori}
 \end{table}
 
-
-
-\subsubsection{Web scraping}
-\begin{figure}[ht!]
-    \centering
-    \includegraphics[width=1\textwidth]{./assets/structure-scraper.png}
-    \caption{Struktura scraper foldera}
-    \label{fig:slika1111}
-\end{figure}
 
 Sljedeća metoda dohvaća HTML sadržaj stranice. Prima URL i vraća BeautifulSoup objekt za lakšu obradu HTML-a. Postavlja User-Agent 
 kako bi se izbjeglo blokiranje od strane servera. U slučaju do pogreške (npr. timeout) ispisuje poruku i vraća None. 
@@ -1763,20 +1387,15 @@ def main():
     if not aside_nav:
         print("Navigation not found! Check the URL or HTML structure.")
         return
-
     print("Parsing main navigation...")
     structured_data = parse_menu(aside_nav)
-
     print("\nFetching content from all pages...")
     fill_content_recursively(structured_data)
-
     with open("lodz_content.json", "w", encoding="utf-8") as f:
         json.dump(structured_data, f, indent=2, ensure_ascii=False)
-
     total = count_total_items(structured_data)
     print(f"\nTotal records extracted: {total}")
     print("Done! Data saved to: lodz_content.json")
-
 if __name__ == "__main__":
     main()
 \end{minted}
@@ -1850,20 +1469,1049 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 \end{minted}
 \caption{Scraper 6/6}
 \label{lst:scraper6}
 \end{longlisting}
 
 
-\subsubsection{Čišćenje i obrada podataka}
-test
+\section{Korisničko sučelje (Frontend)}
+Na sljedećoj slici može se vidjeti struktura frontend dijela. U okviru frontend dijela prikazani su samo odabrani dijelovi koda i komponente zbog njihove opsežnosti. U slučaju interesa za konkretnim dijelom, izvorni kod je dostupan na Github 
+repozitoriju koji je naveden u zaključku rada.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{./assets/frontendstructure.png} 
+    \caption{Struktura frontend dijela}
+    \label{fig:slika18}
+\end{figure}
 
 
 
+Funkcija askAssistant šalje korisničko pitanje AI asistentu putem POST zahtjeva na backend. Automatski generira i koristi jedinstveni ID sesije, 
+koji se sprema u localstorage. Na kraju vraća JSON odgovor s asistentskim odgovorom ili javlja grešku ako zahtjev ne uspije. 
 
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{JavaScript}
+import { v4 as uuidv4 } from "uuid";
+
+let sessionId = localStorage.getItem("chat_session_id");
+if (!sessionId) {
+    sessionId = uuidv4();
+    localStorage.setItem("chat_session_id", sessionId);
+}
+
+export async function askAssistant(question, files = []) {
+    const formData = new FormData();
+    formData.append("question", question);
+    formData.append("session_id", sessionId);
+
+    if (files && files.length > 0) {
+        files.forEach(file => formData.append("pdfs", file));
+    }
+
+    const response = await fetch("http://localhost:8000/ask", {
+        method: "POST",
+        body: formData,
+    });
+
+    if (!response.ok) {
+        throw new Error(`Request failed: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data;
+}
+\end{minted}
+\caption{Chat.jsx}
+\label{lst:chat}
+\end{longlisting}
 \newpage
+
+Funkcija sendContactForm šalje podatke iz kontakt forme na backend rutu /send email koristeći POST zahtjev s JSON tijelom.
+Koristi se za slanje emailova s korisničkim podacima (ime, email, poruka itd.) na server putem FastAPI endpointa.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{JavaScript}
+export async function sendContactForm(formData) {
+  const response = await fetch("http://localhost:8000/send-email", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  });
+  if (!response.ok) {
+    const data = await response.json();
+    throw new Error(data.error || "Greška prilikom slanja e-maila.");
+  }
+  return response.json();
+}
+\end{minted}
+\caption{Contact.jsx}
+\label{lst:contact}
+\end{longlisting}
+
+Sljedeća funkcija dohvaća popis trenutno pohranjenih dokumenata sa servera. Koristi GET zahtjev prema /documents.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{JavaScript}
+export async function fetchDocuments() {
+    const res = await fetch("http://localhost:8000/documents");
+    if (!res.ok) throw new Error("Failed to fetch documents");
+    return await res.json();}
+\end{minted}
+\caption{Document.jsx 1/5}
+\label{lst:document1}
+\end{longlisting}
+
+Ova funkcija dohvaća statistiku o dokumentima s rute /stats. Vraća podatke poput broja dokumenta, broja ulomka i vremena zadnjeg dodavanja. 
+Također koristi GET i vraća grešku ako ne uspije.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{JavaScript}
+export async function fetchStats() {
+    const res = await fetch("http://localhost:8000/stats");
+    if (!res.ok) throw new Error("Failed to fetch stats");
+    return await res.json();}
+\end{minted}
+\caption{Document.jsx 2/5}
+\label{lst:document2}
+\end{longlisting}
+
+Sljedeća funkcija briše dokument prema nazivu koristeći DELETE zahtjev. Naziv datoteke se enkodira kako bi bio siguran za URL.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{JavaScript}
+export async function deleteDocument(filename) {
+    const res = await fetch(`http://localhost:8000/delete-document?filename=${encodeURIComponent(filename)}`, {
+        method: "DELETE",
+    });
+    if (!res.ok) throw new Error("Failed to delete document");
+    return await res.json();
+    }
+\end{minted}
+\caption{Document.jsx 3/5}
+\label{lst:document3}
+\end{longlisting}
+
+Sljedeća funkcija se koristi za slanje jednog ili više dokumenata (PDF/JSON). Kreira FormData i uključuje ID sesije. Ako server ne prihvati
+datoteke, funkcija vraća grešku.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{JavaScript}
+export async function uploadDocuments(files, sessionId) {
+    const formData = new FormData();
+    formData.append("session_id", sessionId);
+    files.forEach(file => formData.append("pdfs", file));
+
+    const res = await fetch("http://localhost:8000/upload-documents", {
+        method: "POST",
+        body: formData,
+    });
+
+    if (!res.ok) throw new Error("Failed to upload documents");
+    return await res.json();
+}
+\end{minted}
+\caption{Document.jsx 4/5}
+\label{lst:document4}
+\end{longlisting}
+
+Posljednja funkcija dohvaća sadržaj dokumenta (npr. JSON) za pregled. Koristi GET zahtjev prema /preview document. Vraća sadržaj u čitljivom 
+formatu ili javlja grešku.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{JavaScript}
+export async function previewDocument(filename) {
+    const res = await fetch(`http://localhost:8000/preview-document?filename=${encodeURIComponent(filename)}`);
+    if (!res.ok) throw new Error("Failed to preview document");
+    return await res.json();
+}
+\end{minted}
+\caption{Document.jsx 5/5}
+\label{lst:document5}
+\end{longlisting}
+
+About komponenta prikazuje sekciju s videozapisom i informacijama od gradu Lodzu. Koristi useContext i LanguageContext čime se dohvaćaju
+prijevodi teksta na temelju trenutno odabranog jezika (translations.aboutPage). Nadalje ugrađeni iframe iz Google Drive-a prikazuje video o Lodzu.
+Postavljen je na širinu 100 posto i visinu 400px. Za taj video bilo je potrebno odvojiti jedan dan kako bi se napisali i složili engleski titlovi
+kako bi i on mogao biti popraćen od strane nekoga ko ne zna hrvatski jezik. Nastavno se prikazuje naslov i dva odlomka teksta preuzeta iz konteksta
+jezika (paragraph1 i paragraph2). Na kraju su prikazane tri ikone s pripadajućim opisima.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{JavaScript}
+import React, { useContext } from 'react';
+import { LanguageContext } from '../../contexts/LanguageContext'; 
+import './About.css';
+
+const About = () => {
+  const { translations } = useContext(LanguageContext); 
+
+  return (
+    <>
+      <section className='about'>
+        <div className='video'>
+          <iframe
+            src="https://drive.google.com/file/d/18k77Ntbqf1-yN5F-VsQ9CnGWgznZe6gm/preview"
+            width="100%"
+            height="400"
+            allow="autoplay"
+            allowFullScreen
+            title="About Łódź Video"
+            style={{ border: "none", borderRadius: "12px" }}
+          ></iframe>
+        </div>
+
+        <div className='content'>
+          <h3 id='vise-o-lodzu'>{translations.aboutPage.subTitle}</h3>
+
+          <p>{translations.aboutPage.paragraph1}</p>
+          <p>{translations.aboutPage.paragraph2}</p>
+
+          <div className="icons-container">
+            <div className='icons'>
+              <i className='fas fa-shield-alt'></i>
+              <span>{translations.aboutPage.safe}</span>
+            </div>
+            <div className='icons'>
+              <i className='fas fa-leaf'></i>
+              <span>{translations.aboutPage.clean}</span>
+            </div>
+            <div className='icons'>
+              <i className='fas fa-building'></i>
+              <span>{translations.aboutPage.modern}</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+export default About;
+\end{minted}
+\caption{About.jsx komponenta}
+\label{lst:about}
+\end{longlisting}
+
+Sljedeća datoteka postavlja kontekst za jezik aplikacije koristeći React Context API. Omogućuje da cijela aplikacija zna koji jezik je trenutno
+aktivan i da prema tome prikazuje prijevode. Započetak se učitavaju dva JSON-a (hr.json i en.json). State za jezik postavlja engleski kao početni
+jezik (useState('en')), dok se setLanguage koristi za promjenu jezika. Nadalje ako je odabrani jezik hr, koristi se hr.json, u suprotnom en.json.
+Funckija toggleLanguage omogućuje promjenu jezika pozivom funkcije toggleLanguage('hr'). LanguageContext.Provider omogućuje da djeca komponente
+({children}) pristupe vrijednostima language, toggleLanguage i translations.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{JavaScript}
+import React, { createContext, useState } from 'react';
+import hr from '../locales/hr.json';
+import en from '../locales/en.json';
+
+export const LanguageContext = createContext();
+
+export const LanguageProvider = ({ children }) => {
+  const [language, setLanguage] = useState('en');
+
+  const translations = language === 'hr' ? hr : en;
+
+  const toggleLanguage = (lang) => {
+    setLanguage(lang);
+  };
+
+  return (
+    <LanguageContext.Provider value={{ language, toggleLanguage, translations }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+};
+\end{minted}
+\caption{LanguageContext.jsx}
+\label{lst:LanguageContext}
+\end{longlisting}
+
+Sljedeća komponenta predstavlja glavnu početnu stranicu aplikacije i prikazuje sve ključne sekcije. Koristi višekratne komponente poput Navbar,
+Slider, Motivation, Cities, Help i Footer za izgradnju cjelovitog prikaza. Stranica uključuje i pomoćne elemente poput gumba ua povratak na vrh
+(ScrollToTopButton).
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{JavaScript}
+import React from 'react'
+import Navbar from '../Components/Navbar'
+import Footer from '../Components/Footer'
+import Motivation from '../Components/Motivation'
+import Slider from '../Components/Slider'
+import AboutLodz from '../Components/AboutLodz'
+import Cities from '../Components/Cities'
+import Help from '../Components/Help'
+import Icon from '../Components/AIAssistant/Icon'
+import ScrollToTopButton from '../Components/ScrollToTopButton'
+
+export default function(){
+  return(
+    <>
+        <Navbar/>
+        <Slider/>
+        <Motivation/>
+        <AboutLodz/>
+        <Cities/>
+        <Help/>
+        <ScrollToTopButton/>
+        <Footer/>
+    </>
+  )
+}
+\end{minted}
+\caption{Stranica Home}
+\label{lst:home}
+\end{longlisting}
+
+Ova glavna React komponenta postavlja strukturu aplikacije koristeći BrowserRouter za upravljanje rutama. Omotana je u LanguageProvider kako
+bi sve podstranice imale pristup jeziku i prijevodima. Unutar Routes definirane su rute prema komponentama Home, About, Cities, Question i Documents,
+dok je komponenta Icon prikazana globalno - neovisno o stranici (kako bi popup prozor asistenta bio i dalje otvoren iako se prelazi na druge stranice).
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{JavaScript}
+import React from 'react'
+import {BrowserRouter, Routes, Route,} from 'react-router-dom';
+import { LanguageProvider } from './contexts/LanguageContext'; 
+import Home from './pages/Home'
+import About from './pages/About'
+import Cities from './pages/Cities'
+import Question from './pages/Question'
+import Documents from './pages/Documents';
+import Icon from './Components/AIAssistant/Icon'; 
+
+const App = () => {
+  return (
+    <LanguageProvider> 
+      <BrowserRouter>
+      <Icon />
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path='/home' element={<Home />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/cities' element={<Cities />} />
+          <Route path='/question' element={<Question />} />
+          <Route path='/documents' element={<Documents />} />
+        </Routes>
+      </BrowserRouter>
+    </LanguageProvider>
+  );
+};
+export default App
+\end{minted}
+\caption{App.jsx}
+\label{lst:app}
+\end{longlisting}
+
+
+
+
+\section{Poslužiteljski dio (Backend)}
+Na sljedećoj slici može se vidjeti struktura backend dijela. Prikazane su sve stvari koje su od značaja za backend dio aplikacije.
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=1\textwidth]{./assets/backendstructure.png}
+    \caption{Struktura backend dijela}
+    \label{fig:slika111}
+\end{figure}
+
+Env datoteka sadrži konfiguracijske varijable koje se koriste u aplikaciji. OpenAI API ključ se koristi za pristup OpenAI modelima,
+Gmail user je adresa s koje se šalju poruke s kontakt forme, Gmail password je aplikacijska lozinka za autentifikaciju Gmail računa i Gmail receiver
+je adresa primatelja poruka koja može biti kao Gmail user.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{./assets/env file.png}
+  \caption{Sadržaj env datoteke}
+  \label{fig:slika121}
+\end{figure}
+
+
+\subsection{Server}
+Main predstavlja glavnu datoteku koja pokreće FastAPI aplikaciju. Učitava se konfiguracija iz .env datoteke, omogućuje se CORS pristup
+kako bi frontend i backend mogli komunicirati bez ograničenja, te se u aplikaciju uključuju sve definirane rute za pitanja, dokumente, statistiku
+i email. 
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+
+from routes import ask, documents, stats, email
+
+load_dotenv()
+
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(ask.router)
+app.include_router(documents.router)
+app.include_router(stats.router)
+app.include_router(email.router)
+
+\end{minted}
+\caption{Main.py}
+\label{lst:main}
+\end{longlisting}
+
+
+\subsection{Servisi}
+
+Sljedeći dio koda upravlja vektorskom bazom podataka koristeći FAISS i HuggingFaceEndpointEmbeddings. Omogućuje učitavanje vektorske baze podataka, dodavanje
+novih dokumenata te brisanje dokumenata na temelju imena datoteke. Vektorska baza podataka se lokalno pohranjuje u direktorij vectorstore.
+Započetak se dohvaća API ključ iz .env datoteke (\texttt{HF API KEY}), ako ključ ne postoji vraća se greška. Nakon toga se vraća instanca 
+HuggingFaceEndpointEmbeddings za model \texttt{sentence-transformers/all-MiniLM-L6-v2} (koristi se u svim ostalim funkcijama gdje je potrebno raditi s vektorima).
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+import os
+from langchain_community.vectorstores import FAISS
+from langchain_huggingface import HuggingFaceEndpointEmbeddings  
+from dotenv import load_dotenv
+
+load_dotenv()
+
+VECTORSTORE_DIR = "vectorstore"
+
+def get_embeddings():
+    api_key = os.getenv("HF_API_KEY")
+
+    if not api_key:
+        raise ValueError("HF_API_KEY is not set in the environment.")
+
+    return HuggingFaceEndpointEmbeddings(
+        model="sentence-transformers/all-MiniLM-L6-v2",
+        huggingfacehub_api_token=api_key
+    )
+\end{minted}
+\caption{Vectorstore.py 1/4}
+\label{lst:vectorstore1}
+\end{longlisting}
+
+Nadalje provjerava se postoji li direktorij vectorstore, ako ne postoji, vraća se FileNotFoundError. Učitava se FAISS baza pomoću prethodno
+definiranih embeddinga (koristi se kada se želi čitati postojeće dokumente)
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+def load_vectorstore():
+    if not os.path.exists(VECTORSTORE_DIR):
+        raise FileNotFoundError("Vectorstore folder not found.")
+
+    embeddings = get_embeddings()
+    db = FAISS.load_local(VECTORSTORE_DIR, embeddings, allow_dangerous_deserialization=True)
+    return db
+\end{minted}
+\caption{Vectorstore.py 2/4}
+\label{lst:vectorstore2}
+\end{longlisting}
+
+Sljedeći dio koda dohvaća embeddinge i ako direktorij vectorstore postoji: učitava bazu, dodaje dokumente ako ih ima, i sprema ažuriranu bazu.
+Ako baza ne postoji a ako ima dokumenata, kreira se nova baza i sprema se (koristi se kod prvog unosa dokumenta).
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+def get_or_create_vectorstore(all_docs):
+    embeddings = get_embeddings()
+
+    if os.path.exists(VECTORSTORE_DIR):
+        db = FAISS.load_local(VECTORSTORE_DIR, embeddings, allow_dangerous_deserialization=True)
+        if all_docs:
+            print(f"Adding {len(all_docs)} documents...")
+            db.add_documents(all_docs)
+            db.save_local(VECTORSTORE_DIR)
+            print(f"Updated vectorstore. Total docs: {len(db.docstore._dict)}")
+    elif all_docs:
+        print(f"Creating vectorstore with {len(all_docs)} documents...")
+        db = FAISS.from_documents(all_docs, embeddings)
+        db.save_local(VECTORSTORE_DIR)
+        print("Vectorstore created and saved.")
+    else:
+        raise ValueError("No documents to index and no vectorstore exists.")
+
+    return db
+\end{minted}
+\caption{Vectorstore.py 3/4}
+\label{lst:vectorstore3}
+\end{longlisting}
+
+Sljedeći dio koda učitava vektorsku bazu podataka nakon čega filtrira sve dokumente čiji source nije jednak filename. Ako se broj dokumenata
+nije promjenio to znači da taj dokument nije postojao. Inače se kreira nova baza samo s preostalim dokuumentima, sprema se i vraća True (koristi se kada korisnik želi ukloniti određeni dokument iz baze).
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+def delete_file_from_vectorstore(filename):
+    try:
+        db = load_vectorstore()
+    except FileNotFoundError:
+        print("No vectorstore to delete from.")
+        return False
+
+    original_count = len(db.docstore._dict)
+    remaining_docs = [
+        doc for doc in db.docstore._dict.values()
+        if doc.metadata.get("source") != filename
+    ]
+
+    if len(remaining_docs) == original_count:
+        print(f"No document found with source: {filename}")
+        return False
+
+    print(f"Deleting document: {filename}")
+    embeddings = get_embeddings()
+    new_db = FAISS.from_documents(remaining_docs, embeddings)
+    new_db.save_local(VECTORSTORE_DIR)
+    print("Vectorstore updated after deletion.")
+    return True
+\end{minted}
+\caption{Vectorstore.py 4/4}
+\label{lst:vectorstore4}
+\end{longlisting}
+
+Memory store predstavlja globalni riječnik u kojem se za svaki korisnički session id pamti prethodna komunikacija (memorija razgovora). Samim
+time se omogućuje dati kontekst odgovorima jer se zna što je prethodno rečeno. U funkciji get conversation chain incijalizira se LLM iz GROQ API-ja
+, model koristi llama-3.1-8b-instant za brze odgovore i ključ se učitava iz .env datoteke. Nadalje se incijalizira memorija po korisniku i ako
+memorija za dani session id još ne postoji, kreira se nova. Samim time je omogućeno vođenje dijaloga s kontinuitetom odnosno ne počinje iznova
+pri svakom pitanju. Nadalje ako postoje dokumenti u FAISS bazi, pretvaraju se u retriver koji dohvaća najrelevantnije dijelove.
+Spaja se jezični model, pretraga i memorija u jedan lanac (ConversationalRetrievalChain). Za kraj ako vektorska baza podataka nije dostupna,
+koristi se obični lanac samo s memorijom i modelom (ConversationChain).
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+from langchain.memory import ConversationBufferMemory
+from langchain.chains import ConversationalRetrievalChain, ConversationChain
+from langchain_groq import ChatGroq
+from langchain_community.vectorstores import FAISS
+import os
+
+memory_store = {}
+
+def get_conversation_chain(db: FAISS, session_id: str):
+    llm = ChatGroq(
+        model="llama-3.1-8b-instant", 
+        api_key=os.getenv("GROQ_API_KEY")
+    )
+
+    if session_id not in memory_store:
+        memory_store[session_id] = ConversationBufferMemory(
+            memory_key="chat_history",
+            return_messages=True
+        )
+    memory = memory_store[session_id]
+
+    if db and db.docstore._dict:
+        retriever = db.as_retriever(search_kwargs={"k": 3})
+        return ConversationalRetrievalChain.from_llm(
+            llm=llm,
+            retriever=retriever,
+            memory=memory,
+            verbose=True
+        )
+    else:
+        return ConversationChain(
+            llm=llm,
+            memory=memory,
+            verbose=True
+        )
+\end{minted}
+\caption{qa.py}
+\label{lst:qa}
+\end{longlisting}
+
+Ovdje se prvo provjeravaju jesu li datoteke poslane nakon čega se kreiraju privremene mape za pohranu dokumenata gdje će se dokumenti privremeno
+spremiti lokalno prije obrade. Nakon toga iterira se kroz sve datoteke i gdje se svaki dokument privremeno zapisuje na disk (sadržaj se čita asinkrono).
+Zatim se provjerava tip dokumenta i ako je pdf, koristi se PyPDFLoader iz Langchain-a za učitavanje sadržaja kao Document. Ako je .json, parsira se
+kao JSON objekt i pretvara u tekst koji se spremi kao jedan Document. Nastavno se svakom dokumentu dodaje source i točan UTC datum i vrijeme slanja (metapodaci).
+Za kraj sadržaj se dijeli u dijelove od 1000 znakova, s preklapanjem od 200 znakova. Time se čuva kontekst između dijelova.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+import os
+import tempfile
+import json
+from datetime import datetime
+from fastapi import UploadFile
+from langchain_community.document_loaders import PyPDFLoader
+from langchain.docstore.document import Document
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+async def process_documents(files: list[UploadFile]):
+    if not files:
+        return []
+
+    temp_dir = tempfile.TemporaryDirectory()
+    all_docs = []
+
+    for file in files:
+        temp_path = os.path.join(temp_dir.name, file.filename)
+        with open(temp_path, "wb") as f:
+            f.write(await file.read())
+
+        if file.filename.lower().endswith(".pdf"):
+            loader = PyPDFLoader(temp_path)
+            docs = loader.load()
+
+        elif file.filename.lower().endswith(".json"):
+            try:
+                with open(temp_path, "r", encoding="utf-8") as f:
+                    json_data = json.load(f)
+
+                text = json.dumps(json_data, indent=2, ensure_ascii=False)
+                docs = [Document(page_content=text, metadata={"source": file.filename})]
+            except Exception as e:
+                print(f"Greška prilikom parsiranja JSON-a: {file.filename} — {e}")
+                continue
+
+        else:
+            print(f"Preskačem nepodržani format: {file.filename}")
+            continue 
+
+        for doc in docs:
+            doc.metadata["source"] = file.filename
+            doc.metadata["uploaded_at"] = datetime.utcnow().isoformat()
+
+        splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
+        split_docs = splitter.split_documents(docs)
+        all_docs.extend(split_docs)
+
+    return all_docs
+\end{minted}
+\caption{\texttt{Document\_handler.py}}
+\label{lst:documenthandler}
+\end{longlisting}
+
+\subsection{Rute}
+Ova API ruta omogućuje korisniku da pošalje pitanje i jedinstveni ID sesije, a zatim dohvaća odgovor koristeći vektorsku bazu podataka i LLM model.
+Prvo se pokušava učitati lokalna vektorska baza, ako ne postoji, vraća se obavijest da dokumenti još nisu učitani. Ako je sve u redu, poziva se
+ConversationalRetrievalChain koji koristi kontekst prethodnog razgovora i vraća najrelevantniji odgovor. U slučaju greške, vraća se poruka
+s odgovarajućim statusom.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+from fastapi import APIRouter, Form
+from fastapi.responses import JSONResponse
+from services.vectorstore import load_vectorstore
+from services.qa import get_conversation_chain
+import traceback
+
+router = APIRouter()
+
+@router.post("/ask")
+async def ask_document(
+    question: str = Form(...),
+    session_id: str = Form(...)
+):
+    try:
+        db = load_vectorstore()
+    except FileNotFoundError:
+        return {"answer": "No documents are loaded yet. Please upload documents first."}
+    except Exception as e:
+        print("Error loading vectorstore:", str(e))
+        traceback.print_exc()
+        return JSONResponse(status_code=500, content={"answer": "Error loading vectorstore."})
+
+    try:
+        qa_chain = get_conversation_chain(db, session_id)
+        response = qa_chain.invoke({"question": question})
+
+        print("== CHAT MEMORY ==")
+        for msg in qa_chain.memory.chat_memory.messages:
+            role = msg.type
+            print(f"{role.upper()}: {msg.content}")
+
+        answer = response["answer"] if isinstance(response, dict) else response
+
+        return {
+            "answer": answer
+        }
+
+    except Exception as e:
+        print("Error during QA invocation:", str(e))
+        traceback.print_exc()
+        return JSONResponse(status_code=500, content={
+            "answer": "Sorry, there was an error processing your question. Please try again later."
+        })
+\end{minted}
+\caption{ask.py}
+\label{lst:ask}
+\end{longlisting}
+
+Nadalje su definirane dvije rute: jedna za dohvat popisa svih PDF dokumenata koji su trenutno indeksirani u vektorskoj bazi podataka, a druga
+za brisanje dokumenata po nazivu dokumenta. Ruta za brisanje vraća grešku ako dokument s tim imenom ne postoji u vektorskoj bazi podataka.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+from fastapi import APIRouter, HTTPException
+from services.vectorstore import load_vectorstore, delete_file_from_vectorstore
+
+router = APIRouter()
+
+@router.get("/documents")
+def list_documents():
+    db = load_vectorstore()
+    sources = set()
+    for doc in db.docstore._dict.values():
+        if "source" in doc.metadata:
+            sources.add(doc.metadata["source"])
+    return {"documents": list(sources)}
+
+@router.delete("/delete-document")
+def delete_document(filename: str):
+    success = delete_file_from_vectorstore(filename)
+    if not success:
+        raise HTTPException(status_code=404, detail=f"No document found with source: {filename}")
+    return {"status": "success", "message": f"Deleted document: {filename}"}
+\end{minted}
+\caption{documents.py}
+\label{lst:documents}
+\end{longlisting}
+
+Sljedeća API ruta omogućuje slanje e-mail poruke s kontakt forme. Korisnik ispunjava ime, email, broj telefona, adresu i poruku, a backend
+zatim šalje e-mail na zadanu adresu koristeći Gmail SMTP. Podaci se šalju putem SSL-a, a konfiguracija dolazi iz .env datoteke.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+from fastapi import APIRouter
+from pydantic import BaseModel, EmailStr
+import smtplib
+from email.mime.text import MIMEText
+from email.utils import formataddr
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+router = APIRouter()
+
+class ContactForm(BaseModel):
+    fullName: str
+    phone: str
+    email: EmailStr
+    address: str
+    description: str
+
+@router.post("/send-email")
+def send_email(data: ContactForm):
+    sender_email = os.getenv("GMAIL_USER")
+    sender_password = os.getenv("GMAIL_PASSWORD")
+    receiver_email = os.getenv("GMAIL_RECEIVER") or sender_email
+
+    msg_content = f"""
+    Nova poruka s kontakt forme:
+
+    Ime i prezime: {data.fullName}
+    Telefon: {data.phone}
+    E-mail: {data.email}
+    Adresa: {data.address}
+    Poruka:
+    {data.description}
+    """
+
+    msg = MIMEText(msg_content, "plain", "utf-8")
+    msg["Subject"] = "Nova poruka s web stranice"
+    msg["From"] = formataddr(("Web kontakt forma", sender_email))
+    msg["To"] = receiver_email
+    msg["Reply-To"] = data.email  
+
+    try:
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+            server.login(sender_email, sender_password)
+            server.sendmail(sender_email, receiver_email, msg.as_string())
+        return {"message": "Email je uspješno poslan."}
+    except Exception as e:
+        print("Greška prilikom slanja emaila:", e)
+        return {"error": "Neuspješno slanje emaila. Provjerite postavke."}
+\end{minted}
+\caption{email.py}
+\label{lst:email}
+\end{longlisting}
+
+Sljedeća ruta omogućuje prikaz pregleda sadržaja .json datoteke s diska. Prvo provjerava postoji li tražena datoteka unutar mape Scraper/data, zatim
+provjerava je li to .json datoteka. Ako sve prođe, učitava prvih 10 stavki (ako je riječ o listi) ili prvih 10 ključeva (ako je riječ o riječniku) i 
+vraća ih kao preview. U slučaju greške (nepostojeća datoteka ili pogrešan format) vraća se odgovarajuća HTTP greška.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+from fastapi import APIRouter, Query
+from fastapi.responses import JSONResponse
+import os
+import json
+
+router = APIRouter()
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DOCUMENTS_DIR = os.path.abspath(os.path.join(BASE_DIR, "../Scraper/data"))
+
+@router.get("/preview-document")
+async def preview_document(filename: str = Query(...)):
+    try:
+        filepath = os.path.join(DOCUMENTS_DIR, filename)
+        if not os.path.isfile(filepath):
+            return JSONResponse(status_code=404, content={"error": "File not found."})
+
+        if not filename.endswith(".json"):
+            return JSONResponse(status_code=400, content={"error": "Only JSON preview is supported."})
+
+        with open(filepath, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+        preview = data
+        if isinstance(data, list):
+            preview = data[:10]
+        elif isinstance(data, dict):
+            preview = {k: data[k] for k in list(data)[:10]}
+
+        return {"preview": preview}
+
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"error": str(e)})
+\end{minted}
+\caption{Preview.py}
+\label{lst:preview}
+\end{longlisting}
+
+Ova API ruta vraća statistiku o trenutno učitanim dokumentima u bazi. Prvo dohvaća sve dokumente i filtrira one koji imaju metapodatke o vremenu
+učitavanja i izvoru. Ako postoji barem jedan takav dokument, određuje se zadnje učitanu dokument prema vremenu. Također se izračunava ukupan
+broj dokumenata (po različitim source vrijednostima) i broj svih chunkova. Rezultat se vraća kao JSON s tri informacije: broj dokumenta, broj chunkova i naziv posljednje dodane datoteke.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+from fastapi import APIRouter
+from services.vectorstore import load_vectorstore
+from datetime import datetime
+
+router = APIRouter()
+
+@router.get("/stats")
+def get_stats():
+    db = load_vectorstore()
+    docs = list(db.docstore._dict.values())
+
+    docs_with_timestamps = [
+        doc for doc in docs if "uploaded_at" in doc.metadata and "source" in doc.metadata
+    ]
+
+    if docs_with_timestamps:
+        docs_sorted = sorted(docs_with_timestamps, key=lambda d: d.metadata["uploaded_at"])
+        last_added = docs_sorted[-1].metadata["source"]
+    else:
+        last_added = "—"
+
+    sources = {doc.metadata.get("source") for doc in docs if "source" in doc.metadata}
+
+    return {
+        "total_documents": len(sources),
+        "total_chunks": len(docs),
+        "last_added": last_added
+    }
+\end{minted}
+\caption{Stats.py}
+\label{lst:stats}
+\end{longlisting}
+
+Zadnja API ruta omogućuje korisnicima da uploadaju PDF ili JSON dokumente putem forme. Primljeni dokumenti se obrađuju funkcije process documents
+, gdje se dijele na manje dijelove (chunkove). Ako su dokumenti uspješno obrađeni, poziva se get or create vectorstore kako bi se dokumenti
+dodali u vektorsku bazu. Na kraju se vraća poruka s brojem uspješno indeksiranih dijelova.
+
+\begin{longlisting}
+\begin{minted}[
+    bgcolor=codebg,
+    linenos,
+    fontsize=\footnotesize,
+    breaklines,
+    breakanywhere,
+    baselinestretch=1.0
+]{Python}
+from fastapi import APIRouter, UploadFile, File, Form
+from services.document_handler import process_documents
+from services.vectorstore import get_or_create_vectorstore
+
+router = APIRouter()
+
+@router.post("/upload-documents")
+async def upload_documents(
+    session_id: str = Form(...),
+    pdfs: list[UploadFile] = File(...)
+):
+    all_docs = await process_documents(pdfs)
+
+    if not all_docs:
+        return {"message": "No valid documents processed."}
+
+    get_or_create_vectorstore(all_docs)
+    return {"message": f"Successfully uploaded and indexed {len(all_docs)} chunks."}
+\end{minted}
+\caption{Upload.py}
+\label{lst:upload}
+\end{longlisting}
+
 \section{Prikaz rada aplikacije}
 
 Što se tiče frontenda, projekt je razvijan korištenjem Vite okoline, a pokretanje aplikacije omogućeno je korištenjem naredbe \texttt{npm run dev}.
