@@ -1,6 +1,6 @@
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
-import Icon from '../Components/AIAssistant/icon'
+import Icon from '../Components/AIAssistant/Icon'
 import About from '../Components/About/About'
 import Reviews from '../Components/Reviews/Reviews'
 import ScrollToTopButton from '../Components/ScrollToTopButton'
@@ -11,7 +11,6 @@ export default function(){
   return(
     <>
         <Navbar/>
-        <Icon />
         <HeroLodz/>
         <About/>
         <Reviews/>  

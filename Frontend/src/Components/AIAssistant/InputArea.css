@@ -1,0 +1,46 @@
+.input-area {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+}
+
+.input-area input,
+.chat-textarea {
+    flex: 1;
+    min-height: 36px;
+    max-height: 150px;
+    resize: none;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow-y: auto;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.input-area button {
+    padding: 8px 12px;
+    background-color: #8e55ad;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.input-area button:hover {
+    background-color: #000000;
+    color: white;
+}
+
+.input-area button[title="Speak"] {
+    background-color: #e0e0e0;
+    color: #333;
+    font-size: 18px;
+    padding: 6px 10px;
+}
+
+.input-area button[title="Speak"]:hover {
+    background-color: #ccc;
+}

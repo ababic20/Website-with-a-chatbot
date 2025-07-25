@@ -106,7 +106,7 @@
 }
 
 .delete-button {
-    background-color: #e53935;
+    background-color: #8e55ad;
     color: #fff;
     border: none;
     padding: 5px 10px;
@@ -117,7 +117,7 @@
 }
 
 .delete-button:hover {
-    background-color: #c62828;
+    background-color: #000000;
 }
 
 .upload-form {

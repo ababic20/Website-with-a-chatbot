@@ -1,0 +1,39 @@
+.chat-popup.dark {
+    background-color: #1f1f1f;
+    color: white;
+}
+
+.chat-popup.dark .popup-title {
+    background-color: #4b1e68;
+}
+
+.chat-popup.dark .chat-textarea {
+    background-color: #2a2a2a;
+    color: white;
+    border: 1px solid #444;
+}
+
+.chat-popup.dark .message.Assistant {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.chat-popup.dark .message.User {
+    background-color: #6a5acd;
+}
+
+.chat-popup.dark .input-area {
+    border-top: 1px solid #333;
+}
+
+.chat-popup.dark .input-area button {
+    background-color: #6a5acd;
+}
+
+.chat-popup.dark .input-area button:hover {
+    background-color: #ffffff;
+    color: #000;
+}
+
+.chat-popup.dark .timestamp {
+    color: #ccc;
+}

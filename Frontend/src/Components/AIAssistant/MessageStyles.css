@@ -1,0 +1,52 @@
+.messages {
+    flex: 1;
+    margin-bottom: 10px;
+}
+
+.message-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.message {
+    margin: 5px 0;
+    padding: 8px;
+    border-radius: 5px;
+    max-width: 80%;
+}
+
+.message.Assistant {
+    background-color: rgba(214, 214, 214, 0.6);
+    align-self: flex-start;
+}
+
+.message.User {
+    background-color: #d1c4e9;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.assistant-icon-message {
+    margin-right: 10px;
+    font-size: 10px; 
+}
+
+.timestamp {
+    font-size: 11px;
+    color: #777;
+    margin-top: 5px;
+}
+
+.typing-indicator .typing-dots {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    animation: blinkTyping 1.2s infinite ease-in-out;
+    color: #666;
+}
+
+@keyframes blinkTyping {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}

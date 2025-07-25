@@ -1,7 +1,7 @@
 import Documents from '../Components/DocumentManager'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
-import Icon from '../Components/AIAssistant/icon'
+import Icon from '../Components/AIAssistant/Icon'
 import ScrollToTopButton from '../Components/ScrollToTopButton'
 
 export default function(){
@@ -9,7 +9,6 @@ export default function(){
     <>
         <Navbar/>
         <Documents/>
-        <Icon/>
         <ScrollToTopButton/>
         <Footer/>
     </>

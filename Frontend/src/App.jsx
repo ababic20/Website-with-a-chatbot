@@ -6,6 +6,7 @@ import About from './pages/About'
 import Cities from './pages/Cities'
 import Question from './pages/Question'
 import Documents from './pages/Documents';
+import Icon from './Components/AIAssistant/Icon'; 
 
 
 
@@ -13,6 +14,7 @@ const App = () => {
   return (
     <LanguageProvider> 
       <BrowserRouter>
+      <Icon />
         <Routes>
           <Route index element={<Home />} />
           <Route path='/home' element={<Home />} />
