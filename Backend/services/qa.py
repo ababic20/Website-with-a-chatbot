@@ -1,12 +1,16 @@
 from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain, ConversationChain
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 from langchain_community.vectorstores import FAISS
+import os
 
 memory_store = {}
 
 def get_conversation_chain(db: FAISS, session_id: str):
-    llm = ChatOpenAI(model="gpt-3.5-turbo-16k")
+    llm = ChatGroq(
+        model="llama-3.1-8b-instant", 
+        api_key=os.getenv("GROQ_API_KEY")
+    )
 
     if session_id not in memory_store:
         memory_store[session_id] = ConversationBufferMemory(
