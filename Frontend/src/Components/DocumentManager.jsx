@@ -2,6 +2,13 @@ import React, { useEffect, useState, useContext } from "react";
 import { LanguageContext } from "../contexts/LanguageContext";
 import './DocumentManager.css';
 import { v4 as uuidv4 } from "uuid";
+import {
+    fetchDocuments,
+    fetchStats,
+    deleteDocument as deleteDoc,
+    uploadDocuments,
+    previewDocument
+} from "../api/Document";
 
 let sessionId = localStorage.getItem("chat_session_id");
 if (!sessionId) {
@@ -23,45 +30,33 @@ function DocumentManager() {
     const [uploading, setUploading] = useState(false);
     const [selectedPreview, setSelectedPreview] = useState(null);
 
-    const fetchDocuments = async () => {
+    useEffect(() => {
+        loadAll();
+    }, []);
+
+    const loadAll = async () => {
         try {
-            const res = await fetch("http://localhost:8000/documents");
-            const data = await res.json();
-            setDocuments(data.documents);
+            const [docs, statistics] = await Promise.all([
+                fetchDocuments(),
+                fetchStats()
+            ]);
+            setDocuments(docs.documents);
+            setStats(statistics);
         } catch (error) {
-            console.error("Error fetching documents:", error);
+            console.error("Error loading documents or stats:", error);
         } finally {
             setLoading(false);
         }
     };
-
-    const fetchStats = async () => {
-        try {
-            const res = await fetch("http://localhost:8000/stats");
-            const data = await res.json();
-            setStats(data);
-        } catch (error) {
-            console.error("Error fetching stats:", error);
-        }
-    };
-
-    useEffect(() => {
-        fetchDocuments();
-        fetchStats();
-    }, []);
 
     const deleteDocument = async (filename) => {
         const confirmDelete = window.confirm(`${translations.documentManager.delete} ${filename}?`);
         if (!confirmDelete) return;
 
         try {
-            const res = await fetch(`http://localhost:8000/delete-document?filename=${encodeURIComponent(filename)}`, {
-                method: "DELETE"
-            });
-            const data = await res.json();
+            const data = await deleteDoc(filename);
             alert(data.message || "Document deleted.");
-            fetchDocuments();
-            fetchStats();
+            await loadAll();
             setSelectedPreview(null);
         } catch (err) {
             console.error("Error deleting document:", err);
@@ -73,21 +68,11 @@ function DocumentManager() {
         if (uploadFiles.length === 0) return;
         setUploading(true);
 
-        const formData = new FormData();
-        formData.append("session_id", sessionId); 
-        uploadFiles.forEach(file => formData.append("pdfs", file));
-
         try {
-            const res = await fetch("http://localhost:8000/upload-documents", {
-                method: "POST",
-                body: formData,
-            });
-
-            const data = await res.json();
+            const data = await uploadDocuments(uploadFiles, sessionId);
             alert(data.message || translations.documentManager.uploadSuccess);
             setUploadFiles([]);
-            fetchDocuments();
-            fetchStats();
+            await loadAll();
         } catch (err) {
             console.error("Error uploading:", err);
             alert("Error while uploading.");
@@ -100,13 +85,8 @@ function DocumentManager() {
         if (!filename.endsWith(".json")) return;
 
         try {
-            const res = await fetch(`http://localhost:8000/preview-document?filename=${encodeURIComponent(filename)}`);
-            const data = await res.json();
-            if (res.ok) {
-                setSelectedPreview({ filename, content: data.preview });
-            } else {
-                alert(data.error || "Error loading preview.");
-            }
+            const data = await previewDocument(filename);
+            setSelectedPreview({ filename, content: data.preview });
         } catch (error) {
             console.error("Error fetching preview:", error);
             alert("Error loading preview.");

@@ -8,7 +8,7 @@
       "documents": "Documents"
     },
     "documentManager": {
-    "title": "📄 Document Management",
+    "title": "📄 Document management",
     "loading": "Loading...",
     "noDocuments": "No documents in the database.",
     "delete": "Delete",
@@ -126,20 +126,20 @@
       "reviewList": [
         {
           "text": "I like that everyone follows the rules and shows great respect on the roads. The city offers a true sense of peace, and I enjoyed every moment while walking without worrying about anything. Everything felt calm, with no rush, and trams, buses, and trains were always punctual, which made daily life much easier.",
-          "name": "Stavroula Papoutsi",
-          "role": "Student",
+          "name": "Stavroula Papoutsi (Greece)",
+          "role": "Ex Erasmus student",
           "image": "/src/assets/friends/stav.jfif"
         },
         {
           "text": "The Erasmus experience in Łódź was the highlight of my student years and one of the best experiences of my life. Poland is a beautiful country, and Łódź is a large and lively city, perfect for those looking to experience big-city life. I encourage everyone to apply for Erasmus — you won't regret it.",
-          "name": "David Slavik",
-          "role": "Student",
+          "name": "David Slavik (Croatia)",
+          "role": "Ex Erasmus student",
           "image": "/src/assets/friends/David.jfif"
         },
         {
-          "text": "Arriving in one of the less favored cities in Poland turned into a wonderful journey. Łódź offers a unique atmosphere with its blend of Eastern European spirit, multicultural diversity, and industrial soul, creating a truly special vibe that stays with you.",
-          "name": "Natalia Pilch",
-          "role": "Student",
+          "text": "Arriving in one of the less popular cities in Poland turned into a wonderful journey. Łódź offers a unique atmosphere with an Eastern European spirit, multicultural diversity and industrial soul, creating a truly special vibe that stays with you.",
+          "name": "Natalia Pilch (Germany)",
+          "role": "Ex Erasmus student",
           "image": "/src/assets/friends/Natalia.jpg"
         }
       ]

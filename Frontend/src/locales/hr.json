@@ -9,7 +9,7 @@
     },
   
     "documentManager": {
-      "title": "📄 Upravljanje Dokumentima",
+      "title": "📄 Upravljanje dokumentima",
       "loading": "Učitavanje...",
       "noDocuments": "Nema dokumenata u bazi.",
       "delete": "Obriši",

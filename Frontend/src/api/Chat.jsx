@@ -6,14 +6,10 @@ if (!sessionId) {
     localStorage.setItem("chat_session_id", sessionId);
 }
 
-export async function askAssistant(question, files = []) {
+export async function askAssistant(question) {
     const formData = new FormData();
     formData.append("question", question);
     formData.append("session_id", sessionId);
-
-    if (files && files.length > 0) {
-        files.forEach(file => formData.append("pdfs", file));
-    }
 
     const response = await fetch("http://localhost:8000/ask", {
         method: "POST",
