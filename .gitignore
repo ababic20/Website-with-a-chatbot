@@ -52,7 +52,7 @@ package-lock.json
 *.pdfsync
 *.snm
 *.vrb
-.lol
+*.lol
 
 #Backend
 

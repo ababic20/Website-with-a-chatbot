@@ -111,9 +111,9 @@ te stjecanja različitih znanja. U nastavku se detaljnije razmatra Erasmus+ prog
 za prijavu na Erasmus+ studijski boravak, prisutnog straha, nesigurnosti te neinformiranosti među studentima. 
 
 Kao rješenje na navedene izazove izrađena je web stranica s inteligentnim asistentom koji je namijenjen da odgovori na specifične upite korisnika. Web stranica predstavlja sredstvo informiranja 
-prvotno za sve studente koji dolaze u Łódź iz svojih država. Osim toga web stranica je naravno dostupna i namijenjena i za sve ostale zainteresirane posjetitelje. Web stranica se sastoji od 
-početne stranice, stranice koja opisuje kratko Łódź, stranice koja prikazuje 15 najvećih grada Poljske i stranice na kojoj se nalazi forma. Forma je namijenjena za pitanja na koja nije mogao 
-AI (eng. Artificial Inteligence) asistent odgovoriti. 
+prvotno za sve studente koji dolaze u Łódź iz svojih država. Osim toga web stranica je naravno dostupna i namijenjena i za sve ostale zainteresirane posjetitelje. Web stranica sastoji se od 
+sljedećih dijelova: početne stranice, stranice s kratkim opisom grada Łódź, stranice koja prikazuje 15 najvećih gradova Poljske, stranice za pregled i upravljanje dokumentima korištenima u 
+RAG sustavu, te stranice s kontaktnom formom. Forma je namijenjena za pitanja na koja AI (eng. Artificial Inteligence) asistent nije znao odgovoriti.
 
 Za izradu AI modela odabrano je korištenje RAG metode (eng. Retrieval Augmenting Generation) gdje se uzima postojeći AI model i on se bazira na specifičnom skupu podataka. 
 Za takve potrebe pronađeno je nekoliko lokalnih web stranica koje opisuju život u Łódźu. Za potrebe rada razvijen je scraper koji dohvaća primarno tekstualni sadržaj s istih tih stranica
@@ -121,7 +121,10 @@ i sprema ih u JSON obliku. Naknadno su te JSON datoteke pročišćene i iskoriš
 kolegiju Umjetna inteligencija, kojoj sam ukratko predstavio ideju svog diplomskog rada. Naknadno sam je zamolio da mi preporuči nekoliko korisnih stranica koje su vezane za Łódź. Budući da se profesorica rodila u Łódźu i tamo živi te radi cijeli život, smatrao sam da je upravo ona prava osoba kojoj se mogu obratiti
 s pitanjem o korisnim izvorima informacija vezanima za život u Łódźu. 
 
-Za tehnologije su odabrani: React (Java Script) za frontend, Python (za razvoj scrapera), Python (Za razvoj servera i modela na backendu). 
+Za izradu rješenja korištene su sljedeće tehnologije: React (JavaScript) za frontend, Python za razvoj scrapera te Python FastAPI za implementaciju backend logike.
+AI asistent izrađen je korištenjem tehnologije LangChain, uz model llama-3.1-8b-instant koji je integriran putem API ključa s platforme Groq. Za generiranje vektorskih reprezentacija 
+korišten je HuggingFaceEndpointEmbeddings, također preko API ključa s platforme Hugging Face. Kao vektorska baza podataka korišten je FAISS (Facebook AI Similarity Search), 
+dok je dokumentacija pisana u LaTeX-u, koristeći distribuciju MiKTeX.
 
 Prethodno ulomci uvode nas u temu s kojom se bavi ovaj rad, a to je „Informativna platforma s inteligentnim asistentom o Erasmus+ 
 iskustvu u Łódźu“. Prvotna motivacija za proučavanje ove teme proizišla je iz Erasmus+ studijskog boravka u Łódźu (Poljska) u trajanju jednog semestra.
@@ -280,11 +283,7 @@ Nije mi nedostajao dom jer su Italija i Španjolska jako slične. Ipak, nakon tr
 Nije mi nedostajao dom jer sam stalno bila u kontaktu s prijateljima, dopisivali smo se, zvala sam mamu, slala im slike i videe. Morate uživati koliko god možete, 
 jer će vam kasnije biti žao što odlazite s Erasmusa+ i tada će vam nedostajati Erasmus+ dom. To je zapravo samo loš osjećaj jer se ne nalazite na nekom mjestu u nekom trenutku.
 
-
-
-%\subsection{Kako se izboriti?}
-%\subsection{Kultura kao faktor u akademskom uspjehu}
-
+Kroz sljedeće poglavlje predstavljeno je koje su trenutno aktualne tehnologije i alati koji pomažu u današnjem informiranju i snalaženju među velikim brojem informacija.
 
 
 \chapter{Aktualne tehnologije i alati za uspješno snalaženje i informiranje}
@@ -321,6 +320,9 @@ Chatbot         & Jednostavni ponavljajući zadaci   & Osnovna korisnička podr�
 \caption{Razlika između pojmova \cite{exomindset2025difference}}
 \label{tab:chatbot_usporedba}
 \end{table}
+
+U okviru praktičnog rada napravljen je asistent koji omogućuje generiranje personaliziranih odgovora i pristupa specifičnim dokumentima čime
+pomaže korisnicima u pronalasku pravovaljanih i točnih informacija. 
 \newpage
 
 \subsection{Asistent}
@@ -421,6 +423,9 @@ U nastavku se navodi jedan primjer koji ChatGPT Operator obavlja \cite{rileybrow
     \item Često traži potvrdu prije izvođenja radnji.
     \item Može se koristiti za pretraživanje weba, kupnju ulaznica ili rezervaciju restorana.
 \end{enumerate}
+
+OpenAI spominje kako planiraju u budućnosti dati na korištenje model CUA preko API-ja čime će omogućiti izradu vlastiti agenata svakome. Osim toga spominju kako planiraju proširiti Operator
+korisnicima Plusa, Teama i Enterprisea nakon što se uvjere u njegovu sigurnost i upotrebljivost u velikim razmjerima.
 \newpage
 
 \subsection{Chatbot}
@@ -582,7 +587,7 @@ Također može se vidjeti važnost interdisciplinirane suradnje u području umje
 \end{figure}
 
 Važnost RAG-a povećala se posljednjih godina zbog pojave velikog broja aplikacija temeljenih na umjetnoj inteligenciji. Na slici \ref{fig:slika8}. se može vidjeti kako uzlazna putanja popularnosti RAG-a kreće od petog mjeseca 2023. godine.
-
+\newpage
 
 \section{Arhitektura RAG modela}
 RAG se sastoji od faze pronalaženja i faze generiranja sadržaja. U fazi pronalaženja algoritmi traže relevantne informacije za korisnikov upit dok se u fazi generiranja generira tekst 
@@ -691,10 +696,80 @@ iz nečistih ili neuređenih podataka. Za enkoder BART koristi dvosmjerni pristu
 dok dekoder generira tekst na temelju tog konteksta. BART može rekonstruirati oštećene tekstove, što ga čini korisnim za zadatke poput
 izvlačenja informacija iz nepotpunih ili neurednih podataka \cite{gupta2024rag}. 
 
+\subsubsection{GPT-4}
+GPT (eng. Generative Pre-trained Transformer) je veliki, multimodalni jezični model koji je sposoban prihvatiti tekstualne i slikovne ulaze te generirati teksutalne izlaze. Model je transformer
+arhitekture, treniran je da predviđa sljedeći token u tekstu, a naknadna prilagodba poboljšava željeno ponašanje. U usporedbi s prethodnikom GPT-3.5, postiže bolje rezultate na zajedničkim NLP
+testovima. Model je treniran korištenjem RLHF (eng.  Reinforcement Learning from Human Feedback) metode kako bi se poboljšala sigurnost i preciznost njegovih odgovora te time smanjile
+halucinacije \cite{openai2023gpt4}.
 
-\section{Primjena RAG modela}
+\newpage
+\section{Evaluacija i primjena RAG metode}
 
-Kroz ovo poglavlje istražena je primjena RAG-a. Na početku istaknut je jedan primjer koji je podijelio Siddharth Asthana u jednom od svojih
+\subsection{Usporedba: RAG vs. Fine-tuning}
+Fino podešavanje je metoda kod koje se uzima prethodno obučeni jezični model i dodatno se obučava na određenom, ciljanom skupu podataka kako bi se prilagodile njegove težine za određenu domenu. Tijekom finog podešavanja, model uči iz novih primjera kako bi mogao proizvesti specijaliziranije i točnije rezultate za određenu domenu.
+Fino podešavanje kreće odabirom modela opće namjene koji već široko razumije jezik. Nadalje se priprema skup podataka koji je relevantan za određenu domenu (Npr. modeli opće namjene mogu imati npr. poteškoća s medicinskom terminologijom.)
+Kvaliteta i relevantnost skupa podataka izravno određuje koliko će dobro fino podešeni model funkcionirati. Kroz npr. nadzirano učenje, model ponovno uči na novim podacima, prilagođavajući 
+svoje interne parametre kako bi se bolje uklopili uzorci u skupu podataka za fino podešavanje. Proces učenja više puta propušta te primjere kroz neurosnku mrežu,
+izračunavajući pogreške između predviđanja modela i željenih izlaza, a zatim prilagođavajući težine kako bi se smanjile pogreške \cite{montecarlo2023rag}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.60\textwidth]{./assets/Finetuning.png}
+  \caption{Fino podešavanje proces (generalno); \href{https://www.digitalocean.com/resources/articles/fine-tuning}{Izvor}}
+  \label{fig:slika821}
+\end{figure}
+
+Kada se uspoređuju pristupi RAG i finog podešavanja, postoji nekoliko ključnih čimbenika koji mogu pomoći pri odabiru metode koja je prikladnija za konkretni problem.
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{4cm}|p{5cm}|p{5cm}|}
+\hline
+\textbf{Kriterij} & \textbf{RAG} & \textbf{Fino podešavanje} \\
+\hline
+Razmatranje troškova & RAG obično zahtijeva niža početna ulaganja, kasniji troškovi za hosting baze i infrastrukturu za pretraživanje. & Fino podešavanje zahtijeva značajne početne računalne resurse za obuku, ali rezultira nižim troškovima po upitu. \\
+\hline
+Privatnost podataka & RAG drži podatke odvojeno u kontroliranim bazama podataka, što omogućuje brisanje podataka kada je to potrebno. & Podaci su ugrađeni direktno u model, što neke organizacije smatraju zabrinjavajućom aktivnošću. \\
+\hline
+Inženjerski resursi & Stručnost u području baza podataka i pretraživanja. & Strojno učenje, pristup GPU-u i iskustvo s obučavanjem. \\
+\hline
+Željena razina kontrole modela & Manje izravne kontrole, ali lakša ažuriranja i ispravke. & Potpuna kontrola nad ponašanjem modela i stilom izlaza. \\
+\hline
+\end{tabular}
+\caption{Usporedba RAG pristupa i finog podešavanja modela \cite{montecarlo2023rag}}
+\label{tab:rag_vs_finetuning}
+\end{table}
+
+Izbor između RAGA i finog podešavanja je više tehnička odluka. RAG se ističe kada su potrebne ažurne informacije ili kada su ograničeni resursi za obuku. Fino podešavanje je izvrsno za 
+specijalizirane zadatke koji zahtjevaju stručnost u određenoj domeni. Postoji opcija hibridnog pristupa gdje je moguće kombinirati ove dvije metode. Krajnja odluka bi trebala biti usklađena
+s potrebama i ograničenjima. Treba se uzeti u obzir proračun, učestalost promjena podataka, zahtjeve za privatnost, dostupnost inženjerskih resursa i razinu kontrole koja je potrebna nad 
+rezultatima modela. Uspjeh bilo kojeg pristupa ovisi ponajviše o kvaliteti podataka tijekom cijelog procesa. Loša kvaliteta podataka potkopava RAG i fino podešavanje. Nebitni ili zastarijeli
+dokumenti smanjuju performanse RAG-a, dok krivo označeni ili pristrani podaci za obuku stvaraju nepuzadane fino podešene modele. Ovakvi problemi s kvalitetom podataka narušavaju performanse
+umjetne inteligencije, što dovodi krajnje štete i narušavanja povjerenja korisnika \cite{montecarlo2023rag}. 
+
+\subsection{Prednosti RAG sustava}
+U nastavku, kroz tablicu su prikazane ključne prednosti RAG sustava, koje objašnjavaju zašto je ova tehnologija sve češći odabir u izradi modernih AI rješenja. Navedene karakteristike
+posebno dolaze do izražaja u izradi inteligentnih asistentata koji trebaju pružati točne, relevantne i ažurirane informacije. 
+
+\begin{table}[ht!]
+    \centering
+    \caption{Prednosti RAG-a \cite{awsRAG2025}}
+    \begin{tabular}{|>{\centering\arraybackslash}m{5cm}|>{\raggedright\arraybackslash}m{10cm}|}
+      \hline
+      \textbf{Prednost} & \textbf{Opis} \\
+      \hline
+      Isplativa implementacija & Razvoj AI sustava započinje korištenjem temeljnog modela (eng. Foundation models). Temeljni modeli su obično dostupni putem API ključeva i obučeni su na širokom spektru generaliziranih i neoznačenih podataka. Računalni i financijski troškovi za treniranje takvih modela su jako visoki. \\
+      \hline
+      Trenutne informacije & Iako su izvorni podaci LLM-a relevantni za specifične potrebe, teško je održati relevantnost. RAG se može koristiti za izravno povezivanje LLM-a s feedovima društvenih medija, web stranicama s vijestima i samim time pružiti korisnicima najnovije informacije. \\
+      \hline
+      Povećano povjerenje korisnika & RAG omogućuje prikazivanje točnih informacija s navođenjem izvora ili citata. Korisnici također mogu pretraživati izvorne dokumente ako im je potrebno dodatno pojašnjenje. \\
+      \hline
+      Više kontrole za razvojne programere & Učinkovitije testiranje i poboljšavanje aplikacija. Kontroliranje i mijenjanje izvora informacija. Rješavanje i ispravljanje problema. \\
+      \hline
+    \end{tabular}
+\end{table}
+    
+\subsection{Tipični slučajevi upotrebe}
+Kroz sljedeću sekciju istražena je primjena RAG-a. Na početku istaknut je jedan primjer koji je podijelio Siddharth Asthana u jednom od svojih
 članaka na Linkedlnu. U članku se govori o tome kako je velika bolnička mreža integrirala RAG u svoj sustav podrške kako bi donijela bolje odluke.
 Sustav se povezao s elektroničkim zdravstvenim kartonima i višestrukim medicinskim bazama podataka, što je dovelo do \cite{siddharth2025rag}:
 \begin{itemize}
@@ -726,32 +801,7 @@ U nastavku je navedno nekoliko domena u kojoj se RAG može primjenjivati \cite{n
     \item \textbf{Upravljanje znanjem u poduzeću} - posebno korisno kod velikih tvrtki s opsežnom dokumentacijom i izvorima podataka. 
 \end{itemize}
 
-\subsection{Ključne prednosti RAG sustava}
-U nastavku, kroz tablicu su prikazane ključne prednosti RAG sustava, koje objašnjavaju zašto je ova tehnologija sve češći odabir u izradi modernih AI rješenja. Navedene karakteristike
-posebno dolaze do izražaja u izradi inteligentnih asistentata koji trebaju pružati točne, relevantne i ažurirane informacije. 
-
-\begin{table}[ht!]
-    \centering
-    \caption{Prednosti RAG-a \cite{awsRAG2025}}
-    \begin{tabular}{|>{\centering\arraybackslash}m{5cm}|>{\raggedright\arraybackslash}m{10cm}|}
-      \hline
-      \textbf{Prednost} & \textbf{Opis} \\
-      \hline
-      Isplativa implementacija & Razvoj AI sustava započinje korištenjem temeljnog modela (eng. Foundation models). Temeljni modeli su obično dostupni putem API ključeva i obučeni su na širokom spektru generaliziranih i neoznačenih podataka. Računalni i financijski troškovi za treniranje takvih modela su jako visoki. \\
-      \hline
-      Trenutne informacije & Iako su izvorni podaci LLM-a relevantni za specifične potrebe, teško je održati relevantnost. RAG se može koristiti za izravno povezivanje LLM-a s feedovima društvenih medija, web stranicama s vijestima i samim time pružiti korisnicima najnovije informacije. \\
-      \hline
-      Povećano povjerenje korisnika & RAG omogućuje prikazivanje točnih informacija s navođenjem izvora ili citata. Korisnici također mogu pretraživati izvorne dokumente ako im je potrebno dodatno pojašnjenje. \\
-      \hline
-      Više kontrole za razvojne programere & Učinkovitije testiranje i poboljšavanje aplikacija. Kontroliranje i mijenjanje izvora informacija. Rješavanje i ispravljanje problema. \\
-      \hline
-    \end{tabular}
-\end{table}
-    
-
-%\url{https://www.projectpro.io/article/rag-use-cases-and-applications/1059}
-
-\section{Izazovi RAG pristupa}
+\subsection{Izazovi RAG pristupa}
 
 LLM-ovi su ključna tehnologija umjetne inteligencije koja pokreće chatbotove. Priroda LLM-ova je takva da ponekad unose dozu nepredvidljivosti
 u generiranje odgovora. Osim toga, podaci o LLM obuci su statični i imaju krajnji rok za znanje koje posjeduju. Negativne strane LLM-ova uključuju \cite{awsRAG2025}:
@@ -789,11 +839,8 @@ Sljedeći izvor navodi sljedeće izazove kod RAG pristupa \cite{aimlabs2025rag}:
     \item \textbf{Izazovi s performansama i skalabilnošću u pronalaženju} - takvi izazovi nastaju kada se sustav bori s učinkovitim rukovanjem skupova podataka velikih razmjera. Kako veličina skupa raste, latencija
     dohvaćanja se povećava zbog računalnih troškova u pretraživanju, rangiranju i dohvaćanju relevantnih dokumenata. 
 \end{itemize}
-\newpage
 
-
-\subsection{Halucinacije}
-
+\subsubsection{Halucinacije}
 AI halucinacije su izlazi iz modela koji značajno odstupaju od stvarnosti i često predstavljaju netočne ili izmišljene informacije kao istinite. Halucinacije nastaju kao rezultat inherentnih ograničenja
 podataka za LLM obuku ili kada model ne uspije povezati namjeru ili kontekst upita s podacima potrebnim za generiranje smislenog odgovora. Iako je RAG osmišljen kako bi pomogao u smanjenju
 AI halucinacija, RAG halucinacije se i dalje mogu pojavljivati. Na takve stvari treba pripaziti jer na primjer, pretplatnik mobilne mreže može dobiti netočan odgovor o svom prosječnom mjesečnom
@@ -814,11 +861,23 @@ AI halucinacije se mogu suzbiti kroz nekoliko pristupa \cite{rag_hallucination20
 RAG ne može u potpunosti eliminirati halucinacije i ograničen je kvalitetom podataka, kontekstualnom svijesti (možda se neće svaki put najbolje razumijet što korisnik želi - propuštanje poante prompta),
 razmišljanjem (zdravi razum) i kreativnošću modela. 
 
-%\url{https://www.k2view.com/blog/rag-hallucination/}
+\subsubsection{Upravljanje višestrukim izvorima}
+Upravljanje višestrukim izvorima dolazi kada model istovremeno koristi podatke iz različitih vanjskih baza kako bi generirao odgovor koji je što točniji, relevantniji i potpuniji.
+Prije svega, različiti izvori često donose različite informacije koje nisu uvijek usklađene. To može podrazumijevat kontradiktorne podatke, različite perspektive te redudantne podatke.
+Model se suočava s izazovom kako inteligentno itegrirati te podatke bez stvaranja zbunjujućih ili netočnih odgovora. Ako model pogrešno spoji podatke iz nespojivih izvora podataka,
+povećava se rizik od generiranja lažnih informacija (halucinacija) ili gubitka relevantnih detalja. Jedan od pojmova koji se spominje kroz literaturu je višeskočno zaključivanje
+(eng. multi hop reasoning) kod kojeg se povezuju informacije iz više izvora kako bi se odgovorilo na složenija pitanja. Posebno se ističe u situacijama kada se problem ne može 
+riješiti u jednom dohvatu podataka već zahtijeva kombiniranje više dohvaćanja iz više različitih izvora podataka. Takav pristup nudi iterativno upravljanje procesom traženja i generiranja
+čime se povećava efikasnost i točnost modela \cite{sharma2025rag}. 
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.7\textwidth]{./assets/Multi hop.png}
+  \caption{Višeskočno zaključivanje - primjer; \href{https://raw.githubusercontent.com/yixuantt/MultiHop-RAG/master/resource/rag.png}{Izvor}}
+  \label{fig:slika569}
+\end{figure}
 
-%\url{https://www.aimon.ai/posts/top_problems_with_rag_systems_and_ways_to_mitigate_them}
-
+Glavna ideja primjera je da se ne oslanja samo na jedno pretraživanje ili jedan izvor, već da se kroz više iteracija i izvora spojene informacije upotrebe kako bi se dobio detaljniji odgovor.
 
 \newpage
 \section{Dostupni alati i biblioteke}
@@ -1030,13 +1089,12 @@ Face potiče okruženje u kojem se dijeli znanje i resursi čime se ubrzava razv
 Zaključak je da su svi navedeni alati i biblioteke korisni za implemetaciju RAG sustava, ali za potrebe ovog rada korištena je kombinacija
 Langchaina, llama modela s Groq platforme i FAISS vektorske baze podataka. 
 
-
-\chapter{Korištene tehnologije i alati}
+\subsection{Ostale tehnologije}
 Za realizaciju praktičnog dijela korišteno je nekoliko tehnologija koje su omogućile razvoj web stranice i inteligentnog asistenta. 
 Odabir tehnologija temelji se na njihovoj popularnosti, pouzdanosti i sposobnosti da zadovolje zahtjeve ovog rada. U nastavku su detaljnije
 opisani korišteni alati i tehnologije.
 
-\section{React}
+\subsubsection{React}
 
 Svijet danas ne funkcionira bez mobilnih i web aplikacija. Sve se orijentira prema digitalizaciji, od rezerviranja hrane do naručivanja vožnje u taksiju. Vrlo je bitno napraviti vizualno
 primamljivu aplikaciju a React je upravo jedna od popularnijih frontend biblioteka koja to omogućava. React je temeljen na JavaScriptu i široko se koristi u web razvoju. U usporedbi s drugim tehnologijama
@@ -1065,7 +1123,7 @@ To jasno odražava razliku u životnom standardu i ekonomskim potrebama pojedini
     \item Prosječna plaća za početnog React developera u Indiji iznosi oko 8000 USD godišnje.
 \end{itemize}
 
-\section{SMTP}
+\subsubsection{SMTP}
 SMTP (eng. Simple Mail Transfer Protocol) je TCP/IP protokol koji se koristi za slanje i primanje epošte preko mreže kao što je internet.
 Neki od primjera klijenata koji koriste SMTP su Gmail, Microsoft Outlook, Yahoo Mail i Apple Mail \cite{gillisSMTP}. 
 
@@ -1087,12 +1145,30 @@ Prethodna slika prikazuje proces slanje epošte kroz SMTP protokol. Proces se od
     \item Primatelj može dohvatiti poruku putem IMAP (ostaje na serveru, pristup s više uređaja) ili POP (skida se lokalno, briše se sa servera) načina.
 \end{enumerate}
 \newpage
-\section{FastAPI}
+\subsubsection{FastAPI}
 FastAPI je moderan, brz, visokoučinkovit web framework za izgradnju API-ja s Pythonom. Vrlo je brz (u rangu s NodeJS-om i Go-om) i
 omogućuje brzo kodiranje i pojavljivanje manjeg broja grešaka. Dosta je intuitivan i jednostavan za korištenje i učenje. FastAPI podržava CRUD
 (eng. Create, Read, Update, Delete) operacije koje je moguće koristiti kroz ključne riječi HTTP metoda (GET, POST, PUT, DELETE). Za pokretanje
 FastAPI koristi port 8000 i može se testirati putem preglednika ili alata poput Postmana. 8000/docs putanja omogućuje pristup
 Swagger UI sučelju koje omogućuje pregled i testiranje API-ja \cite{obafemi2025fastapi}. 
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{./assets/FastAPI.png} 
+    \caption{Interaktivna dokumentacija (OpenAPI) u Swagger stilu}
+    \label{fig:slika185}
+\end{figure}
+
+Ova dokumentacija omogućuje testiranje svih dostupnih API poziva izravno kroz preglednik. Alternativno, dostupna je ReDoc dokumentacija na ruti /redoc,
+koja prikazuje API specifikaciju na čitljiviji način, ali bez mogućnosti testiranja. Također, ruta /openapi,json prikazuje OpenAPI specifikaciju
+u JSON formatu, što je korisno za automatsko generiranje klijenata ili integraciju s alatima poput Postmana.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.9\textwidth]{./assets/FastAPI2.png} 
+    \caption{ReDoc prikaz dokumentacije}
+    \label{fig:slika1851}
+\end{figure}
 
 
 \chapter{Praktični dio rada}
@@ -1892,18 +1968,18 @@ Na sljedećoj slici može se vidjeti struktura backend dijela. Prikazane su sve 
     \label{fig:slika111}
 \end{figure}
 
-Env datoteka sadrži konfiguracijske varijable koje se koriste u aplikaciji. OpenAI API ključ se koristi za pristup OpenAI modelima,
-Gmail user je adresa s koje se šalju poruke s kontakt forme, Gmail password je aplikacijska lozinka za autentifikaciju Gmail računa i Gmail receiver
-je adresa primatelja poruka koja može biti kao Gmail user.
+Env datoteka sadrži konfiguracijske varijable koje se koriste u aplikaciji. Promjenjive vrijednosti uključuju API ključeve za OpenAI I Groq modele (OPENAI API KEY, GROQ API KEY) kao i 
+HF API KEY za Hugging Face modele. Za slanje poruka putem kontakt forme koriste se Gmail podaci: Gmail user je adresa s koje se poruke šalju, Gmail password je aplikacijska lozinka za autentifikaciju i Gmail receiver je adresa primatelja.
+Model koji koristi Hugging Face definiran je kroz varijablu HUGGINGFACEHUB EMBEDDINGS MODEL NAME.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.5\textwidth]{./assets/env file.png}
+  \includegraphics[width=0.5\textwidth]{./assets/env.png}
   \caption{Sadržaj env datoteke}
   \label{fig:slika121}
 \end{figure}
 
-
+\newpage
 \subsection{Server}
 Main predstavlja glavnu datoteku koja pokreće FastAPI aplikaciju. Učitava se konfiguracija iz .env datoteke, omogućuje se CORS pristup
 kako bi frontend i backend mogli komunicirati bez ograničenja, te se u aplikaciju uključuju sve definirane rute za pitanja, dokumente, statistiku
@@ -2511,6 +2587,7 @@ async def upload_documents(
 \caption{Upload.py}
 \label{lst:upload}
 \end{longlisting}
+\newpage
 
 \section{Prikaz rada aplikacije}
 
@@ -2587,7 +2664,7 @@ pitanje korisnika koristeći informacije iz dokumenta.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=1\textwidth]{./assets/asistent1.png}
+  \includegraphics[width=1\textwidth]{./assets/asistent2.png}
   \caption{Testiranje asistenta kada je dokument u bazi}
   \label{fig:slika99}
 \end{figure}
@@ -2596,7 +2673,7 @@ Na sljedećoj slici može se vidjeti kako AI asistent reagira kada dokument nije
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=1\textwidth]{./assets/asistent2.png}
+  \includegraphics[width=1\textwidth]{./assets/asistent1.png}
   \caption{Testiranje asistenta kad dokument nije u bazi}
   \label{fig:slika100}
 \end{figure}
@@ -2610,18 +2687,35 @@ Kroz terminal može se vidjeti kako sustav radi u pozadini. Može se vidjeti koj
   \caption{Povratne informacije o radu aplikacije}
   \label{fig:slika101}
 \end{figure}
+\newpage
+\section{Praćenje performansi i ograničenja korištenih alata}
+
+Na sljedećoj slici je prikazan dashboard s Groq platforme, konkretno za model llama-3.1-8b-instant. Prikazuju se grafovi s brojem zahtjeva i ukupnim brojem tokena u određenom vremenskom okviru.
+Ovo omogućuje korisnicima praćenje iskorištenosti modela u realnom vremenu te detekciju prekoračenja limita koji su označeni crvenim crtama. Prikazani vrhovi na grafu označavaju trenutke
+kada su slani upiti prema modelu. Osim toga moguće je pregledati i dnevnu/mjesečnu potrošnju u smislu financijskih sredstava. Isto tako kroz karticu Logs omogućen je uvid detaljniji opisa
+zahtjeva koji je stigao na Groq (kada je kreiran, koji model je korišten, koji API key, status code, kolko input tokena i output je potrošeno i od kog usera)
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\textwidth]{./assets/groq1.png}
+  \caption{Groq platforma - pregled zahtjeva i potrošenih tokena}
+  \label{fig:slika130}
+\end{figure}
+
+Ova slika prikazuje tablicu s ograničenjima korištenja za različite modele unutar Groq platforme. Za svaki model prikazani su maksimalni brojevi upita u minuti i danu, kao i ograničenja na broj tokena.
+Na primjer, model llamallama-3.1-8b-instant dopušta 30 zahtjeva u minuti, 14400 dnevno, i do 500000 tokena mjesečno. Ova tablica jasno prikazuje tehnička ograničenja koja korisnici moraju imati
+prilikom dizajniranja aplikacija koje koriste LLM modele u oblaku.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.8\textwidth]{./assets/groq2.png}
+  \caption{Groq limitacije}
+  \label{fig:slika131}
+\end{figure}
+
+
 
 \chapter{Zaključak}
-
-
-
-
-
-
-
-
-
-
 
 Za kraj, Erasmusa se ne treba bojati jer je to prekasno iskustvo koje se pamti do kraja života. Svaki problem s kojim se suoči osoba, čini osobu jačom i neovisnijom. 
 Boravak na jednom mjestu dulje vrijeme postat će čudan način života. Jednom Erasmus+, uvijek Erasmus+!
