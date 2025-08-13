@@ -19,6 +19,7 @@
 \usepackage{listings}
 \usepackage{minted}
 \usepackage{ragged2e}
+\usepackage{placeins}
 \newcolumntype{R}[1]{>{\raggedright\arraybackslash}p{#1}}
 
 \definecolor{lightgray}{gray}{0.97}
@@ -104,7 +105,7 @@ prvotno za sve studente koji dolaze u Łódź iz svojih država. Osim toga web s
 sljedećih dijelova: početne stranice, stranice s kratkim opisom grada Łódź, stranice koja prikazuje 15 najvećih gradova Poljske, stranice za pregled i upravljanje dokumentima korištenima u 
 RAG sustavu, te stranice s kontaktnom formom. Forma je namijenjena za pitanja na koja AI (eng. Artificial Intelligence) asistent nije znao odgovoriti.
 
-Za izradu AI modela odabrano je korištenje RAG metode (eng. Retrieval Augmenting Generation) gdje se uzima postojeći AI model i on se bazira na specifičnom skupu podataka. 
+Za izradu AI asistenta odabrano je korištenje RAG metode (eng. Retrieval Augmenting Generation) gdje se uzima postojeći AI model i on se bazira na specifičnom skupu podataka. 
 Za takve potrebe pronađeno je nekoliko lokalnih web stranica koje opisuju život u Łódźu. Za potrebe rada razvijen je scraper koji dohvaća primarno tekstualni sadržaj s istih tih stranica
 i sprema ih u JSON (eng. JavaScript Object Notation) obliku. Naknadno su te JSON datoteke pročišćene i iskorištene za daljnje korištenje. Tijekom svoje Erasmus+ studentske mobilnosti imao sam prilike razgovarati s profesoricom na 
 kolegiju Umjetna inteligencija, kojoj sam ukratko predstavio ideju svog diplomskog rada. Naknadno sam je zamolio da mi preporuči nekoliko korisnih stranica koje su vezane za Łódź. Budući da se profesorica rodila u Łódźu i tamo živi te radi cijeli život, smatrao sam da je upravo ona prava osoba kojoj se mogu obratiti
@@ -268,7 +269,8 @@ Kroz sljedeće poglavlje predstavljeno je koje su trenutno aktualne tehnologije 
 Unutar ovog poglavlja opisana je važnost inteligentnih pomoćnih sustava te je napravljena podijela na asistente, copilote, agente i chatbotove. Svaki od njih je ukratko opisan uz pripadajuće 
 primjere. Za kraj ovog poglavlja opisano je korištenje inteligentnih asistenata u sustavu obrazovanja, njihova primjena i koji su izazovi takvog korištenja.
 
-\section{Važnost inteligentnih pomoćnih sustava}
+\section{Uvod u inteligentne sustave}
+
 Davne 1961. godine IBM je predstavio prvi sustav koji je mogao prepoznati govor (izgovorene znamenke). Do 1990-ih kreirani su prvi komercijalni 
 osobni asistenti koji su se aktivirali na postojanje glasa. Godine 2010. svijet je prvi put čuo za Sirija, Appleovog osobnog asistenta koji je 
 pokrenut na temelju umjetne inteligencije. U to vrijeme Siri je predstavljao revolucionarno rješenje. Petnaest godina kasnije, korisnici su 
@@ -277,7 +279,88 @@ korisnika/kupca i upravljanje njihovim očekivanjima zahtijeva stalne inovacije 
 te da na neki način zadovolje njihove potrebe. AI asistenti su postali popularni alati koji pomažu u poboljšanju korisničkog iskustva.
 Točnije rečeno dodaju novi način interakcije između korisnika i pružatelja usluge i samim time povećavaju angažman, zadovoljstvo ili profit \cite{buchan2024ai}.
 
-U svijetu umjetne inteligencije često se pojavljuju pojmovi poput bota, asistenta, copilota i agenta. Iako na prvi pogled djeluju kao sinonimi, svaki od njih ima svoju specifičnu svrhu, primjenu i skup prednosti.
+Umjetna inteligencija je grana koja se u zadnje vrijeme usredotočuje na sve vrste inteligentnih agenata koji predstavljaju nešto što percipira svoju okolinu putem senzora i djeluje na nju 
+putem aktuatora. Postoji razlika između apstraktne agentske funkcije (mapiranje iz potpunog perceptivnog slijeda u radnju) i konkretnog agentskog programa koji se izvodi na nekoj fizičkoj 
+arhitekturi (npr. robot) [\cite{russell2022ai}, pp. 55--56]. Ponašanje se temelji na racionalnosti, gdje u svakom trenutku racionalan agent bira akciju za koju se očekuje da maksimizira 
+njegovu mjeru performansi, s obzirom na: mjeru performansi, prethodno znanje, raspoložive akcije i dosadašnji niz percepata [\cite{russell2022ai}, pp. 58--59]. Racionalnost nije sveznanje 
+jer agenti djeluju pod nesigurnošću i ograničenim informacijama. To se ilustrira “svijetom usisavača” (eng. vacuum world) i pokazuje kako različite mjere performansi mijenjaju što se 
+smatra racionalnim. Time se nadalje odvaja autonomija od perfekcije, odnosno što se agent više oslanja na vlastite percepte (sinonim za opažanje) i učenje, a manje na prethodno znanje dizajnera, to je autonomniji.
+Potpuna autonomija od početka nije nužna, ali bi racionalan agent s vremenom trebao učiti kako bi kompenzirao netočne pretpostavke [\cite{russell2022ai}, p. 60].
+Također autor predstavlja specifikaciju okruženja zadatka prema PEAS shemi (Performance measure, Environment, Actuators, Sensors). Klasičan je primjer autonomnog taksija gdje performanse uključuju 
+sigurnost, zakonitost, udobnost, učinkovitost i profit. Okolina sadrži ceste, promet, pješake, vrijeme i korisnike. Aktuatori uključuju upravljanje, gas i kočnice. Senzori uključuju kamere, 
+GPS i dr. Postoji više tipova okolina koje usmjeravaju dizajn agenta: potpuno / djelomično sagledljive, jednoagentne / višeagentne, determinističke / nedeterminističke, epizodične / 
+sekvencijalne, statične / dinamične, diskretne / kontinuirane, poznate / nepoznate. Vožnja je, primjerice, djelomično sagledljiva, višeagentna, nedeterministička, sekvencijalna, dinamična i 
+uglavnom kontinuirana [\cite{russell2022ai}, pp. 60--65]. 
+
+U literaturi \cite{russell2022ai} navode se četiri kanonska “kostura” programa agenta, uz opći omotač za učenje:
+\begin{itemize}
+    \item \textbf{Jednostavni refleksni agenti} — biraju akcije isključivo iz trenutačnog percepta pomoću pravila (npr. ako auto ispred koči → koči). Brzi su, ali krhki u djelomično 
+    sagledljivim okolinama [pp. 68--69].
+    
+    \item \textbf{Refleksni agenti utemeljeni na modelu} — održavaju interno stanje ažurirano modelom prijelaza (“kako se svijet razvija” i učinci vlastitih akcija) i 
+    senzorskim modelom (“kako stanja generiraju percepte”), što omogućuje razumno ponašanje pod djelomičnom sagledljivošću [pp. 70--71].
+
+    \item \textbf{Ciljno vođeni agenti} — dodaju eksplicitne ciljeve i koriste pretraživanje i planiranje za izbor akcija koje ih postižu. Manje su učinkoviti, ali znatno fleksibilniji [pp. 71--72].
+
+    \item \textbf{Agenti temeljeni na korisnosti} — obrađuju ciljeve usporedbom koliko su ishodi dobri te, pod nesigurnošću, djeluju tako da maksimiziraju očekivanu korisnost. To daje opći 
+    okvir odlučivanja, ali traži snažno modeliranje i optimizaciju [pp. 72--74].
+
+    \item \textbf{Agenti koji uče} — omataju bilo koji od navedenih agenata s izvedbenim elementom (djeluje), kritičarem (evaluira), učećim elementom (poboljšava izvedbeni 
+    element) i generatorom problema (potječe istraživanje). Time raste autonomija, a prilagodljivost se poboljšava kroz vrijeme [pp. 74--76].
+\end{itemize}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{./assets/ar3.png} 
+    \caption{Opći učečći agent - objašnjenje [\cite{russell2022ai}, p. 74]}
+    \label{fig:slika256}
+\end{figure}
+
+Prethodna \figurename~\ref{fig:slika256}. prikazuje općeg učećeg agenta: okolina je desno, a agent preko senzora prima opažaje i preko aktuatora šalje radnje; mozak agenta (eng. performance element) trenutačno bira akcije.
+Ocjenjivač uspoređuje ponašanje s kriterijom uspješnosti i vraća povratnu informaciju. Učeći dio koristi povratnu informaciju i znanje o trenutačnom radu te upisuje promjene u mozak agenta
+kako bi ga poboljšao. Generator istraživanja prema ciljevima učenja potiče istraživačke radnje kako bi agent prikupio korisna nova iskustva. 
+
+Na kraju krajeva, i savršeno “racionalno” ponašanje može promašiti bit ako je cilj pogrešno specificiran. Naivne mjere performansi (npr. “maksimiziraj skupljanje prljavštine”) mogu se 
+iskoristiti, a dizajneri mogu biti nesigurni oko stvarnih preferencija korisnika (sustavi bi ponekad trebali modelirati nesigurnost u samu mjeru performansi i učiti je kroz vrijeme). 
+Paralelno, racionalni agenti trebaju postajati sve autonomniji učenjem iz iskustva, smanjujući oslanjanje na ugrađeno znanje [\cite{russell2022ai}, pp. 57--58].
+
+Ne postoji jedna jedinstvena, općeprihvaćena definicija za inteligentnog agenta, ali većina istraživača slaže se oko jedne stvari: autonomije. Agent je računalni sustav smješten u nekom 
+okruženju koji može samostalno djelovati kako bi postigao zadane ciljeve. U Wooldridgeovoj formulaciji, okruženje daje perceptivne ulaze preko senzora, gdje agent odabire radnje kroz interni 
+proces odlučivanja, dok efektori provode te radnje natrag u okruženje. Presudno je da ista radnja ne mora uvijek imati isti učinak, pa se agenti moraju pripremiti na neuspjeh i neizvjesnost
+[\cite{wooldridge2009multiagent}, p. 40].
+
+Praktičan način za prepoznavanje agenata je kroz tri komplementarne sposobnosti: reaktivnost (osjećanje okoline i pravovremeni odgovor), proaktivnost (inicijativno djelovanje prema ciljevima) 
+i socijalnu sposobnost (interakcija s drugim agentima i često ljudima). Agenti se suočavaju i s dugoročnim posljedicama, kao što je npr. bezazlen izbor raspoređivanja (sada odabrati p1, a p2 
+je obećan za kasnije), koji, ako se ponavlja, može dovesti do nepravde gdje p2 nikada ne dođe na red [\cite{wooldridge2009multiagent}, p. 45].
+
+Autonomija je spektar. Na jednom su kraju ljudi, a na drugom jednostavne usluge koje djeluju samo kad ih se pozove. Agenti koji su zanimljivi nalaze se u sredini i njima se mogu delegirati 
+ciljevi na visokoj razini jer oni odlučuju kako ih ostvariti. Autonomija se često podešava dinamički. Uz podesivu autonomiju agent prepušta kontrolu čovjeku kada je vjerojatno da će čovjek 
+odlučiti bolje, kada je neizvjesnost visoka, potencijalna šteta značajna ili agent nema sposobnost odlučiti. Umjetnost je izbjeći krajnosti (agent koji stalno pita je beskoristan, a onaj 
+koji nikad ne pita može biti rizičan) [\cite{wooldridge2009multiagent}, pp. 41--42].
+
+Agenti se često uspoređuju s objektima u objektno-orijentiranom programiranju. Oba slučaja enkapsuliraju stanje i komuniciraju porukama, ali postoji nekoliko razlika [\cite{wooldridge2009multiagent}, pp. 47--48]:
+\begin{itemize}
+\item Žarište kontrole — Objekt izlaže metode koje drugi mogu pozvati kada požele. Agent može odbiti traženu radnju ako je u sukobu s njegovim ciljevima ili politikom. Objekti to čine 
+kad im se kaže, dok agenti to čine jer oni to žele.
+\item Fleksibilna autonomija — Osnovni objektni model ne govori kako integrirati reaktivnost, proaktivnost i socijalno ponašanje, dok je to u središtu agentnog pogleda.
+\item Tokovi kontrole — Višeagentni sustavi su inherentno višedretveni; svaki agent kontrolira vlastitu dretvu, dok klasični objektni modeli obično pretpostavljaju jednu dretvu.
+\end{itemize}
+
+U srcu dizajna agenta je odabir radnje, gdje se odlučuje što učiniti s obzirom na ono što agent trenutačno vjeruje o okruženju i ciljevima. Takvim razmišljanjem zapravo se razmišlja o 
+arhitekturi agenata, gdje se definiraju moduli za osjet, ažuriranje stanja, odlučivanje, jednostavni regulatori povratne sprege itd. Termostat je agent u minimalnom smislu jer osjeća 
+temperaturu i prebacuje grijanje prema jednostavnoj politici. Kako rastu sposobnosti, agenti moraju podnositi djelomičnu vidljivost, promjenjive ciljeve, složene kompromisne odluke i 
+neprekidni rad [\cite{wooldridge2009multiagent}, p. 39 i 45].
+
+Prvi od načina zadavanja zadatka je na temelju cilja, gdje se nastoje ostvariti ili održati uvjeti. Drugi od načina je na temelju korisnosti, gdje postoje funkcije nad stanjima ili 
+putanjama koje ocjenjuju poželjnost, a agent maksimizira očekivanu korisnost. U slučaju da je okruženje i djelomično opažljivo, načelan je okvir POMDP (eng. Partially Observable Markov 
+Decision Process), kod kojeg rješenje daje politiku (što činiti s obzirom na trenutačne informacije, kako maksimizirati očekivani povrat pod neizvjesnim informacijama) [\cite{wooldridge2009multiagent}, pp. 56 i 57 i 64]. 
+
+Kroz sljedeću sekciju prikazani su različiti tipovi inteligentnih asistenata s obzirom na njihovu primjenu i način korištenja. Za svaki tip naveden je tipičan scenarij i reprezentativan primjer.
+
+\section{Tipovi rješenja i kriteriji razlikovanja}  
+
+U svijetu umjetne inteligencije često se pojavljuju pojmovi poput asistenta, copilota, autonomnih agenata i chatbot platformi. Iako na prvi pogled djeluju kao sinonimi, svaki od njih ima svoju 
+specifičnu svrhu, primjenu i skup prednosti.
 
 \begin{table}[ht!]
 \centering
@@ -290,9 +373,9 @@ Asistent & Personalizacija i multitasking & Dnevna produktivnost & Siri \\
 \hline
 Copilot & Specijalizirana podrška & Razvoj, IT & GitHub Copilot \\
 \hline
-Agent & Autonomija i proaktivnost & Upravljanje prijevarama, korisničko iskustvo & OpenAI Codex \\
+Autonomni agent & Autonomija i proaktivnost & Upravljanje prijevarama, korisničko iskustvo & ChatGPT Operator \\
 \hline
-Chatbot & Jednostavni ponavljajući zadaci & Osnovna korisnička podrška & Intercom \\
+Chatbot platforma & Jednostavni ponavljajući zadaci & Osnovna korisnička podrška & Intercom \\
 \hline
 \end{tabularx}
 \caption{Razlika između pojmova \cite{exomindset2025difference}}
@@ -301,9 +384,8 @@ Chatbot & Jednostavni ponavljajući zadaci & Osnovna korisnička podrška & Inte
 
 U okviru praktičnog rada napravljen je asistent koji omogućuje generiranje personaliziranih odgovora i pristupa specifičnim dokumentima čime
 pomaže korisnicima u pronalasku pravovaljanih i točnih informacija. 
-\newpage
 
-\subsection{Asistent}
+\subsection{Asistenti - Siri}
 AI asistenti donose inteligenciju automatizaciji razumijevanjem konteksta i time se personalizira interakcija kako bi se mogao obaviti niz zadataka. Ovi sustavi nadilaze skriptirane odgovore
 koristeći tehnologije poput obrade prirodnog jezika (eng. Natural processing language) ili strojnog učenja (eng. Machine learning). Kontekstualno su svjesni i razumiju korisnički unos što omogućava
 vođenje višestrukih razgovora. Integriraju se s alatima poput kalendara, aplikacijama za razmjenu poruku i poslovnim sustavima. Prilagođava se ponašanju korisniku kako bi se s vremenom poboljšao.
@@ -319,7 +401,6 @@ U nastavku su navedene prednosti inteligentnih asistenata \cite{buchan2024ai}:
     komunicirati na ljudski razumljiv način s asistentima. 
 \end{itemize}
 
-\subsubsection{Siri}
 Siri je Appleov virtualni asistent za IOS, macOS, tvOS, i watchOS uređaje koji se koristi preko glasa i pokreće ga umjetna inteligencija. Siri odgovara na izgovorena pitanja korisnika
 tako što im odgovara putem zvučnika uređaja i prikazuje paralelno relevantne informacije na početnom zaslonu iz određenih aplikacija kao što je Kalendar. Siri se počeo izrađivati
 u neprofitnom istraživačkom institutu sa sjedištem u Kaliforniji nakon čega su pojedini članovi odlučili osnovati startup tvrtku pod nazivom Siri. Godine 2010. Apple je preuzeo Siri što
@@ -330,12 +411,11 @@ su to potvrdili. Karen Jacobsen je žena koja je posudila svoj originalni žensk
 pomoću tehnologije dubokog učenja snimanjem i kombiniranjem govora stotine kandidatkinja. Siri može obavljati razne zadatke kao što su: navigacija uputama (npr. kakav je promet na putu do posla?),
 zakazivanje događaja i podsjetnika (npr. slanje poruke za rođendan), pretraživanje weba (npr. pronađi sliku psa) ili mijenjanje postavki (npr. povećanje svjetline zaslona) \cite{mixon_siri_2025}.
 
-\subsection{Copilot}
+\subsection{Copiloti - Microsoft Copilot Studio}
 Copilot je AI alat koji je u ulozi suradnika i primarno je osmišljen za poboljšanje ljudskih sposobnosti u složenijim zadacima. Za razliku od asistenata opće namjene, copiloti se usredotočuju na specifične domene,
 nudeći stručnost i proaktivnu podršku. Duboko su ugrađeni u specifične platforme čime pružaju podršku. Predviđaju korisničke potrebe analiziranjem konteksta i nude relevantne prijedloge ili rješenja.
 Na primjer, Github Copilot se koristi u razvoju softvera gdje predlaže isječke koda, otkriva pogreške i ubrzava razvoj automatizacijom rutinskih zadataka \cite{exomindset2025difference}.
 
-\subsubsection{Microsoft Copilot Studio}
 Tijekom studentske prakse u jednoj varaždinskoj firmi bila je prilika raditi i istraživati alat Microsoft Copilot Studio. Rukovodstvo te tvrtke u tom trenutku je imalo mišljenje da korištenjem 
 AI alata se znatno povećava produktivnost zaposlenika. Primarno bio je zadatak napraviti razna istraživanja u AI domeni jer su svi popularniji AI sustavi primjeri nekog oblika općenitog znanja. 
 Ni jedan od njih ne zna ništa o poslovanju i domeni kojim se firma bavi. Unutar Copilot Studija mogu se razvijati copiloti u područjima kao što su: prodaja i podrška, informacije (podaci o otvaranju trgovina), 
@@ -350,7 +430,7 @@ a to su: max 8000 zahtjeva po minuti u Dataverse okruženju, max datoteka velič
 
 \begin{figure}[ht!]
     \centering
-    \includegraphics[width=0.8\textwidth]{./assets/Primjer_agenta_kreiranog_u_Copilot_Studiu.png} 
+    \includegraphics[width=0.90 \textwidth]{./assets/Primjer_agenta_kreiranog_u_Copilot_Studiu.png} 
     \caption{Primjer copilota kreiranog u Microsoft Copilot Studiu}
     \label{fig:slika2}
 \end{figure}
@@ -368,20 +448,21 @@ primjera koji su već kreirani i besplatni su za korištenje \cite{copilot2025}.
     \label{fig:slika3}
 \end{figure}
 
+\FloatBarrier
 Od drugih stvari koje još postoje u Copilot Studiju:
 \begin{itemize}
 \item Dvije vrste kreiranje entiteta (Copilot sadrži veliki broj entiteta koji se mogu koristiti ali se mogu kreirati i vlastiti (Closed List i Regular Expression)),
 \item Message variation koji omogućava postojanje nekoliko verzija incijalnih poruka koje se pojavljuju kada se copilot pokrene. 
 \end{itemize}
 
-\subsection{Agent}
+\newpage
+\subsection{Autonomni agenti - ChatGPT Operator}
 
-AI agenti predstavljaju vrhunac automatizacije i autonomije jer su sposobni samostalno donositi odluke i poduzimati radnje bez stalnog ljudskog vodstva. Dizajnirani su za složena okruženja a 
+Autonomni agenti predstavljaju vrhunac automatizacije i autonomije jer su sposobni samostalno donositi odluke i poduzimati radnje bez stalnog ljudskog vodstva. Dizajnirani su za složena okruženja a 
 također se dinamički prilagođavaju kako bi postigli definirane ciljeve. Djeluju samostalno kako bi analizirali podatke i odredili prioritetne zadatke. Prate sustave i okruženja, predviđaju i rješavaju 
 potencijalne probleme prije nego što eskaliraju. Pri radu s složenijim problemima, identificiraju optimalnija rješenja. Bankarski agenti zamrzavaju kompromitirane račune kada se otkrije neovlašteni pristup s visokorizične lokacije.
 Na primjer, prate stanje servera, otkrivaju anomalije, identificiraju kašnjenje pošiljka i proaktivno obavještavaju kupca nudeći naknadu ili alternative i poduzimaju korektivne mjere bez ljudske intervencije \cite{exomindset2025difference}.
 
-\subsubsection{ChatGPT Operator}
 ChatGPT Operator je agent koji može ići na web kako bi obavljao zadatke umjesto korisnika. Može pregledavati web stranicu i komunicirati s njom tipkanjem, klikanjem i pomicanjem.
 Pojavio se je u siječnju 2025. godine i trenutno je još u fazi razvoja gdje se nastoji poboljšat rješenje na temelju povratnih informacija korisnika. Od Operatora se može zatražiti da obavi
 širok raspon repetitivnih zadataka u pregledniku, kao što je ispunjavanje formi, naručivanje proizvoda, pa čak i stvaranje memeova. Operator je dostupan unutar PRO verzije na području SAD-a i pokreće se
@@ -403,17 +484,16 @@ OpenAI spominje kako planiraju u budućnosti dati na korištenje model CUA preko
 korisnicima Plusa, Teama i Enterprisea nakon što se uvjere u njegovu sigurnost i upotrebljivost u velikim razmjerima.
 \newpage
 
-\subsection{Chatbot}
-Chatbotovi su sustavi temeljeni na kreiranim pravilima koji su osmišljena za izvršavanje određenih zadataka putem unaprijed definirane interakcije. Iako posjeduju dosta ograničenja jako se dobro
+\subsection{Chatbot platforme - Intercom}
+Chatbot platforme su sustavi temeljeni na kreiranim pravilima koji su osmišljena za izvršavanje određenih zadataka putem unaprijed definirane interakcije. Iako posjeduju dosta ograničenja jako se dobro
 i brzo snalaze u dosljednom rješavanju jednostavnih repetitivnih zadataka. Djeluju na temelju stabla odlučivanja ili prepoznavanja ključnih riječi ograničavajući svoju interakciju na unaprijed 
 postavljene scenarije. Koriste se za automatizaciju zadataka gdje se obrađuje veliki broj ponavljajućih upita poput rezervacija ili narudžbi. Njihova mana je da se ne mogu prilagoditi izvan
 svog programiranja što ih čini neprikladnim za složenije zadatke \cite{exomindset2025difference}.
 
-\subsubsection{Intercom}
 Interkom je platforma za korisničku podršku koja olakšava komunikaciju između kupaca i tvrtki. Poboljšava interakciju s kupcima putem brojnih komunikacijskih kanala koji uključuju
 chat uživo i automatizirano slanje poruka. Intercom je moguće integrirati s drugim alatima i platformama kao što su SalesForce, HubSpot, Zendesk i Slack.
 
-Chatbotovi su posebno zanimljivi jer su to inteligentni sustavi koji možda najviše rade s kupcima i samim time mogu dosta utjecati na profit i vrijednost tvrtke. Na sljedećoj slici može
+Chatbot platforme su posebno zanimljive jer su to inteligentni sustavi koji možda najviše rade s kupcima i samim time mogu dosta utjecati na profit i vrijednost tvrtke. Na sljedećoj slici može
 se vidjeti kako se pretpostavlja da će globalno tržište chatbotova do kraja 2027. godine vrijediti 455 milijuna dolara. Ova procijenjena brojka za 2027. godinu (455 milijuna američkih dolara) izračunata
 je na temelju tržišne vrijednosti u 2018. godini \cite{connell2025chatbot}. 
 
@@ -426,10 +506,10 @@ je na temelju tržišne vrijednosti u 2018. godini \cite{connell2025chatbot}.
 
 Također u sljedećem članku su doneseni sljedeći zaključci \cite{connell2025chatbot}:
 \begin{itemize}
-    \item Tvrtke mogu smanjiti troškove korisničke podrške za 30\,\% korištenjem chatbotova,
-    \item Trećinu korisnika chatbotova čine tzv. „napredni korisnici”,
-    \item Najveći uočeni nedostatak chatbotova jest njihova nemogućnost odgovaranja na složena i personalizirana pitanja,
-    \item Čak 55\,\% ljudi radije bi koristilo chatbota nego čekalo dostupnost agenta uživo.
+    \item Tvrtke mogu smanjiti troškove korisničke podrške za 30\,\% korištenjem chatbot platforme,
+    \item Trećinu korisnika chatbot platforme čine tzv. „napredni korisnici”,
+    \item Najveći uočeni nedostatak kod chatbot platformi jest njihova nemogućnost odgovaranja na složena i personalizirana pitanja,
+    \item Čak 55\,\% ljudi radije bi koristilo chatbot platformu nego čekalo dostupnost agenta uživo.
 \end{itemize}
 
 \newpage
@@ -2640,7 +2720,7 @@ zahtjeve koji su stigli na Groq (kada je kreiran, koji model je korišten, koji 
 \end{figure}
 
 Ova slika prikazuje tablicu s ograničenjima korištenja za različite modele unutar Groq platforme. Za svaki model prikazani su maksimalni brojevi upita u minuti i danu, kao i ograničenja na broj tokena.
-Na primjer, model llamallama-3.1-8b-instant dopušta 30 zahtjeva u minuti, 14400 dnevno, i do 500000 tokena mjesečno. Ova tablica jasno prikazuje tehnička ograničenja koja korisnici moraju imati
+Na primjer, model llamallama-3.1-8b-instant dopušta 30 zahtjeva u minuti, 14400 dnevno, i do 500000 tokena mjesečno. Ova tablica jasno prikazuje tehnička ograničenja koja korisnici moraju imati na umu
 prilikom dizajniranja aplikacija koje koriste LLM modele u oblaku.
 
 \begin{figure}[ht]
