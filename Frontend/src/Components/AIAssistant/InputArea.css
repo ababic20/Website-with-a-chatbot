@@ -3,9 +3,9 @@
     gap: 5px;
     padding: 10px;
     border-top: 1px solid #ccc;
+    align-items: flex-end; 
 }
 
-.input-area input,
 .chat-textarea {
     flex: 1;
     min-height: 36px;
@@ -21,12 +21,16 @@
 }
 
 .input-area button {
-    padding: 8px 12px;
+    height: 36px; 
+    padding: 0 12px;
     background-color: #8e55ad;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .input-area button:hover {
@@ -38,7 +42,8 @@
     background-color: #e0e0e0;
     color: #333;
     font-size: 18px;
-    padding: 6px 10px;
+    width: 40px; 
+    padding: 0;
 }
 
 .input-area button[title="Speak"]:hover {

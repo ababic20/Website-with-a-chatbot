@@ -61,6 +61,13 @@ function ChatPopup({ togglePopup }) {
         });
     };
 
+    const resizeTextarea = () => {
+        if (textareaRef.current) {
+            textareaRef.current.style.height = "auto";
+            textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
+        }
+    };
+
     const sendMessage = () => {
         if (!inputValue.trim()) return;
 
@@ -95,17 +102,12 @@ function ChatPopup({ togglePopup }) {
             });
 
         setInputValue("");
-        if (textareaRef.current) {
-            textareaRef.current.style.height = "auto";
-        }
+        resizeTextarea();
     };
 
     const handleInput = (e) => {
         setInputValue(e.target.value);
-        if (textareaRef.current) {
-            textareaRef.current.style.height = "auto";
-            textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
-        }
+        resizeTextarea();
     };
 
     const clearHistory = () => {
@@ -143,6 +145,7 @@ function ChatPopup({ togglePopup }) {
                 }
             }
             setInputValue(finalTranscript + interimTranscript);
+            resizeTextarea();   // 👈 sada će se textarea širiti i kod glasovnog unosa
         };
 
         recognition.onerror = (event) => {
@@ -157,15 +160,18 @@ function ChatPopup({ togglePopup }) {
     };
 
     return (
-        <div className={`chat-popup ${darkMode ? "dark" : ""}`}>
-            <button className="close-button" onClick={togglePopup}>X</button>
-            <h2 className="popup-title">
-                {translations.assistant.title}
-                <button className="dark-toggle" onClick={toggleDarkMode}>
-                    {darkMode ? '🌞' : '🌙'}
-                </button>
-                <button className="clear-history" onClick={clearHistory}>🗑️</button>
-            </h2>
+      <div className={`chat-popup ${darkMode ? "dark" : ""}`}>
+       <div className="chat-header">
+        <h2 className="popup-title">{translations.assistant.title}</h2>
+        
+        <div className="chat-actions">
+            <button className="dark-toggle" onClick={toggleDarkMode}>
+            {darkMode ? '🌞' : '🌙'}
+            </button>
+            <button className="clear-history" onClick={clearHistory}>🗑️</button>
+            <button className="close-button" onClick={togglePopup}>✖</button>
+        </div>
+        </div>
 
             <div className="chat-content">
                 <div className="messages">

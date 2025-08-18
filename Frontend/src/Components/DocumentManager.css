@@ -1,5 +1,6 @@
 .document-manager-wrapper {
-    display: flex;
+    display: grid;
+    grid-template-columns: 220px 1fr 320px;
     gap: 20px;
     padding: 25px 20px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -8,7 +9,6 @@
 }
 
 .sidebar-left {
-    width: 220px;
     padding: 15px 18px;
     background-color: #ffffff;
     border-radius: 12px;
@@ -17,15 +17,21 @@
 }
 
 .sidebar-right {
-    flex-grow: 1;
-    max-width: 520px; 
     padding: 15px 18px;
     background-color: #ffffff;
     border-radius: 12px;
     font-size: 14px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    max-width: 320px;
 }
 
+.document-manager {
+    background-color: #ffffff;
+    padding: 20px 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    min-width: 300px;
+}
 
 .sidebar-left h4,
 .sidebar-right h4 {
@@ -47,17 +53,6 @@
     overflow-wrap: anywhere;
 }
 
-.document-manager {
-    flex: 1;
-    background-color: #ffffff;
-    padding: 20px 24px;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    max-width: 700px;      
-    margin-left: 0;        
-    margin-right: auto;    
-}
-
 .clickable {
     cursor: pointer;
     color: #0077cc;
@@ -73,7 +68,6 @@
     overflow-y: auto;
     font-size: 0.85rem;
 }
-
 
 .document-manager h2 {
     margin-top: 0;
@@ -160,10 +154,9 @@ button:disabled {
     overflow-wrap: anywhere;
 }
 
-
 @media (max-width: 1024px) {
   .document-manager-wrapper {
-    flex-direction: column;
+    grid-template-columns: 1fr; 
     gap: 16px;
     padding: 20px;
   }
