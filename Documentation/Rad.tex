@@ -621,12 +621,30 @@ Objavljivanje RAG okvira potaknulo je nagli rast istraživanja, gdje je napravlj
 
 \begin{itemize}
     \item \textbf{Poboljšani modeli pretraživanja} - modeli neuronskog pretraživanja poput ColBERTa postaju standard u RAG sustavima,
-    \item \textbf{Skalabilnost i učinkovitost} - kako bi se obradile ogromne količine podataka. Tehnike poput pretraživanja najbližeg susjeda (eng. Approximate Nearest Neighbor) i destilacije modela pomogle su u optimizaciji performansi,
-    \item \textbf{Primjene specifične za domenu} - do 2023. godine RAG sustavi su se prilagođavali specifičnim slučajevima upotrebe, kao što su pravne i medicinske domene, gdje su točnost i objašnjivost ključne stavke. Dodatno se je istraživalo fino podešavanje kako bi se dobio što precizniji odgovor, 
-    \item \textbf{Multimodalni RAG} - proširivanje RAG-a kako bi uključio tekst, slike, zvuk i video. Proširivanje na područja poput obrazovanja i zabave, 
-    \item \textbf{Prilagođeno učenje i petlje povratnih informacija}  - prilagodba prema korisnicima je ostvarena kroz razumijevanje njihovih povratnih informacija u stvarnom vremenu.
-\end{itemize}
+    \subitem - Kroz rad "ColBERT: Efficient and Effective Passage Search via Contextualized Late Interaction over BERT" predstavljen je inovativan pristup
+    neuralnog retrievala koji koristi kontekstualnu interakciju između upita i dokumenta. Takav model omogućava detaljnije razumijevanje značenja riječi u kontekstu, što značajno
+    poboljšava točnost pretrage. ColBERT kombinira efikasnost i preciznost, pružajući skalabilno rješenje za sofisticirane pretrage u velikim skupovima podataka \cite{khattab2020colbert}.
 
+    \item \textbf{Skalabilnost i učinkovitost} - kako bi se obradile ogromne količine podataka. Tehnike poput pretraživanja najbližeg susjeda (eng. Approximate Nearest Neighbor) i destilacije modela pomogle su u optimizaciji performansi,
+    \subitem - u članku "Billion-scale similarity search with GPUs" prikazana je metoda ANN (eng. approximate nearest neighbor) koja omogućuje brzu obradu i skaliranje
+    pretraga na milijardama vektora. Korištenjem GPU ubrzanja, takva metoda značajno smanjuje vrijeme pretraživanja pri minimalnom gubitku točnosti. To je ključno za RAG sustave
+    jer zahtijevaju efikasno dohvaćanje informacija u stvarnom vremenu \cite{zhao2020song}. 
+
+    \item \textbf{Primjene specifične za domenu} - do 2023. godine RAG sustavi su se prilagođavali specifičnim slučajevima upotrebe, kao što su pravne i medicinske domene, gdje su točnost i objašnjivost ključne stavke. Dodatno se je istraživalo fino podešavanje kako bi se dobio što precizniji odgovor, 
+    \subitem - u radu "Retrieval augmented generation for large language models in healthcare" prikazana je primjena RAG modela prilagođenih specifičnoj domeni medicine.
+    Fokus je na povećanju preciznosti i pouzadnosti odgovora korištenjem specijaliziranih medicinskih baza podataka i fine-tuning modela. Time je omogućeno generiranje
+    točnijih i relevantnijih informacija, što je ključno u osjetljivoj domeni poput zdravstvene skrbi \cite{amugongo2025rag}.
+
+    \item \textbf{Multimodalni RAG} - proširivanje RAG-a kako bi uključio tekst, slike, zvuk i video. Proširivanje na područja poput obrazovanja i zabave, 
+    \subitem - U članku "Advanced Embedding Techniques in Multimodal Retrieval Augmented Generation" istražene su metode spajanja različitih modaliteta podataka, poput teksta
+    i slika, u jedinstveni retrieval sustav. Predložene embedding tehnike omogućuju efikasno pretraživanje i povezivanje informacija kroz više vrsta podataka, čime se
+    proširuju mogućnosti RAG aplikacija \cite{zhou2024advanced}.
+
+    \item \textbf{Prilagođeno učenje i petlje povratnih informacija}  - prilagodba prema korisnicima je ostvarena kroz razumijevanje njihovih povratnih informacija u stvarnom vremenu.
+    \subitem - U studiji "Enhancing Retrieval-Augmented Generation: A Study of Best Practices" donose se nova saznanja o korištenju konstrastivnog učenja za poboljšanje kvalitete
+    retreivala u RAG sustavima. Osim toga, uvode metode retrieval-augmented fine-tuninga kojima se sustavi mogu kontinuirano prilagođavati na temelju povratnih informacija korisnika što
+    povećava relevantnost i točnost generiranih odgovora \cite{li2025enhancing}. 
+\end{itemize}
 Kroz povijest RAG-a pokazuje se kako su se temeljna istraživanja u odvojenim područjima, poput pretraživanja i generiranja podataka, spojila kako bi se riješili izazovi u zadacima koji zahtijevaju puno znanja.
 Također, može se vidjeti važnost interdisciplinarne suradnje u području umjetne inteligencije, gdje se otkrića često javljaju kombiniranjem različitih metodologija \cite{custom_ai_studio2025}. 
 
