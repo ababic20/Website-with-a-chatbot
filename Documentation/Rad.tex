@@ -77,13 +77,17 @@
 
 \smjer{Baze podataka i baze znanja}
 
-\sazetak{Teoretski dio rada istražuje studiranje kao važan segment u životnom razdoblju pojedinca te se dotiče razmjene studenata u svrhu Erasmus+ studijskog boravka. 
-Teoretski dio završava poglavljem posvećenim inteligentnim asistentima temeljenima na RAG (eng. Retrieval-Augmented Generation) tehnologiji.
-Praktični dio rada obuhvaća izradu web-stranice s tematikom Erasmusa+ studijskog boravka i izradu inteligentnog asistenta, pri čemu je iskorišten postojeći jezični model. 
-To podrazumijeva treniranje i prilagođavanje specifičnom skupu podataka, kako bi se osiguralo da inteligentni asistent odgovara upitima korisnika i pruža relevantne informacije.
+\sazetak{
+Teoretski dio rada istražuje studiranje kao značajan segment u životnom razdoblju pojedinca, s posebnim naglaskom na Erasmus+ program studentske razmjene. Nakon toga, obrađuje se pojam 
+inteligentnih asistenata kao jednog od najpopularnijih suvremenih alata za snalaženje i informiranje. Opisani su različiti tipovi rješenja te kriteriji prema kojima se međusobno razlikuju 
+ovisno o svojoj namjeni. Posebna pažnja posvećena je primjeni inteligentnih asistenata u obrazovnom sustavu, njihovim mogućnostima i izazovima. U nastavku je prikazana Retrieval-Augmented Generation (RAG) metoda, njezina arhitektura te usporedba s finetuningom. Istaknute su prednosti RAG pristupa, područja njegove primjene, 
+ali i izazovi poput pojave halucinacija i upravljanja višestrukim izvorima podataka. Teoretski dio završava pregledom dostupnih alata i biblioteka koji se mogu koristiti za implementaciju 
+RAG sustava. Praktični dio rada obuhvaća izradu web-stranice posvećene Erasmus+ studijskom boravku te razvoj inteligentnog asistenta temeljenog na postojećem jezičnom modelu s Groq platforme. U 
+okviru praktičnog dijela provedeno je prikupljanje podataka, dizajn korisničkog sučelja, izrada poslužiteljskog dijela aplikacije te priprema popratne dokumentacije. Na kraju je prikazan 
+rad aplikacije, nakon čega je dan završni osvrt s naglaskom na postignute rezultate te prijedlozima za daljnji razvoj i poboljšanja.
 }
 
-\kljucneRijeci{Inteligentni asistent, RAG, web-stranica, studiranje, Erasmus+, umjetna inteligencija.}
+\kljucneRijeci{Inteligentni asistent, RAG, web-stranica, studiranje, Erasmus+, umjetna inteligencija, LLM, model, informacija.}
 
 \begin{document}
 
@@ -273,7 +277,7 @@ primjena i koji su izazovi takvog korištenja.
 \section{Uvod u inteligentne sustave}
 
 "Davne 1961. godine IBM je predstavio prvi sustav koji je mogao prepoznati govor (izgovorene znamenke)" \cite{buchan2024ai}. Do 1990-ih kreirani su prvi komercijalni 
-osobni asistenti koji su se aktivirali na postojanje glasa. Godine 2010. svijet je prvi put čuo za Siri, Appleovog osobnog asistenta koji je 
+osobni asistenti koji su se aktivirali na postojanje glasa. Godine 2010. svijet je prvi put čuo za Siri \cite{buchan2024ai}, Appleovog osobnog asistenta koji je 
 pokrenut na temelju umjetne inteligencije. U to vrijeme Siri je predstavljao revolucionarno rješenje. Petnaest godina kasnije, korisnici su 
 zatrpani ogromnom količinom inteligentnih asistenata. Korisničko iskustvo (eng. User experience) je sada više nego ikada važno. Održavanje zadovoljstva 
 korisnika/kupca i upravljanje njihovim očekivanjima zahtijeva stalne inovacije i poboljšanja. Korisnici žele da web-stranice budu intuitivne i učinkovite
@@ -517,8 +521,7 @@ Također, u sljedećem članku su doneseni sljedeći zaključci \cite{connell202
 \section{Inteligentni asistenti u sustavu obrazovanja}
 Današnje obrazovanje se sve više oslanja na tehnologiju, a inteligentni asistenti postaju alat koji može poboljšati iskustvo učenja i poučavanja. Na primjer, učenici mogu dobiti
 personaliziranu podršku, dok učitelji imaju više vremena za fokusiranje na ono što je zaista važno. Takvi asistenti mogu prilagođavati materijale, odgovarati na pitanja i ocjenjivati domaće 
-zadaće čime se rasterećuje profesore. Jedna od najvećih prednosti koju donose inteligentni asistenti je personalizirano učenje. Umjesto univerzalnog pristupa, asistenti se mogu individualno 
-posvetiti svakom učeniku/studentu. 
+zadaće čime se rasterećuje profesore. Umjesto univerzalnog pristupa, asistenti se mogu individualno posvetiti svakom učeniku/studentu. 
 
 \subsection{Primjena inteligentnih asistenata u obrazovanju}
     \textbf{Automatizacija procesa ocjenjivanja} - ocjenjivanje pismenih zadataka, pružajući detaljne povratne informacije u roku od nekoliko minuta umjesto dana. 
@@ -605,11 +608,11 @@ Korijeni RAG-a mogu se pratiti od 1950-ih i 1960-ih kada su se koristili sustavi
 vektorskog prostora omogućujući računalima da pronađu dokumente koji su relevantni za korisničke upite. Obrada prirodnog jezika značajnije je napredovala u 1980-ima i 1990-ima putem
 statističkih jezičnih modela, poput n-gram modela \cite{custom_ai_studio2025}. 
 
-Integracija pretraživanja i generiranja pojavila se u 2000-ima s razvojem sustava poput IBM Watsona, koji je koristio metodu pretraživanja za prikupljanje informacija i statističke modele 
+Integracija pretraživanja i generiranja pojavila se u 2000-ima s razvojem sustava poput IBM Watsona \cite{custom_ai_studio2025}, koji je koristio metodu pretraživanja za prikupljanje informacija i statističke modele 
 za generiranje odgovora. Razvoj neuronskih mreža u 2010-ima dodatno je ubrzao ovu integraciju. Transformatori omogućuju značajan napredak u modeliranju jezika, dok tehnike gustog pretraživanja,
 poput pretraživanja temeljenog na ugrađivanju, dodatno poboljšavaju točnost pretraživanja \cite{custom_ai_studio2025}. 
 
-RAG se pojavljuje u radu "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks" 2020. godine, gdje su autori predložili sustav u kojem vanjski model dohvaća relevantne
+RAG se pojavljuje u radu "Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks" 2020. godine \cite{custom_ai_studio2025}, gdje su autori predložili sustav u kojem vanjski model dohvaća relevantne
 dokumente kao odgovor na upit, a generativni model uvjetovan tim dohvaćenim znanjem daje odgovor. U radu su autori koristili bi-enkoder za pretraživanje, temeljen na pretraživanju gustih prolaza
 (eng. Dense Passage Retrieval) i T5 transformator kao generativni model, pokazujući izvanredne performanse na testovima koji zahtijevaju puno znanja. 
 Ovaj pristup rješava ključne izazove s kojima se suočavaju modeli velikih jezika, poput halucinacija i zastarjelog znanja \cite{custom_ai_studio2025}. 
@@ -638,7 +641,7 @@ Važnost RAG-a povećala se posljednjih godina zbog pojave velikog broja aplikac
 \newpage
 
 \section{Arhitektura RAG modela}
-RAG se sastoji od faze pronalaženja i faze generiranja sadržaja. U fazi pronalaženja algoritmi traže relevantne informacije za korisnikov upit dok se u fazi generiranja generira tekst 
+U grubo objašnjeno RAG se sastoji od faze pronalaženja i faze generiranja sadržaja \cite{ibm2023rag}. U fazi pronalaženja algoritmi traže relevantne informacije za korisnikov upit dok se u fazi generiranja generira tekst 
 kako bi se odgovorilo na korisnički upit. U okruženju otvorene domene te činjenice uglavnom dolaze iz indeksiranih dokumenata na internetu. U okruženju zatvorene domene obično se koristi 
 uži skup izvora radi dodatne sigurnosti i pouzdanosti. Prije LLM-a, agenti su kroz razgovor pratili ručni tijek dijaloga. Pretpostavljali su namjeru klijenta, dohvaćali tražene informacije 
 i dostavljali odgovor za određeni scenarij. Za jednostavne upite, ova ručna metoda stabla odlučivanja funkcionirala je sasvim dobro. Problem takvog pristupa je da se je gubilo vrijeme na 
@@ -664,7 +667,7 @@ Generalno RAG arhitektura se može objasniti kroz sljedeće karakteristike \cite
 
 Današnji AI sustavi bazirani na LLM-ovima mogu dati korisnicima odgovore bez da ljudi pišu definirane skripte. Samim nadovezivanjem RAG-a na LLM-ove smanjuje se potreba za ponovnim obučavanjem 
 modela na novim primjerima \cite{ibmRAG}. Upiti korisnika nisu uvijek jednostavni, mogu biti dvosmisleno formulirani, složeni ili mogu zahtijevati znanje koje model nema. U takvim uvjetima 
-LLM-ovi su skloni izmišljanju stvari. Rod Lastra opisuje velike jezični model kao “Zamislite model kao pretjerano nestrpljivog mlađeg zaposlenika koji izbrblja odgovor prije nego što provjeri činjenice”
+LLM-ovi su skloni izmišljanju stvari. Rod Lastra opisuje velike jezični model kao “Zamislite model kao pretjerano nestrpljivog mlađeg zaposlenika koji izbrblja odgovor prije nego što provjeri činjenice” \cite{ibmRAG}
 Lastra dodatno ističe važnost svjesnog upravljanja neizvjesnošću u odgovaranju, navodeći: “Iskustvo nas uči da zastanemo i kažemo kada nešto ne znamo. LLM-ovi moraju biti eksplicitno obučeni da prepoznaju pitanja na koja ne mogu odgovoriti” \cite{ibmRAG}. 
 
 Slika \ref{fig:slika1}. objašnjava kako RAG funkcionira na konkretnom primjeru. Ulaz u RAG sustav mogu biti različite vrste dokumenta, poput PDF-ova ili JSON datoteka. Nakon toga čita se 
@@ -815,7 +818,7 @@ U nastavku, su prikazane ključne prednosti RAG sustava, koje objašnjavaju zaš
     
 \subsection{Najčešći slučajevi primjene}
 Kroz sljedeću sekciju istražena je primjena RAG-a. Na početku je istaknut jedan primjer koji je podijelio Siddharth Asthana u jednom od svojih
-članaka na Linkedlnu. U članku se govori o tome kako je velika bolnička mreža integrirala RAG u svoj sustav podrške kako bi donijela bolje odluke.
+članaka na Linkedlnu \cite{siddharth2025rag}. U članku se govori o tome kako je velika bolnička mreža integrirala RAG u svoj sustav podrške kako bi donijela bolje odluke.
 Sustav se povezao s elektroničkim zdravstvenim kartonima i višestrukim medicinskim bazama podataka, što je dovelo do \cite{siddharth2025rag}:
 \begin{itemize}
     \item Smanjenja pogrešnih dijagnoza za složene slučajeve za 30\,\%,
@@ -823,27 +826,55 @@ Sustav se povezao s elektroničkim zdravstvenim kartonima i višestrukim medicin
     \item Povećanje ranog otkrivanja rijetkih bolesti za 40\,\%.
 \end{itemize}
 
-U nastavku je navedeno nekoliko domena u kojima se RAG može primjenjivati \cite{nishtha2025rag}:
+U nastavku je navedeno nekoliko domena u kojima se RAG može primjenjivati:
 
 \begin{itemize}
     \item \textbf{Sustavi za korisničku podršku} - kupac postavlja pitanje, chatbot dohvaća relevantne informacije iz izvora kao što su baze znanja,
-    često postavljena pitanja ili zapisi kupaca i pritom koristi generativni model za izradu personaliziranog odgovora na temelju dohvaćenih podataka.
+    često postavljena pitanja ili zapisi kupaca i pritom koristi generativni model za izradu personaliziranog odgovora na temelju dohvaćenih podataka \cite{nishtha2025rag}.
+    \subitem - u istraživanju iz Journal of Chemical Education, primjer je chatbot koji je integriran u \textbf{edukacijske platforme za kemiju}, gdje se koristi RAG da bi iz baze kemijskih pojmova 
+    i znanstvenih članaka izvukao i generirao precizne odgovore na studenska pitanja. Na primjer, chatbot je bio u stanju precizno odgovoriti na tehničke upite o konfiguraciji molekula
+    i kemijskim reakcijama, koristeći specične izvore poput službenih labaratororijskih priručnika. Time je povećana točnost odgovora za 20 \,\% u odnosu na generativne modele bez retrievala \cite{Cooper2024}.
+
     \item \textbf{Sažimanje i pretraživanje dokumenta} - korištenje naprednih tehnika dohvaćanja informacija kako bi se poboljšale mogućnosti velikih LLM-ova.
     Na primjer, Google-ov Vertex AI Search koristi prvo algoritme poput ANN kako bi brzo prikupio rezultate i zatim primjenjuje modele dubokog učenja za ponovo 
-    rangiranje kako bi se osiguralo da su najrelevantniji dokumenti prioritetni.
+    rangiranje kako bi se osiguralo da su najrelevantniji dokumenti prioritetni \cite{nishtha2025rag}.
+    \subitem - u radu s arXiva, prikazan je primjer primjene RAG sustava za pravno sažimanje dokumenata gdje je model u mogućnosti izvući i sažeti ključne \textbf{pravne odredbe iz stotina stranica
+    sudskih presuda}. Sustav je konkretno korišten za analizu višegodišnjih sudskih slučajeva i generirao sažetke koji olakšavaju odvjetnicima brzo donošenje odluka, eliminirajući potrebu
+    za ručnim pregledom. Također, koristi se na financijskim tržištima za sažimanje financijskih izvještaja, kako bi se izdvojili ključni pokazatelji i uočile promjene u poslovanju \cite{Shengjie2024}.
+
     \item \textbf{Medicinska dijagnostika i istraživanje} - korištenje ogromnih baza podataka medicinskog znanja, elektroničkih zdravstvenih kartona, kliničkih 
     smjernica i medicinske literature kako bi se podržalo zdravstvene djelatnike u postavljanju točnih dijagnoza i dobro informiranih odluka o liječenju. 
     Jedan od primjera je IBM Watson koji analizira podatke o pacijentima s opsežnom medicinskom literaturom i time pomaže liječnicima u dijagnosticiranju
-    složenijih slučajeva. IBM Watson Health se također koristi za dijagnostiku raka i shodno tome predlaže preporuke liječenja.
+    složenijih slučajeva. IBM Watson Health se također koristi za dijagnostiku raka i shodno tome predlaže preporuke liječenja \cite{nishtha2025rag}.
+    \subitem - Prema PMC članku, primjer je IBM Watson Health, koji koristi RAG u \textbf{onkologiji za analiziranje pacijentovih genetskih podataka i povezivanje s najnovijim istraživanjima}
+    kako bi se predložili personalizirani terapijski protokoli. Sustav je jedntificirao alternativne terapije za određene vrste raka koje su klinički potvrđene, ali nisu standardno korištene
+    na svim lokacijama, što je rezultiralo boljim stopama preživljavanja pacijenata \cite{Gargari2025}. 
+
     \item \textbf{Personalizirani sustavi učenja i poučavanja} - jedan od primjera je RAMO (eng. Retrieval Augmented Generation for MOOCs) koji se bavi problemom hladnog starta u preporukama tečajeva
     korištenjem LLM-ova za generiranje personaliziranih prijedloga tečajeva. RAMO pomaže u razumijevanju preferencija i ciljeva osobe, nudeći relevantnije mogućnosti tečaja.
-    Na primjer, sveučilišta su počela uvoditi sustave poučavanja vođene RAG-om kako bi pomogli studentima u učinkovitijem snalaženju u materijalima, potičući dublje razumijevanje i bolje akademske rezultate.
+    Na primjer, sveučilišta su počela uvoditi sustave poučavanja vođene RAG-om kako bi pomogli studentima u učinkovitijem snalaženju u materijalima, potičući dublje razumijevanje i bolje akademske rezultate \cite{nishtha2025rag}.
+    \subitem - PeerJ-ova studija opisuje LPITutor kao primjer RAG sustava koji je \textbf{integriran u stav za učenje matematike}, gdje tutor na temelju prethodnih rješenja pruža vježbe koje ciljaju 
+    na slabije razumijevanje pojmova kao što su derivacije ili integrali. Sustav koristi retrieval da bi iz baze obrazovnih materijala obradio primjere i time generirao dodatne korake 
+    koji su prilagođeni specifičnom učeniku \cite{Liu2025}. 
+
     \item \textbf{Otkrivanje prijevara i procjena rizika} - sposobnost RAG-a da pristupi podacima u stvarnom vremenu i uključi ih tijekom postupka donošenja odluka.
     Financijske tvrtke poput JPMorgan Chasea koriste sustave za otkrivanje prijevara koje su vođene umjetnom inteligencijom. Takvi sustavi kontinuirano dohvaćaju i analiziraju podatke
-    u stvarnom vremenu iz različitih izvora kako bi se pratile transakcije i time otkrile potencijalne prijevare. 
+    u stvarnom vremenu iz različitih izvora kako bi se pratile transakcije i time otkrile potencijalne prijevare \cite{nishtha2025rag}. 
+    \subitem - Rad na arXiv-u navodi JPMorgan Chase kao primjer \textbf{financijske institucije koja je implementirala RAG u sustav za detekciju prevara}. Sustav kontinuirano pretražuje transakcijske
+    podatke, regulatorne izvještaje i baze prijavljenih prijevara kako bi otkrio obrasce nepravilnosti. U stvarnom vremenu sustav je identificirao složene sheme pranja novca koje se 
+    nisu mogle otkriti u standardnim modelima, čime je ušteđena velika količina novca. Model također koristi retrieval za brzo učenje o novim prijevarama tako što ažurira svoje baze što
+    je rezultiralo smanjenjem lažno pozitivnih alarma \cite{Singh2025}.
+
     \item \textbf{Preporuke proizvoda za e-trgovinu} - za razliku od tradicionalnih sustava preporuka, RAG se dinamički prilagođava specifičnim potrebama kupca u stvarnom vremenu čime
-    preporuke postaju relevantnije i točnije što rezultira povećanom prodajom.
-    \item \textbf{Upravljanje znanjem u poduzeću} - posebno korisno kod velikih tvrtki s opsežnom dokumentacijom i izvorima podataka. 
+    preporuke postaju relevantnije i točnije što rezultira povećanom prodajom \cite{nishtha2025rag}.
+    \subitem - Amazon Science opisuje Cosmo framework kao primjer RAG primjene u e-commerce, gdje je model u mogućnosti pružiti automatske preporuke novim i povratnim kupcima.
+    Konkretno, tijekom pretraživanja proizvoda, model pretražuje podatke o sličnim proizvodima, recenzijama i prometnim statistika, te kreira personalizirane prijedloge u stvarnom vremenu.
+    Testovi su pokazali da uvođenje Cosmo frameworka povećava broj izvršenih kupovina za 12\,\% preporuke koje uključuju dodatke povezane s interesima kupca \cite{Sun2025}.
+
+    \item \textbf{Upravljanje znanjem u poduzeću} - posebno korisno kod velikih tvrtki s opsežnom dokumentacijom i izvorima podataka \cite{nishtha2025rag}. 
+    \subitem - Studija iz World Journal Of Advanced Research, opisuje Siemens kao konkretan primjer korištenja RAG u internoj bazi znanja. Sustav povezuje tehničke priručnike, interne procedure
+    i izvještaje s ciljem ubrzavanja tehničke podrške. Zaposlenici postavljaju prirodne upite na platformi, a RAG sustav vraća relevantne dijelove dokumenata te kratke sažete odgovore. Time
+    se smanjilo vrijeme potrebno za pronalaženje rješenja za tehničke probleme za 30\,\%, a istovremeno se povećala točnost i sigurnost odgovora u kompleksnim proizvodnim procesima \cite{Gadde2025}. 
 \end{itemize}
 
 \subsection{Izazovi RAG metode}
@@ -1120,7 +1151,7 @@ opisani korišteni alati i tehnologije.
 \subsubsection{React}
 Svijet danas ne funkcionira bez mobilnih i web-aplikacija. Sve se orijentira prema digitalizaciji, od rezerviranja hrane do naručivanja vožnje u taksiju. Vrlo je bitno napraviti vizualno
 primamljivu aplikaciju a React je upravo jedna od popularnijih frontend biblioteka koja to omogućava. React je temeljen na JavaScriptu i široko se koristi u web-razvoju. U usporedbi s drugim 
-tehnologijama, React je nova tehnologija, a osnovan je od strane Jordan Walkea 2011. godine (softverski inženjer u Facebooku). Reactova popularnost dolazi radi nekoliko razloga \cite{simplilearn2025react}:
+tehnologijama, React je nova tehnologija, a osnovan je od strane Jordan Walkea 2011. godine (softverski inženjer u Facebooku) \cite{simplilearn2025react}. Reactova popularnost dolazi radi nekoliko razloga \cite{simplilearn2025react}:
 \begin{itemize}
     \item jednostavno stvaranje dinamičkih aplikacija,
     \item korištenje Virtual DOM-a (eng. Virtual Document Object Model), čime se aplikacije brže izrađuju (ažuriraju se samo komponente koje su promijenjene),
@@ -1146,7 +1177,7 @@ To jasno odražava razliku u životnom standardu i ekonomskim potrebama pojedini
 \end{itemize}
 
 \subsubsection{SMTP}
-"SMTP (eng. Simple Mail Transfer Protocol) je TCP/IP protokol koji se koristi za slanje i primanje e-pošte preko mreže kao što je internet" \cite{\cite{gillisSMTP}}.
+"SMTP (eng. Simple Mail Transfer Protocol) je TCP/IP protokol koji se koristi za slanje i primanje e-pošte preko mreže kao što je internet" \cite{gillisSMTP}.
 Neki od primjera klijenata koji koriste SMTP su Gmail, Microsoft Outlook, Yahoo Mail i Apple Mail \cite{gillisSMTP}. 
 
 \begin{figure}[ht!]
@@ -1244,7 +1275,26 @@ kompilacije. To se postiže izmjenom postavki u datoteci settings.json, gdje se 
 
 \newpage
 
-\section{Struktura web-stranice}
+\section{Arhitektura i struktura web-aplikacije}
+
+U ovoj sekciji prikazana je arhitektura sustava, kao i struktura web-aplikacije. Najprije je dan pregled toka zahtjeva i odgovora između frontenda i backenda,
+a zatim je prikazana struktura web-aplikacije s pripadajućim komponentama.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.85\textwidth]{./assets/Arhitektura sustava s prikazom toka zahtjeva i odgovora.drawio.png}
+    \caption{Arhitektura sustava s prikazom toka zahtjeva i odgovora}
+    \label{fig:slika11111}
+\end{figure}
+
+Na slici \ref{fig:slika11111}. prikazane su prije svega akcije koje korisnik može izvršavati na frontend strani. Izvršavanjem određene akcije 
+aktiviraju se POST/DELETE/GET zahtjevi, na koje backend vraća odgovarajuće odgovore, a oni se potom prikazuju na frontend strani. Prilikom 
+dodavanja dokumenta u vektorsku bazu podataka, dokument prolazi kroz proces čitanja, podjele u chunkove, ugradnje (embedding) i pohrane u bazu.
+Prikupljanje podataka predstavlja samostalnu i neovisnu cjelinu koja nije sastavni dio web-aplikacije, već je poslužila kao pomoćno sredstvo 
+za prikupljanje podataka. Kod akcije u kojoj korisnik šalje podatke putem ispunjene forme, aktivira se POST zahtjev koji prosljeđuje podatke 
+administratoru stranice kako bi bio informiran o korisničkim pitanjima. Nakon toga administrator može kontaktirati korisnika te se može 
+nastaviti obostrana komunikacija.
+
 Tablica \ref{tab:strukturastr}. prikazuje pregled stranica web-aplikacije te pripadajuće komponente koje su na njima implementirane. Svaka stranica ima svoju
 svrhu čime se osigurava intuitivna navigacija. 
 \begin{table}[ht!]
@@ -1285,6 +1335,7 @@ Data.txt predstavlja kratki sažetak koji opisuje o kakvim se podacima radi, kol
 kao izvori podataka, potrebno je bilo napraviti dva scrapera od kojih je samo za jedan u nastavku detaljnije opisana implementacija. Osim toga
 pošto su stranice izvorno na poljskom jeziku bilo je potrebno napraviti skriptu koja prevodi JSONE na engleski jezik radi lakšeg razumijevanja
 JSON-a kako ljudima pa tako i AI modelu.
+\newpage
 
 \begin{figure}[ht!]
     \centering
@@ -2384,9 +2435,7 @@ za brisanje dokumenata po nazivu dokumenta (\verb|/delete-document|). Ruta za br
 ]{Python}
 from fastapi import APIRouter, HTTPException
 from services.vectorstore import load_vectorstore, delete_file_from_vectorstore
-
 router = APIRouter()
-
 @router.get("/documents")
 def list_documents():
     db = load_vectorstore()
@@ -2716,7 +2765,7 @@ zahtjeve koji su stigli na Groq (kada je kreiran, koji model je korišten, koji 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.8\textwidth]{./assets/groq1.png}
-  \caption{Groq platforma - pregled zahtjeva i potrošenih tokena}
+  \caption{Groq platforma - pregled zahtjeva i potrošenih tokena; \href{https://console.groq.com/dashboard/metrics}{Izvor}}
   \label{fig:slika130}
 \end{figure}
 
@@ -2727,7 +2776,7 @@ prilikom dizajniranja aplikacija koje koriste LLM modele u oblaku.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=0.8\textwidth]{./assets/groq2.png}
-  \caption{Groq limitacije}
+  \caption{Groq limitacije; \href{https://console.groq.com/settings/limits}{Izvor}}
   \label{fig:slika131}
 \end{figure}
 
