@@ -18,8 +18,9 @@ This assistant is powered by an existing language model that has been trained an
 - CSS
 
 ### 🔹 Backend
-- Python - Custom scraper for data collection
+- Python + BeautifulSoup - Custom scraper for data collection
 - Python (FastAPI)
+- FAISS + LANGCHAIN + HUGGINGFACE (HuggingFaceEndpointEmbeddings) + GROQ(llama-3.1-8b-instant)
 
 ### 🔹 Other Tools
 - LaTeX / MiKTeX (in VS Code) for documentation
