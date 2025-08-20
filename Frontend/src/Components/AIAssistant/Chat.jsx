@@ -145,7 +145,7 @@ function ChatPopup({ togglePopup }) {
                 }
             }
             setInputValue(finalTranscript + interimTranscript);
-            resizeTextarea();   // 👈 sada će se textarea širiti i kod glasovnog unosa
+            resizeTextarea(); 
         };
 
         recognition.onerror = (event) => {

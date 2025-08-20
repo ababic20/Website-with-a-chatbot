@@ -22,7 +22,6 @@
     overflow-y: auto;
 }
 
-/* HEADER */
 .chat-header {
     display: flex;
     align-items: center;
