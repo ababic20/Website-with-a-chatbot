@@ -39,3 +39,12 @@ npm run dev
 ```bash
 cd Backend
 uvicorn main:app -reload
+```
+
+## Result
+
+---
+
+<img width="1890" height="946" alt="image" src="https://github.com/user-attachments/assets/a755c0be-0070-42c8-b26c-e39e254c7ce4" />
+
+
