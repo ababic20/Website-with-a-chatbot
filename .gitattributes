@@ -1,0 +1,4 @@
+# Force GitHub Linguist to detect LaTeX/TeX
+*.tex linguist-language=TeX
+*.bib linguist-language=TeX
+*.cls linguist-language=TeX
