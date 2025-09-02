@@ -79,12 +79,14 @@
 
 \sazetak{
 Teoretski dio rada istražuje studiranje kao značajan segment u životnom razdoblju pojedinca, s posebnim naglaskom na Erasmus+ program studentske razmjene. Nakon toga, obrađuje se pojam 
-inteligentnih asistenata kao jednog od najpopularnijih suvremenih alata za snalaženje i informiranje. Opisani su različiti tipovi rješenja te kriteriji prema kojima se međusobno razlikuju 
-ovisno o svojoj namjeni. Posebna pažnja posvećena je primjeni inteligentnih asistenata u obrazovnom sustavu, njihovim mogućnostima i izazovima. U nastavku je prikazana Retrieval-Augmented Generation (RAG) metoda, njezina arhitektura te usporedba s fine-tuningom. Istaknute su prednosti RAG pristupa, područja njegove primjene, 
-ali i izazovi poput pojave halucinacija i upravljanja višestrukim izvorima podataka. Teoretski dio završava pregledom dostupnih alata i biblioteka koji se mogu koristiti za implementaciju 
-RAG sustava. Praktični dio rada obuhvaća izradu web-stranice posvećene Erasmus+ studijskom boravku te razvoj inteligentnog asistenta temeljenog na postojećem jezičnom modelu s Groq platforme. U 
-okviru praktičnog dijela provedeno je prikupljanje podataka, dizajn korisničkog sučelja, izrada poslužiteljskog dijela aplikacije te priprema popratne dokumentacije. Na kraju je prikazan 
-rad aplikacije, nakon čega je dan završni osvrt s naglaskom na postignute rezultate te prijedlozima za daljnji razvoj i poboljšanja.
+inteligentnih asistenata kao jednog od najpopularnijih alata za snalaženje i informiranje. U nastavku su opisani različiti tipovi inteligentnih sustava te kriteriji prema kojima 
+se međusobno razlikuju s obzirom na svoju namjenu. Posebna pažnja posvećena je primjeni inteligentnih asistenata u sustavu obrazovanja, njihovim mogućnostima i izazovima. 
+U nastavku je prikazana Retrieval-Augmented Generation (RAG) metoda, njezina arhitektura te usporedba s fine-tuningom. Istaknute su prednosti RAG pristupa, područja njegove 
+primjene, ali i izazovi poput pojave halucinacija i upravljanja višestrukim izvorima podataka. Teoretski dio završava pregledom dostupnih alata i biblioteka koji se mogu koristiti 
+za implementaciju RAG sustava. Praktični dio rada obuhvaća izradu web-stranice posvećene Erasmus+ studijskom boravku te razvoj inteligentnog asistenta temeljenog na postojećem 
+jezičnom modelu s Groq platforme. U okviru praktičnog dijela provedeno je prikupljanje podataka, dizajn korisničkog sučelja, izrada poslužiteljskog dijela aplikacije te 
+priprema popratne dokumentacije. Na kraju je prikazan rad aplikacije, nakon čega je dan završni osvrt s naglaskom na postignute rezultate te prijedlozima za daljnji razvoj i 
+poboljšanja.
 }
 
 \kljucneRijeci{Inteligentni asistent, RAG, web-stranica, studiranje, Erasmus+, umjetna inteligencija, LLM, model, informacija.}
@@ -110,12 +112,12 @@ sljedećih dijelova: početne stranice, stranice s kratkim opisom grada Łódź,
 RAG sustavu, te stranice s kontaktnom formom. Forma je namijenjena za pitanja na koja AI (eng. Artificial Intelligence) asistent nije znao odgovoriti.
 
 Za izradu AI asistenta odabrano je korištenje RAG metode (eng. Retrieval Augmenting Generation) gdje se uzima postojeći AI model i on se bazira na specifičnom skupu podataka. 
-Za takve potrebe pronađeno je nekoliko lokalnih web-stranica koje opisuju život u Łódźu. Za potrebe rada razvijen je scraper koji dohvaća primarno tekstualni sadržaj s istih tih stranica
+Za takve potrebe pronađeno je nekoliko lokalnih web-stranica koje opisuju život u Łódźu. Za potrebe rada razvijen je alat za prikupljanje podataka koji dohvaća primarno tekstualni sadržaj s istih tih stranica
 i sprema ih u JSON (eng. JavaScript Object Notation) obliku. Naknadno su te JSON datoteke pročišćene i iskorištene za daljnje korištenje. Tijekom svoje Erasmus+ studentske mobilnosti imao sam prilike razgovarati s profesoricom dr. Marta Lipnicka na 
 kolegiju Umjetna inteligencija, kojoj sam ukratko predstavio ideju svog diplomskog rada. Naknadno sam je zamolio da mi preporuči nekoliko korisnih stranica koje su vezane za Łódź. Budući da se profesorica rodila u Łódźu i tamo živi te radi cijeli život, smatrao sam da je upravo ona prava osoba kojoj se mogu obratiti
 s pitanjem o korisnim izvorima informacija vezanima za život u Łódźu. 
 
-Za izradu rješenja korištene su sljedeće tehnologije: React (JavaScript) za frontend, Python za razvoj scrapera te Python FastAPI za implementaciju backend logike.
+Za izradu rješenja korištene su sljedeće tehnologije: React (JavaScript) za frontend, Python za razvoj alata za prikupljanje podataka te Python FastAPI za implementaciju backend logike.
 AI asistent izrađen je korištenjem tehnologije LangChain, uz model llama-3.1-8b-instant koji je integriran putem API ključa s platforme Groq. Za generiranje vektorskih reprezentacija 
 korišten je HuggingFaceEndpointEmbeddings, također preko API ključa s platforme Hugging Face. Kao vektorska baza podataka korišten je FAISS (eng. Facebook AI Similarity Search), 
 dok je dokumentacija pisana u LaTeX-u, koristeći distribuciju MiKTeX.
@@ -270,7 +272,7 @@ Kroz sljedeće poglavlje predstavljeno je koje su trenutno aktualne tehnologije 
 
 \chapter{Aktualne tehnologije i alati za uspješno snalaženje i informiranje}
 
-Unutar ovog poglavlja napravljen je uvod u inteligentne pomoćne sustave, a potom su opisane njihove ključne značajke. Slijedi podjela na asistente, kopilote, autonomne agente i chatbot 
+Unutar ovog poglavlja napravljen je uvod u inteligentne sustave, a potom su opisane njihove ključne značajke. Slijedi podjela na asistente, kopilote, autonomne agente i chatbot 
 platforme gdje je svaki tip ukratko opisan i potkrijepljen reprezentativnim primjerom. Za kraj, ovog poglavlja opisano je korištenje inteligentnih asistenata u sustavu obrazovanja, njihova 
 primjena i koji su izazovi takvog korištenja.
 
@@ -286,38 +288,38 @@ Točnije rečeno, dodaju novi način interakcije između korisnika i pružatelja
 
 Umjetna inteligencija je grana koja se u zadnje vrijeme usredotočuje na sve vrste inteligentnih agenata koji predstavljaju nešto što percipira svoju okolinu putem senzora i djeluje na nju 
 putem aktuatora. Postoji razlika između apstraktne agentske funkcije (mapiranje iz potpunog perceptivnog slijeda u radnju) i konkretnog agentskog programa koji se izvodi na nekoj fizičkoj 
-arhitekturi (npr. robot) [\cite{russell2022ai}, pp. 55--56]. Ponašanje se temelji na racionalnosti, gdje u svakom trenutku racionalan agent bira akciju za koju se očekuje da maksimizira 
-njegovu mjeru performansi, s obzirom na: prethodno znanje, raspoložive akcije i dosadašnji niz percepata [\cite{russell2022ai}, pp. 58--59]. Racionalnost nije sveznanje 
+arhitekturi (npr. robot) \cite[str. 55 i 56]{russell2022ai}. Ponašanje se temelji na racionalnosti, gdje u svakom trenutku racionalan agent bira akciju za koju se očekuje da maksimizira 
+njegovu mjeru performansi, s obzirom na: prethodno znanje, raspoložive akcije i dosadašnji niz percepata \cite[str. 58 i 59]{russell2022ai}. Racionalnost nije sveznanje 
 jer agenti djeluju pod nesigurnošću i ograničenim informacijama. To se ilustrira “svijetom usisavača” (eng. vacuum world) i pokazuje kako različite mjere performansi mijenjaju što se 
 smatra racionalnim. Time se nadalje odvaja autonomija od perfekcije, odnosno što se agent više oslanja na vlastite percepte (sinonim za opažanje) i učenje, a manje na prethodno znanje dizajnera, to je autonomniji.
-Potpuna autonomija od početka nije nužna, ali bi racionalan agent s vremenom trebao učiti kako bi kompenzirao netočne pretpostavke [\cite{russell2022ai}, p. 60].
+Potpuna autonomija od početka nije nužna, ali bi racionalan agent s vremenom trebao učiti kako bi kompenzirao netočne pretpostavke \cite[str. 60]{russell2022ai}.
 Također, autor predstavlja specifikaciju okruženja zadatka prema PEAS shemi (Performance measure, Environment, Actuators, Sensors). Klasičan je primjer autonomnog taksija gdje performanse uključuju 
 sigurnost, zakonitost, udobnost, učinkovitost i profit. Okolina sadrži ceste, promet, pješake, vrijeme i korisnike. Aktuatori uključuju upravljanje, gas i kočnice. Senzori uključuju kamere, 
 GPS i dr. Postoji više tipova okolina koje usmjeravaju dizajn agenta: potpuno / djelomično saglediva, jednoagentna / višeagentna, deterministička / nedeterministička, epizodična / 
 sekvencijalna, statična / dinamična, diskretna / kontinuirana, poznata / nepoznata. Vožnja je, primjerice, djelomično saglediva, višeagentna, nedeterministička, sekvencijalna, dinamična i 
-uglavnom kontinuirana [\cite{russell2022ai}, pp. 60--65]. 
+uglavnom kontinuirana \cite[str. 60 - 65]{russell2022ai}. 
 
 U literaturi \cite{russell2022ai} navode se četiri kanonska “kostura” programa agenta, uz opći omotač za učenje:
 \begin{itemize}
     \item \textbf{Jednostavni refleksni agenti} — biraju akcije isključivo iz trenutačnog percepta pomoću pravila (npr. ako auto ispred koči → koči). Brzi su, ali krhki u djelomično 
-    sagledivim okolinama [pp. 68--69].
+    sagledivim okolinama [str. 68 i 69].
     
     \item \textbf{Refleksni agenti utemeljeni na modelu} — održavaju interno stanje ažurirano modelom prijelaza (“kako se svijet razvija” i učinci vlastitih akcija) i 
-    senzorskim modelom (“kako stanja generiraju percepte”), što omogućuje razumno ponašanje pod djelomičnom sagledivošću [pp. 70--71].
+    senzorskim modelom (“kako stanja generiraju percepte”), što omogućuje razumno ponašanje pod djelomičnom sagledivošću [str. 70 i 71].
 
-    \item \textbf{Ciljno vođeni agenti} — dodaju eksplicitne ciljeve i koriste pretraživanje i planiranje za izbor akcija koje ih postižu. Manje su učinkoviti, ali znatno fleksibilniji [pp. 71--72].
+    \item \textbf{Ciljno vođeni agenti} — dodaju eksplicitne ciljeve i koriste pretraživanje i planiranje za izbor akcija koje ih postižu. Manje su učinkoviti, ali znatno fleksibilniji [str. 71 i 72].
 
     \item \textbf{Agenti temeljeni na korisnosti} — obrađuju ciljeve usporedbom koliko su ishodi dobri te, pod nesigurnošću, djeluju tako da maksimiziraju očekivanu korisnost. To daje opći 
-    okvir odlučivanja, ali traži snažno modeliranje i optimizaciju [pp. 72--74].
+    okvir odlučivanja, ali traži snažno modeliranje i optimizaciju [str. 72 - 74].
 
     \item \textbf{Agenti koji uče} — omataju bilo koji od navedenih agenata s izvedbenim elementom (djeluje), kritičarem (evaluira), učećim elementom (poboljšava izvedbeni 
-    element) i generatorom problema (potječe istraživanje). Time raste autonomija, a prilagodljivost se poboljšava kroz vrijeme [pp. 74--76].
+    element) i generatorom problema (potječe istraživanje). Time raste autonomija, a prilagodljivost se poboljšava kroz vrijeme [str. 74 - 76].
 \end{itemize}
 
 \begin{figure}[ht!]
     \centering
     \includegraphics[width=0.65\textwidth]{./assets/agent.png} 
-    \caption{Opći učečći agent - objašnjenje [\cite{russell2022ai}, p. 74]}
+    \caption{Opći učečći agent - objašnjenje [\cite{russell2022ai}, str. 74]}
     \label{fig:slika256}
 \end{figure}
 
@@ -327,23 +329,23 @@ kako bi ga poboljšao. Generator istraživanja prema ciljevima učenja potiče i
 
 Na kraju krajeva, i savršeno “racionalno” ponašanje može promašiti bit ako je cilj pogrešno specificiran. Naivne mjere performansi (npr. “maksimiziraj skupljanje prljavštine”) mogu se 
 iskoristiti, a dizajneri mogu biti nesigurni oko stvarnih preferencija korisnika (sustavi bi ponekad trebali modelirati nesigurnost u samu mjeru performansi i učiti je kroz vrijeme). 
-Paralelno, racionalni agenti trebaju postajati sve autonomniji učenjem iz iskustva, smanjujući oslanjanje na ugrađeno znanje [\cite{russell2022ai}, pp. 57--58].
+Paralelno, racionalni agenti trebaju postajati sve autonomniji učenjem iz iskustva, smanjujući oslanjanje na ugrađeno znanje \cite[str. 57 i 58]{russell2022ai}.
 
 Ne postoji jedna jedinstvena, općeprihvaćena definicija za inteligentnog agenta, ali većina istraživača slaže se oko jedne stvari: autonomije. Agent je računalni sustav smješten u nekom 
 okruženju koji može samostalno djelovati kako bi postigao zadane ciljeve. U Wooldridgeovoj formulaciji, okruženje daje perceptivne ulaze preko senzora, gdje agent odabire radnje kroz interni 
 proces odlučivanja, dok efektori provode te radnje natrag u okruženje. Presudno je da ista radnja ne mora uvijek imati isti učinak, pa se agenti moraju pripremiti na neuspjeh i neizvjesnost
-[\cite{wooldridge2009multiagent}, p. 40].
+\cite[str. 40]{wooldridge2009multiagent}.
 
 Praktičan način za prepoznavanje agenata je kroz tri komplementarne sposobnosti: reaktivnost (osjećanje okoline i pravovremeni odgovor), proaktivnost (inicijativno djelovanje prema ciljevima) 
 i socijalnu sposobnost (interakcija s drugim agentima i često ljudima). Agenti se suočavaju i s dugoročnim posljedicama, kao što je npr. bezazlen izbor raspoređivanja (sada odabrati p1, a p2 
-je obećan za kasnije), koji, ako se ponavlja, može dovesti do nepravde gdje p2 nikada ne dođe na red [\cite{wooldridge2009multiagent}, p. 45].
+je obećan za kasnije), koji, ako se ponavlja, može dovesti do nepravde gdje p2 nikada ne dođe na red \cite[str. 45]{wooldridge2009multiagent}.
 
 Autonomija je spektar. Na jednom su kraju ljudi, a na drugom jednostavne usluge koje djeluju samo kad ih se pozove. Agenti koji su zanimljivi nalaze se u sredini i njima se mogu delegirati 
 ciljevi na visokoj razini jer oni odlučuju kako ih ostvariti. Autonomija se često podešava dinamički. Uz podesivu autonomiju agent prepušta kontrolu čovjeku kada je vjerojatno da će čovjek 
 odlučiti bolje, kada je neizvjesnost visoka, potencijalna šteta značajna ili agent nema sposobnost odlučiti. Umjetnost je izbjeći krajnosti (agent koji stalno pita je beskoristan, a onaj 
-koji nikad ne pita može biti rizičan) [\cite{wooldridge2009multiagent}, pp. 41--42].
+koji nikad ne pita može biti rizičan) \cite[str. 41 i 42]{wooldridge2009multiagent}.
 
-Agenti se često uspoređuju s objektima u objektno-orijentiranom programiranju. Oba slučaja enkapsuliraju stanje i komuniciraju porukama, ali postoji nekoliko razlika [\cite{wooldridge2009multiagent}, pp. 47--48]:
+Agenti se često uspoređuju s objektima u objektno-orijentiranom programiranju. Oba slučaja enkapsuliraju stanje i komuniciraju porukama, ali postoji nekoliko razlika \cite[str. 47 i 48]{wooldridge2009multiagent}:
 \begin{itemize}
 \item Žarište kontrole — Objekt izlaže metode koje drugi mogu pozvati kada požele. Agent može odbiti traženu radnju ako je u sukobu s njegovim ciljevima ili politikom. Objekti to čine 
 kad im se kaže, dok agenti to čine jer oni to žele.
@@ -354,11 +356,11 @@ kad im se kaže, dok agenti to čine jer oni to žele.
 U srcu dizajna agenta je odabir radnje, gdje se odlučuje što učiniti s obzirom na ono što agent trenutačno vjeruje o okruženju i ciljevima. Takvim razmišljanjem zapravo se razmišlja o 
 arhitekturi agenata, gdje se definiraju moduli za osjet, ažuriranje stanja, odlučivanje, jednostavni regulatori povratne sprege itd. Termostat je agent u minimalnom smislu jer osjeća 
 temperaturu i prebacuje grijanje prema jednostavnoj politici. Kako rastu sposobnosti, agenti moraju podnositi djelomičnu vidljivost, promjenjive ciljeve, složene kompromisne odluke i 
-neprekidni rad [\cite{wooldridge2009multiagent}, p. 39 i 45].
+neprekidni rad \cite[str 39 i 45]{wooldridge2009multiagent}.
 
 Prvi od načina zadavanja zadatka je na temelju cilja, gdje se nastoje ostvariti ili održati uvjeti. Drugi od načina je na temelju korisnosti, gdje postoje funkcije nad stanjima ili 
 putanjama koje ocjenjuju poželjnost, a agent maksimizira očekivanu korisnost. U slučaju da je okruženje i djelomično opažljivo, načelan je okvir POMDP (eng. Partially Observable Markov 
-Decision Process), kod kojeg rješenje daje politiku (što činiti s obzirom na trenutačne informacije, kako maksimizirati očekivani povrat pod neizvjesnim informacijama) [\cite{wooldridge2009multiagent}, pp. 56 i 57 i 64]. 
+Decision Process), kod kojeg rješenje daje politiku (što činiti s obzirom na trenutačne informacije, kako maksimizirati očekivani povrat pod neizvjesnim informacijama) \cite[str. 56 i 57 i 64]{wooldridge2009multiagent}. 
 
 Kroz sljedeću sekciju prikazani su različiti tipovi inteligentnih asistenata s obzirom na njihovu primjenu i način korištenja. Za svaki tip naveden je tipičan scenarij i reprezentativan primjer.
 
@@ -485,7 +487,7 @@ U nastavku se navodi jedan primjer koji ChatGPT Operator obavlja \cite{rileybrow
     \item Može se koristiti za pretraživanje weba, kupnju ulaznica ili rezervaciju restorana.
 \end{enumerate}
 
-OpenAI spominje kako planiraju u budućnosti dati na korištenje model CUA preko API-ja čime će omogućiti izradu vlastiti agenata svakome. Osim toga, spominju kako planiraju proširiti Operator
+OpenAI spominje kako planiraju u budućnosti dati na korištenje model CUA preko API-ja čime će omogućiti izradu vlastitih agenata svakome. Osim toga, spominju kako planiraju proširiti Operator
 korisnicima Plusa, Teama i Enterprisea nakon što se uvjere u njegovu sigurnost i upotrebljivost u velikim razmjerima.
 \newpage
 
@@ -493,7 +495,7 @@ korisnicima Plusa, Teama i Enterprisea nakon što se uvjere u njegovu sigurnost 
 Chatbot platforme su sustavi temeljeni na kreiranim pravilima koje su osmišljene za izvršavanje određenih zadataka putem unaprijed definirane interakcije. Iako posjeduju dosta ograničenja jako se dobro
 i brzo snalaze u dosljednom rješavanju jednostavnih repetitivnih zadataka. Djeluju na temelju stabla odlučivanja ili prepoznavanja ključnih riječi ograničavajući svoju interakciju na unaprijed 
 postavljene scenarije. Koriste se za automatizaciju zadataka gdje se obrađuje veliki broj ponavljajućih upita poput rezervacija ili narudžbi. Njihova mana je da se ne mogu prilagoditi izvan
-svog programiranja što ih čini neprikladnim za složenije zadatke. Uz ovakav pristup, sve češće se razvijaju i LLM-based chatbot platforme koje koriste modele dubokog učenja za generiranje fleksibilnijih i prirodnijih odgovora \cite{exomindset2025difference}.
+svog programiranja što ih čini neprikladnim za složenije zadatke. Uz ovakav pristup, sve češće se razvijaju i LLM chatbot platforme koje koriste modele dubokog učenja za generiranje fleksibilnijih i prirodnijih odgovora \cite{exomindset2025difference}.
 
 Interkom je platforma za korisničku podršku koja olakšava komunikaciju između kupaca i tvrtki. Poboljšava interakciju s kupcima putem brojnih komunikacijskih kanala koji uključuju
 chat uživo i automatizirano slanje poruka. Intercom je moguće integrirati s drugim alatima i platformama kao što su SalesForce, HubSpot, Zendesk i Slack.
@@ -711,17 +713,17 @@ Retriever je komponenta koja je odgovorna za pronalaženje relevantnih dokumenat
 rezultata dohvaćanja. Retriever može ugraditi dokumente i upite u visokodimenzionalni vektorski prostor, gdje udaljenost između vektora odgovara relevantnosti dokumenta za upit.
 Dokumenti koji imaju veću "udaljenost" su manje relevantni za ulazni upit i time se mogu protumačiti kao nebitni. Retriever uzima ulazni upit, pretvara ga u vektor pomoću koder upita, a zatim
 pronalazi najsličnije vektore dokumenta. Dokumenti povezani s tim vektorima se naknadno prosljeđuju generatoru. Broj dokumenta dohvaćenih u bilo kojem trenutku može se prilagoditi na temelju
-specifičnih zahtjeva zadatka i obično za zadatke koji su kompleksniji može se pozvati opsežniji skup dokumenata.  Bitan aspekt kod Retrievera je da se obrati pažnja na točnost dohvaćenih dokumenta
+specifičnih zahtjeva zadatka i obično za zadatke koji su kompleksniji može se pozvati opsežniji skup dokumenata.  Bitan aspekt kod retrievera je da se obrati pažnja na točnost dohvaćenih dokumenta
 tijekom pronalaženja. Postavljanje praga za udaljenost nije isključivo tehnička odluka, već i poslovna odluka. Prag bi trebao biti usklađen s općim ciljevima, bilo da se radi o pružanju
 sveobuhvatnog pregleda ili navođenju konkretnih detalja \cite{redis2025}. 
 
-Korisnik postavlja pitanje ili šalje upit nakon čega Retriever traži relevantne dokumente u unaprijed definiranom izvoru znanja (npr. Wikipedia, interni podaci tvrtke ili online članci).
+Korisnik postavlja pitanje ili šalje upit nakon čega retriever traži relevantne dokumente u unaprijed definiranom izvoru znanja (npr. Wikipedia, interni podaci tvrtke ili online članci).
 Nakon toga se rangiraju dokumenti na temelju njihove relevantnosti za upit i za kraj se odabrani dokumenti prosljeđuju sljedećoj komponenti - generatoru - kako bi se pomoglo mu u generiranju odgovora.
 Retriever je važan jer za razliku od tradicionalnih AI modela, koji se oslanjaju samo na unaprijed obučene podatke, može dohvatiti informacije u stvarnom vremenu. Također, korištenje 
 vanjskih izvora pomaže u smanjenju AI halucinacija i omogućuje modelu da se referira na pozadinsko znanje, što dovodi do smislenijih odgovora \cite{shaheryar2025}.
 
 \subsubsection{BM25}
-BM25 (eng. Best Matching 25) je popularni algoritam koji koristi pojam frekvencijsko-inverzna dokumentna frekvencija (eng. term frequency-inverse document frequency - TF-IDF) za rangiranje dokumenata na temelju relevantnosti.
+BM25 (eng. Best Matching 25) je popularni algoritam koji koristi pojam frekvencijsko - inverzne dokumentne frekvencije (eng. term frequency-inverse document frequency - TF-IDF) za rangiranje dokumenata na temelju relevantnosti.
 BM25 izračunava ocjenu relevantnosti dokumenta na temelju učestalosti pojavljivanja upita u dokumentu. Iako je učinkovit za podudaranja
 između ključnih riječi, BM25 može imati ograničenja u razumijevanju semantičkih odnosa. Unatoč tome BM25 se široko koristi zbog svoje jednostavnosti
 i učinkovitosti. Često se koristi za jednostavnije upite temeljene na ključnim riječima, gdje je važno brzo dohvaćanje relevantnih informacija \cite{gupta2024rag}.
@@ -824,7 +826,7 @@ dokumenti smanjuju performanse RAG-a, dok krivo označeni ili pristrani podaci z
 umjetne inteligencije, što dovodi krajnje štete i narušavanja povjerenja korisnika \cite{montecarlo2023rag}. 
 
 \subsection{Prednosti RAG metode}
-U nastavku, su prikazane ključne prednosti RAG sustava, koje objašnjavaju zašto je ova tehnologija sve češći odabir u izradi modernih AI rješenja. 
+U nastavku, su prikazane ključne prednosti RAG sustava, koje objašnjavaju zašto je RAG tehnologija sve češći odabir u izradi modernih AI rješenja. 
 
 \begin{itemize}[noitemsep, topsep=0pt]
     \item \textbf{Isplativa implementacija:} Razvoj AI sustava započinje korištenjem temeljnog modela (eng. Foundation models). Temeljni modeli su obično dostupni putem API ključeva i obučeni su na širokom spektru generaliziranih i neoznačenih podataka. Računalni i financijski troškovi za treniranje takvih modela su jako visoki.
@@ -888,7 +890,7 @@ U nastavku je navedeno nekoliko domena u kojima se RAG može primjenjivati:
     \item \textbf{Preporuke proizvoda za e-trgovinu} - za razliku od tradicionalnih sustava preporuka, RAG se dinamički prilagođava specifičnim potrebama kupca u stvarnom vremenu čime
     preporuke postaju relevantnije i točnije što rezultira povećanom prodajom \cite{nishtha2025rag}.
     \subitem - Amazon Science opisuje Cosmo framework kao primjer RAG primjene u \textbf{e-commerce}, gdje je model u mogućnosti pružiti automatske preporuke novim i povratnim kupcima.
-    Konkretno, tijekom pretraživanja proizvoda, model pretražuje podatke o sličnim proizvodima, recenzijama i prometnim statistika, te kreira personalizirane prijedloge u stvarnom vremenu.
+    Konkretno, tijekom pretraživanja proizvoda, model pretražuje podatke o sličnim proizvodima, recenzijama i prati statistiku, te kreira personalizirane prijedloge u stvarnom vremenu.
     Testovi su pokazali da uvođenje Cosmo frameworka povećava broj izvršenih kupovina za 12\,\% preporuke koje uključuju dodatke povezane s interesima kupca \cite{Sun2025}.
 
     \item \textbf{Upravljanje znanjem u poduzeću} - posebno korisno kod velikih tvrtki s opsežnom dokumentacijom i izvorima podataka \cite{nishtha2025rag}. 
@@ -898,7 +900,7 @@ U nastavku je navedeno nekoliko domena u kojima se RAG može primjenjivati:
 \end{itemize}
 
 \subsection{Izazovi RAG metode}
-LLM-ovi predstavljaju jednu od tehnologija umjetne inteligencije koja se često koristi za pokretanja AI sustava. Priroda LLM-ova je takva da ponekad unose dozu nepredvidljivosti
+LLM-ovi predstavljaju jednu od tehnologija umjetne inteligencije koja se često koristi za pokretanje AI sustava. Priroda LLM-ova je takva da ponekad unose dozu nepredvidljivosti
 u generiranje odgovora. Osim toga, podaci o LLM obuci su statični i imaju krajnji rok za znanje koje posjeduju. Negativne strane LLM-ova uključuju \cite{awsRAG2025}:
 
 \begin{itemize}
@@ -959,7 +961,7 @@ Metode za otkrivanje halucinacija obično se kategoriziraju u nekoliko vrsta \ci
 \end{figure}
 
 LLM-ovi često ne uspijevaju identificirati najrelevantnije informacije kada se bave dugim kontekstima. Kao što je prikazano na slici \ref{fig:slika652}., stopa halucinacija
-općenito raste s duljinom konteksta, dosežući svoju najvišu točku od oko 45 \,\% kada se duljina konteksta približi 2000 tokena\cite{hu2025lrp4rag}.
+općenito raste s duljinom konteksta, dosežući svoju najvišu točku od oko 45 \,\% kada se duljina konteksta približi 2000 tokena \cite{hu2025lrp4rag}.
 
 Drugi uzrok postojanja halucinacija u RAG-u je neusklađenost između riječi i misli. Kada se zatraži da se identificiraju dijelovi konteksta koji su najrelevantniji za 
 zadano pitanje, LLM obično može dati odgovor. Taj odgovor se naziva riječima modela, što predstavlja eksplicitni dokaz odgovora modela. Postavlja se prirodno pitanje 
@@ -1039,7 +1041,7 @@ Značajke koje Haystack nudi su \cite{novogroder2025ragtools}:
 \begin{itemize}
     \item Podržavanje pozadinskih sustava za pohranu kao što su Elasticsearch, FAISS, SQL i InMemory,
     \item Pretraživanje na temelju ključnih riječi pomoću BM25,
-    \item GenerativePipeline - kombiniranje Retrievera i generatora (GPT - 3/4),
+    \item GenerativePipeline - kombiniranje retrievera i generatora (GPT - 3/4),
     \item TransformersReader - ekstrakcijska kontrola kvalitete koristeći Hugging Face modele,
     \item DensePassageRetriever - dohvaća gusto ugrađene vektore koristeći DPR (eng. Dense Passage Retrieval),
     \item EmbeddingRetriever - custom embeddings koristeći Hugging Face modele.
@@ -1270,7 +1272,7 @@ Swagger UI sučelju koje omogućuje pregled i testiranje API-ja \cite{obafemi202
     \label{fig:slika185}
 \end{figure}
 
-Na slici \ref{fig:slika185}. jeprikazano sučelje gdje je omogućeno testiranje svih dostupnih API poziva izravno kroz preglednik. Alternativno, dostupna je ReDoc dokumentacija na ruti \verb|/redoc|,
+Na slici \ref{fig:slika185}. je prikazano sučelje gdje je omogućeno testiranje svih dostupnih API poziva izravno kroz preglednik. Alternativno, dostupna je ReDoc dokumentacija na ruti \verb|/redoc|,
 koja prikazuje API specifikaciju na čitljiviji način, ali bez mogućnosti testiranja. Također, ruta \verb|/openapi.json| prikazuje OpenAPI specifikaciju
 u JSON formatu, što je korisno za automatsko generiranje klijenata ili integraciju s alatima poput Postmana.
 
@@ -1284,7 +1286,7 @@ u JSON formatu, što je korisno za automatsko generiranje klijenata ili integrac
 \chapter{Praktični dio rada}
 Praktični dio rada se sastoji od izrade web-stranice i izrade inteligentnog asistenta temeljenog na RAG metodi. Klijentski dio aplikacije
 je izrađen pomoću biblioteke React, pri čemu je korisničko sučelje strukturirano korištenjem JSX sintakse. Backend aplikacije razvijen je korištenjem Python web frameworka FastAPI, 
-koji je poznat po svojoj jednostavnosti korištenja. Za izradu inteligentnog asistenta razvijen je alat za prikupljanje podataka (eng. web scraper) kojim je izrađen skup podataka korišten za rad asistenta.
+koji je poznat po svojoj jednostavnosti korištenja. Za izradu inteligentnog asistenta razvijen je alat za prikupljanje podataka (eng. Web Scraper) kojim je izrađen skup podataka korišten za rad asistenta.
 
 \begin{figure}[ht!]
     \centering
@@ -2789,7 +2791,7 @@ pitanje korisnika koristeći informacije iz dokumenta.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=1\textwidth]{./assets/asistent2.png}
+  \includegraphics[width=1\textwidth]{./assets/dokumentjeubazi.png}
   \caption{Testiranje asistenta kada je dokument u bazi}
   \label{fig:slika99}
 \end{figure}
@@ -2798,7 +2800,7 @@ Na slici \ref{fig:slika100}. može se vidjeti kako AI asistent reagira kada doku
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=1\textwidth]{./assets/asistent1.png}
+  \includegraphics[width=1\textwidth]{./assets/dokumentnijeubazi.png}
   \caption{Testiranje asistenta kad dokument nije u bazi}
   \label{fig:slika100}
 \end{figure}
@@ -2809,7 +2811,7 @@ Na slici \ref{fig:slika100}. može se vidjeti kako AI asistent reagira kada doku
 Na slici \ref{fig:slika130}. je prikazan dashboard s Groq platforme, konkretno za model llama-3.1-8b-instant. Prikazuju se grafovi s brojem zahtjeva i ukupnim brojem tokena u određenom vremenskom okviru.
 Ovo omogućuje korisnicima praćenje iskorištenosti modela u realnom vremenu te detekciju prekoračenja limita koji su označeni crvenim crtama. Prikazani vrhovi na grafu označavaju trenutke
 kada su slani upiti prema modelu. Osim toga, moguće je pregledati i dnevnu/mjesečnu potrošnju u smislu financijskih sredstava. Isto tako kroz karticu Logs omogućen je detaljniji uvid u
-zahtjeve koji su stigli na Groq (kada je kreiran, koji model je korišten, koji API key, status code, kolko input tokena i output je potrošeno i od kog usera).
+zahtjeve koji su stigli na Groq (kada je kreiran, koji model je korišten, koji API key, status code, kolko input tokena i output je potrošeno i od kog korisnika).
 
 \begin{figure}[ht]
   \centering
@@ -2819,7 +2821,7 @@ zahtjeve koji su stigli na Groq (kada je kreiran, koji model je korišten, koji 
 \end{figure}
 
 Slika \ref{fig:slika131}. prikazuje tablicu s ograničenjima korištenja za različite modele unutar Groq platforme. Za svaki model prikazani su maksimalni brojevi upita u minuti i danu, kao i ograničenja na broj tokena.
-Na primjer, model llamallama-3.1-8b-instant dopušta 30 zahtjeva u minuti, 14400 dnevno, i do 500000 tokena mjesečno. Ova tablica jasno prikazuje tehnička ograničenja koja korisnici moraju imati na umu
+Na primjer, model llamallama-3.1-8b-instant dopušta 30 zahtjeva u minuti, 14400 dnevno, i do 500000 tokena mjesečno. Tablica na slici \ref{fig:slika131}. jasno prikazuje tehnička ograničenja koja korisnici moraju imati na umu
 prilikom dizajniranja aplikacija koje koriste LLM modele u oblaku.
 
 \begin{figure}[ht]
@@ -2845,7 +2847,7 @@ AI asistenta u praktičnom dijelu rada. RAG metoda kombinira dva ključna elemen
 značajno bolji izbor kada su u pitanju troškovi i zaštita privatnosti podataka. Danas se široko primjenjuje u sustavima za otkrivanje prijevara i procjene rizika, 
 preporučiteljskim sustavima za e-trgovinu, sustavima za učenje i brojnim drugim područjima.
 
-Jedan od izazova RAG sustava su halucinacije, tj. obmanjujući odgovori koje ova metoda nastoji smanjiti, ali ih u potpunosti ne eliminira, čak i kada se koristi vanjski 
+Jedan od izazova RAG sustava su halucinacije, tj. obmanjujući odgovori koje RAG metoda nastoji smanjiti, ali ih u potpunosti ne eliminira, čak i kada se koristi vanjski 
 izvor znanja. Također, problem predstavlja i upravljanje višestrukim izvorima podataka, gdje model mora učinkovito kombinirati informacije iz različitih baza kako bi 
 generirao što točniji odgovor. Na kraju teorijskog dijela napravljen je pregled dostupnih biblioteka i tehnologija koje se koriste pri izradi RAG sustava.
 
@@ -2877,7 +2879,7 @@ iskustva jer ja takav oblik podrške nisam imao, a kroz ovu aplikaciju studenti 
 druge lokacije u državi, dodatnu pomoć putem kontakt forme ili pak podršku AI asistenta koji se oslanja na provjerene i relevantne izvore.
 
 Izrada ovog rada bila je izrazito zanimljiva i korisna jer sam imao priliku raditi s novim i modernim tehnologijama. Posebno iskustvo bilo je razviti vlastitog AI asistenta temeljenog na RAG tehnologiji te povezati osobno Erasmus iskustvo s praktičnom implementacijom u obliku web-aplikacije.
-Za kraj, Erasmusa se ne treba bojati jer je to prekasno iskustvo koje se pamti do kraja života. Svaki problem s kojim se suoči osoba, čini osobu jačom i neovisnijom. 
+Za kraj, Erasmusa se ne treba bojati jer je to prekrasno iskustvo koje se pamti do kraja života. Svaki problem s kojim se suoči osoba, čini osobu jačom i neovisnijom. 
 Boravak na jednom mjestu dulje vrijeme postat će čudan način života. Jednom Erasmus+, uvijek Erasmus+!
 
 Poveznica na GitHub repozitorij ovog diplomskog rada: \href{https://github.com/ababic20/Website-with-a-chatbot.git}{\textbf{Poveznica}} 
