@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import './Question.css';
 import { LanguageContext } from "../contexts/LanguageContext"; 
 import { sendContactForm } from "../api/Contact";
+import ReCAPTCHA from "react-google-recaptcha"; 
 
 const ContactForm = () => {
   const { translations } = useContext(LanguageContext);
@@ -14,6 +15,7 @@ const ContactForm = () => {
     description: "",
   });
 
+  const [captchaToken, setCaptchaToken] = useState(null); 
   const [successMessage, setSuccessMessage] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const [summary, setSummary] = useState(null);
@@ -29,8 +31,13 @@ const ContactForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!captchaToken) {
+      setErrorMessage("Please confirm that you are not a robot.");
+      return;
+    }
+
     try {
-      await sendContactForm(formData);
+      await sendContactForm({ ...formData, captcha: captchaToken }); 
       setSummary(formData);
       setSuccessMessage(true);
       setErrorMessage(null);
@@ -115,7 +122,16 @@ const ContactForm = () => {
             onChange={handleChange}
             required
             placeholder={translations.contactForm.descriptionPlaceholder}
+            maxLength={300}
           />
+
+          <div className="captcha-container">
+            <ReCAPTCHA
+              sitekey="6Lc71bsrAAAAAGgkas6jxO8x0GE5edlfVoA2n7ef"
+              onChange={(token) => setCaptchaToken(token)}
+            />
+          </div>
+
 
           <button type="submit">{translations.contactForm.submitButton}</button>
         </form>
