@@ -1,36 +1,36 @@
-.about{
+.about {
     display: flex;
     flex-wrap: wrap;
     align-items: center;   
     gap: 2rem;
 }
 
-.about .image{
+.about .image {
     flex: 1 1 41rem;
 }
 
-.about .image img{
+.about .image img {
     width:100%;
 }
 
-.about .content{
+.about .content {
     flex: 1 1 41rem;
     text-align: center;
 }
 
-.about .content h3{
+.about .content h3 {
     font-size: 2.5rem;
     color: var(--black);
 }
 
-.about .content p{
+.about .content p {
     font-size: 1.5rem;
     color: var(--light-black);
     line-height: 2;
     padding: 1rem 0;
 }
 
-.about .content .icons-container{
+.about .content .icons-container {
     display: flex;
     gap: 2rem;
     align-items: flex-end;
@@ -38,42 +38,54 @@
     margin-top: 2rem;
 }
 
-.about .content .icons-container .icons{
+.about .content .icons-container .icons {
     background: var(--main-color);
     padding: 2rem;
     flex: 1 1 16rem;
+    border-radius: 8px;
+    transition: background 0.3s ease;
 }
 
-.about .content .icons-container .icons:hover{
+.about .content .icons-container .icons:hover {
     background: black;
 }
 
-
-.about .content .icons-container .icons i{
+.about .content .icons-container .icons i {
     font-size: 4rem;
-    color: var(--white);
+    color: white;
     margin-bottom: 1rem;
 }
 
-
-.about .content .icons-container .icons span{
+.about .content .icons-container .icons span {
     font-size: 1.5rem;
-    color: var(--white);
+    color: white;
     display: block;
 }
 
 .video {
-  max-width: 224px;
-  height: 398px; 
-  margin: 0 auto 20px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    max-width: 224px;
+    height: 398px; 
+    margin: 0 auto 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .video video {
-  width: 80%;
-  height: auto;
-  display: block;
-  border-radius: 10px;
+    width: 80%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+body.dark .about,
+body.dark .about *:not(.icons):not(.icons *):not(button):not(.btn) {
+    color: inherit !important;
+    background-color: inherit !important;
+}
+
+body.light .about,
+body.light .about *:not(.icons):not(.icons *):not(button):not(.btn) {
+    color: inherit !important;
+    background-color: inherit !important;
 }

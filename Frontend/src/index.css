@@ -21,7 +21,6 @@
     box-sizing: border-box;
     outline: none; border:none;
     text-decoration: none;
-   /* text-transform: capitalize;*/
 }
 
 
@@ -45,6 +44,43 @@ html::webkit-scrollbar-thumb{
 section{
     padding: 5rem 10% ;
 }
+
+body.light {
+  --bg: #ffffff;
+  --text: #222;
+  --white: #ffffff;
+  --black: #222;
+  --light-black: #777;
+  --light-white: #fff9;
+  --dark-bg: rgba(0, 0, 0, .7);
+  --light-bg: #eee;
+  --border: .1rem solid var(--black);
+  --box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+  --text-shadow: 0 1.5rem 3rem rgba(0,0,0,.3);
+  --red: #ff0000;
+}
+
+body.dark {
+  --bg: #121212;
+  --text: #f2f2f2;
+  --white: #1e1e1e;
+  --black: #f2f2f2;
+  --light-black: #aaa;
+  --light-white: rgba(255, 255, 255, 0.6);
+  --dark-bg: rgba(255,255,255,.1);
+  --light-bg: #2a2a2a;
+  --border: .1rem solid var(--white);
+  --box-shadow: 0 .5rem 1rem rgba(0,0,0,.5);
+  --text-shadow: 0 1.5rem 3rem rgba(0,0,0,.8);
+  --red: #ff6b6b;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
 
 
 

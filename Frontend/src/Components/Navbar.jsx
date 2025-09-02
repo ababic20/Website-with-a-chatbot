@@ -1,12 +1,14 @@
 import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { LanguageContext } from "../contexts/LanguageContext";
+import { ThemeContext } from "../contexts/ThemeContext"; 
 import './Navbar.css'; 
 import logoImage from '../assets/boat.png';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const { toggleLanguage, translations } = useContext(LanguageContext);
+  const { theme, toggleTheme } = useContext(ThemeContext); 
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
@@ -31,6 +33,12 @@ const Navbar = () => {
         <div className="language-switch">
           <button onClick={() => toggleLanguage('hr')}>HR</button>
           <button onClick={() => toggleLanguage('en')}>EN</button>
+        </div>
+
+        <div className="theme-switch">
+          <button onClick={toggleTheme}>
+            {theme === "light" ? "🌙 Dark" : "☀️ Light"}
+          </button>
         </div>
       </div>
 

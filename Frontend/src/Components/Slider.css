@@ -61,7 +61,7 @@
 
 .home .slide .content h3{
     font-size: 6vw;
-    color: var(--white);
+    color: white;
     text-transform: uppercase;
     line-height: 1;
     text-shadow: var(--text-shadow);

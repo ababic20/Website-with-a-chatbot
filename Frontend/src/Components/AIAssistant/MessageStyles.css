@@ -21,6 +21,15 @@
     align-self: flex-start;
 }
 
+.chat-popup:not(.dark) .message.Assistant p {
+    color: black;
+}
+
+.chat-popup.dark .message.Assistant p {
+    color: white;
+}
+
+
 .message.User {
     background-color: #d1c4e9;
     align-self: flex-end;

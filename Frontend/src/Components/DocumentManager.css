@@ -100,18 +100,23 @@
 }
 
 .delete-button {
-    background-color: #8e55ad;
-    color: #fff;
+    background-color: #8e55ad !important;
+    color: #fff !important;
     border: none;
     padding: 5px 10px;
     border-radius: 6px;
     cursor: pointer;
     font-size: 13px;
-    transition: background-color 0.2s ease;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .delete-button:hover {
-    background-color: #000000;
+    background-color: #6a3c8b !important;
+    transform: translateY(-1px);
+}
+
+.delete-button:active {
+    transform: translateY(0);
 }
 
 .upload-form {
@@ -152,6 +157,33 @@ button:disabled {
     margin-top: 4px;
     max-width: 100%;
     overflow-wrap: anywhere;
+}
+
+body.dark .document-manager-wrapper,
+body.dark .document-manager-wrapper *:not(.delete-button) {
+    color: inherit !important;
+    background-color: inherit !important;
+}
+
+body.light .document-manager-wrapper,
+body.light .document-manager-wrapper *:not(.delete-button) {
+    color: inherit !important;
+    background-color: inherit !important;
+}
+
+body.dark .sidebar-left,
+body.dark .document-manager,
+body.dark .sidebar-right {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.dark .document-item {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+body.dark .document-item:hover {
+    background-color: #222;
+    border-color: rgba(255, 255, 255, 0.3);
 }
 
 @media (max-width: 1024px) {
